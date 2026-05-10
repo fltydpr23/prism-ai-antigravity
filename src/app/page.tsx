@@ -71,18 +71,50 @@ export default function Home() {
   const analysis = response?.analysis;
   const localModel = analysis?.localModel?.parsed;
 
+  // ─── Prism Score v2 ──────────────────────────────────────────────────────────
+  // A 5-dimension, 100-point score grounded in qualitative research methodology.
   const prismScore = (() => {
-    if (!analysis) return 0;
+    if (!analysis || !localModel) return 0;
     let score = 0;
-    if (localModel?.executive_summary) score += 20;
-    if (localModel?.themes?.length > 0) score += 20;
-    if (localModel?.opportunities?.length > 0) score += 20;
-    if (localModel?.emotions?.length > 0) score += 10;
-    const density = analysis.metrics?.lexicalDensity || 0;
-    if (density > 0.5) score += 15;
-    const words = analysis.metrics?.wordCount || 0;
-    if (words > 50) score += 15;
-    return Math.min(100, score);
+
+    // 1. Signal Richness (25 pts) — Halliday's lexical density theory
+    const density = (analysis.metrics?.lexicalDensity as number) || 0;
+    score += density * 15; // proportional, not binary
+    const words = (analysis.metrics?.wordCount as number) || 0;
+    if (words >= 300) score += 10;
+    else if (words >= 100) score += 7;
+    else if (words >= 30) score += 4;
+
+    // 2. Theme Coverage (25 pts) — Grounded Theory saturation
+    const themes = (localModel.themes as { evidence?: string }[]) || [];
+    const themeCount = themes.length;
+    score += Math.min(themeCount, 3) * 5; // 5 per theme, max 15
+    const evidenceCount = themes.filter((t) => t.evidence && t.evidence.length > 5).length;
+    if (themeCount > 0) {
+      if (evidenceCount === themeCount) score += 10; // all themes evidenced
+      else if (evidenceCount > 0) score += 5; // some evidenced
+    }
+
+    // 3. Emotional Depth (20 pts) — Plutchik's Wheel
+    const emotions = (localModel.emotions as { intensity?: string }[]) || [];
+    score += Math.min(emotions.length, 3) * (10 / 3); // 0–10 pts for count
+    const hasHigh = emotions.some((e) => e.intensity?.toLowerCase() === "high");
+    const hasMed = emotions.some((e) => e.intensity?.toLowerCase() === "medium");
+    if (hasHigh) score += 10;
+    else if (hasMed) score += 5;
+
+    // 4. Contradiction Value (15 pts) — Kano Model
+    const contradictions = (localModel.contradictions as unknown[]) || [];
+    if (contradictions.length >= 2) score += 15;
+    else if (contradictions.length === 1) score += 8;
+
+    // 5. Actionability (15 pts) — Design Thinking
+    const opps = (localModel.opportunities as unknown[]) || [];
+    if (opps.length >= 3) score += 15;
+    else if (opps.length === 2) score += 10;
+    else if (opps.length === 1) score += 5;
+
+    return Math.round(Math.min(100, score));
   })();
 
   const copyMarkdownReport = () => {
