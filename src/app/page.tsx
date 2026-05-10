@@ -6,7 +6,12 @@ import { Sparkles, AlertCircle, CheckCircle2, ChevronRight, Activity, Key, Downl
 
 type AnalysisResponse = {
   ok?: boolean;
-  analysis?: Record<string, unknown> | null;
+  analysis?: {
+    luneSignature?: {
+      hue?: number;
+    };
+    [key: string]: any;
+  } | null;
   saved?: boolean | null;
   id?: string | null;
   persistError?: string;
