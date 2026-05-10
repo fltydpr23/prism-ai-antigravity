@@ -23,9 +23,12 @@ const OLLAMA_PRESETS = [
 ] as const;
 
 const EXAMPLES = [
-  { label: "Agri-Tech Pitch", text: "\"Our new soil monitoring sensor helps sugarcane farmers in Maharashtra optimize water usage by up to 30%. With unpredictable monsoons, this predictive analytics tool is crucial for yield protection.\"" },
-  { label: "App Review", text: "\"The UPI payment integration on the app is buttery smooth, but delivery via the local logistics partner to Tier-3 cities in Karnataka still takes over a week. Needs improvement.\"" },
-  { label: "Creative Fiction", text: "\"The scent of roasted cumin and petrichor hung heavy in the humid Kerala air. As the first monsoon drops hit the tin roof, she poured herself another cup of strong filter coffee and opened the old ledger.\"" },
+  "The delivery was late by 3 days and customer care didn't even pick up the phone. Terrible app. Never using this again.",
+  "App works fine mostly, but UPI payment fails sometimes on weak 4G. You guys should really add a retry button instead of making me fill the cart again.",
+  "I've been using the new accounting software for a month for my boutique in Bangalore. It's great for tracking inventory and GST filing is a breeze. However, the mobile app is very clunky and crashes when I try to upload more than 5 receipts at once. Please fix the mobile version.",
+  "Our sales team loves the CRM integration, but the reporting dashboard is severely lacking. We need to export territory data by pin code, but currently, it only allows state-level exports. This creates a huge bottleneck for our end-of-month reconciliations. The UI is clean, but the functionality needs to match enterprise requirements.",
+  "We absolutely love the predictive yield feature on the Agri-dashboard, it's incredibly accurate for our sugarcane crops in Maharashtra. However, the pricing model is completely backwards. We are charged per hectare, which means during drought seasons when our yield is lowest, our software costs eat up our entire margin. The tool is essential, but the pricing makes it unsustainable for small-hold farmers.",
+  "I'm genuinely frustrated with the onboarding process for the B2B portal. The KYC verification rejected my GST certificate three times without telling me why. I had to call my CA to figure out it was a file size limit issue that wasn't mentioned anywhere on the screen! The platform itself is a lifesaver—we reduced our procurement time by 40%—but getting started was a nightmare. You need a dedicated account manager for enterprise clients or at least clear error messages on the upload form. I almost gave up and went back to IndiaMART."
 ];
 
 export default function Home() {
@@ -36,6 +39,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState<AnalysisResponse | null>(null);
   
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
   // Extract hue from response if available, fallback to 240 (blue)
   const hue = response?.analysis?.luneSignature?.hue ?? 240;
 
@@ -43,6 +48,11 @@ export default function Home() {
     // Update the aurora hue dynamically
     document.documentElement.style.setProperty('--aurora-hue', hue.toString());
   }, [hue]);
+
+  useEffect(() => {
+    setMounted(true);
+    setPlaceholderIndex(Math.floor(Math.random() * EXAMPLES.length));
+  }, []);
 
   async function submit() {
     if (!text.trim()) return;
@@ -212,22 +222,36 @@ export default function Home() {
               <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
+                onClick={() => {
+                  if (!text && mounted) setText(EXAMPLES[placeholderIndex]);
+                }}
                 rows={text ? Math.min(12, text.split('\n').length + 2) : 5}
-                placeholder="Paste telemetry or text to analyse..."
-                className="w-full resize-none rounded-2xl bg-black/40 border border-white/5 px-6 py-5 font-light text-white/90 placeholder:text-white/20 focus:bg-black/60 focus:border-white/20 focus:outline-none focus:ring-4 focus:ring-white/5 transition-all shadow-inner"
+                placeholder={mounted ? EXAMPLES[placeholderIndex] : "Paste customer feedback..."}
+                className="w-full resize-none rounded-2xl bg-black/40 border border-white/5 px-6 py-5 font-light text-white/90 placeholder:text-white/20 focus:bg-black/60 focus:border-white/20 focus:outline-none focus:ring-4 focus:ring-white/5 transition-all shadow-inner cursor-text"
                 style={{ backdropFilter: 'blur(10px)' }}
               />
-              <div className="flex flex-wrap gap-2 mt-1">
-                <span className="text-xs text-white/40 flex items-center mr-2">Try an example:</span>
-                {EXAMPLES.map((ex, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setText(ex.text)}
-                    className="glass-pill px-3 py-1.5 text-[10px] sm:text-xs text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-                  >
-                    {ex.label}
-                  </button>
-                ))}
+              <div className="flex items-center justify-between mt-1 px-1">
+                <span className="text-[10px] text-white/30 uppercase tracking-widest font-medium flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3" />
+                  Click text box to use this example
+                </span>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const next = (placeholderIndex + 1) % EXAMPLES.length;
+                    setPlaceholderIndex(next);
+                    if (!text) {
+                      // Just cycle the placeholder, don't auto-fill unless clicked inside textarea
+                    } else if (EXAMPLES.includes(text)) {
+                      // If they are currently viewing an example, swap it immediately
+                      setText(EXAMPLES[next]);
+                    }
+                  }}
+                  className="text-[10px] text-white/40 hover:text-white/80 uppercase tracking-wider transition-colors cursor-pointer"
+                >
+                  Shuffle Example ↺
+                </button>
               </div>
             </div>
 
