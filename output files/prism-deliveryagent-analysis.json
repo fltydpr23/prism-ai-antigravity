@@ -1,0 +1,171 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-12T19:25:09.127Z",
+    "moon": {
+      "phase01": 0.9169286340202589,
+      "label": "Waning crescent",
+      "illuminationPercent": 7
+    },
+    "metrics": {
+      "charCount": 2233752,
+      "charCountNoWs": 1726956,
+      "wordCount": 241302,
+      "sentenceCount": 9508,
+      "paragraphCount": 1,
+      "avgWordLength": 7.16,
+      "lexicalDensity": 0.946,
+      "numericTokenCount": 19507
+    },
+    "topTokens": [
+      {
+        "token": "order",
+        "count": 10072
+      },
+      {
+        "token": "type",
+        "count": 10054
+      },
+      {
+        "token": "customer",
+        "count": 10053
+      },
+      {
+        "token": "rating",
+        "count": 10000
+      },
+      {
+        "token": "price",
+        "count": 5058
+      },
+      {
+        "token": "product",
+        "count": 5054
+      },
+      {
+        "token": "time",
+        "count": 5049
+      },
+      {
+        "token": "agent",
+        "count": 5047
+      },
+      {
+        "token": "range",
+        "count": 5044
+      },
+      {
+        "token": "stock",
+        "count": 5044
+      },
+      {
+        "token": "service",
+        "count": 5043
+      },
+      {
+        "token": "name",
+        "count": 5039
+      }
+    ],
+    "luneSignature": {
+      "hue": 359,
+      "drift": 0.58
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "Customers are frustrated with late delivery, poor support, and incorrect orders from the service, necessitating improvements in customer service and order accuracy.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Late delivery, poor support, and incorrect orders are driving negative sentiment."
+          },
+          "contradiction_analysis": [],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "low",
+              "build_priority": "medium"
+            },
+            {
+              "feature": "improved order accuracy",
+              "frequency": "low",
+              "build_priority": "high"
+            },
+            {
+              "feature": "improved customer service",
+              "frequency": "low",
+              "build_priority": "critical"
+            },
+            {
+              "feature": "faster service",
+              "frequency": "low",
+              "build_priority": "medium"
+            }
+          ]
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": []
+      },
+      "raw": "{\n  \"executive_summary\": \"Customers are frustrated with late delivery, poor support, and incorrect orders from the service, necessitating improvements in customer service and order accuracy.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Late delivery, poor support, and incorrect orders are driving negative sentiment.\"\n    },\n    \"contradiction_analysis\": [],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"low\",\n        \"build_priority\": \"medium\"\n      },\n      {\n        \"feature\": \"improved order accuracy\",\n        \"frequency\": \"low\",\n        \"build_priority\": \"high\"\n      },\n      {\n        \"feature\": \"improved customer service\",\n        \"frequency\": \"low\",\n        \"build_priority\": \"critical\"\n      },\n      {\n        \"feature\": \"faster service\",\n        \"frequency\": \"low\",\n        \"build_priority\": \"medium\"\n      }\n    ]\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": {\n      \"concerned\": \"0%\",\n      \"uncertain\": \"0%\",\n      \"optimistic\": \"0%\"\n    },\n    \"current\": {\n      \"concerned\": \"0%\",\n      \"uncertain\": \"0%\",\n      \"optimistic\": \"0%\"\n    },\n    \"historical_num\": {\n      \"concerned\": 0,\n      \"uncertain\": 0,\n      \"optimistic\": 0\n    },\n    \"current_num\": {\n      \"concerned\": 0,\n      \"uncertain\": 0,\n      \"optimistic\": 0\n    }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    }
+  },
+  "saved": true,
+  "id": "56c06e47-3a9f-4312-aeb4-16ae48bb407d"
+}

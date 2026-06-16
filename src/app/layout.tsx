@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { CSPostHogProvider } from "../providers/PostHogProvider";
+import { WorkspaceProvider } from "../providers/WorkspaceProvider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Prism — Analyse",
-  description: "Advanced text analysis and metrics platform.",
+  title: "Prism — Consumer Intelligence Platform",
+  description: "Transform millions of customer voices into executive-grade strategic intelligence. Sentiment, contradiction maps, churn signals, and more.",
 };
 
 export default function RootLayout({
@@ -23,11 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${inter.variable} font-sans h-full antialiased`}>
+        <CSPostHogProvider>
+          <WorkspaceProvider>
+            <body className="min-h-full flex flex-col">{children}</body>
+          </WorkspaceProvider>
+        </CSPostHogProvider>
+      </html>
+    </ClerkProvider>
   );
 }

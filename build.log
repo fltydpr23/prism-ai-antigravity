@@ -1,0 +1,69 @@
+▲ Next.js 16.2.6 (webpack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+[Browserslist] Could not parse /Users/Adhi/package.json. Ignoring it.
+getaddrinfo ENOTFOUND fonts.googleapis.com
+
+Retrying 1/3...
+getaddrinfo ENOTFOUND fonts.googleapis.com
+
+Retrying 1/3...
+getaddrinfo ENOTFOUND fonts.googleapis.com
+
+Retrying 2/3...
+getaddrinfo ENOTFOUND fonts.googleapis.com
+
+Retrying 2/3...
+getaddrinfo ENOTFOUND fonts.googleapis.com
+
+Retrying 3/3...
+getaddrinfo ENOTFOUND fonts.googleapis.com
+
+Retrying 3/3...
+Error: getaddrinfo ENOTFOUND fonts.googleapis.com
+    at ignore-listed frames {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'fonts.googleapis.com'
+}
+Error: getaddrinfo ENOTFOUND fonts.googleapis.com
+    at ignore-listed frames {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'fonts.googleapis.com'
+}
+Failed to compile.
+
+src/app/layout.tsx
+`next/font` error:
+Failed to fetch `Inter` from Google Fonts.
+
+src/app/layout.tsx
+`next/font` error:
+Failed to fetch `JetBrains Mono` from Google Fonts.
+
+./src/components/PrismResults.tsx
+Error:   x Expected ',', got 'import'
+    ,-[/Users/Adhi/Creative/Coding/Experiments/ai-lab/experiments/lune-os-antigravity/src/components/PrismResults.tsx:11:1]
+  8 |   TrendingUp, TrendingDown, Users, AlertTriangle, Zap,
+  9 |   BarChart3, PieChart, MapPin, Frown, Award, Heart,
+ 10 |   ShieldAlert, Bot, Globe, Target, Eye, Clock, Check
+ 11 | import MagneticButton from "./MagneticButton";
+    : ^^^^^^
+ 12 | import { calculatePrismScore } from "../../lib/prismScore";
+ 13 | 
+ 14 | // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/PrismResults.tsx
+./src/app/page.tsx
+
+
+> Build failed because of webpack errors

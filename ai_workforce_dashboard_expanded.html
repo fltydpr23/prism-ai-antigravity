@@ -1,0 +1,262 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.grid { display: grid; gap: 12px; padding: 4px 0; }
+.g2 { grid-template-columns: 1fr 1fr; }
+.g3 { grid-template-columns: 1fr 1fr 1fr; }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
+.label { font-size: 11px; font-weight: 500; letter-spacing: .06em; color: var(--color-text-secondary); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.label i { font-size: 14px; }
+.metric-val { font-size: 28px; font-weight: 500; color: var(--color-text-primary); line-height: 1; }
+.metric-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; }
+.delta-pos { color: #3B6D11; font-size: 12px; font-weight: 500; }
+.delta-neg { color: #A32D2D; font-size: 12px; font-weight: 500; }
+.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.bar-label { font-size: 12px; color: var(--color-text-secondary); width: 110px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; height: 8px; background: var(--color-background-secondary); border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 99px; }
+.bar-val { font-size: 12px; font-weight: 500; color: var(--color-text-primary); width: 32px; text-align: right; }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; padding: 3px 10px; border-radius: 99px; font-weight: 500; }
+.pill-red { background: #FCEBEB; color: #A32D2D; }
+.pill-green { background: #EAF3DE; color: #3B6D11; }
+.pill-amber { background: #FAEEDA; color: #854F0B; }
+.pill-blue { background: #E6F1FB; color: #185FA5; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.trend-row { display: flex; justify-content: space-between; align-items: flex-end; height: 60px; gap: 4px; margin: 8px 0; }
+.trend-bar { flex: 1; border-radius: 3px 3px 0 0; min-width: 0; }
+.trend-labels { display: flex; justify-content: space-between; }
+.tl { font-size: 10px; color: var(--color-text-secondary); }
+.divider { border-top: 0.5px solid var(--color-border-tertiary); margin: 10px 0; }
+.sector-tag { font-size: 11px; padding: 2px 8px; border-radius: 99px; border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); display: inline-block; margin: 3px 2px; }
+.risk-ring { position: relative; width: 80px; height: 80px; }
+svg.donut { width: 80px; height: 80px; }
+.ring-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.ring-pct { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
+.ring-tiny { font-size: 10px; color: var(--color-text-secondary); }
+.opportunity-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.opportunity-row:last-child { border-bottom: none; }
+.opp-name { font-size: 13px; color: var(--color-text-primary); }
+.opp-change { font-size: 13px; font-weight: 500; }
+.spark { display: flex; align-items: flex-end; gap: 2px; height: 24px; }
+.sp { width: 5px; border-radius: 2px 2px 0 0; }
+</style>
+
+<h2 class="sr-only">AI workforce impact dashboard showing sector risk scores, displacement trends, and opportunity signals</h2>
+
+<div class="grid">
+
+  <div class="grid g4">
+    <div class="card">
+      <div class="label"><i class="ti ti-users" aria-hidden="true"></i> workers at risk</div>
+      <div class="metric-val">14.2M</div>
+      <div class="metric-sub"><span class="delta-neg">↑ 8% vs last quarter</span></div>
+    </div>
+    <div class="card">
+      <div class="label"><i class="ti ti-robot" aria-hidden="true"></i> avg automation risk</div>
+      <div class="metric-val">0.61</div>
+      <div class="metric-sub"><span class="delta-neg">↑ 0.04 from baseline</span></div>
+    </div>
+    <div class="card">
+      <div class="label"><i class="ti ti-trending-up" aria-hidden="true"></i> net new roles</div>
+      <div class="metric-val">+3.1M</div>
+      <div class="metric-sub"><span class="delta-pos">↑ AI-adjacent jobs</span></div>
+    </div>
+    <div class="card">
+      <div class="label"><i class="ti ti-school" aria-hidden="true"></i> reskilling readiness</div>
+      <div class="metric-val">34%</div>
+      <div class="metric-sub"><span class="delta-neg">Below threshold (50%)</span></div>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="label"><i class="ti ti-chart-bar" aria-hidden="true"></i> automation risk by sector</div>
+      <div style="margin-top:4px">
+        <div class="bar-row"><span class="bar-label">Admin & Clerical</span><div class="bar-track"><div class="bar-fill" style="width:79.3%;background:#E24B4A"></div></div><span class="bar-val">0.79</span></div>
+        <div class="bar-row"><span class="bar-label">Manufacturing</span><div class="bar-track"><div class="bar-fill" style="width:74%;background:#EF9F27"></div></div><span class="bar-val">0.74</span></div>
+        <div class="bar-row"><span class="bar-label">Retail & Sales</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:#EF9F27"></div></div><span class="bar-val">0.68</span></div>
+        <div class="bar-row"><span class="bar-label">Transport & Logistics</span><div class="bar-track"><div class="bar-fill" style="width:61%;background:#EF9F27"></div></div><span class="bar-val">0.61</span></div>
+        <div class="bar-row"><span class="bar-label">Finance & Insurance</span><div class="bar-track"><div class="bar-fill" style="width:55%;background:#97C459"></div></div><span class="bar-val">0.55</span></div>
+        <div class="bar-row"><span class="bar-label">Healthcare</span><div class="bar-track"><div class="bar-fill" style="width:31%;background:#97C459"></div></div><span class="bar-val">0.31</span></div>
+        <div class="bar-row"><span class="bar-label">Education</span><div class="bar-track"><div class="bar-fill" style="width:24%;background:#639922"></div></div><span class="bar-val">0.24</span></div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:10px">
+        <span style="font-size:11px;color:var(--color-text-secondary)"><span class="dot" style="background:#E24B4A;margin-right:4px"></span>High risk (&gt;0.7)</span>
+        <span style="font-size:11px;color:var(--color-text-secondary)"><span class="dot" style="background:#EF9F27;margin-right:4px"></span>Medium</span>
+        <span style="font-size:11px;color:var(--color-text-secondary)"><span class="dot" style="background:#639922;margin-right:4px"></span>Low</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label"><i class="ti ti-clock-hour-4" aria-hidden="true"></i> displacement trend — net workforce change</div>
+      <div class="trend-row" style="margin-top:12px">
+        <div class="trend-bar" style="height:28%;background:#97C459" title="Q1 2024"></div>
+        <div class="trend-bar" style="height:38%;background:#EF9F27" title="Q2 2024"></div>
+        <div class="trend-bar" style="height:52%;background:#EF9F27" title="Q3 2024"></div>
+        <div class="trend-bar" style="height:61%;background:#EF9F27" title="Q4 2024"></div>
+        <div class="trend-bar" style="height:71%;background:#E24B4A" title="Q1 2025"></div>
+        <div class="trend-bar" style="height:82%;background:#E24B4A" title="Q2 2025"></div>
+        <div class="trend-bar" style="height:76%;background:#E24B4A" title="Q3 2025"></div>
+        <div class="trend-bar" style="height:88%;background:#E24B4A" title="Q4 2025"></div>
+      </div>
+      <div class="trend-labels">
+        <span class="tl">Q1 '24</span><span class="tl">Q2</span><span class="tl">Q3</span><span class="tl">Q4</span>
+        <span class="tl">Q1 '25</span><span class="tl">Q2</span><span class="tl">Q3</span><span class="tl">Q4</span>
+      </div>
+      <div class="divider"></div>
+      <div style="display:flex;gap:16px">
+        <div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">Peak displacement</div>
+          <div style="font-size:15px;font-weight:500;color:#A32D2D">–0.094 <span style="font-size:11px;font-weight:400">Q4 '25</span></div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">Acceleration rate</div>
+          <div style="font-size:15px;font-weight:500;color:var(--color-text-primary)">3.1× <span style="font-size:11px;font-weight:400">YoY</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid g3">
+    <div class="card">
+      <div class="label"><i class="ti ti-chart-donut" aria-hidden="true"></i> worker risk distribution</div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:8px">
+        <div class="risk-ring">
+          <svg class="donut" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="30" fill="none" stroke="var(--color-background-secondary)" stroke-width="14"/>
+            <circle cx="40" cy="40" r="30" fill="none" stroke="#E24B4A" stroke-width="14" stroke-dasharray="59.7 128.8" stroke-dashoffset="32" stroke-linecap="butt"/>
+            <circle cx="40" cy="40" r="30" fill="none" stroke="#EF9F27" stroke-width="14" stroke-dasharray="51.5 137" stroke-dashoffset="-27.7" stroke-linecap="butt"/>
+            <circle cx="40" cy="40" r="30" fill="none" stroke="#97C459" stroke-width="14" stroke-dasharray="17.6 171" stroke-dashoffset="-79.2" stroke-linecap="butt"/>
+          </svg>
+          <div class="ring-center">
+            <div class="ring-pct">188M</div>
+            <div class="ring-tiny">workers</div>
+          </div>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:12px;color:var(--color-text-secondary)"><span class="dot" style="background:#E24B4A;margin-right:5px"></span>High risk</span>
+            <span style="font-size:12px;font-weight:500;color:var(--color-text-primary)">46%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:12px;color:var(--color-text-secondary)"><span class="dot" style="background:#EF9F27;margin-right:5px"></span>Medium risk</span>
+            <span style="font-size:12px;font-weight:500;color:var(--color-text-primary)">40%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:12px;color:var(--color-text-secondary)"><span class="dot" style="background:#97C459;margin-right:5px"></span>Low risk</span>
+            <span style="font-size:12px;font-weight:500;color:var(--color-text-primary)">14%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label"><i class="ti ti-map-pin" aria-hidden="true"></i> geographic hotspots</div>
+      <div style="margin-top:4px">
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">Midwest US</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">Manufacturing belt</div>
+          </div>
+          <span class="pill pill-red">Critical</span>
+        </div>
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">Southeast Asia</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">Clerical & BPO</div>
+          </div>
+          <span class="pill pill-red">Critical</span>
+        </div>
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">Eastern Europe</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">Admin & services</div>
+          </div>
+          <span class="pill pill-amber">High</span>
+        </div>
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">West Africa</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">Retail & transport</div>
+          </div>
+          <span class="pill pill-amber">High</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label"><i class="ti ti-trending-up" aria-hidden="true"></i> opportunity sectors</div>
+      <div style="margin-top:4px">
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">AI/ML Engineering</div>
+          </div>
+          <span class="opp-change delta-pos">+41%</span>
+        </div>
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">Cybersecurity</div>
+          </div>
+          <span class="opp-change delta-pos">+28%</span>
+        </div>
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">Healthcare tech</div>
+          </div>
+          <span class="opp-change delta-pos">+19%</span>
+        </div>
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">Skilled trades</div>
+          </div>
+          <span class="opp-change delta-pos">+13%</span>
+        </div>
+        <div class="opportunity-row">
+          <div>
+            <div class="opp-name">Data annotation</div>
+          </div>
+          <span class="opp-change delta-pos">+9%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="label"><i class="ti ti-mood-sad" aria-hidden="true"></i> sentiment shift over time</div>
+      <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
+        <div style="flex:1;min-width:120px">
+          <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px">6 months ago</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="height:10px;background:#E24B4A;border-radius:2px;width:22%"></div><span style="font-size:11px;color:var(--color-text-secondary)">Concerned 22%</span></div>
+            <div style="display:flex;align-items:center;gap:6px"><div style="height:10px;background:#EF9F27;border-radius:2px;width:38%"></div><span style="font-size:11px;color:var(--color-text-secondary)">Uncertain 38%</span></div>
+            <div style="display:flex;align-items:center;gap:6px"><div style="height:10px;background:#97C459;border-radius:2px;width:40%"></div><span style="font-size:11px;color:var(--color-text-secondary)">Optimistic 40%</span></div>
+          </div>
+        </div>
+        <div style="width:0.5px;background:var(--color-border-tertiary)"></div>
+        <div style="flex:1;min-width:120px">
+          <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px">Today</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="height:10px;background:#E24B4A;border-radius:2px;width:54%"></div><span style="font-size:11px;color:var(--color-text-secondary)">Concerned 54%</span></div>
+            <div style="display:flex;align-items:center;gap:6px"><div style="height:10px;background:#EF9F27;border-radius:2px;width:31%"></div><span style="font-size:11px;color:var(--color-text-secondary)">Uncertain 31%</span></div>
+            <div style="display:flex;align-items:center;gap:6px"><div style="height:10px;background:#97C459;border-radius:2px;width:15%"></div><span style="font-size:11px;color:var(--color-text-secondary)">Optimistic 15%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label"><i class="ti ti-certificate" aria-hidden="true"></i> reskilling readiness gap</div>
+      <div style="margin-top:8px">
+        <div class="bar-row"><span class="bar-label">Awareness</span><div class="bar-track"><div class="bar-fill" style="width:71%;background:#378ADD"></div></div><span class="bar-val">71%</span></div>
+        <div class="bar-row"><span class="bar-label">Access to training</span><div class="bar-track"><div class="bar-fill" style="width:44%;background:#EF9F27"></div></div><span class="bar-val">44%</span></div>
+        <div class="bar-row"><span class="bar-label">Employer support</span><div class="bar-track"><div class="bar-fill" style="width:38%;background:#EF9F27"></div></div><span class="bar-val">38%</span></div>
+        <div class="bar-row"><span class="bar-label">Program completion</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:#E24B4A"></div></div><span class="bar-val">22%</span></div>
+        <div class="bar-row"><span class="bar-label">Job placement after</span><div class="bar-track"><div class="bar-fill" style="width:17%;background:#E24B4A"></div></div><span class="bar-val">17%</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
