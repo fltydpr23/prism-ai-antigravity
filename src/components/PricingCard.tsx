@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export interface PricingFeature {
   label: string;
-  included: boolean | "locked"; // true = included, false = not included, "locked" = visible but locked with upgrade prompt
+  included: boolean | "locked" | string; // true = included, false = not included, "locked" = visible but locked, string = custom value (e.g. "3")
 }
 
 export interface PricingCardProps {
@@ -50,7 +50,7 @@ export default function PricingCard({
   const isCustom = displayPrice === 0;
   const isFree = monthlyPrice === null;
 
-  const includedFeatures = features.filter(f => f.included === true);
+  const includedFeatures = features.filter(f => f.included === true || typeof f.included === "string");
   const lockedFeatures = features.filter(f => f.included === "locked");
 
   return (
@@ -174,7 +174,12 @@ export default function PricingCard({
                   className="w-3.5 h-3.5 mt-0.5 shrink-0"
                   style={{ color: `hsl(${accentColor})` }}
                 />
-                <span className="text-white/70 leading-relaxed">{f.label}</span>
+                <span className="text-white/70 leading-relaxed">
+                  {f.label}
+                  {typeof f.included === "string" && (
+                    <span className="text-white font-medium ml-1">: {f.included}</span>
+                  )}
+                </span>
               </li>
             ))}
           </ul>
