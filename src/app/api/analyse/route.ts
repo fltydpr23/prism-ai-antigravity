@@ -207,7 +207,8 @@ export async function POST(request: Request) {
     if (process.env.RESEND_API_KEY && userId) {
       try {
         const { clerkClient } = await import("@clerk/nextjs/server");
-        const user = await clerkClient().users.getUser(userId);
+        const client = await clerkClient();
+        const user = await client.users.getUser(userId);
         const email = user.emailAddresses[0]?.emailAddress;
         
         if (email) {
