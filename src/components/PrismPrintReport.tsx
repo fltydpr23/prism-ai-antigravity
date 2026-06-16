@@ -303,7 +303,7 @@ export default function PrismPrintReport({
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32, paddingBottom: 16, borderBottom: `1px solid ${T.border}` }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             {branding?.logoUrl ? (
-              <img src={branding.logoUrl} alt="Logo" style={{ height: 12, width: "auto", grayscale: 1, opacity: 0.8 }} />
+              <img src={branding.logoUrl} alt="Logo" style={{ height: 12, width: "auto", filter: "grayscale(1)", opacity: 0.8 }} />
             ) : (
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: `linear-gradient(135deg, ${T.emerald}, ${T.cyan})` }} />
             )}
@@ -364,7 +364,7 @@ export default function PrismPrintReport({
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32, paddingBottom: 16, borderBottom: `1px solid ${T.border}` }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             {branding?.logoUrl ? (
-              <img src={branding.logoUrl} alt="Logo" style={{ height: 12, width: "auto", grayscale: 1, opacity: 0.8 }} />
+              <img src={branding.logoUrl} alt="Logo" style={{ height: 12, width: "auto", filter: "grayscale(1)", opacity: 0.8 }} />
             ) : (
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: `linear-gradient(135deg, ${T.emerald}, ${T.cyan})` }} />
             )}
@@ -416,7 +416,7 @@ export default function PrismPrintReport({
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32, paddingBottom: 16, borderBottom: `1px solid ${T.border}` }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             {branding?.logoUrl ? (
-              <img src={branding.logoUrl} alt="Logo" style={{ height: 12, width: "auto", grayscale: 1, opacity: 0.8 }} />
+              <img src={branding.logoUrl} alt="Logo" style={{ height: 12, width: "auto", filter: "grayscale(1)", opacity: 0.8 }} />
             ) : (
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: `linear-gradient(135deg, ${T.emerald}, ${T.cyan})` }} />
             )}
