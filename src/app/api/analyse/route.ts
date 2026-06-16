@@ -223,7 +223,7 @@ export async function POST(request: Request) {
               <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #080810; color: #fff; padding: 40px; border-radius: 12px;">
                 <h1 style="font-size: 24px; font-weight: 300; margin-bottom: 24px; color: #fff;">Prism <span style="font-weight: 700;">Intelligence</span></h1>
                 <p style="font-size: 16px; color: #a1a1aa; line-height: 1.6; margin-bottom: 32px;">
-                  Your analysis of <strong>${result.executive_summary?.split(" ")[0] || "your dataset"}</strong> has completed processing.
+                  Your analysis of <strong>${(result as any).localModel?.executive_summary?.split(" ")[0] || "your dataset"}</strong> has completed processing.
                 </p>
                 <div style="margin-bottom: 40px;">
                   <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/report/${data.id}" 
