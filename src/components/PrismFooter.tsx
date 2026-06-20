@@ -237,7 +237,7 @@ function PrismWordmark() {
   return (
     <div
       ref={ref}
-      className={`text-[14vw] leading-none font-bold tracking-tighter uppercase select-none cursor-pointer flex ${basementGrotesque.className}`}
+      className={`text-[11vw] md:text-[12vw] leading-[0.75] font-bold tracking-tighter uppercase select-none cursor-pointer flex ${basementGrotesque.className}`}
       title="Double-click for a light show"
     >
       {LETTERS.map((char, i) => (
@@ -343,73 +343,52 @@ export default function PrismFooter({ onStart }: Props) {
       </section>
 
       {/* ── Editorial Footer ─────────────────────────────────────────────────── */}
-      <footer ref={footerRef} className="bg-black py-12 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col gap-16">
+      <footer ref={footerRef} className="bg-black pt-32 pb-8 px-6 md:px-12 border-t border-white/10 overflow-hidden w-full">
+        <div className="w-full flex flex-col gap-32">
 
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-
-            {/* Left: Iridescent PRISM Wordmark */}
-            <motion.div
-              variants={FADE_LEFT}
-              initial="hidden"
-              animate={footerInView ? "visible" : "hidden"}
-              custom={0}
-              className="flex flex-col"
-            >
-              <PrismWordmark />
-              <motion.span
-                variants={FADE_UP}
-                initial="hidden"
-                animate={footerInView ? "visible" : "hidden"}
-                custom={0.3}
-                className="text-xs font-mono text-white/30 uppercase tracking-widest ml-1 mt-3"
-              >
-                © 2026 Prism Intelligence Inc.
-              </motion.span>
-            </motion.div>
-
-            {/* Right: Brutalist Email Grid */}
+          {/* Top: Brutalist Email Grid (Pushed to the Right) */}
+          <div className="w-full flex justify-end">
             <motion.div
               variants={FADE_RIGHT}
               initial="hidden"
               animate={footerInView ? "visible" : "hidden"}
-              custom={0.15}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-10 pb-2"
+              custom={0}
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-16 w-full lg:w-[80%]"
             >
               {[
-              {
-                section: "INQUIRIES",
-                items: [
-                  {
-                    label: "[ ] HELLO@PRISMINTEL.CO",
-                    href: "mailto:hello@prismintel.co?subject=Partnership%20%2F%20Enterprise%20Inquiry&body=Hi%20Prism%20team%2C%0A%0AI%27d%20like%20to%20explore%20how%20Prism%20can%20work%20for%20our%20organisation.%20Could%20we%20set%20up%20a%20quick%20call%3F%0A%0A%5BYour%20name%20%26%20company%5D",
-                    email: true,
-                  },
-                  { label: "Enterprise & Partnerships", href: "#", email: false, muted: true },
-                ],
-              },
-              {
-                section: "RESEARCH",
-                items: [
-                  {
-                    label: "[ ] RESEARCH@PRISMINTEL.CO",
-                    href: "mailto:research@prismintel.co?subject=Custom%20Research%20Project%20Brief&body=Hi%20Prism%20Research%2C%0A%0AWe%27re%20looking%20for%20a%20custom%20consumer%20intelligence%20model%20for%20a%20specific%20brief.%20Happy%20to%20share%20more%20details%20on%20a%20call.%0A%0A%5BYour%20name%2C%20agency%20%26%20project%20overview%5D",
-                    email: true,
-                  },
-                  { label: "Custom Models & Agency Projects", href: "#", email: false, muted: true },
-                ],
-              },
-              {
-                section: "CLIENT SERVICES",
-                items: [
-                  {
-                    label: "[ ] SUPPORT@PRISMINTEL.CO",
-                    href: "mailto:support@prismintel.co?subject=Support%20Request&body=Hi%20Prism%20Support%2C%0A%0AI%20need%20help%20with%20the%20following%3A%0A%0A%5BDescribe%20your%20issue%20or%20question%5D",
-                    email: true,
-                  },
-                  { label: "Technical Help & Billing", href: "#", email: false, muted: true },
-                ],
-              },
+                {
+                  section: "INQUIRIES",
+                  items: [
+                    {
+                      label: "[ ] HELLO@PRISMINTEL.CO",
+                      href: "mailto:hello@prismintel.co?subject=Partnership%20%2F%20Enterprise%20Inquiry&body=Hi%20Prism%20team%2C%0A%0AI%27d%20like%20to%20explore%20how%20Prism%20can%20work%20for%20our%20organisation.%20Could%20we%20set%20up%20a%20quick%20call%3F%0A%0A%5BYour%20name%20%26%20company%5D",
+                      email: true,
+                    },
+                    { label: "Enterprise & Partnerships", href: "#", email: false, muted: true },
+                  ],
+                },
+                {
+                  section: "RESEARCH",
+                  items: [
+                    {
+                      label: "[ ] RESEARCH@PRISMINTEL.CO",
+                      href: "mailto:research@prismintel.co?subject=Custom%20Research%20Project%20Brief&body=Hi%20Prism%20Research%2C%0A%0AWe%27re%20looking%20for%20a%20custom%20consumer%20intelligence%20model%20for%20a%20specific%20brief.%20Happy%20to%20share%20more%20details%20on%20a%20call.%0A%0A%5BYour%20name%2C%20agency%20%26%20project%20overview%5D",
+                      email: true,
+                    },
+                    { label: "Custom Models & Agency Projects", href: "#", email: false, muted: true },
+                  ],
+                },
+                {
+                  section: "CLIENT SERVICES",
+                  items: [
+                    {
+                      label: "[ ] SUPPORT@PRISMINTEL.CO",
+                      href: "mailto:support@prismintel.co?subject=Support%20Request&body=Hi%20Prism%20Support%2C%0A%0AI%20need%20help%20with%20the%20following%3A%0A%0A%5BDescribe%20your%20issue%20or%20question%5D",
+                      email: true,
+                    },
+                    { label: "Technical Help & Billing", href: "#", email: false, muted: true },
+                  ],
+                },
                 {
                   section: "SYSTEM",
                   items: [
@@ -423,10 +402,10 @@ export default function PrismFooter({ onStart }: Props) {
                   variants={FADE_UP}
                   initial="hidden"
                   animate={footerInView ? "visible" : "hidden"}
-                  custom={0.2 + ci * 0.1}
-                  className="flex flex-col gap-2.5 text-xs"
+                  custom={0.1 + ci * 0.1}
+                  className="flex flex-col gap-3 text-xs whitespace-nowrap"
                 >
-                  <span className="text-white/25 font-mono tracking-widest mb-1.5">■ {col.section}</span>
+                  <span className="text-white/25 font-mono tracking-widest mb-2">■ {col.section}</span>
                   {col.items.map((item) =>
                     item.muted ? (
                       <span key={item.label} className="text-white/35 font-mono">{item.label}</span>
@@ -438,6 +417,32 @@ export default function PrismFooter({ onStart }: Props) {
               ))}
             </motion.div>
           </div>
+
+          {/* Bottom: Iridescent PRISM Wordmark & Footer Links */}
+          <motion.div
+            variants={FADE_UP}
+            initial="hidden"
+            animate={footerInView ? "visible" : "hidden"}
+            custom={0.4}
+            className="flex flex-col relative w-full"
+          >
+            <div className="w-full flex justify-between items-end border-b border-white/10 pb-8 mb-6">
+              {/* Wordmark Left */}
+              <div className="-ml-3">
+                <PrismWordmark />
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[10px] font-mono text-white/30 uppercase tracking-widest">
+              <span>© 2026 Prism Intelligence Inc.</span>
+              <div className="flex gap-6">
+                <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
+                <Link href="#" className="hover:text-white transition-colors">Terms</Link>
+                <Link href="#" className="hover:text-white transition-colors">System Status</Link>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </footer>
     </>

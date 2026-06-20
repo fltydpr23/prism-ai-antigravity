@@ -235,7 +235,8 @@ export default function PrismHero({ onStart }: Props) {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 overflow-hidden perspective-1000"
+      className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 overflow-hidden"
+      style={{ perspective: 1000 }}
     >
       
       {/* ── Background Glows ── */}
@@ -246,8 +247,13 @@ export default function PrismHero({ onStart }: Props) {
 
       {/* ── Live Data Constellation ── */}
       <motion.div 
-        style={{ x: springX, y: springY }}
-        className="absolute inset-0 pointer-events-none overflow-hidden z-0 mask-image-fade"
+        style={{ 
+          x: springX, 
+          y: springY,
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+          maskImage: "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)"
+        }}
+        className="absolute inset-0 pointer-events-none overflow-hidden z-0"
       >
         {chips.map((chip) => (
           <DataChip key={chip.id} {...chip} />
@@ -300,16 +306,6 @@ export default function PrismHero({ onStart }: Props) {
           <SpotlightDashboard />
         </motion.div>
       </div>
-
-      <style jsx global>{`
-        .mask-image-fade {
-          mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
-          -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
-        }
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-      `}</style>
     </section>
   );
 }
