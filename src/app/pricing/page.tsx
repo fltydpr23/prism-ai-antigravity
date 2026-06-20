@@ -177,7 +177,7 @@ export default function PricingPage() {
             annualPrice={11999}
             billingPeriod={billing}
             ctaLabel="Book a Demo"
-            ctaHref="mailto:hello@prism.ai?subject=Agency Plan Enquiry"
+            ctaHref="mailto:hello@prismintel.co?subject=Agency Plan Enquiry"
             ctaVariant="ghost"
             features={AGENCY_FEATURES}
             accentColor="265,80%,65%"
@@ -208,7 +208,7 @@ export default function PricingPage() {
             </p>
           </div>
           <a
-            href="mailto:hello@prism.ai?subject=Enterprise Enquiry"
+            href="mailto:hello@prismintel.co?subject=Enterprise Enquiry"
             className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white whitespace-nowrap transition-all glass-pill"
           >
             Talk to Sales <ArrowRight className="w-4 h-4" />

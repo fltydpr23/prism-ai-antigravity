@@ -163,7 +163,7 @@ export default function BillingPage() {
                   </Link>
                   <button
                     className="text-xs text-white/25 hover:text-white/50 transition-colors px-3 py-2"
-                    onClick={() => alert("Cancellation — contact hello@prism.ai")}
+                    onClick={() => alert("Cancellation — contact hello@prismintel.co")}
                   >
                     Cancel subscription
                   </button>
@@ -191,7 +191,7 @@ export default function BillingPage() {
                   <div key={i} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
                     <div>
                       <p className="text-sm text-white/70">Prism {tierInfo.label} — Monthly</p>
-                      <p className="text-xs text-white/30">June 2025</p>
+                      <p className="text-xs text-white/30">June 2026</p>
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-medium text-white/80">{tierInfo.price.split(" / ")[0]}</p>
@@ -207,7 +207,7 @@ export default function BillingPage() {
 
           {/* GST note */}
           <p className="text-xs text-white/20 text-center mt-6">
-            GST invoice generated automatically for Indian businesses. Contact hello@prism.ai for billing queries.
+            GST invoice generated automatically for Indian businesses. Contact hello@prismintel.co for billing queries.
           </p>
         </motion.div>
       </div>

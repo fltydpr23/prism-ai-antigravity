@@ -396,14 +396,20 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
   }
 
   if (!lm) {
+    const isMissingConfig = analysis && !("localModel" in analysis);
     const parseErr = analysis?.localModel?.parseError || analysis?.localModel?.error;
+    const title = isMissingConfig ? "LLM Analysis Unconfigured" : "Unexpected Response Structure";
+    const desc = isMissingConfig 
+      ? "The server completed basic metrics analysis but skipped LLM generation because the local LLM environment variables (e.g. LOCAL_LLM_ENABLED, TOGETHER_API_KEY) are not set on Vercel."
+      : "The model completed analysis but the output couldn't be parsed into the expected report structure.";
+
     return (
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="prism-card p-10 text-center flex flex-col items-center gap-4">
         <div className="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
           <AlertTriangle className="w-6 h-6 text-amber-400" />
         </div>
-        <h2 className="text-lg text-white/80">Unexpected Response Structure</h2>
-        <p className="text-sm text-white/45 max-w-md">The model completed analysis but the output couldn&apos;t be parsed into the expected report structure.</p>
+        <h2 className="text-lg text-white/80">{title}</h2>
+        <p className="text-sm text-white/45 max-w-md">{desc}</p>
         {parseErr && (
           <div className="mt-2 p-3 bg-black/40 rounded-xl border border-white/5 text-left max-w-lg w-full">
             <span className="label block mb-1">Parse Error</span>

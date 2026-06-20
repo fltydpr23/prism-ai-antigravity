@@ -31,6 +31,7 @@ async function buildAnalysis(
   skipLocalModel: boolean,
   modelOverride?: string,
   industryOverride?: string,
+  onProgress: (stage: string) => void = () => {}
 ) {
   const base = analyse(text);
   const cfg = localLlmConfig(
@@ -82,6 +83,7 @@ async function buildAnalysis(
         },
         cfg,
         industryLensText,
+        onProgress
       )
     : await runSmallFileAnalysis(
         text,
@@ -93,6 +95,7 @@ async function buildAnalysis(
         },
         cfg,
         industryLensText,
+        onProgress
       );
 
   return { ...base, localModel, industry: industryMeta };
@@ -117,7 +120,6 @@ export async function POST(request: Request) {
   const { auth } = await import("@clerk/nextjs/server");
   const { userId } = await auth();
 
-  // If we are persisting, we enforce rate limiting based on the user ID or IP (fallback to IP for anon)
   const identifier = userId || request.headers.get("x-forwarded-for") || "anonymous_user";
   
   const { checkRateLimit } = await import("../../../../lib/ratelimit");
@@ -130,7 +132,6 @@ export async function POST(request: Request) {
     }, { status: 429 });
   }
 
-  // Soft limit warning (optional telemetry)
   if (rateLimitState.isWarning) {
     const { getPostHogClient } = await import("../../../../lib/posthog-server");
     const ph = getPostHogClient();
@@ -138,135 +139,105 @@ export async function POST(request: Request) {
     await ph.shutdown();
   }
 
-  const result = await buildAnalysis(text, skipLocalModel, modelOverride, industryOverride);
+  const stream = new ReadableStream({
+    async start(controller) {
+      const encoder = new TextEncoder();
+      const sendEvent = (data: any) => {
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
+      };
 
-  if (!persist) {
-    return NextResponse.json({
-      ok: true,
-      analysis: result,
-      saved: null,
-    });
-  }
+      try {
+        const onProgress = (stage: string) => {
+          sendEvent({ type: "stage", stage });
+        };
 
-  try {
-    const { auth } = await import("@clerk/nextjs/server");
-    const { userId } = await auth();
+        const result = await buildAnalysis(text, skipLocalModel, modelOverride, industryOverride, onProgress);
 
-    const supabase = createSupabaseServer();
-    const { data, error } = await supabase
-      .from("analyses")
-      .insert({
-        result,
-        source: "api/analyse",
-        input: text,
-        user_id: userId,
-        workspace_id: workspaceId,
-      })
-      .select("id")
-      .single();
-
-    if (error) {
-      const hint =
-        typeof error.message === "string" &&
-        /result|schema cache|column/i.test(error.message)
-          ? ' Add the missing columns (see supabase/repair_analyses.sql in the repo) in the Supabase SQL editor, then save again.'
-          : "";
-      const posthog = getPostHogClient();
-      posthog.capture({
-        distinctId: "server",
-        event: "analysis_save_failed",
-        properties: { error: error.message, industry: result.industry?.id, text_length: text.length },
-      });
-      await posthog.shutdown();
-      return NextResponse.json(
-        {
+        let finalResponseData: any = {
           ok: true,
           analysis: result,
-          saved: false,
-          persistError: `${error.message}${hint}`,
-        },
-        { status: 200 },
-      );
-    }
+          saved: null,
+          id: null,
+        };
 
-    const posthog = getPostHogClient();
-    posthog.capture({
-      distinctId: "server",
-      event: "analysis_saved",
-      properties: {
-        report_id: data?.id ?? null,
-        industry: result.industry?.id,
-        industry_detection_method: result.industry?.detectionMethod,
-        text_length: text.length,
-        model: modelOverride ?? "default",
-      },
-    });
-    await posthog.shutdown();
+        sendEvent({ type: "stage", stage: "design" }); // Generating Executive Report / Saving
 
-    // Trigger Email Notification if RESEND_API_KEY is present
-    if (process.env.RESEND_API_KEY && userId) {
-      try {
-        const { clerkClient } = await import("@clerk/nextjs/server");
-        const client = await clerkClient();
-        const user = await client.users.getUser(userId);
-        const email = user.emailAddresses[0]?.emailAddress;
-        
-        if (email) {
-          const resend = new Resend(process.env.RESEND_API_KEY);
-          
-          // Fire and forget so we don't block the request
-          resend.emails.send({
-            from: "Prism Intelligence <hello@prism.ai>",
-            to: email,
-            subject: "Your Prism Intelligence Report is Ready",
-            html: `
-              <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #080810; color: #fff; padding: 40px; border-radius: 12px;">
-                <h1 style="font-size: 24px; font-weight: 300; margin-bottom: 24px; color: #fff;">Prism <span style="font-weight: 700;">Intelligence</span></h1>
-                <p style="font-size: 16px; color: #a1a1aa; line-height: 1.6; margin-bottom: 32px;">
-                  Your analysis of <strong>${(result as any).localModel?.executive_summary?.split(" ")[0] || "your dataset"}</strong> has completed processing.
-                </p>
-                <div style="margin-bottom: 40px;">
-                  <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/report/${data.id}" 
-                     style="display: inline-block; padding: 12px 24px; background: #34d399; color: #000; text-decoration: none; font-weight: 600; border-radius: 6px; letter-spacing: 0.05em;">
-                    View Full Report →
-                  </a>
-                </div>
-                <hr style="border: none; border-top: 1px solid #1e1e32; margin-bottom: 24px;" />
-                <p style="font-size: 12px; color: #52525b;">
-                  This is an automated notification from Prism. Please do not reply directly to this email.
-                </p>
-              </div>
-            `,
-          }).catch((err) => console.error("Resend error:", err));
+        if (persist) {
+          try {
+            const supabase = createSupabaseServer();
+            const { data, error } = await supabase
+              .from("analyses")
+              .insert({
+                result,
+                source: "api/analyse",
+                input: text,
+                user_id: userId,
+                workspace_id: workspaceId,
+              })
+              .select("id")
+              .single();
+
+            if (error) {
+              finalResponseData.saved = false;
+              finalResponseData.persistError = error.message;
+            } else {
+              finalResponseData.saved = true;
+              finalResponseData.id = data?.id ?? null;
+
+              if (process.env.RESEND_API_KEY && userId) {
+                try {
+                  const { clerkClient } = await import("@clerk/nextjs/server");
+                  const client = await clerkClient();
+                  const user = await client.users.getUser(userId);
+                  const email = user.emailAddresses[0]?.emailAddress;
+                  
+                  if (email) {
+                    const resend = new Resend(process.env.RESEND_API_KEY);
+                    resend.emails.send({
+                      from: "Prism Intelligence <hello@prismintel.co>",
+                      to: email,
+                      subject: "Your Prism Intelligence Report is Ready",
+                      html: `
+                        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #080810; color: #fff; padding: 40px; border-radius: 12px;">
+                          <h1 style="font-size: 24px; font-weight: 300; margin-bottom: 24px; color: #fff;">Prism <span style="font-weight: 700;">Intelligence</span></h1>
+                          <p style="font-size: 16px; color: #a1a1aa; line-height: 1.6; margin-bottom: 32px;">
+                            Your analysis of <strong>${(result as any).localModel?.executive_summary?.split(" ")[0] || "your dataset"}</strong> has completed processing.
+                          </p>
+                          <div style="margin-bottom: 40px;">
+                            <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/report/${data.id}" 
+                               style="display: inline-block; padding: 12px 24px; background: #34d399; color: #000; text-decoration: none; font-weight: 600; border-radius: 6px; letter-spacing: 0.05em;">
+                              View Full Report →
+                            </a>
+                          </div>
+                        </div>
+                      `,
+                    }).catch((err) => console.error("Resend error:", err));
+                  }
+                } catch (err) {
+                  console.error("Failed to fetch user or send email:", err);
+                }
+              }
+            }
+          } catch (e) {
+            finalResponseData.saved = false;
+            finalResponseData.persistError = e instanceof Error ? e.message : "Supabase unavailable.";
+          }
         }
-      } catch (err) {
-        console.error("Failed to fetch user or send email:", err);
+
+        sendEvent({ type: "result", data: finalResponseData });
+      } catch (error: any) {
+        sendEvent({ type: "error", message: error.message || "An error occurred during analysis" });
+      } finally {
+        controller.close();
       }
     }
+  });
 
-    return NextResponse.json({
-      ok: true,
-      analysis: result,
-      saved: true,
-      id: data?.id ?? null,
-    });
-  } catch (e) {
-    const message = e instanceof Error ? e.message : "Supabase unavailable.";
-    const posthog = getPostHogClient();
-    posthog.capture({
-      distinctId: "server",
-      event: "analysis_save_failed",
-      properties: { error: message, industry: result.industry?.id, text_length: text.length },
-    });
-    await posthog.shutdown();
-    return NextResponse.json(
-      {
-        ok: true,
-        analysis: result,
-        saved: false,
-        persistError: message,
-      },
-      { status: 200 },
-    );
-  }
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Connection": "keep-alive",
+    },
+  });
 }

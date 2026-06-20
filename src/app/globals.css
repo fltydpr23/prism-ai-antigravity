@@ -8,11 +8,13 @@
   --border: rgba(255, 255, 255, 0.05);
   --border-hi: rgba(255, 255, 255, 0.1);
   --text-1: #FFFFFF;
-  --text-2: #A1A1AA; /* slate gray */
+  --text-2: #A1A1AA;
+  /* slate gray */
   --text-3: #52525B;
   --emerald: #10B981;
   --emerald-dim: rgba(16, 185, 129, 0.1);
-  --cyan: #0EA5E9; /* electric blue */
+  --cyan: #0EA5E9;
+  /* electric blue */
   --cyan-dim: rgba(14, 165, 233, 0.1);
   --amber: #F59E0B;
   --amber-dim: rgba(245, 158, 11, 0.1);

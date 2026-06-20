@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
 import JSZip from "jszip";
 import { FileText, FileAudio, ImageIcon, ArrowRight, UploadCloud, X, ChevronDown, Clock, Zap, Command, Check } from "lucide-react";
 import Link from "next/link";
@@ -47,7 +47,7 @@ type AnalysisResponse = {
 };
 
 type View = "landing" | "analysis" | "results";
-type ProcessingStage = "idle" | "parsing" | "detecting" | "mapping" | "building" | "done";
+type ProcessingStage = "idle" | "vector" | "transitions" | "interactions" | "realtime" | "design" | "done";
 
 // ─── Constants ────────────────────────────────────────────────────────────
 
@@ -156,87 +156,62 @@ function generateMockReport(file: File): AnalysisResponse {
   };
 }
 
-const STAGE_LABELS: Partial<Record<ProcessingStage, string>> = {
-  parsing: "Parsing unstructured data...",
-  detecting: "Detecting behavioral signals...",
-  mapping: "Mapping emotional resonance...",
-  building: "Synthesizing executive report...",
+const ProgressCounter = ({ isActive, isPast }: { isActive: boolean; isPast: boolean }) => {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+  const display = useTransform(rounded, (v) => `${v}%`);
+
+  useEffect(() => {
+    if (isPast) {
+      count.set(100);
+    } else if (isActive) {
+      count.set(0);
+      const controls = animate(count, 99, { duration: 15, ease: "easeOut" });
+      return controls.stop;
+    } else {
+      count.set(0);
+    }
+  }, [isActive, isPast, count]);
+
+  return <motion.span>{display}</motion.span>;
 };
 
-const CinematicLoading = ({ stage }: { stage: ProcessingStage }) => {
+const BrutalistLoading = ({ stage }: { stage: ProcessingStage }) => {
   const stages = [
-    { id: "parsing", label: "Parsing unstructured data" },
-    { id: "detecting", label: "Detecting behavioral signals" },
-    { id: "mapping", label: "Mapping emotional resonance" },
-    { id: "building", label: "Synthesizing executive report" },
+    { id: "vector", label: "Data Extraction" },
+    { id: "transitions", label: "Signal Detection" },
+    { id: "interactions", label: "Churn Analysis" },
+    { id: "realtime", label: "Strategy Synthesis" },
+    { id: "design", label: "Executive Report" }
   ];
-  
+
   const currentIndex = stages.findIndex(s => s.id === stage);
 
   return (
-    <div className="w-full max-w-md mx-auto flex flex-col gap-8 py-12 relative">
-      {/* Subtle background glow that follows the active item */}
-      <motion.div 
-        className="absolute left-[-20px] w-1 bg-emerald-500/50 rounded-full blur-[2px]"
-        initial={false}
-        animate={{
-          top: `${currentIndex * (100 / (stages.length - 1))}%`,
-          height: "24px",
-          transform: "translateY(-50%)"
-        }}
-        transition={{ type: "spring", stiffness: 200, damping: 30 }}
-      />
-
+    <div className="w-full max-w-sm mx-auto flex flex-col font-['var(--font-vt323)',_monospace] uppercase tracking-wider relative bg-[#050505] py-4">
       {stages.map((s, idx) => {
-        const isCompleted = currentIndex > idx;
         const isActive = currentIndex === idx;
+        const isPast = currentIndex > idx;
         
         return (
-          <motion.div 
+          <div 
             key={s.id}
-            initial={false}
-            animate={{ 
-              opacity: isActive ? 1 : isCompleted ? 0.3 : 0.1,
-              x: isActive ? 8 : 0,
-              scale: isActive ? 1.02 : 1
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="flex items-center gap-5 relative"
+            className={`relative flex items-center justify-between px-5 py-3 border border-white/10 -mt-px overflow-hidden text-white`}
+            style={{ fontSize: "28px" }}
           >
-            <div className="w-6 h-6 flex items-center justify-center shrink-0">
-              <AnimatePresence mode="popLayout">
-                {isCompleted ? (
-                  <motion.div 
-                    key="check"
-                    initial={{ scale: 0, opacity: 0 }} 
-                    animate={{ scale: 1, opacity: 1 }} 
-                    className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30 shadow-[0_0_15px_rgba(52,211,153,0.15)]"
-                  >
-                    <Check className="w-3 h-3" />
-                  </motion.div>
-                ) : isActive ? (
-                  <motion.div 
-                    key="active"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="relative flex items-center justify-center w-full h-full"
-                  >
-                     <div className="absolute inset-0 rounded-full bg-white/20 animate-ping" />
-                     <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-                  </motion.div>
-                ) : (
-                  <motion.div 
-                    key="pending"
-                    className="w-1.5 h-1.5 rounded-full bg-white/20"
-                  />
-                )}
-              </AnimatePresence>
-            </div>
+            <motion.div 
+              className="absolute left-0 top-0 bottom-0 bg-white"
+              initial={{ width: '0%' }}
+              animate={{ width: isPast ? '100%' : isActive ? '99%' : '0%' }}
+              transition={isActive ? { duration: 15, ease: "easeOut" } : { duration: 0.3 }}
+              style={{ zIndex: 0 }}
+            />
             
-            <span className={`text-xl tracking-tight ${isActive ? "font-medium text-white drop-shadow-md" : "font-normal text-white"}`}>
-              {s.label}
+            <span className="relative z-10 drop-shadow-sm leading-none pt-1 mix-blend-difference font-bold opacity-90">{s.label}</span>
+            <span className="relative z-10 pt-1 mix-blend-difference font-bold opacity-70">
+              <ProgressCounter isActive={isActive} isPast={isPast} />
             </span>
-          </motion.div>
+          </div>
         );
       })}
     </div>
@@ -324,7 +299,7 @@ export default function Home() {
       }
       localStorage.setItem(ANON_KEY, String(used + 1));
     }
-    setStage("parsing");
+    setStage("vector");
     setResponse(null);
     setView("results");
     posthog.capture("analysis_started", {
@@ -372,40 +347,72 @@ export default function Home() {
         } catch { setResponse({ error: "Failed to extract ZIP." }); setStage("done"); return; }
       } else {
         // Mock for images/audio
-        const stages: ProcessingStage[] = ["detecting", "mapping", "building"];
+        const stages: ProcessingStage[] = ["transitions", "interactions", "realtime", "design"];
         let delay = 0;
-        for (const s of stages) { delay += 1200; setTimeout(() => setStage(s), delay); }
-        setTimeout(() => { setResponse(generateMockReport(uploadedFile)); setStage("done"); }, delay + 1200);
+        // Hold for 12 seconds total for the mock
+        for (const s of stages) { delay += 3000; setTimeout(() => setStage(s), delay); }
+        setTimeout(() => { setResponse(generateMockReport(uploadedFile)); setStage("done"); }, delay + 3000);
         return;
       }
     }
 
     if (!extractedText.trim()) { setResponse({ error: "No text could be extracted." }); setStage("done"); return; }
 
-    setStage("detecting");
     try {
-      const r = await fetch("/api/analyse", {
+      const response = await fetch("/api/analyse", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: extractedText, persist: saveToSupabase, skipLocalModel: false, localLlmModel: "openai/gpt-oss-120b:free", industry: selectedIndustry, workspace_id: activeWorkspace?.id }),
       });
-      const data = await r.json() as AnalysisResponse;
-      setStage("building");
-      setTimeout(() => {
-        setResponse(data);
-        setStage("done");
-        if (data.error) {
-          posthog.capture("analysis_failed", { error: data.error, model: "openai/gpt-oss-120b:free", industry: selectedIndustry });
-        } else {
-          posthog.capture("analysis_completed", {
-            model: "openai/gpt-oss-120b:free",
-            industry: data.analysis?.industry?.id ?? selectedIndustry,
-            industry_detection_method: (data.analysis?.industry as { detectionMethod?: string } | undefined)?.detectionMethod,
-            saved: data.saved ?? false,
-            report_id: data.id ?? null,
-          });
+
+      if (!response.body) throw new Error("No response body");
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+      let done = false;
+      let buffer = "";
+
+      while (!done) {
+        const { value, done: readerDone } = await reader.read();
+        done = readerDone;
+        if (value) {
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() || "";
+          
+          for (const line of lines) {
+            if (line.trim().startsWith("data: ")) {
+              try {
+                const jsonStr = line.replace(/^data:\s*/, "").trim();
+                if (!jsonStr) continue;
+                const data = JSON.parse(jsonStr);
+                
+                if (data.type === "stage") {
+                  setStage(data.stage as ProcessingStage);
+                } else if (data.type === "result") {
+                  setResponse(data.data);
+                  setStage("done");
+                  if (data.data.error) {
+                    posthog.capture("analysis_failed", { error: data.data.error, model: "openai/gpt-oss-120b:free", industry: selectedIndustry });
+                  } else {
+                    posthog.capture("analysis_completed", {
+                      model: "openai/gpt-oss-120b:free",
+                      industry: data.data.analysis?.industry?.id ?? selectedIndustry,
+                      industry_detection_method: (data.data.analysis?.industry as { detectionMethod?: string } | undefined)?.detectionMethod,
+                      saved: data.data.saved ?? false,
+                      report_id: data.data.id ?? null,
+                    });
+                  }
+                } else if (data.type === "error") {
+                  throw new Error(data.message);
+                }
+              } catch (e) {
+                console.error("Failed to parse SSE line", line, e);
+              }
+            }
+          }
         }
-      }, 800);
+      }
     } catch {
       setResponse({ error: "Request failed." });
       setStage("done");
@@ -620,11 +627,11 @@ export default function Home() {
             className="min-h-screen px-4 py-12 flex flex-col items-center justify-center relative z-10">
             <div className="w-full max-w-7xl flex flex-col items-center gap-5">
 
-              {/* Processing state — Cinematic Loading Screen */}
+              {/* Processing state — Brutalist Loading Screen */}
               {stage !== "done" && (
                 <motion.div key="processing" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
                   className="w-full flex flex-col items-center gap-8 relative py-20">
-                  <CinematicLoading stage={stage} />
+                  <BrutalistLoading stage={stage} />
                 </motion.div>
               )}
 
