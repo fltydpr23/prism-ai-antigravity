@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useInView, useMotionValue, useSpring, animate, AnimatePresence } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, animate, AnimatePresence, Variants } from "framer-motion";
 import {
   TrendingUp, Shield, Zap, Target, MessageSquare, BarChart3, Sparkles, Brain, Search, Activity, Database
 } from "lucide-react";
@@ -198,13 +198,13 @@ export default function PrismScoreBento() {
     { label: "Segment Resolution", value: 82, color: "#818cf8" },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.07 } },
   };
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
   };
 
   return (

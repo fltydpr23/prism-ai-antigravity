@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import localFont from "next/font/local";
@@ -11,31 +11,33 @@ const basementGrotesque = localFont({
   variable: "--font-basement",
 });
 
+const CUBIC_BEZIER: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 // ─── Stagger config ───────────────────────────────────────────────────────────
-const FADE_UP = {
+const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 32 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.8, delay, ease: CUBIC_BEZIER },
   }),
 };
 
-const FADE_LEFT = {
+const FADE_LEFT: Variants = {
   hidden: { opacity: 0, x: -48 },
   visible: (delay = 0) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.9, delay, ease: CUBIC_BEZIER },
   }),
 };
 
-const FADE_RIGHT = {
+const FADE_RIGHT: Variants = {
   hidden: { opacity: 0, x: 48 },
   visible: (delay = 0) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.9, delay, ease: CUBIC_BEZIER },
   }),
 };
 
