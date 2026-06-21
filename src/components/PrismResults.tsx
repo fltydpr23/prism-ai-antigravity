@@ -422,6 +422,9 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
 
   // ── Data extraction ───────────────────────────────────────────────────────
   const scoreResult = calculatePrismScore(analysis || {}, lm || {});
+  const qa = lm.quantitative_analysis || {};
+  const isQuantitative = Object.keys(qa).length > 0;
+  
   const cf = lm.consumer_feedback || {};
   const wm = lm.workforce_metrics || {};
   const sentiment = cf.sentiment_trajectory || {};
@@ -437,6 +440,13 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
   const reskilling: any[] = lm.reskilling_readiness_gap || [];
   const passionIndex = cf.passion_index || lm.passion_index;
   const realityChecks: any[] = cf.reality_checks || lm.reality_checks || [];
+
+  // Quantitative fields
+  const statSummary = qa.statistical_summary || "";
+  const keyCorrelations = qa.key_correlations || [];
+  const outliers = qa.outlier_detection || [];
+  const clusters = qa.cluster_profiles || [];
+  const predictiveInsights = qa.predictive_insights || [];
 
   const sentimentColor = sentiment.overall_sentiment === "positive" ? "text-emerald-400" :
     sentiment.overall_sentiment === "negative" ? "text-rose-400" : "text-amber-400";
@@ -668,7 +678,7 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
         )}
       </div>
 
-      {/* ── Row 2: Executive Summary + Sentiment ───────────────────────── */}
+      {/* ── Row 2: Executive Summary + Dynamic Trajectory ───────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4">
 
         {/* Executive Summary */}
@@ -680,183 +690,264 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
           </p>
         </div>
 
-        {/* Sentiment Trajectory */}
-        <div className="intel-panel panel-amber p-6">
-          <PanelLabel icon={Heart} label="Sentiment Trajectory" accent="text-amber-400/60" />
-          {sentiment.overall_sentiment ? (
-            <div className="flex flex-col gap-3">
-              <div className="flex items-baseline gap-2">
-                <span className={`text-3xl font-semibold tracking-tight capitalize ${sentimentColor}`}>
-                  {sentiment.overall_sentiment}
-                </span>
-                <span className="text-xs text-white/30 flex items-center gap-1">
-                  {sentiment.trajectory === "declining" ? <TrendingDown style={{ width: 12, height: 12 }} /> : <TrendingUp style={{ width: 12, height: 12 }} />}
-                  {sentiment.trajectory || "--"}
-                </span>
-              </div>
-              <div className="h-px bg-white/5 w-full" />
-              <p className="text-sm text-white/55 leading-relaxed">{sentiment.insight || "No insight available."}</p>
-            </div>
-          ) : <EmptySlot msg="No emotion data detected." />}
-        </div>
-      </div>
-
-      {/* ── Row 3.5: Reality Checks (Code-Mixing / Sarcasm) ─────── */}
-      {realityChecks.length > 0 && (
-        <div className="intel-panel panel-amber p-5 mb-4 mt-4">
-          <PanelLabel icon={MessageSquare} label="Raw Reality vs. Sanitized" accent="text-amber-400/60" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3">
-            {realityChecks.map((item: any, i: number) => (
-              <div key={i} className="group relative w-full h-36 rounded-xl overflow-hidden cursor-pointer border border-white/5 bg-white/5">
-                {/* Sanitized (Default view) */}
-                <div className="absolute inset-0 p-4 flex flex-col justify-center bg-black/40 transition-opacity duration-300 ease-in-out group-hover:opacity-0">
-                  <div className="text-[10px] text-white/30 uppercase tracking-widest font-semibold mb-2">Sanitized Report</div>
-                  <p className="text-xs text-white/70 leading-relaxed">&ldquo;{item.sanitized_english}&rdquo;</p>
-                  <p className="text-[9px] text-white/30 absolute bottom-3 right-4 mt-2">(Hover for Reality)</p>
+        {/* Trajectory / Core Context (Dynamic) */}
+        {isQuantitative ? (
+           <div className="intel-panel panel-cyan p-6">
+             <PanelLabel icon={Activity} label="Statistical Overview" accent="text-cyan-400/60" />
+             <div className="flex flex-col gap-3">
+               <p className="text-sm text-white/55 leading-relaxed">{statSummary || "No summary provided."}</p>
+             </div>
+           </div>
+        ) : (
+          <div className="intel-panel panel-amber p-6">
+            <PanelLabel icon={Heart} label="Sentiment Trajectory" accent="text-amber-400/60" />
+            {sentiment.overall_sentiment ? (
+              <div className="flex flex-col gap-3">
+                <div className="flex items-baseline gap-2">
+                  <span className={`text-3xl font-semibold tracking-tight capitalize ${sentimentColor}`}>
+                    {sentiment.overall_sentiment}
+                  </span>
+                  <span className="text-xs text-white/30 flex items-center gap-1">
+                    {sentiment.trajectory === "declining" ? <TrendingDown style={{ width: 12, height: 12 }} /> : <TrendingUp style={{ width: 12, height: 12 }} />}
+                    {sentiment.trajectory || "--"}
+                  </span>
                 </div>
-                
-                {/* Raw Reality (Hover view) */}
-                <div className="absolute inset-0 p-4 flex flex-col justify-center bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 shadow-[inset_0_0_20px_rgba(245,158,11,0.05)]">
-                  <div className="flex justify-between items-start mb-2">
-                    <div className="text-[10px] text-amber-400/60 uppercase tracking-widest font-semibold">Raw Quote</div>
-                    {item.severity && <span className={`badge text-[9px] ${item.severity === "high" ? "badge-crimson" : "badge-amber"}`}>{item.severity}</span>}
-                  </div>
-                  <p className="text-sm font-medium text-amber-100 leading-relaxed italic drop-shadow-md">&ldquo;{item.raw_native_quote}&rdquo;</p>
-                </div>
+                <div className="h-px bg-white/5 w-full" />
+                <p className="text-sm text-white/55 leading-relaxed">{sentiment.insight || "No insight available."}</p>
               </div>
-            ))}
+            ) : <EmptySlot msg="No emotion data detected." />}
           </div>
-        </div>
-      )}
-
-      {/* ── Row 3: Contradiction Map + Feature Requests + Emotions ─────── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-        {/* Contradiction Map */}
-        <div className="intel-panel panel-crimson p-5">
-          <PanelLabel icon={Zap} label={panelLabels.contradictions} accent="text-rose-400/60" />
-
-          {contradictions.length > 0 ? (
-            <div className="flex flex-col gap-3">
-              {contradictions.map((item: any, i: number) => (
-                <EvidenceDrawer key={i} item={item} />
-              ))}
-            </div>
-          ) : <EmptySlot msg="No contradictions detected." />}
-        </div>
-
-        {/* Feature Requests */}
-        <div className="intel-panel panel-cyan p-5">
-          <PanelLabel icon={Target} label={panelLabels.features} accent="text-cyan-400/60" />
-
-          {features.length > 0 ? (
-            <div className="flex flex-col gap-2.5">
-              {features.map((f: any, i: number) => (
-                <div key={i} className="flex items-start justify-between gap-2 py-1.5 border-b border-white/5 last:border-0">
-                  <span className="text-sm text-white/75 leading-snug flex-1">{f.feature}</span>
-                  <span className={`badge shrink-0 text-[9px] ${f.build_priority === "critical" ? "badge-crimson" : f.build_priority === "high" ? "badge-amber" : "badge-cyan"}`}>
-                    {f.build_priority}
-                  </span>
-                </div>
-              ))}
-            </div>
-          ) : <EmptySlot msg="No feature requests detected." />}
-        </div>
-
-        {/* Emotions */}
-        <div className="intel-panel panel-violet p-5">
-          <PanelLabel icon={Flame} label={panelLabels.emotions} accent="text-violet-400/60" />
-
-          {emotions.length > 0 ? (
-            <div className="flex flex-col gap-3">
-              {emotions.slice(0, 4).map((e: any, i: number) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className={`badge text-[9px] shrink-0 mt-0.5 ${e.intensity === "high" ? "badge-crimson" : e.intensity === "medium" ? "badge-amber" : "badge-cyan"}`}>
-                    {e.intensity}
-                  </span>
-                  <div>
-                    <p className="text-xs font-medium text-white/75 capitalize">{e.emotion}</p>
-                    {e.trigger && <p className="text-[11px] text-white/35 mt-0.5 leading-snug">{e.trigger}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : <EmptySlot msg="No emotional signals detected." />}
-        </div>
+        )}
       </div>
 
-      {/* ── Row 4: Psychographic Segments + Churn Signals ──────────────── */}
-      {(segments.length > 0 || churnSignals.length > 0) && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {isQuantitative ? (
+        // ── Quantitative Dashboard ──────────────────────────────────────────
+        <div className="mt-4 flex flex-col gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Key Correlations */}
+            <div className="intel-panel panel-violet p-5">
+              <PanelLabel icon={Layers} label="Key Correlations" accent="text-violet-400/60" />
+              {keyCorrelations.length > 0 ? (
+                <div className="flex flex-col gap-2.5">
+                  {keyCorrelations.map((c: any, i: number) => (
+                    <div key={i} className="flex flex-col gap-1 py-2 border-b border-white/5 last:border-0">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-semibold text-white/80">{c.variables_involved?.join(" ↔ ") || "Correlation"}</span>
+                        <span className={`badge shrink-0 text-[9px] ${c.strength === "strong" ? "badge-emerald" : c.strength === "weak" ? "badge-crimson" : "badge-amber"}`}>
+                          {c.strength} correlation
+                        </span>
+                      </div>
+                      <p className="text-xs text-white/40 leading-relaxed">{c.insight}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : <EmptySlot msg="No correlations detected." />}
+            </div>
 
-          {/* Segments */}
-          {segments.length > 0 && (
+            {/* Cluster Profiles */}
             <div className="intel-panel panel-emerald p-5">
-              <PanelLabel icon={Users} label={panelLabels.segments} accent="text-emerald-400/60" />
-
-              <div className="flex flex-col gap-3">
-                {segments.map((s: any, i: number) => (
-                  <div key={i} className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3.5">
-                    <p className="text-sm font-semibold text-white/85 mb-1">{s.segment_name}</p>
-                    {s.how_to_win_them && (
-                      <p className="text-[11px] text-emerald-400/70 leading-snug">→ {s.how_to_win_them}</p>
-                    )}
-                    {s.retention_likelihood && (
-                      <span className={`mt-2 inline-block badge text-[9px] ${s.retention_likelihood === "high" ? "badge-emerald" : s.retention_likelihood === "medium" ? "badge-amber" : "badge-crimson"}`}>
-                        {s.retention_likelihood} retention
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
+              <PanelLabel icon={Users} label="Cluster Profiles" accent="text-emerald-400/60" />
+              {clusters.length > 0 ? (
+                <div className="flex flex-col gap-3">
+                  {clusters.map((c: any, i: number) => (
+                    <div key={i} className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3.5">
+                      <p className="text-sm font-semibold text-white/85 mb-1">{c.cluster_name}</p>
+                      <p className="text-xs text-emerald-400/70 mb-2">{c.characteristics}</p>
+                      {c.business_implication && (
+                        <p className="text-[11px] text-white/40 leading-snug">→ {c.business_implication}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : <EmptySlot msg="No clusters detected." />}
             </div>
-          )}
 
-          {/* Churn Signals */}
-          {churnSignals.length > 0 && (
+            {/* Outliers */}
             <div className="intel-panel panel-crimson p-5">
-              <PanelLabel icon={ShieldAlert} label={panelLabels.churn} accent="text-rose-400/60" />
+              <PanelLabel icon={AlertTriangle} label="Outliers & Anomalies" accent="text-rose-400/60" />
+              {outliers.length > 0 ? (
+                <div className="flex flex-col gap-3">
+                  {outliers.map((o: any, i: number) => (
+                    <div key={i} className="rounded-xl bg-rose-500/5 border border-rose-500/10 p-3.5">
+                      <p className="text-xs font-semibold text-white/80 mb-1">{o.description}</p>
+                      <p className="text-[11px] text-white/40 mb-1.5">{o.potential_cause}</p>
+                      <span className={`inline-block badge text-[9px] ${o.severity === "high" ? "badge-crimson" : "badge-amber"}`}>
+                        {o.severity} severity
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ) : <EmptySlot msg="No outliers detected." />}
+            </div>
+          </div>
 
-              <div className="flex flex-col gap-3">
-                {churnSignals.map((s: any, i: number) => (
-                  <div key={i} className="rounded-xl bg-rose-500/5 border border-rose-500/10 p-3.5">
-                    <p className="text-xs font-medium text-white/80 mb-1.5">{s.signal}</p>
-                    {s.retention_action && (
-                      <p className="text-[11px] text-emerald-400/70 leading-snug">Fix: {s.retention_action}</p>
-                    )}
+          {/* Predictive Insights */}
+          {predictiveInsights.length > 0 && (
+            <ExpandableCard title="Predictive Insights" icon={Activity} badge={`${predictiveInsights.length} forecasts`} defaultOpen={true}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {predictiveInsights.map((pi: any, i: number) => (
+                  <div key={i} className="rounded-xl bg-cyan-500/5 border border-cyan-500/10 p-4 relative group hover:bg-cyan-500/10 transition-colors">
+                    <p className="text-sm font-medium text-white/80 mb-2">{pi.prediction}</p>
+                    <div className="text-[11px] text-cyan-400/60 flex items-center gap-1.5 font-semibold uppercase tracking-wider mb-2">
+                      <Check className="w-3 h-3" /> {pi.confidence_level} Confidence
+                    </div>
+                    <p className="text-xs text-white/40 leading-relaxed">{pi.recommended_action}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            </ExpandableCard>
           )}
         </div>
-      )}
-
-      {/* ── Row 5: Strategic Recommendations (expandable) ───────────────── */}
-      {recommendations.length > 0 && (
-        <ExpandableCard
-          title="Strategic Recommendations"
-          icon={Brain}
-          badge={`${recommendations.length} actions`}
-          accentClass="panel-cyan"
-          defaultOpen={true}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {recommendations.map((r: any, i: number) => (
-              <div key={i} className="rounded-xl bg-black/25 border border-white/5 p-4">
-                <div className="flex items-start gap-3 mb-3">
-                  <span className="priority-badge">{r.priority || i + 1}</span>
-                  <p className="text-sm text-white/85 font-medium leading-snug">{r.action || r.recommendation}</p>
-                </div>
-                {r.why && <p className="text-[11px] text-white/40 mb-2 leading-relaxed ml-[34px]">Why: {r.why}</p>}
-                <div className="flex flex-wrap gap-1.5 ml-[34px]">
-                  {r.timeline && <span className={`badge text-[9px] ${r.timeline === "now" ? "badge-crimson" : "badge-amber"}`}>{r.timeline}</span>}
-                  {r.expected_outcome && <span className="badge badge-emerald text-[9px]">{r.expected_outcome}</span>}
-                </div>
+      ) : (
+        // ── Qualitative Dashboard (Legacy) ──────────────────────────────────
+        <>
+          {/* Row 3.5: Reality Checks (Code-Mixing / Sarcasm) */}
+          {realityChecks.length > 0 && (
+            <div className="intel-panel panel-amber p-5 mb-4 mt-4">
+              <PanelLabel icon={MessageSquare} label="Raw Reality vs. Sanitized" accent="text-amber-400/60" />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3">
+                {realityChecks.map((item: any, i: number) => (
+                  <div key={i} className="group relative w-full h-36 rounded-xl overflow-hidden cursor-pointer border border-white/5 bg-white/5">
+                    {/* Sanitized (Default view) */}
+                    <div className="absolute inset-0 p-4 flex flex-col justify-center bg-black/40 transition-opacity duration-300 ease-in-out group-hover:opacity-0">
+                      <div className="text-[10px] text-white/30 uppercase tracking-widest font-semibold mb-2">Sanitized Report</div>
+                      <p className="text-xs text-white/70 leading-relaxed">&ldquo;{item.sanitized_english}&rdquo;</p>
+                      <p className="text-[9px] text-white/30 absolute bottom-3 right-4 mt-2">(Hover for Reality)</p>
+                    </div>
+                    
+                    {/* Raw Reality (Hover view) */}
+                    <div className="absolute inset-0 p-4 flex flex-col justify-center bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 shadow-[inset_0_0_20px_rgba(245,158,11,0.05)]">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="text-[10px] text-amber-400/60 uppercase tracking-widest font-semibold">Raw Quote</div>
+                        {item.severity && <span className={`badge text-[9px] ${item.severity === "high" ? "badge-crimson" : "badge-amber"}`}>{item.severity}</span>}
+                      </div>
+                      <p className="text-sm font-medium text-amber-100 leading-relaxed italic drop-shadow-md">&ldquo;{item.raw_native_quote}&rdquo;</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          )}
+
+          {/* Row 3: Contradiction Map + Feature Requests + Emotions */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+            {/* Contradiction Map */}
+            <div className="intel-panel panel-crimson p-5">
+              <PanelLabel icon={Zap} label={panelLabels.contradictions} accent="text-rose-400/60" />
+              {contradictions.length > 0 ? (
+                <div className="flex flex-col gap-3">
+                  {contradictions.map((item: any, i: number) => (
+                    <EvidenceDrawer key={i} item={item} />
+                  ))}
+                </div>
+              ) : <EmptySlot msg="No contradictions detected." />}
+            </div>
+
+            {/* Feature Requests */}
+            <div className="intel-panel panel-cyan p-5">
+              <PanelLabel icon={Target} label={panelLabels.features} accent="text-cyan-400/60" />
+              {features.length > 0 ? (
+                <div className="flex flex-col gap-2.5">
+                  {features.map((f: any, i: number) => (
+                    <div key={i} className="flex items-start justify-between gap-2 py-1.5 border-b border-white/5 last:border-0">
+                      <span className="text-sm text-white/75 leading-snug flex-1">{f.feature}</span>
+                      <span className={`badge shrink-0 text-[9px] ${f.build_priority === "critical" ? "badge-crimson" : f.build_priority === "high" ? "badge-amber" : "badge-cyan"}`}>
+                        {f.build_priority}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ) : <EmptySlot msg="No feature requests detected." />}
+            </div>
+
+            {/* Emotions */}
+            <div className="intel-panel panel-violet p-5">
+              <PanelLabel icon={Flame} label={panelLabels.emotions} accent="text-violet-400/60" />
+              {emotions.length > 0 ? (
+                <div className="flex flex-col gap-3">
+                  {emotions.slice(0, 4).map((e: any, i: number) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className={`badge text-[9px] shrink-0 mt-0.5 ${e.intensity === "high" ? "badge-crimson" : e.intensity === "medium" ? "badge-amber" : "badge-cyan"}`}>
+                        {e.intensity}
+                      </span>
+                      <div>
+                        <p className="text-xs font-medium text-white/75 capitalize">{e.emotion}</p>
+                        {e.trigger && <p className="text-[11px] text-white/35 mt-0.5 leading-snug">{e.trigger}</p>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : <EmptySlot msg="No emotional signals detected." />}
+            </div>
           </div>
-        </ExpandableCard>
+
+          {/* Row 4: Psychographic Segments + Churn Signals */}
+          {(segments.length > 0 || churnSignals.length > 0) && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              {/* Segments */}
+              {segments.length > 0 && (
+                <div className="intel-panel panel-emerald p-5">
+                  <PanelLabel icon={Users} label={panelLabels.segments} accent="text-emerald-400/60" />
+                  <div className="flex flex-col gap-3">
+                    {segments.map((s: any, i: number) => (
+                      <div key={i} className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3.5">
+                        <p className="text-sm font-semibold text-white/85 mb-1">{s.segment_name}</p>
+                        {s.how_to_win_them && (
+                          <p className="text-[11px] text-emerald-400/70 leading-snug">→ {s.how_to_win_them}</p>
+                        )}
+                        {s.retention_likelihood && (
+                          <span className={`mt-2 inline-block badge text-[9px] ${s.retention_likelihood === "high" ? "badge-emerald" : s.retention_likelihood === "medium" ? "badge-amber" : "badge-crimson"}`}>
+                            {s.retention_likelihood} retention
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Churn Signals */}
+              {churnSignals.length > 0 && (
+                <div className="intel-panel panel-crimson p-5">
+                  <PanelLabel icon={ShieldAlert} label={panelLabels.churn} accent="text-rose-400/60" />
+                  <div className="flex flex-col gap-3">
+                    {churnSignals.map((s: any, i: number) => (
+                      <div key={i} className="rounded-xl bg-rose-500/5 border border-rose-500/10 p-3.5">
+                        <p className="text-xs font-medium text-white/80 mb-1.5">{s.signal}</p>
+                        {s.retention_action && (
+                          <p className="text-[11px] text-emerald-400/70 leading-snug">Fix: {s.retention_action}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Row 5: Strategic Recommendations */}
+          {recommendations.length > 0 && (
+            <div className="mt-4">
+              <ExpandableCard title="Strategic Recommendations" icon={Brain} badge={`${recommendations.length} actions`} defaultOpen={false}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {recommendations.map((r: any, i: number) => (
+                    <div key={i} className="rounded-xl bg-black/25 border border-white/5 p-4">
+                      <div className="flex items-start gap-3 mb-3">
+                        <span className="priority-badge">{r.priority || i + 1}</span>
+                        <p className="text-sm text-white/85 font-medium leading-snug">{r.action || r.recommendation}</p>
+                      </div>
+                      {r.why && <p className="text-[11px] text-white/40 mb-2 leading-relaxed ml-[34px]">Why: {r.why}</p>}
+                      <div className="flex flex-wrap gap-1.5 ml-[34px]">
+                        {r.timeline && <span className={`badge text-[9px] ${r.timeline === "now" ? "badge-crimson" : "badge-amber"}`}>{r.timeline}</span>}
+                        {r.expected_outcome && <span className="badge badge-emerald text-[9px]">{r.expected_outcome}</span>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </ExpandableCard>
+            </div>
+          )}
+        </>
       )}
 
       {/* ── Row 6: Workforce / Automation (only if present) ─────────────── */}

@@ -4,7 +4,7 @@ import { Resend } from "resend";
 import { analyse } from "../../../../lib/analyse.js";
 import { localLlmConfig } from "../../../../lib/local-llm.js";
 import { createSupabaseServer } from "../../../../lib/supabase-server.js";
-import { runPipelineAnalysis, runSmallFileAnalysis } from "../../../../lib/pipeline-local.js";
+import { runPipelineAnalysis, runSmallFileAnalysis, detectModality } from "../../../../lib/pipeline-local.js";
 import { detectIndustry } from "../../../../lib/industryDetector";
 import { INDUSTRY_MAP } from "../../../../lib/industryConfig";
 import { getPostHogClient } from "../../../../lib/posthog-server";
@@ -34,12 +34,14 @@ async function buildAnalysis(
   onProgress: (stage: string) => void = () => {}
 ) {
   const base = analyse(text);
+  const modality = detectModality(text);
+  
   const cfg = localLlmConfig(
-    modelOverride ? { model: modelOverride } : {},
+    modelOverride ? { model: modelOverride, modality } : { modality },
   );
   const useLocal = cfg && !skipLocalModel && !base.empty;
 
-  console.log(`[API] useLocal: ${useLocal}, cfg: ${!!cfg}, skipLocalModel: ${skipLocalModel}, base.empty: ${base.empty}`);
+  console.log(`[API] useLocal: ${useLocal}, cfg: ${!!cfg}, skipLocalModel: ${skipLocalModel}, base.empty: ${base.empty}, modality: ${modality}`);
 
   // ── Industry detection ────────────────────────────────────────────────────
   // If user picked "auto" or didn't specify, run the heuristic detector
