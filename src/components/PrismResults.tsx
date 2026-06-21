@@ -17,7 +17,7 @@ import { calculatePrismScore } from "../../lib/prismScore";
 import { INDUSTRY_MAP } from "../../lib/industryConfig";
 
 
-import { SignInButton } from "@clerk/nextjs";
+import PrismPaywall from "./PrismPaywall";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -360,26 +360,13 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
     }
   };
 
-  // ── Error states ──────────────────────────────────────────────────────────
-  if (response?.error === "limit_reached") {
-    return (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-6 py-24">
-        <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-          <Zap className="w-7 h-7 text-emerald-400" />
-        </div>
-        <h2 className="text-3xl font-semibold tracking-tight text-white text-center">Free Limit Reached</h2>
-        <p className="text-lg text-white/50 max-w-md text-center leading-relaxed">
-          You've used all your free analyses. Create a free account to unlock your dashboard and continue generating insights.
-        </p>
-        <div className="flex gap-4 mt-2">
-          <SignInButton mode="modal">
-            <button className="glass-pill px-6 py-3 text-sm font-semibold text-black bg-white hover:bg-white/90 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.15)]">
-              Sign Up Free
-            </button>
-          </SignInButton>
-        </div>
-      </motion.div>
-    );
+  // ── Paywall states ─────────────────────────────────────────────────────────
+  if (response?.error === "limit_reached" || (response as any)?.requiresSignup) {
+    return <PrismPaywall mode="signup" visible={true} />;
+  }
+
+  if ((response as any)?.requiresUpgrade) {
+    return <PrismPaywall mode="upgrade" visible={true} onDismiss={onReset} />;
   }
 
   if (response?.error) {
