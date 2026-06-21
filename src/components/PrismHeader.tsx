@@ -43,7 +43,7 @@ export default function PrismHeader({ onStart }: Props) {
           <div className="w-8 h-8 rounded-full bg-emerald-400 flex items-center justify-center">
             <div className="w-3 h-3 bg-black rounded-full" />
           </div>
-          <span className="text-white font-semibold text-lg tracking-tight">Prism</span>
+          <span className="text-white font-semibold text-lg tracking-tight" style={{ fontFamily: "var(--font-basement)" }}>Prism</span>
         </div>
 
         {/* Center: Dynamic Context */}
@@ -70,6 +70,7 @@ export default function PrismHeader({ onStart }: Props) {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
                 className="text-sm font-semibold tracking-widest uppercase text-white/90"
+                style={{ fontFamily: "var(--font-basement)", letterSpacing: "0.2em" }}
               >
                 Prism Intel
               </motion.div>
