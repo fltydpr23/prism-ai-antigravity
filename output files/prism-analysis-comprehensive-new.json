@@ -1,0 +1,151 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "moon": {
+      "label": "Waxing crescent",
+      "phase01": 0.2071471819264973,
+      "illuminationPercent": 37
+    },
+    "empty": false,
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "metrics": {
+      "charCount": 3110715,
+      "wordCount": 384000,
+      "avgWordLength": 6.23,
+      "charCountNoWs": 2390714,
+      "sentenceCount": 72001,
+      "lexicalDensity": 0.999,
+      "paragraphCount": 1,
+      "numericTokenCount": 159893
+    },
+    "industry": {
+      "id": "auto",
+      "emoji": "🔍",
+      "label": "Auto-Detect",
+      "confidence": "none",
+      "detectionMethod": "auto_detected"
+    },
+    "topTokens": [
+      {
+        "count": 24000,
+        "token": "hours"
+      },
+      {
+        "count": 16000,
+        "token": "gaming"
+      },
+      {
+        "count": 8000,
+        "token": "student"
+      },
+      {
+        "count": 8000,
+        "token": "id"
+      },
+      {
+        "count": 8000,
+        "token": "age"
+      },
+      {
+        "count": 8000,
+        "token": "gender"
+      },
+      {
+        "count": 8000,
+        "token": "study"
+      },
+      {
+        "count": 8000,
+        "token": "sleep"
+      },
+      {
+        "count": 8000,
+        "token": "attendance"
+      },
+      {
+        "count": 8000,
+        "token": "genre"
+      },
+      {
+        "count": 8000,
+        "token": "social"
+      },
+      {
+        "count": 8000,
+        "token": "activity"
+      }
+    ],
+    "localModel": {
+      "ok": true,
+      "raw": "{\n  \"executive_summary\": \"As gaming hours increase, study hours tend to decrease, indicating a potential trade-off between leisure time and academic engagement, which may impact academic performance.\",\n  \n  \"quantitative_analysis\": {\n    \"statistical_summary\": \"The data exhibits a negative correlation between gaming hours and study hours, as well as a positive correlation between sleep hours and attendance, suggesting that lifestyle choices have a significant impact on academic engagement.\",\n    \"key_correlations\": [\n      {\n        \"variable_a\": \"gaming hours\",\n        \"variable_b\": \"study hours\",\n        \"correlation\": \"negative\",\n        \"insight\": \"As gaming hours increase, study hours tend to decrease, indicating a potential trade-off between leisure time and academic engagement.\"\n      },\n      {\n        \"variable_a\": \"sleep hours\",\n        \"variable_b\": \"attendance\",\n        \"correlation\": \"positive\",\n        \"insight\": \"Students who get more sleep tend to have better attendance, suggesting that adequate rest is essential for academic participation.\"\n      }\n    ],\n    \"outlier_detection\": [\n      {\n        \"outlier_description\": \"A student with an unusually high number of gaming hours, potentially indicative of an imbalance in their lifestyle or a distraction from academic responsibilities.\",\n        \"significance\": \"high\"\n      }\n    ],\n    \"cluster_profiles\": [\n      {\n        \"cluster_name\": \"high gamers\",\n        \"percentage_of_data\": \"Not detected\",\n        \"key_characteristics\": [\"high gaming hours\", \"low study hours\", \"low sleep hours\"]\n      },\n      {\n        \"cluster_name\": \"high achievers\",\n        \"percentage_of_data\": \"Not detected\",\n        \"key_characteristics\": [\"high study hours\", \"high attendance\", \"high sleep hours\"]\n      }\n    ],\n    \"predictive_insights\": [\n      {\n        \"insight\": \"As gaming hours increase, study hours will likely decrease, potentially leading to poor academic performance.\",\n        \"confidence\": \"high\",\n        \"actionable_recommendation\": \"Students should be encouraged to balance their gaming habits with academic responsibilities to maintain a healthy lifestyle.\"\n      },\n      {\n        \"insight\": \"Students who get adequate sleep will likely have better attendance, leading to improved academic engagement and outcomes.\",\n        \"confidence\": \"high\",\n        \"actionable_recommendation\": \"Students should prioritize getting enough sleep to ensure they are well-rested and prepared for academic activities.\"\n      }\n    ]\n  }\n}",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "As gaming hours increase, study hours tend to decrease, indicating a potential trade-off between leisure time and academic engagement, which may impact academic performance.",
+        "quantitative_analysis": {
+          "cluster_profiles": [
+            {
+              "cluster_name": "high gamers",
+              "percentage_of_data": "Not detected",
+              "key_characteristics": [
+                "high gaming hours",
+                "low study hours",
+                "low sleep hours"
+              ]
+            },
+            {
+              "cluster_name": "high achievers",
+              "percentage_of_data": "Not detected",
+              "key_characteristics": [
+                "high study hours",
+                "high attendance",
+                "high sleep hours"
+              ]
+            }
+          ],
+          "key_correlations": [
+            {
+              "insight": "As gaming hours increase, study hours tend to decrease, indicating a potential trade-off between leisure time and academic engagement.",
+              "variable_a": "gaming hours",
+              "variable_b": "study hours",
+              "correlation": "negative"
+            },
+            {
+              "insight": "Students who get more sleep tend to have better attendance, suggesting that adequate rest is essential for academic participation.",
+              "variable_a": "sleep hours",
+              "variable_b": "attendance",
+              "correlation": "positive"
+            }
+          ],
+          "outlier_detection": [
+            {
+              "significance": "high",
+              "outlier_description": "A student with an unusually high number of gaming hours, potentially indicative of an imbalance in their lifestyle or a distraction from academic responsibilities."
+            }
+          ],
+          "predictive_insights": [
+            {
+              "insight": "As gaming hours increase, study hours will likely decrease, potentially leading to poor academic performance.",
+              "confidence": "high",
+              "actionable_recommendation": "Students should be encouraged to balance their gaming habits with academic responsibilities to maintain a healthy lifestyle."
+            },
+            {
+              "insight": "Students who get adequate sleep will likely have better attendance, leading to improved academic engagement and outcomes.",
+              "confidence": "high",
+              "actionable_recommendation": "Students should prioritize getting enough sleep to ensure they are well-rested and prepared for academic activities."
+            }
+          ],
+          "statistical_summary": "The data exhibits a negative correlation between gaming hours and study hours, as well as a positive correlation between sleep hours and attendance, suggesting that lifestyle choices have a significant impact on academic engagement."
+        }
+      },
+      "provider": "openai-compatible"
+    },
+    "generatedAt": "2026-06-21T09:06:25.174Z",
+    "luneSignature": {
+      "hue": 302,
+      "drift": 0.53
+    }
+  },
+  "saved": true,
+  "id": "85812e52-c3ed-4f7e-b0ba-092cd3109a70"
+}

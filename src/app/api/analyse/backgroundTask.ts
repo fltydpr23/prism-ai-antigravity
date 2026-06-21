@@ -1,7 +1,7 @@
 import { analyse } from "../../../../lib/analyse.js";
 import { localLlmConfig } from "../../../../lib/local-llm.js";
 import { createSupabaseServer } from "../../../../lib/supabase-server.js";
-import { runPipelineAnalysis, runSmallFileAnalysis } from "../../../../lib/pipeline-local.js";
+import { runPipelineAnalysis, runSmallFileAnalysis, detectModality } from "../../../../lib/pipeline-local.js";
 import { detectIndustry } from "../../../../lib/industryDetector";
 import { INDUSTRY_MAP } from "../../../../lib/industryConfig";
 import { Resend } from "resend";
@@ -9,7 +9,8 @@ import { Resend } from "resend";
 export async function runBackground({ jobId, text, skipLocalModel, modelOverride, industryOverride, workspaceId, userId, persist }: any) {
   try {
     const base = analyse(text);
-    const cfg = localLlmConfig(modelOverride ? { model: modelOverride } : {});
+    const modality = detectModality(text);
+    const cfg = localLlmConfig(modelOverride ? { model: modelOverride, modality } : { modality });
     if (cfg) {
       (cfg as any).mode = "background";
     }

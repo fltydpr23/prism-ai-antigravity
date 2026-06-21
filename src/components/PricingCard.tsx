@@ -20,6 +20,7 @@ export interface PricingCardProps {
   ctaLabel: string;
   ctaHref: string;
   ctaVariant?: "primary" | "ghost";
+  ctaOnClick?: () => void;
   features: PricingFeature[];
   accentColor?: string; // hsl string e.g. "162,85%,48%"
   index?: number;
@@ -42,6 +43,7 @@ export default function PricingCard({
   ctaLabel,
   ctaHref,
   ctaVariant = "ghost",
+  ctaOnClick,
   features,
   accentColor = "162,85%,48%",
   index = 0,
@@ -142,25 +144,47 @@ export default function PricingCard({
         </div>
 
         {/* CTA */}
-        <Link
-          href={ctaHref}
-          className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full text-sm font-semibold mb-7 transition-all duration-200"
-          style={
-            ctaVariant === "primary"
-              ? {
-                  background: `linear-gradient(135deg, hsl(${accentColor}), hsl(195,90%,58%))`,
-                  color: "#000",
-                  boxShadow: `0 0 24px hsla(${accentColor},0.35)`,
-                }
-              : {
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  color: "rgba(255,255,255,0.85)",
-                }
-          }
-        >
-          {ctaLabel}
-        </Link>
+        {ctaOnClick ? (
+          <button
+            onClick={ctaOnClick}
+            className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full text-sm font-semibold mb-7 transition-all duration-200"
+            style={
+              ctaVariant === "primary"
+                ? {
+                    background: `linear-gradient(135deg, hsl(${accentColor}), hsl(195,90%,58%))`,
+                    color: "#000",
+                    boxShadow: `0 0 24px hsla(${accentColor},0.35)`,
+                  }
+                : {
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "rgba(255,255,255,0.85)",
+                  }
+            }
+          >
+            {ctaLabel}
+          </button>
+        ) : (
+          <Link
+            href={ctaHref}
+            className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full text-sm font-semibold mb-7 transition-all duration-200"
+            style={
+              ctaVariant === "primary"
+                ? {
+                    background: `linear-gradient(135deg, hsl(${accentColor}), hsl(195,90%,58%))`,
+                    color: "#000",
+                    boxShadow: `0 0 24px hsla(${accentColor},0.35)`,
+                  }
+                : {
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "rgba(255,255,255,0.85)",
+                  }
+            }
+          >
+            {ctaLabel}
+          </Link>
+        )}
 
         {/* Divider */}
         <div className="h-px mb-6" style={{ background: "rgba(255,255,255,0.05)" }} />

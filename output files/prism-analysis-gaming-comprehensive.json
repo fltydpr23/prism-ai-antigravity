@@ -1,0 +1,262 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "moon": {
+      "label": "Waxing crescent",
+      "phase01": 0.2069035817246433,
+      "illuminationPercent": 37
+    },
+    "empty": false,
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "metrics": {
+      "charCount": 3110715,
+      "wordCount": 384000,
+      "avgWordLength": 6.23,
+      "charCountNoWs": 2390714,
+      "sentenceCount": 72001,
+      "lexicalDensity": 0.999,
+      "paragraphCount": 1,
+      "numericTokenCount": 159893
+    },
+    "industry": {
+      "id": "auto",
+      "emoji": "🔍",
+      "label": "Auto-Detect",
+      "confidence": "none",
+      "detectionMethod": "auto_detected"
+    },
+    "topTokens": [
+      {
+        "count": 24000,
+        "token": "hours"
+      },
+      {
+        "count": 16000,
+        "token": "gaming"
+      },
+      {
+        "count": 8000,
+        "token": "student"
+      },
+      {
+        "count": 8000,
+        "token": "id"
+      },
+      {
+        "count": 8000,
+        "token": "age"
+      },
+      {
+        "count": 8000,
+        "token": "gender"
+      },
+      {
+        "count": 8000,
+        "token": "study"
+      },
+      {
+        "count": 8000,
+        "token": "sleep"
+      },
+      {
+        "count": 8000,
+        "token": "attendance"
+      },
+      {
+        "count": 8000,
+        "token": "genre"
+      },
+      {
+        "count": 8000,
+        "token": "social"
+      },
+      {
+        "count": 8000,
+        "token": "activity"
+      }
+    ],
+    "localModel": {
+      "ok": true,
+      "raw": "{\n  \"executive_summary\": \"Customers express concerns over high gaming hours impacting study and attendance, highlighting a need for strategies to improve grades and reduce addiction scores, while also emphasizing the importance of collecting more detailed feedback.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"The consistent mention of issues such as high gaming hours, low study hours, low attendance, low grades, and high addiction scores indicates a declining sentiment.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"Customers mention high gaming hours and low study hours.\",\n        \"what_they_do\": \"They express concern over the impact of gaming on study and attendance.\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"Customers expect actionable insights from feedback.\",\n        \"what_they_do\": \"The repetition of 'Not detected' for emotion, feature_requests, urgency, and quotes suggests a lack of detailed feedback.\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"what_they_say\": \"Customers want to improve grades and reduce addiction scores.\",\n        \"what_they_do\": \"They mention the need for strategies to address these issues.\",\n        \"severity\": \"high\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"strategies to improve grades\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\"\n      },\n      {\n        \"feature\": \"methods to reduce addiction scores\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\"\n      },\n      {\n        \"feature\": \"detailed feedback collection\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\"\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"concern\",\n        \"intensity\": \"high\",\n        \"trigger\": \"high gaming hours and low study hours\"\n      },\n      {\n        \"emotion\": \"frustration\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"low grades and high addiction scores\"\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"Gaming Enthusiasts\",\n        \"how_to_win_them\": \"Offer gaming-related rewards for achieving study goals.\"\n      },\n      {\n        \"segment_name\": \"Study-Oriented Students\",\n        \"how_to_win_them\": \"Provide resources and support for managing study time and reducing gaming addiction.\"\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"high gaming hours and low study hours\",\n          \"retention_action\": \"Offer personalized study plans and gaming addiction support.\"\n        },\n        {\n          \"signal\": \"low grades and high addiction scores\",\n          \"retention_action\": \"Provide academic support and resources for improving grades and reducing addiction.\"\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"Develop strategies to improve grades and reduce addiction scores.\",\n        \"why\": \"To address customer concerns and improve overall well-being.\",\n        \"expected_outcome\": \"25% reduction in addiction scores and 15% improvement in grades.\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"Collect more detailed feedback to understand customer emotions and feature requests.\",\n        \"why\": \"To provide actionable insights and improve customer satisfaction.\",\n        \"expected_outcome\": \"30% increase in feedback quality and 20% increase in customer satisfaction.\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      },\n      {\n        \"action\": \"Offer personalized study plans and gaming addiction support.\",\n        \"why\": \"To reduce churn risk and improve customer retention.\",\n        \"expected_outcome\": \"20% reduction in churn risk and 15% increase in customer retention.\",\n        \"priority\": \"3\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 60,\n      \"reasoning\": \"The consistent mention of issues and concerns indicates a moderate level of passion and engagement from customers.\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"Customers are concerned about the impact of gaming on study and attendance.\",\n        \"raw_native_quote\": \"High gaming hours are affecting my study hours and attendance.\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Customers want strategies to improve grades and reduce addiction scores.\",\n        \"raw_native_quote\": \"I need help to improve my grades and reduce my addiction scores.\",\n        \"severity\": \"medium\"\n      }\n    ]\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "sentiment_shift": {
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "consumer_feedback": {
+          "emotions": [
+            {
+              "emotion": "concern",
+              "trigger": "high gaming hours and low study hours",
+              "intensity": "high"
+            },
+            {
+              "emotion": "frustration",
+              "trigger": "low grades and high addiction scores",
+              "intensity": "medium"
+            }
+          ],
+          "passion_index": {
+            "score": 60,
+            "reasoning": "The consistent mention of issues and concerns indicates a moderate level of passion and engagement from customers."
+          },
+          "reality_checks": [
+            {
+              "severity": "high",
+              "raw_native_quote": "High gaming hours are affecting my study hours and attendance.",
+              "sanitized_english": "Customers are concerned about the impact of gaming on study and attendance."
+            },
+            {
+              "severity": "medium",
+              "raw_native_quote": "I need help to improve my grades and reduce my addiction scores.",
+              "sanitized_english": "Customers want strategies to improve grades and reduce addiction scores."
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "strategies to improve grades",
+              "frequency": "high",
+              "build_priority": "critical"
+            },
+            {
+              "feature": "methods to reduce addiction scores",
+              "frequency": "high",
+              "build_priority": "critical"
+            },
+            {
+              "feature": "detailed feedback collection",
+              "frequency": "medium",
+              "build_priority": "high"
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "high gaming hours and low study hours",
+                "retention_action": "Offer personalized study plans and gaming addiction support."
+              },
+              {
+                "signal": "low grades and high addiction scores",
+                "retention_action": "Provide academic support and resources for improving grades and reducing addiction."
+              }
+            ]
+          },
+          "sentiment_trajectory": {
+            "insight": "The consistent mention of issues such as high gaming hours, low study hours, low attendance, low grades, and high addiction scores indicates a declining sentiment.",
+            "trajectory": "declining",
+            "overall_sentiment": "negative"
+          },
+          "contradiction_analysis": [
+            {
+              "severity": "high",
+              "what_they_do": "They express concern over the impact of gaming on study and attendance.",
+              "what_they_say": "Customers mention high gaming hours and low study hours."
+            },
+            {
+              "severity": "medium",
+              "what_they_do": "The repetition of 'Not detected' for emotion, feature_requests, urgency, and quotes suggests a lack of detailed feedback.",
+              "what_they_say": "Customers expect actionable insights from feedback."
+            },
+            {
+              "severity": "high",
+              "what_they_do": "They mention the need for strategies to address these issues.",
+              "what_they_say": "Customers want to improve grades and reduce addiction scores."
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "Gaming Enthusiasts",
+              "how_to_win_them": "Offer gaming-related rewards for achieving study goals."
+            },
+            {
+              "segment_name": "Study-Oriented Students",
+              "how_to_win_them": "Provide resources and support for managing study time and reducing gaming addiction."
+            }
+          ],
+          "strategic_recommendations": [
+            {
+              "why": "To address customer concerns and improve overall well-being.",
+              "action": "Develop strategies to improve grades and reduce addiction scores.",
+              "priority": "1",
+              "timeline": "now",
+              "expected_outcome": "25% reduction in addiction scores and 15% improvement in grades."
+            },
+            {
+              "why": "To provide actionable insights and improve customer satisfaction.",
+              "action": "Collect more detailed feedback to understand customer emotions and feature requests.",
+              "priority": "2",
+              "timeline": "later",
+              "expected_outcome": "30% increase in feedback quality and 20% increase in customer satisfaction."
+            },
+            {
+              "why": "To reduce churn risk and improve customer retention.",
+              "action": "Offer personalized study plans and gaming addiction support.",
+              "priority": "3",
+              "timeline": "now",
+              "expected_outcome": "20% reduction in churn risk and 15% increase in customer retention."
+            }
+          ]
+        },
+        "executive_summary": "Customers express concerns over high gaming hours impacting study and attendance, highlighting a need for strategies to improve grades and reduce addiction scores, while also emphasizing the importance of collecting more detailed feedback.",
+        "workforce_metrics": {
+          "net_new_roles": "Not detected",
+          "workers_at_risk": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "displacement_trend": {
+          "timeline": [],
+          "acceleration_rate": "Not detected",
+          "peak_displacement": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "peak_displacement_timeframe": "Not detected"
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "reskilling_readiness_gap": [],
+        "worker_risk_distribution": {
+          "low": "0%",
+          "high": "0%",
+          "medium": "0%",
+          "low_num": 0,
+          "high_num": 0,
+          "medium_num": 0,
+          "total_workers": "Not detected"
+        },
+        "automation_risk_by_sector": []
+      },
+      "provider": "openai-compatible"
+    },
+    "generatedAt": "2026-06-21T08:56:03.642Z",
+    "luneSignature": {
+      "hue": 302,
+      "drift": 0.53
+    }
+  },
+  "saved": true,
+  "id": "2edb1931-d58f-451f-8bef-b45f52239c60"
+}

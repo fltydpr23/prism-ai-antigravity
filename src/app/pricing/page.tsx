@@ -6,6 +6,9 @@ import { ArrowRight, Sparkles, HelpCircle } from "lucide-react";
 import Link from "next/link";
 import PricingCard, { type PricingFeature } from "@/components/PricingCard";
 import PricingToggle from "@/components/PricingToggle";
+import { useAuth } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import Script from "next/script";
 
 
 
@@ -87,9 +90,51 @@ const FAQ = [
 export default function PricingPage() {
   const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const { isSignedIn } = useAuth();
+  const router = useRouter();
+
+  const handleCheckout = async (planId: string) => {
+    if (!isSignedIn) {
+      router.push('/sign-in');
+      return;
+    }
+    
+    try {
+      const res = await fetch('/api/payments/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ planId, isAnnual: billing === 'annual' })
+      });
+      const order = await res.json();
+      if (order.error) throw new Error(order.error);
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_dummy", 
+        amount: order.amount,
+        currency: order.currency,
+        name: "Prism Intelligence",
+        description: `Upgrade: ${planId}`,
+        order_id: order.id,
+        handler: function (response: any) {
+          alert("Payment successful! Your account is being upgraded.");
+        },
+        theme: {
+          color: "#10b981"
+        }
+      };
+      
+      // @ts-ignore
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to initiate checkout");
+    }
+  };
 
   return (
     <div className="min-h-screen" style={{ background: "#09090C", color: "#fff" }}>
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
       <div className="aurora-bg" />
 
       {/* Nav */}
@@ -149,35 +194,37 @@ export default function PricingPage() {
             monthlyPrice={999}
             annualPrice={799}
             billingPeriod={billing}
-            ctaLabel="Start Trial"
-            ctaHref="/sign-up"
+            ctaLabel="Start 7-Day Trial"
+            ctaHref="#"
+            ctaOnClick={() => handleCheckout("starter")}
             ctaVariant="ghost"
             features={STARTER_FEATURES}
             accentColor="195,90%,58%"
             index={1}
           />
           <PricingCard
-            tier="Pro"
-            tagline="For agencies and growth teams"
-            monthlyPrice={2999}
-            annualPrice={2399}
+            tier="Agency Partner"
+            tagline="For agencies delivering client strategies."
+            monthlyPrice={4999}
+            annualPrice={3999}
             billingPeriod={billing}
             isPopular
             ctaLabel="Start 14-Day Free Trial"
-            ctaHref="/sign-up?plan=pro"
+            ctaHref="#"
+            ctaOnClick={() => handleCheckout("agency")}
             ctaVariant="primary"
             features={PRO_FEATURES}
             accentColor="162,85%,48%"
             index={2}
           />
           <PricingCard
-            tier="Agency"
-            tagline="Research firms and large agencies"
-            monthlyPrice={14999}
-            annualPrice={11999}
+            tier="Enterprise"
+            tagline="For large consultancies (e.g. ZoomRx scale)."
+            monthlyPrice={0}
+            annualPrice={0}
             billingPeriod={billing}
-            ctaLabel="Book a Demo"
-            ctaHref="mailto:hello@prismintel.co?subject=Agency Plan Enquiry"
+            ctaLabel="Get in Touch"
+            ctaHref="mailto:hello@prismintel.co?subject=Enterprise Enquiry"
             ctaVariant="ghost"
             features={AGENCY_FEATURES}
             accentColor="265,80%,65%"
@@ -213,6 +260,42 @@ export default function PricingPage() {
           >
             Talk to Sales <ArrowRight className="w-4 h-4" />
           </a>
+        </motion.div>
+
+        {/* 1 Credit Add-on Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-2xl p-6 mb-20 flex flex-col sm:flex-row items-center justify-between gap-6"
+          style={{
+            background: "#0A0A0A",
+            border: "1px solid rgba(16, 185, 129, 0.2)",
+          }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-500/10 shrink-0">
+              <Sparkles className="w-5 h-5 text-emerald-400" />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold tracking-tight text-white mb-1">
+                Need just one more analysis?
+              </h3>
+              <p className="text-sm text-white/50">
+                Explorer users can run a one-off analysis instantly for ₹249. No subscription required.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => handleCheckout("credit")}
+            className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white whitespace-nowrap transition-all"
+            style={{
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+          >
+            Buy 1 Credit
+          </button>
         </motion.div>
 
         {/* Feature comparison table */}
