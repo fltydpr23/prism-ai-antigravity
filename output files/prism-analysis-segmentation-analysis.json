@@ -1,0 +1,1043 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-21T06:17:31.544Z",
+    "moon": {
+      "phase01": 0.20317545671602727,
+      "label": "Waxing crescent",
+      "illuminationPercent": 36
+    },
+    "metrics": {
+      "charCount": 5292402,
+      "charCountNoWs": 4232399,
+      "wordCount": 800322,
+      "sentenceCount": 54853,
+      "paragraphCount": 1,
+      "avgWordLength": 5.29,
+      "lexicalDensity": 0.749,
+      "numericTokenCount": 55730
+    },
+    "topTokens": [
+      {
+        "token": "review",
+        "count": 26216
+      },
+      {
+        "token": "bike",
+        "count": 19513
+      },
+      {
+        "token": "average",
+        "count": 13643
+      },
+      {
+        "token": "name",
+        "count": 13064
+      },
+      {
+        "token": "user",
+        "count": 13021
+      },
+      {
+        "token": "stars",
+        "count": 13017
+      },
+      {
+        "token": "rating",
+        "count": 13006
+      },
+      {
+        "token": "title",
+        "count": 12991
+      },
+      {
+        "token": "varient",
+        "count": 12982
+      },
+      {
+        "token": "description",
+        "count": 12982
+      },
+      {
+        "token": "good",
+        "count": 10348
+      },
+      {
+        "token": "tvs",
+        "count": 9833
+      }
+    ],
+    "luneSignature": {
+      "hue": 212,
+      "drift": 0.24
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "Bike manufacturers like Hero and TVS face critical issues with mileage concerns, maintenance costs, and quality control problems across various models, necessitating immediate action to improve customer satisfaction.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "mixed",
+            "trajectory": "declining",
+            "insight": "Concerns over mileage, maintenance, and quality control are driving negative sentiment."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "Praise for smooth driving experience",
+              "what_they_do": "Criticism for misleading mileage claims",
+              "severity": "high"
+            },
+            {
+              "what_they_say": "Loyalty to TVS NTORQ 125",
+              "what_they_do": "Criticism for comfort issues",
+              "severity": "medium"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "Transparent mileage claims",
+              "frequency": "high",
+              "build_priority": "critical"
+            },
+            {
+              "feature": "Improved maintenance support",
+              "frequency": "high",
+              "build_priority": "high"
+            },
+            {
+              "feature": "Better quality control",
+              "frequency": "high",
+              "build_priority": "critical"
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "Misleading mileage claims"
+            },
+            {
+              "emotion": "disappointed",
+              "intensity": "medium",
+              "trigger": "High maintenance costs"
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Practical Buyer",
+              "how_to_win_them": "Prioritize transparent mileage claims and improve maintenance support"
+            },
+            {
+              "segment_name": "The Comfort Seeker",
+              "how_to_win_them": "Address comfort issues for larger riders"
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "Repeated complaints about mileage concerns",
+                "retention_action": "Improve mileage transparency"
+              },
+              {
+                "signal": "Criticism for high maintenance costs",
+                "retention_action": "Enhance maintenance support"
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "Improve mileage transparency",
+              "why": "To build trust with customers",
+              "expected_outcome": "10% increase in customer satisfaction",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "Enhance maintenance support",
+              "why": "To reduce maintenance costs",
+              "expected_outcome": "15% decrease in maintenance costs",
+              "priority": "2",
+              "timeline": "later"
+            },
+            {
+              "action": "Address quality control issues",
+              "why": "To minimize engine problems and durability concerns",
+              "expected_outcome": "12% decrease in quality control issues",
+              "priority": "3",
+              "timeline": "now"
+            }
+          ],
+          "passion_index": {
+            "score": 60,
+            "reasoning": "Customers are passionate about getting accurate mileage claims and good maintenance support"
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "Customers are frustrated with misleading mileage claims",
+              "raw_native_quote": "I was promised 60kmpl but I'm only getting 40kmpl",
+              "severity": "high"
+            }
+          ]
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "variants": {
+          "TVS Jupiter": {
+            "executive_summary": "TVS Jupiter faces criticism for misleading mileage claims and high maintenance costs, despite praise for its smooth driving experience, highlighting a need for the company to address these issues to improve customer satisfaction.",
+            "consumer_feedback": {
+              "sentiment_trajectory": {
+                "overall_sentiment": "mixed",
+                "trajectory": "declining",
+                "insight": "Negative sentiment is driven by issues with mileage and maintenance costs, while positive sentiment is driven by the scooter's performance and comfort."
+              },
+              "contradiction_analysis": [
+                {
+                  "what_they_say": "The scooter is good to drive",
+                  "what_they_do": "Give 1 star and complain about mileage",
+                  "severity": "high"
+                },
+                {
+                  "what_they_say": "The scooter has bad mileage",
+                  "what_they_do": "Mention that it is comfortable to drive",
+                  "severity": "medium"
+                }
+              ],
+              "feature_requests": [
+                {
+                  "feature": "Improve mileage to match company claims",
+                  "frequency": "high",
+                  "build_priority": "critical"
+                },
+                {
+                  "feature": "Free first servicing as promised",
+                  "frequency": "medium",
+                  "build_priority": "high"
+                },
+                {
+                  "feature": "Reduce maintenance costs",
+                  "frequency": "medium",
+                  "build_priority": "medium"
+                }
+              ],
+              "emotions": [
+                {
+                  "emotion": "frustrated",
+                  "intensity": "high",
+                  "trigger": "Misleading mileage claims"
+                },
+                {
+                  "emotion": "satisfied",
+                  "intensity": "medium",
+                  "trigger": "Smooth driving experience"
+                }
+              ],
+              "psychographic_segments": [
+                {
+                  "segment_name": "The Practical Buyer",
+                  "how_to_win_them": "Improve mileage and reduce maintenance costs"
+                },
+                {
+                  "segment_name": "The Comfort Seeker",
+                  "how_to_win_them": "Continue to focus on providing a smooth and comfortable riding experience"
+                }
+              ],
+              "churn_risk_analysis": {
+                "high_risk_signals": [
+                  {
+                    "signal": "Complaints about mileage and maintenance costs",
+                    "retention_action": "Address these issues promptly and provide a satisfactory solution"
+                  },
+                  {
+                    "signal": "Negative reviews and low ratings",
+                    "retention_action": "Engage with customers and provide a positive experience to improve sentiment"
+                  }
+                ]
+              },
+              "strategic_recommendations": [
+                {
+                  "action": "Improve mileage to match company claims",
+                  "why": "To increase customer satisfaction and reduce negative reviews",
+                  "expected_outcome": "25% increase in positive reviews",
+                  "priority": "1",
+                  "timeline": "now"
+                },
+                {
+                  "action": "Address issues with maintenance costs and provide free first servicing as promised",
+                  "why": "To increase customer trust and loyalty",
+                  "expected_outcome": "15% increase in customer retention",
+                  "priority": "2",
+                  "timeline": "later"
+                },
+                {
+                  "action": "Continue to focus on providing a smooth and comfortable riding experience",
+                  "why": "To maintain a positive reputation and attract new customers",
+                  "expected_outcome": "10% increase in sales",
+                  "priority": "3",
+                  "timeline": "now"
+                }
+              ],
+              "passion_index": {
+                "score": "60",
+                "reasoning": "Customers are passionate about the scooter's performance and comfort, but are frustrated with the mileage and maintenance costs."
+              },
+              "reality_checks": [
+                {
+                  "sanitized_english": "Customers are unhappy with the scooter's mileage and maintenance costs.",
+                  "raw_native_quote": "Bad mileage TVS Jupiter ki jo mileage company batati h wo bilkul jhut h.",
+                  "severity": "high"
+                }
+              ]
+            },
+            "workforce_metrics": {
+              "workers_at_risk": "Not detected",
+              "workers_at_risk_trend": "Not detected",
+              "avg_automation_risk": "Not detected",
+              "avg_automation_risk_trend": "Not detected",
+              "net_new_roles": "Not detected",
+              "net_new_roles_trend": "Not detected",
+              "reskilling_readiness": "Not detected",
+              "reskilling_readiness_trend": "Not detected"
+            },
+            "automation_risk_by_sector": [],
+            "displacement_trend": {
+              "peak_displacement": "Not detected",
+              "peak_displacement_timeframe": "Not detected",
+              "acceleration_rate": "Not detected",
+              "acceleration_rate_timeframe": "Not detected",
+              "timeline": []
+            },
+            "worker_risk_distribution": {
+              "total_workers": "Not detected",
+              "high": "0%",
+              "medium": "0%",
+              "low": "0%",
+              "high_num": 0,
+              "medium_num": 0,
+              "low_num": 0
+            },
+            "geographic_hotspots": [],
+            "opportunity_sectors": [],
+            "sentiment_shift": {
+              "historical": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "current": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "historical_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              },
+              "current_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              }
+            },
+            "reskilling_readiness_gap": []
+          },
+          "TVS NTORQ 125": {
+            "executive_summary": "TVS NTORQ 125 faces concerns over mileage and comfort for larger riders, despite praise for its features and performance, indicating a need for improvement in these areas to enhance customer satisfaction.",
+            "consumer_feedback": {
+              "sentiment_trajectory": {
+                "overall_sentiment": "mixed",
+                "trajectory": "stable",
+                "insight": "Customers are generally satisfied with the scooter's performance and features but express dissatisfaction with mileage and comfort for larger riders."
+              },
+              "contradiction_analysis": [
+                {
+                  "what_they_say": "Great performance",
+                  "what_they_do": "Complain about mileage",
+                  "severity": "medium"
+                },
+                {
+                  "what_they_say": "Nice bike",
+                  "what_they_do": "Mention mileage is not up to the mark",
+                  "severity": "medium"
+                },
+                {
+                  "what_they_say": "Excellent bike and nice scooter",
+                  "what_they_do": "State it's not comfortable for a fat person",
+                  "severity": "low"
+                }
+              ],
+              "feature_requests": [
+                {
+                  "feature": "Improve mileage",
+                  "frequency": "high",
+                  "build_priority": "critical"
+                },
+                {
+                  "feature": "Enhance comfort features for diverse rider sizes",
+                  "frequency": "medium",
+                  "build_priority": "high"
+                },
+                {
+                  "feature": "Maintain or improve current features such as Bluetooth connectivity",
+                  "frequency": "low",
+                  "build_priority": "medium"
+                }
+              ],
+              "emotions": [
+                {
+                  "emotion": "frustration",
+                  "intensity": "high",
+                  "trigger": "Mileage concerns"
+                },
+                {
+                  "emotion": "disappointment",
+                  "intensity": "medium",
+                  "trigger": "Comfort issues for larger riders"
+                }
+              ],
+              "psychographic_segments": [
+                {
+                  "segment_name": "The Practical Rider",
+                  "how_to_win_them": "Address mileage and comfort concerns"
+                },
+                {
+                  "segment_name": "The Tech Enthusiast",
+                  "how_to_win_them": "Continue to innovate and improve features like Bluetooth connectivity"
+                }
+              ],
+              "churn_risk_analysis": {
+                "high_risk_signals": [
+                  {
+                    "signal": "Repeated complaints about mileage",
+                    "retention_action": "Offer mileage improvement solutions or alternatives"
+                  },
+                  {
+                    "signal": "Dissatisfaction with comfort",
+                    "retention_action": "Provide comfort-enhancing accessories or rider support"
+                  }
+                ]
+              },
+              "strategic_recommendations": [
+                {
+                  "action": "Conduct mileage improvement studies",
+                  "why": "To address customer concerns and improve satisfaction",
+                  "expected_outcome": "10% increase in customer satisfaction",
+                  "priority": "1",
+                  "timeline": "now"
+                },
+                {
+                  "action": "Develop comfort-enhancing features",
+                  "why": "To cater to a broader range of customers",
+                  "expected_outcome": "15% increase in sales",
+                  "priority": "2",
+                  "timeline": "later"
+                },
+                {
+                  "action": "Enhance customer support for mileage and comfort issues",
+                  "why": "To improve customer retention",
+                  "expected_outcome": "20% reduction in churn rate",
+                  "priority": "3",
+                  "timeline": "now"
+                }
+              ],
+              "passion_index": {
+                "score": "60",
+                "reasoning": "Customers show a moderate level of passion when discussing their satisfaction or dissatisfaction with the scooter, indicating a significant but not overwhelming emotional investment."
+              },
+              "reality_checks": [
+                {
+                  "sanitized_english": "Customers are concerned about the scooter's mileage.",
+                  "raw_native_quote": "The only thing negative about this scooter is the mileage.",
+                  "severity": "high"
+                }
+              ]
+            },
+            "workforce_metrics": {
+              "workers_at_risk": "Not detected",
+              "workers_at_risk_trend": "Not detected",
+              "avg_automation_risk": "Not detected",
+              "avg_automation_risk_trend": "Not detected",
+              "net_new_roles": "Not detected",
+              "net_new_roles_trend": "Not detected",
+              "reskilling_readiness": "Not detected",
+              "reskilling_readiness_trend": "Not detected"
+            },
+            "automation_risk_by_sector": [],
+            "displacement_trend": {
+              "peak_displacement": "Not detected",
+              "peak_displacement_timeframe": "Not detected",
+              "acceleration_rate": "Not detected",
+              "acceleration_rate_timeframe": "Not detected",
+              "timeline": []
+            },
+            "worker_risk_distribution": {
+              "total_workers": "Not detected",
+              "high": "0%",
+              "medium": "0%",
+              "low": "0%",
+              "high_num": 0,
+              "medium_num": 0,
+              "low_num": 0
+            },
+            "geographic_hotspots": [],
+            "opportunity_sectors": [],
+            "sentiment_shift": {
+              "historical": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "current": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "historical_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              },
+              "current_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              }
+            },
+            "reskilling_readiness_gap": []
+          },
+          "Yamaha R15S": {
+            "executive_summary": "Yamaha bike owners praise the bike's comfort, performance, and design, but criticize the tyre quality, suggesting improvements for better confidence in various riding conditions.",
+            "consumer_feedback": {
+              "sentiment_trajectory": {
+                "overall_sentiment": "positive",
+                "trajectory": "stable",
+                "insight": "Overall positive sentiment due to comfort, performance, and design, but with concerns about tyre quality."
+              },
+              "contradiction_analysis": [
+                {
+                  "what_they_say": "The bike is comfortable to ride",
+                  "what_they_do": "Complain about palm and back pains due to aggressive riding position",
+                  "severity": "medium"
+                },
+                {
+                  "what_they_say": "Things could be better",
+                  "what_they_do": "Mention specific issues like tyre quality",
+                  "severity": "medium"
+                }
+              ],
+              "feature_requests": [
+                {
+                  "feature": "Improve tyre quality",
+                  "frequency": "medium",
+                  "build_priority": "high"
+                },
+                {
+                  "feature": "Adjust riding position",
+                  "frequency": "low",
+                  "build_priority": "medium"
+                }
+              ],
+              "emotions": [
+                {
+                  "emotion": "frustration",
+                  "intensity": "medium",
+                  "trigger": "loose tyre causing lack of confidence in rain or at higher speeds"
+                },
+                {
+                  "emotion": "satisfaction",
+                  "intensity": "high",
+                  "trigger": "comfort and performance of the bike"
+                }
+              ],
+              "psychographic_segments": [
+                {
+                  "segment_name": "The Enthusiast",
+                  "how_to_win_them": "Offer high-performance features and premium quality"
+                },
+                {
+                  "segment_name": "The Practical Buyer",
+                  "how_to_win_them": "Emphasize comfort, mileage, and reasonable price"
+                }
+              ],
+              "churn_risk_analysis": {
+                "high_risk_signals": [
+                  {
+                    "signal": "dissatisfaction with tyre quality",
+                    "retention_action": "improve tyre quality or offer replacement options"
+                  }
+                ]
+              },
+              "strategic_recommendations": [
+                {
+                  "action": "Improve tyre quality",
+                  "why": "to enhance customer confidence and satisfaction",
+                  "expected_outcome": "increase in positive reviews and customer retention",
+                  "priority": "1",
+                  "timeline": "now"
+                },
+                {
+                  "action": "Adjust riding position",
+                  "why": "to reduce palm and back pains",
+                  "expected_outcome": "increase in comfort and customer satisfaction",
+                  "priority": "2",
+                  "timeline": "later"
+                }
+              ],
+              "passion_index": {
+                "score": "60",
+                "reasoning": "customers show enthusiasm and satisfaction with the bike's performance and design, but have concerns about tyre quality"
+              },
+              "reality_checks": [
+                {
+                  "sanitized_english": "customers criticize tyre quality",
+                  "raw_native_quote": "Things could be better ? - yes, first is Tyre, MRF zapper is not good enough",
+                  "severity": "medium"
+                }
+              ]
+            },
+            "workforce_metrics": {
+              "workers_at_risk": "Not detected",
+              "workers_at_risk_trend": "Not detected",
+              "avg_automation_risk": "Not detected",
+              "avg_automation_risk_trend": "Not detected",
+              "net_new_roles": "Not detected",
+              "net_new_roles_trend": "Not detected",
+              "reskilling_readiness": "Not detected",
+              "reskilling_readiness_trend": "Not detected"
+            },
+            "automation_risk_by_sector": [],
+            "displacement_trend": {
+              "peak_displacement": "Not detected",
+              "peak_displacement_timeframe": "Not detected",
+              "acceleration_rate": "Not detected",
+              "acceleration_rate_timeframe": "Not detected",
+              "timeline": []
+            },
+            "worker_risk_distribution": {
+              "total_workers": "Not detected",
+              "high": "0%",
+              "medium": "0%",
+              "low": "0%",
+              "high_num": 0,
+              "medium_num": 0,
+              "low_num": 0
+            },
+            "geographic_hotspots": [],
+            "opportunity_sectors": [],
+            "sentiment_shift": {
+              "historical": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "current": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "historical_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              },
+              "current_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              }
+            },
+            "reskilling_readiness_gap": []
+          },
+          "Hero Splendor Plus": {
+            "executive_summary": "Hero Splendor Plus customers praise the bike's mileage, maintenance, and performance, but some experience engine issues, highlighting a need for quality control and customer support improvements.",
+            "consumer_feedback": {
+              "sentiment_trajectory": {
+                "overall_sentiment": "positive",
+                "trajectory": "stable",
+                "insight": "Overall positive sentiment due to good mileage, low maintenance cost, and excellent performance."
+              },
+              "contradiction_analysis": [
+                {
+                  "what_they_say": "Nic bike nic bike ever............, Nic bike i have experienced nic average and mentance is available at low cost .",
+                  "what_they_do": "Gave a low rating of 2 despite praising the bike",
+                  "severity": "high"
+                },
+                {
+                  "what_they_say": "Very Good Bike Really a Gifted bike by Hero in the budget. My father can also drive this bike very smooth and a Few days back only I got some engine issue in this but I changed Engine oil and it is absolutely fine as before.",
+                  "what_they_do": "Experienced engine issues despite giving a high rating of 4",
+                  "severity": "medium"
+                }
+              ],
+              "feature_requests": [
+                {
+                  "feature": "improved engine quality",
+                  "frequency": "low",
+                  "build_priority": "medium"
+                },
+                {
+                  "feature": "better customer support",
+                  "frequency": "medium",
+                  "build_priority": "high"
+                },
+                {
+                  "feature": "regular maintenance reminders",
+                  "frequency": "low",
+                  "build_priority": "low"
+                }
+              ],
+              "emotions": [
+                {
+                  "emotion": "satisfaction",
+                  "intensity": "high",
+                  "trigger": "good mileage and low maintenance cost"
+                },
+                {
+                  "emotion": "frustration",
+                  "intensity": "medium",
+                  "trigger": "engine issues"
+                }
+              ],
+              "psychographic_segments": [
+                {
+                  "segment_name": "The Practical Buyer",
+                  "how_to_win_them": "emphasize the bike's fuel efficiency and low maintenance cost"
+                },
+                {
+                  "segment_name": "The Performance Enthusiast",
+                  "how_to_win_them": "highlight the bike's excellent performance and smooth riding experience"
+                }
+              ],
+              "churn_risk_analysis": {
+                "high_risk_signals": [
+                  {
+                    "signal": "engine issues",
+                    "retention_action": "provide timely and effective customer support"
+                  },
+                  {
+                    "signal": "low ratings despite positive comments",
+                    "retention_action": "investigate and address underlying issues"
+                  }
+                ]
+              },
+              "strategic_recommendations": [
+                {
+                  "action": "improve engine quality and reliability",
+                  "why": "to reduce engine issues and improve customer satisfaction",
+                  "expected_outcome": "increase in positive reviews and ratings",
+                  "priority": "1",
+                  "timeline": "now"
+                },
+                {
+                  "action": "enhance customer support",
+                  "why": "to address customer concerns and improve retention",
+                  "expected_outcome": "increase in customer loyalty and retention",
+                  "priority": "2",
+                  "timeline": "later"
+                },
+                {
+                  "action": "provide regular maintenance reminders",
+                  "why": "to reduce maintenance-related issues and improve customer satisfaction",
+                  "expected_outcome": "increase in customer satisfaction and loyalty",
+                  "priority": "3",
+                  "timeline": "later"
+                }
+              ],
+              "passion_index": {
+                "score": "60",
+                "reasoning": "customers are passionate about the bike's performance, mileage, and maintenance cost"
+              },
+              "reality_checks": [
+                {
+                  "sanitized_english": "customers experience engine issues despite positive comments",
+                  "raw_native_quote": "a Few days back only I got some engine issue in this but I changed Engine oil and it is absolutely fine as before",
+                  "severity": "medium"
+                }
+              ]
+            },
+            "workforce_metrics": {
+              "workers_at_risk": "Not detected",
+              "workers_at_risk_trend": "Not detected",
+              "avg_automation_risk": "Not detected",
+              "avg_automation_risk_trend": "Not detected",
+              "net_new_roles": "Not detected",
+              "net_new_roles_trend": "Not detected",
+              "reskilling_readiness": "Not detected",
+              "reskilling_readiness_trend": "Not detected"
+            },
+            "automation_risk_by_sector": [],
+            "displacement_trend": {
+              "peak_displacement": "Not detected",
+              "peak_displacement_timeframe": "Not detected",
+              "acceleration_rate": "Not detected",
+              "acceleration_rate_timeframe": "Not detected",
+              "timeline": []
+            },
+            "worker_risk_distribution": {
+              "total_workers": "Not detected",
+              "high": "0%",
+              "medium": "0%",
+              "low": "0%",
+              "high_num": 0,
+              "medium_num": 0,
+              "low_num": 0
+            },
+            "geographic_hotspots": [],
+            "opportunity_sectors": [],
+            "sentiment_shift": {
+              "historical": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "current": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "historical_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              },
+              "current_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              }
+            },
+            "reskilling_readiness_gap": []
+          },
+          "TVS Apache RTR 160": {
+            "executive_summary": "TVS Apache bike owners report mixed experiences, praising its power and features but criticizing its durability, mileage, and maintenance, indicating a need for the company to address these concerns to improve customer satisfaction.",
+            "consumer_feedback": {
+              "sentiment_trajectory": {
+                "overall_sentiment": "mixed",
+                "trajectory": "stable",
+                "insight": "The mixed sentiment is due to users' positive experiences with the bike's performance and features, but negative experiences with its durability and mileage."
+              },
+              "contradiction_analysis": [
+                {
+                  "what_they_say": "Decent Bike, I have apache 2011 good bike but fewer features.",
+                  "what_they_do": "Mention both positive and negative aspects of the bike.",
+                  "severity": "medium"
+                },
+                {
+                  "what_they_say": "Best Power Bike, I have recently bought a new bike for me which is the TVs Apache 160 with dual disc brakes, no doubt TVs Apache is one of the best power bikes available in the market now a day one, can't get any other power bike at this low price.",
+                  "what_they_do": "Imply that the bike's value lies in its power and price, which could be a condition for their loyalty.",
+                  "severity": "low"
+                },
+                {
+                  "what_they_say": "Awesome Bike with good features, Superb style, LED just looks awesome.",
+                  "what_they_do": "Praise the bike's features but also mention a lack of fuel refinement.",
+                  "severity": "medium"
+                }
+              ],
+              "feature_requests": [
+                {
+                  "feature": "Improved fuel refinement",
+                  "frequency": "high",
+                  "build_priority": "high"
+                },
+                {
+                  "feature": "Better mileage",
+                  "frequency": "medium",
+                  "build_priority": "medium"
+                },
+                {
+                  "feature": "Enhanced durability",
+                  "frequency": "low",
+                  "build_priority": "low"
+                }
+              ],
+              "emotions": [
+                {
+                  "emotion": "frustration",
+                  "intensity": "high",
+                  "trigger": "bike's issues, such as chain sprocket and handling problems"
+                },
+                {
+                  "emotion": "satisfaction",
+                  "intensity": "low",
+                  "trigger": "bike's performance and features"
+                }
+              ],
+              "psychographic_segments": [
+                {
+                  "segment_name": "The Enthusiast",
+                  "how_to_win_them": "Offer better performance and features"
+                },
+                {
+                  "segment_name": "The Practical Buyer",
+                  "how_to_win_them": "Provide improved mileage and durability"
+                }
+              ],
+              "churn_risk_analysis": {
+                "high_risk_signals": [
+                  {
+                    "signal": "users reporting issues with the bike's chain sprocket and handling",
+                    "retention_action": "Address these issues through improved design and maintenance"
+                  },
+                  {
+                    "signal": "users expressing frustration with the bike's mileage",
+                    "retention_action": "Offer better fuel refinement and mileage"
+                  }
+                ]
+              },
+              "strategic_recommendations": [
+                {
+                  "action": "Improve the bike's fuel refinement and mileage",
+                  "why": "To address users' concerns and improve customer satisfaction",
+                  "expected_outcome": "Increased customer loyalty and retention",
+                  "priority": "1",
+                  "timeline": "now"
+                },
+                {
+                  "action": "Enhance the bike's durability and maintenance",
+                  "why": "To reduce users' frustration and improve the overall ownership experience",
+                  "expected_outcome": "Improved customer satisfaction and reduced churn",
+                  "priority": "2",
+                  "timeline": "later"
+                },
+                {
+                  "action": "Offer better performance and features",
+                  "why": "To attract and retain enthusiasts",
+                  "expected_outcome": "Increased sales and customer loyalty",
+                  "priority": "3",
+                  "timeline": "now"
+                }
+              ],
+              "passion_index": {
+                "score": "60",
+                "reasoning": "Users are passionate about the bike's performance and features, but also frustrated with its issues."
+              },
+              "reality_checks": [
+                {
+                  "sanitized_english": "Users have mixed experiences with the TVS Apache bike.",
+                  "raw_native_quote": "Decent Bike, I have apache 2011 good bike but fewer features.",
+                  "severity": "medium"
+                }
+              ]
+            },
+            "workforce_metrics": {
+              "workers_at_risk": "Not detected",
+              "workers_at_risk_trend": "Not detected",
+              "avg_automation_risk": "Not detected",
+              "avg_automation_risk_trend": "Not detected",
+              "net_new_roles": "Not detected",
+              "net_new_roles_trend": "Not detected",
+              "reskilling_readiness": "Not detected",
+              "reskilling_readiness_trend": "Not detected"
+            },
+            "automation_risk_by_sector": [],
+            "displacement_trend": {
+              "peak_displacement": "Not detected",
+              "peak_displacement_timeframe": "Not detected",
+              "acceleration_rate": "Not detected",
+              "acceleration_rate_timeframe": "Not detected",
+              "timeline": []
+            },
+            "worker_risk_distribution": {
+              "total_workers": "Not detected",
+              "high": "0%",
+              "medium": "0%",
+              "low": "0%",
+              "high_num": 0,
+              "medium_num": 0,
+              "low_num": 0
+            },
+            "geographic_hotspots": [],
+            "opportunity_sectors": [],
+            "sentiment_shift": {
+              "historical": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "current": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "historical_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              },
+              "current_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              }
+            },
+            "reskilling_readiness_gap": []
+          }
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Bike manufacturers like Hero and TVS face critical issues with mileage concerns, maintenance costs, and quality control problems across various models, necessitating immediate action to improve customer satisfaction.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"mixed\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Concerns over mileage, maintenance, and quality control are driving negative sentiment.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"Praise for smooth driving experience\",\n        \"what_they_do\": \"Criticism for misleading mileage claims\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"Loyalty to TVS NTORQ 125\",\n        \"what_they_do\": \"Criticism for comfort issues\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"Transparent mileage claims\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\"\n      },\n      {\n        \"feature\": \"Improved maintenance support\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\"\n      },\n      {\n        \"feature\": \"Better quality control\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\"\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"Misleading mileage claims\"\n      },\n      {\n        \"emotion\": \"disappointed\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"High maintenance costs\"\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Practical Buyer\",\n        \"how_to_win_them\": \"Prioritize transparent mileage claims and improve maintenance support\"\n      },\n      {\n        \"segment_name\": \"The Comfort Seeker\",\n        \"how_to_win_them\": \"Address comfort issues for larger riders\"\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"Repeated complaints about mileage concerns\",\n          \"retention_action\": \"Improve mileage transparency\"\n        },\n        {\n          \"signal\": \"Criticism for high maintenance costs\",\n          \"retention_action\": \"Enhance maintenance support\"\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"Improve mileage transparency\",\n        \"why\": \"To build trust with customers\",\n        \"expected_outcome\": \"10% increase in customer satisfaction\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"Enhance maintenance support\",\n        \"why\": \"To reduce maintenance costs\",\n        \"expected_outcome\": \"15% decrease in maintenance costs\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      },\n      {\n        \"action\": \"Address quality control issues\",\n        \"why\": \"To minimize engine problems and durability concerns\",\n        \"expected_outcome\": \"12% decrease in quality control issues\",\n        \"priority\": \"3\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 60,\n      \"reasoning\": \"Customers are passionate about getting accurate mileage claims and good maintenance support\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"Customers are frustrated with misleading mileage claims\",\n        \"raw_native_quote\": \"I was promised 60kmpl but I'm only getting 40kmpl\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "retail",
+      "label": "Retail / E-commerce",
+      "emoji": "🛍",
+      "detectionMethod": "auto_detected",
+      "confidence": "medium"
+    }
+  },
+  "saved": true,
+  "id": "71927d37-e1cb-4ff4-adbb-8ab6e4f32692"
+}

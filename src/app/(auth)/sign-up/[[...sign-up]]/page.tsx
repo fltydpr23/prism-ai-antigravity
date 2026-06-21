@@ -110,7 +110,7 @@ export default function SignUpPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <SignUp appearance={clerkAppearance} />
+          <SignUp appearance={clerkAppearance} forceRedirectUrl="/dashboard" />
         </motion.div>
       </div>
 

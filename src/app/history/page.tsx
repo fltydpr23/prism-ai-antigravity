@@ -66,7 +66,7 @@ export default function HistoryPage() {
         </div>
         <div className="flex items-center gap-4">
           <WorkspaceSwitcher />
-          <Link href="/">
+          <Link href="/analyse">
             <MagneticButton intensity={0.1} className="glass-pill px-3 py-1.5 text-[11px] font-medium text-white/50 hover:text-white gap-1.5">
               <ArrowRight className="w-3 h-3 rotate-180" /> New Analysis
             </MagneticButton>
@@ -114,7 +114,7 @@ export default function HistoryPage() {
             <Sparkles className="w-10 h-10 text-emerald-400/50" />
             <h2 className="text-lg font-medium text-white/70">No saved analyses yet.</h2>
             <p className="text-sm text-white/35 max-w-sm">Run an analysis with &ldquo;Save to Archive&rdquo; toggled on. Your intelligence history will appear here.</p>
-            <Link href="/">
+            <Link href="/analyse">
               <MagneticButton className="glass-pill px-5 py-2.5 text-sm font-medium text-white mt-2">
                 Run First Analysis
               </MagneticButton>

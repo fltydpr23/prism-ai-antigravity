@@ -180,6 +180,81 @@ export async function POST(request: Request) {
     }, { status: 403 });
   }
 
+  const mode = typeof (body as any).mode === "string" ? (body as any).mode : "parallel_sampled";
+
+  // Handle Background Processing Mode
+  if (mode === "background") {
+    let jobId: string | null = null;
+    
+    // Create initial pending record in Supabase
+    if (persist) {
+      try {
+        const supabase = createSupabaseServer();
+        const { data, error } = await supabase
+          .from("analyses")
+          .insert({
+            result: { status: "processing", progress: "Started background job" },
+            source: "api/analyse-background",
+            input: text,
+            user_id: userId,
+            workspace_id: workspaceId,
+          })
+          .select("id")
+          .single();
+          
+        if (error) {
+          console.error("Failed to create pending analysis record:", error);
+          return NextResponse.json({ error: "Failed to initialize analysis record: " + error.message }, { status: 500 });
+        }
+        jobId = data?.id ? String(data.id) : null;
+      } catch (e) {
+        console.error("Exception during pending analysis record creation:", e);
+        return NextResponse.json({ error: "Database exception during initialization" }, { status: 500 });
+      }
+    }
+
+    if (!jobId) {
+      jobId = crypto.randomUUID();
+    }
+
+    // Publish to QStash (or fallback for local dev)
+    if (process.env.QSTASH_TOKEN) {
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || (request.headers.get("origin") ?? "http://localhost:3000");
+      try {
+        await fetch(`https://qstash.upstash.io/v2/publish/${appUrl}/api/qstash/analyse`, {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${process.env.QSTASH_TOKEN}`,
+            "Content-Type": "application/json",
+            "Upstash-Delay": "0s"
+          },
+          body: JSON.stringify({
+            jobId,
+            text,
+            skipLocalModel,
+            localLlmModel: modelOverride,
+            industry: industryOverride,
+            workspace_id: workspaceId,
+            userId,
+            persist
+          })
+        });
+      } catch (e) {
+        console.error("Failed to publish to QStash", e);
+      }
+    } else {
+      console.warn("No QSTASH_TOKEN found! Background job requires Upstash QStash in production.");
+      // Fire and forget fallback for local dev
+      import('./backgroundTask').then(({ runBackground }) => {
+         runBackground({
+            jobId, text, skipLocalModel, modelOverride, industryOverride, workspaceId, userId, persist
+         });
+      }).catch(e => console.error(e));
+    }
+    
+    return NextResponse.json({ jobId, status: "accepted" }, { status: 202 });
+  }
+
   const stream = new ReadableStream({
     async start(controller) {
       const encoder = new TextEncoder();
@@ -247,7 +322,7 @@ export async function POST(request: Request) {
                   if (email) {
                     const resend = new Resend(process.env.RESEND_API_KEY);
                     resend.emails.send({
-                      from: "Prism Intelligence <hello@prismintel.co>",
+                      from: "Prism Intelligence <hello@prismintel.co>", // NOTE: Ensure this domain is verified in Resend, otherwise use onboarding@resend.dev
                       to: email,
                       subject: "Your Prism Intelligence Report is Ready",
                       html: `
@@ -264,10 +339,10 @@ export async function POST(request: Request) {
                           </div>
                         </div>
                       `,
-                    }).catch((err) => console.error("Resend error:", err));
+                    }).then(res => console.log("[Resend] Standard email sent:", res)).catch((err) => console.error("[Resend] error:", err));
                   }
                 } catch (err) {
-                  console.error("Failed to fetch user or send email:", err);
+                  console.error("[Resend] Failed to fetch user or send email:", err);
                 }
               }
             }

@@ -1,0 +1,250 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "moon": {
+      "label": "Waxing crescent",
+      "phase01": 0.20396896693637445,
+      "illuminationPercent": 36
+    },
+    "empty": false,
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "metrics": {
+      "charCount": 1905112,
+      "wordCount": 267707,
+      "avgWordLength": 5.62,
+      "charCountNoWs": 1503501,
+      "sentenceCount": 18773,
+      "lexicalDensity": 0.732,
+      "paragraphCount": 1,
+      "numericTokenCount": 10773
+    },
+    "industry": {
+      "id": "food",
+      "emoji": "🍕",
+      "label": "Food & Delivery",
+      "confidence": "high",
+      "detectionMethod": "auto_detected"
+    },
+    "topTokens": [
+      {
+        "count": 11091,
+        "token": "hotel"
+      },
+      {
+        "count": 9612,
+        "token": "review"
+      },
+      {
+        "count": 5766,
+        "token": "good"
+      },
+      {
+        "count": 4797,
+        "token": "rating"
+      },
+      {
+        "count": 4789,
+        "token": "name"
+      },
+      {
+        "count": 4770,
+        "token": "title"
+      },
+      {
+        "count": 4768,
+        "token": "text"
+      },
+      {
+        "count": 4768,
+        "token": "sentiment"
+      },
+      {
+        "count": 4768,
+        "token": "percentage"
+      },
+      {
+        "count": 2827,
+        "token": "stay"
+      },
+      {
+        "count": 2311,
+        "token": "room"
+      },
+      {
+        "count": 1868,
+        "token": "chennai"
+      }
+    ],
+    "localModel": {
+      "ok": true,
+      "raw": "{\n  \"executive_summary\": \"Hotel customers express high urgency and emotional severity over various issues including cleanliness, maintenance, room service, and staff behavior, necessitating immediate improvement to prevent further negative reviews and potential loss of business.\",\n  \n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Customers are increasingly dissatisfied with their hotel experiences due to unaddressed issues.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"Value for money, very neat and clean\",\n        \"what_they_do\": \"Complain about slow room service\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"what_they_say\": \"I'll come back when they fix support\",\n        \"what_they_do\": \"Mention the need for improved room service\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"Better than other hotels in the area\",\n        \"what_they_do\": \"Compare unfavorably to competitors' breakfast buffets\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"improve cleanliness\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\"\n      },\n      {\n        \"feature\": \"better maintenance\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\"\n      },\n      {\n        \"feature\": \"faster room service\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\"\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustration\",\n        \"intensity\": \"high\",\n        \"trigger\": \"slow room service and uncleanliness\"\n      },\n      {\n        \"emotion\": \"disappointment\",\n        \"intensity\": \"high\",\n        \"trigger\": \"poor staff behavior and food quality\"\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Disappointed Traveler\",\n        \"how_to_win_them\": \"Improve hotel cleanliness, maintenance, and staff behavior\"\n      },\n      {\n        \"segment_name\": \"The Frustrated Guest\",\n        \"how_to_win_them\": \"Enhance room service speed and quality\"\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"negative reviews and low ratings\",\n          \"retention_action\": \"Address customer complaints promptly and improve hotel services\"\n        },\n        {\n          \"signal\": \"comparison to competitors\",\n          \"retention_action\": \"Enhance unique selling points and improve overall guest experience\"\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"Improve hotel cleanliness and maintenance\",\n        \"why\": \"To increase customer satisfaction and loyalty\",\n        \"expected_outcome\": \"25% increase in positive reviews\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"Enhance room service speed and quality\",\n        \"why\": \"To reduce customer frustration and increase retention\",\n        \"expected_outcome\": \"30% decrease in negative reviews\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 80,\n      \"reasoning\": \"High frequency of strong negative emotions and urgent language used in customer reviews\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"Customers are unhappy with hotel services\",\n        \"raw_native_quote\": \"PLEASE AVOID THIS HOTEL\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "sentiment_shift": {
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "consumer_feedback": {
+          "emotions": [
+            {
+              "emotion": "frustration",
+              "trigger": "slow room service and uncleanliness",
+              "intensity": "high"
+            },
+            {
+              "emotion": "disappointment",
+              "trigger": "poor staff behavior and food quality",
+              "intensity": "high"
+            }
+          ],
+          "passion_index": {
+            "score": 80,
+            "reasoning": "High frequency of strong negative emotions and urgent language used in customer reviews"
+          },
+          "reality_checks": [
+            {
+              "severity": "high",
+              "raw_native_quote": "PLEASE AVOID THIS HOTEL",
+              "sanitized_english": "Customers are unhappy with hotel services"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "improve cleanliness",
+              "frequency": "high",
+              "build_priority": "critical"
+            },
+            {
+              "feature": "better maintenance",
+              "frequency": "high",
+              "build_priority": "critical"
+            },
+            {
+              "feature": "faster room service",
+              "frequency": "medium",
+              "build_priority": "high"
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "negative reviews and low ratings",
+                "retention_action": "Address customer complaints promptly and improve hotel services"
+              },
+              {
+                "signal": "comparison to competitors",
+                "retention_action": "Enhance unique selling points and improve overall guest experience"
+              }
+            ]
+          },
+          "sentiment_trajectory": {
+            "insight": "Customers are increasingly dissatisfied with their hotel experiences due to unaddressed issues.",
+            "trajectory": "declining",
+            "overall_sentiment": "negative"
+          },
+          "contradiction_analysis": [
+            {
+              "severity": "medium",
+              "what_they_do": "Complain about slow room service",
+              "what_they_say": "Value for money, very neat and clean"
+            },
+            {
+              "severity": "high",
+              "what_they_do": "Mention the need for improved room service",
+              "what_they_say": "I'll come back when they fix support"
+            },
+            {
+              "severity": "medium",
+              "what_they_do": "Compare unfavorably to competitors' breakfast buffets",
+              "what_they_say": "Better than other hotels in the area"
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Disappointed Traveler",
+              "how_to_win_them": "Improve hotel cleanliness, maintenance, and staff behavior"
+            },
+            {
+              "segment_name": "The Frustrated Guest",
+              "how_to_win_them": "Enhance room service speed and quality"
+            }
+          ],
+          "strategic_recommendations": [
+            {
+              "why": "To increase customer satisfaction and loyalty",
+              "action": "Improve hotel cleanliness and maintenance",
+              "priority": "1",
+              "timeline": "now",
+              "expected_outcome": "25% increase in positive reviews"
+            },
+            {
+              "why": "To reduce customer frustration and increase retention",
+              "action": "Enhance room service speed and quality",
+              "priority": "2",
+              "timeline": "later",
+              "expected_outcome": "30% decrease in negative reviews"
+            }
+          ]
+        },
+        "executive_summary": "Hotel customers express high urgency and emotional severity over various issues including cleanliness, maintenance, room service, and staff behavior, necessitating immediate improvement to prevent further negative reviews and potential loss of business.",
+        "workforce_metrics": {
+          "net_new_roles": "Not detected",
+          "workers_at_risk": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "displacement_trend": {
+          "timeline": [],
+          "acceleration_rate": "Not detected",
+          "peak_displacement": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "peak_displacement_timeframe": "Not detected"
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "reskilling_readiness_gap": [],
+        "worker_risk_distribution": {
+          "low": "0%",
+          "high": "0%",
+          "medium": "0%",
+          "low_num": 0,
+          "high_num": 0,
+          "medium_num": 0,
+          "total_workers": "Not detected"
+        },
+        "automation_risk_by_sector": []
+      },
+      "provider": "openai-compatible"
+    },
+    "generatedAt": "2026-06-21T06:51:16.140Z",
+    "luneSignature": {
+      "hue": 85,
+      "drift": 0.97
+    }
+  },
+  "saved": true,
+  "id": "240aaff0-037e-4d47-b556-13b525250a85"
+}

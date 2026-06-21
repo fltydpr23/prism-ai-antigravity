@@ -294,7 +294,14 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
   const [resolvedId, setResolvedId] = useState<string | null>(response?.id ?? null);
   const analysis = response?.analysis;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const lm = analysis?.localModel?.parsed as LocalModel;
+  const baseLm = analysis?.localModel?.parsed as LocalModel;
+  
+  // Variant Support
+  const variants = baseLm?.variants as Record<string, LocalModel> | undefined;
+  const variantKeys = variants ? Object.keys(variants) : [];
+  const [selectedVariant, setSelectedVariant] = useState<string | null>(null);
+  
+  const lm = (selectedVariant && variants ? variants[selectedVariant] : baseLm) as Record<string, any>;
 
   const downloadRaw = () => {
     const d = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(response, null, 2));
@@ -304,7 +311,7 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
 
   const copyReport = () => {
     let md = "# Prism Intelligence Report\n\n";
-    if (lm?.executive_summary) md += `## Executive Summary\n${lm.executive_summary}\n\n`;
+    if (baseLm?.executive_summary) md += `## Executive Summary\n${baseLm.executive_summary}\n\n`;
     navigator.clipboard.writeText(md);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -382,7 +389,7 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
     );
   }
 
-  if (!lm) {
+  if (!baseLm) {
     const isMissingConfig = analysis && !("localModel" in analysis);
     const parseErr = analysis?.localModel?.parseError || analysis?.localModel?.error;
     const title = isMissingConfig ? "LLM Analysis Unconfigured" : "Unexpected Response Structure";
@@ -531,6 +538,60 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
           )}
         </div>
       </div>
+      
+      {/* ── Coverage Stats ───────────────────────────────── */}
+      {baseLm?.coverage && (
+        <div className="flex flex-wrap items-center gap-3 px-1 mb-2 text-[10px] text-white/50 tracking-wider">
+          <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
+            <span className="font-semibold text-white/70">Rows Analyzed:</span>
+            <span className="text-emerald-400 font-mono">{(baseLm.coverage.totalRowsProcessed || 0).toLocaleString()} <span className="text-white/20">/ {(baseLm.coverage.totalRowsAvailable || 0).toLocaleString()}</span></span>
+          </div>
+          {baseLm.coverage.mode === "parallel_sampled" && (
+            <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-full text-amber-400">
+               <Zap className="w-3 h-3" /> Accelerated Sample
+            </div>
+          )}
+          {baseLm.coverage.mode === "background" && (
+             <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full text-emerald-400">
+               <CheckCircle2 className="w-3 h-3" /> Comprehensive Analysis
+             </div>
+          )}
+          <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
+            <span className="font-semibold text-white/70">Variants Analyzed:</span>
+            <span className="text-cyan-400 font-mono">{baseLm.coverage.variantsAnalyzed || 0} <span className="text-white/20">/ {baseLm.coverage.totalVariantsFound || 0}</span></span>
+          </div>
+        </div>
+      )}
+
+      {/* ── Variant Tabs (if applicable) ───────────────────────────────── */}
+      {variantKeys.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 px-1 mb-2">
+          <button
+            onClick={() => setSelectedVariant(null)}
+            className={`px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wider transition-all border ${
+              selectedVariant === null 
+                ? "bg-emerald-500/20 border-emerald-500/30 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.1)]" 
+                : "bg-white/5 border-white/10 text-white/40 hover:text-white/80 hover:bg-white/10"
+            }`}
+          >
+            OVERALL MARKET
+          </button>
+          
+          {variantKeys.map(key => (
+            <button
+              key={key}
+              onClick={() => setSelectedVariant(key)}
+              className={`px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wider transition-all border ${
+                selectedVariant === key 
+                  ? "bg-cyan-500/20 border-cyan-500/30 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.1)]" 
+                  : "bg-white/5 border-white/10 text-white/40 hover:text-white/80 hover:bg-white/10"
+              }`}
+            >
+              {key.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* ── Hero Panel: Score Ring + Radar Chart ───────────────────────── */}
       <div className="intel-panel panel-emerald bg-grid-subtle p-0 overflow-hidden">
