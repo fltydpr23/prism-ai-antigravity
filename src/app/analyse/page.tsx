@@ -261,6 +261,34 @@ export default function AnalysePage() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [view, text, uploadedFile]);
+  
+  // ── Sync local storage analyses to Supabase when user signs in ──
+  useEffect(() => {
+    if (!userId) return;
+    const local = localStorage.getItem("prism_local_analyses");
+    if (!local) return;
+    
+    try {
+      const items = JSON.parse(local);
+      if (items.length === 0) return;
+      
+      fetch("/api/history", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items })
+      })
+      .then(res => res.json())
+      .then(d => {
+        if (d.ok) {
+          console.log(`Synced ${d.synced} local analyses to your account.`);
+          localStorage.removeItem("prism_local_analyses");
+        }
+      })
+      .catch(err => console.error("Auto-sync failed", err));
+    } catch (e) {
+      console.error("Failed to parse local analyses for sync", e);
+    }
+  }, [userId]);
 
   // ─── Handlers ────────────────────────────────────────────────────────────
   const handleDragOver = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(true); };
@@ -360,7 +388,24 @@ export default function AnalysePage() {
         let delay = 0;
         // Hold for 12 seconds total for the mock
         for (const s of stages) { delay += 3000; setTimeout(() => setStage(s), delay); }
-        setTimeout(() => { setResponse(generateMockReport(uploadedFile)); setStage("done"); }, delay + 3000);
+        setTimeout(() => { 
+          const mockReport = generateMockReport(uploadedFile);
+          if (!userId && mockReport.ok) {
+            const localId = `local_${Date.now()}`;
+            const localAnalysis = {
+              id: localId,
+              createdAt: new Date().toISOString(),
+              result: mockReport.analysis,
+              input: `[Mock Analysis File: ${uploadedFile.name}]`,
+            };
+            const existing = JSON.parse(localStorage.getItem("prism_local_analyses") || "[]");
+            existing.push(localAnalysis);
+            localStorage.setItem("prism_local_analyses", JSON.stringify(existing));
+            mockReport.id = localId;
+          }
+          setResponse(mockReport); 
+          setStage("done"); 
+        }, delay + 3000);
         return;
       }
     }
@@ -438,7 +483,23 @@ export default function AnalysePage() {
                     setStage(data.stage as ProcessingStage);
                   }
                 } else if (data.type === "result") {
-                  setResponse(data.data);
+                  const resultData = data.data;
+                  if (!userId && resultData.ok) {
+                    const localId = `local_${Date.now()}`;
+                    const localAnalysis = {
+                      id: localId,
+                      createdAt: new Date().toISOString(),
+                      result: resultData.analysis,
+                      input: extractedText,
+                    };
+                    const existing = JSON.parse(localStorage.getItem("prism_local_analyses") || "[]");
+                    existing.push(localAnalysis);
+                    localStorage.setItem("prism_local_analyses", JSON.stringify(existing));
+                    
+                    // Assign local ID so client routing routes to local path
+                    resultData.id = localId;
+                  }
+                  setResponse(resultData);
                   setStage("done");
                   if (data.data.error) {
                     posthog.capture("analysis_failed", { error: data.data.error, model: "openai/gpt-oss-120b:free", industry: selectedIndustry });

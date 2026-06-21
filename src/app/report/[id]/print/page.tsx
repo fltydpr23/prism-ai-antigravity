@@ -20,13 +20,37 @@ export default function PrintPage() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`/api/report/${id}`)
-      .then((r) => r.json())
-      .then((d) => {
-        if (!d.ok) throw new Error(d.error ?? "Report not found.");
-        setReport(d);
-      })
-      .catch((e) => setError(e.message));
+    if (id.startsWith("local_")) {
+      try {
+        const local = localStorage.getItem("prism_local_analyses");
+        if (local) {
+          const localItems = JSON.parse(local);
+          const found = localItems.find((item: any) => item.id === id);
+          if (found) {
+            setReport({
+              id: found.id,
+              createdAt: found.createdAt,
+              analysis: found.result,
+            });
+            setError(null);
+          } else {
+            throw new Error("Local report not found.");
+          }
+        } else {
+          throw new Error("No local reports stored.");
+        }
+      } catch (e: any) {
+        setError(e.message);
+      }
+    } else {
+      fetch(`/api/report/${id}`)
+        .then((r) => r.json())
+        .then((d) => {
+          if (!d.ok) throw new Error(d.error ?? "Report not found.");
+          setReport(d);
+        })
+        .catch((e) => setError(e.message));
+    }
   }, [id]);
 
   // Auto-trigger print once loaded

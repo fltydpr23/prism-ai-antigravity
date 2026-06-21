@@ -60,3 +60,53 @@ export async function GET(request: Request) {
     return NextResponse.json({ ok: false, error: message }, { status: 503 });
   }
 }
+
+export async function POST(request: Request) {
+  try {
+    const { auth } = await import("@clerk/nextjs/server");
+    const { userId } = await auth();
+
+    if (!userId) {
+      return NextResponse.json({ ok: false, error: "Unauthorized. Please sign in to sync your local archive." }, { status: 401 });
+    }
+
+    const body = await request.json() as {
+      items?: Array<{
+        result: any;
+        input: string;
+        createdAt: string;
+        workspace_id?: string;
+      }>;
+    };
+    const items = body.items || [];
+
+    if (items.length === 0) {
+      return NextResponse.json({ ok: true, synced: 0 });
+    }
+
+    const supabase = createSupabaseServer();
+    
+    // Prepare the insert structures
+    const inserts = items.map((item) => ({
+      result: item.result,
+      input: item.input,
+      user_id: userId,
+      workspace_id: item.workspace_id || null,
+      created_at: item.createdAt || new Date().toISOString(),
+      source: "api/history/sync",
+    }));
+
+    const { error } = await supabase
+      .from("analyses")
+      .insert(inserts);
+
+    if (error) {
+      return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ ok: true, synced: inserts.length });
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Sync failed.";
+    return NextResponse.json({ ok: false, error: message }, { status: 500 });
+  }
+}

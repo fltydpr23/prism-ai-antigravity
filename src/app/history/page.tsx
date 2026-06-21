@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Clock, FileText, Loader2, AlertCircle, ExternalLink, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { useAuth } from "@clerk/nextjs";
 import MagneticButton from "@/components/MagneticButton";
 import WorkspaceSwitcher from "@/components/WorkspaceSwitcher";
 import { useWorkspace } from "../../providers/WorkspaceProvider";
@@ -28,13 +29,14 @@ function timeAgo(iso: string): string {
 }
 
 export default function HistoryPage() {
+  const { isLoaded, userId } = useAuth();
   const [items, setItems] = useState<HistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const { activeWorkspace } = useWorkspace();
 
-  useEffect(() => {
+  const fetchDbHistory = () => {
     setLoading(true);
     let url = "/api/history";
     if (activeWorkspace) {
@@ -50,7 +52,81 @@ export default function HistoryPage() {
       })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, [activeWorkspace]);
+  };
+
+  // Sync local storage analyses to Supabase when user signs in
+  useEffect(() => {
+    if (!userId) return;
+    const local = localStorage.getItem("prism_local_analyses");
+    if (!local) return;
+    
+    try {
+      const localItems = JSON.parse(local);
+      if (localItems.length === 0) return;
+      
+      fetch("/api/history", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: localItems })
+      })
+      .then(res => res.json())
+      .then(d => {
+        if (d.ok) {
+          console.log(`Synced ${d.synced} local analyses to your account.`);
+          localStorage.removeItem("prism_local_analyses");
+          fetchDbHistory();
+        }
+      })
+      .catch(err => console.error("Auto-sync failed", err));
+    } catch (e) {
+      console.error("Failed to parse local analyses for sync", e);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    if (!userId) {
+      // Guest mode: load from localStorage
+      setLoading(true);
+      try {
+        const local = localStorage.getItem("prism_local_analyses");
+        if (local) {
+          const localItems = JSON.parse(local);
+          const mappedItems = localItems.map((row: any) => {
+            const result = row.result ?? {};
+            const localModel = result.localModel?.parsed ?? {};
+            const industry = result.industry ?? null;
+            const metrics = result.metrics ?? {};
+
+            return {
+              id: row.id,
+              createdAt: row.createdAt,
+              execSummary: localModel.executive_summary ?? "No summary available.",
+              industry,
+              wordCount: metrics.wordCount ?? 0,
+            };
+          });
+          
+          // Sort items by createdAt descending
+          mappedItems.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+          
+          setItems(mappedItems);
+        } else {
+          setItems([]);
+        }
+        setError(null);
+      } catch (e) {
+        setError("Failed to load local history.");
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      // Authenticated mode: fetch from database
+      fetchDbHistory();
+    }
+  }, [isLoaded, userId, activeWorkspace]);
 
   return (
     <div className="min-h-screen relative">

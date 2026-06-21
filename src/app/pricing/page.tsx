@@ -115,8 +115,27 @@ export default function PricingPage() {
         name: "Prism Intelligence",
         description: `Upgrade: ${planId}`,
         order_id: order.id,
-        handler: function (response: any) {
-          alert("Payment successful! Your account is being upgraded.");
+        handler: async function (response: any) {
+          try {
+            const res = await fetch('/api/billing/verify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_signature: response.razorpay_signature,
+                tier: planId,
+                billingPeriod: billing === 'annual' ? 'annual' : 'monthly',
+              }),
+            });
+            const data = await res.json();
+            if (data.error) throw new Error(data.error);
+            alert("Payment successful! Your account is now updated.");
+            router.push("/dashboard");
+          } catch (err: any) {
+            console.error(err);
+            alert(`Payment verification failed: ${err.message}`);
+          }
         },
         theme: {
           color: "#10b981"

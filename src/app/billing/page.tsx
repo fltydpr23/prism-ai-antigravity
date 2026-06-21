@@ -25,6 +25,8 @@ const TIER_DISPLAY: Record<string, { label: string; color: string; price: string
 export default function BillingPage() {
   const { isLoaded, userId } = useAuth();
   const [usage, setUsage] = useState<UsageData | null>(null);
+  const [history, setHistory] = useState<any[]>([]);
+  const [loadingHistory, setLoadingHistory] = useState(true);
 
   useEffect(() => {
     if (!userId) return;
@@ -32,6 +34,16 @@ export default function BillingPage() {
       .then(r => r.json())
       .then(d => setUsage(d))
       .catch(() => {});
+      
+    fetch("/api/billing/history")
+      .then(r => r.json())
+      .then(d => {
+        setHistory(d.items || []);
+        setLoadingHistory(false);
+      })
+      .catch(() => {
+        setLoadingHistory(false);
+      });
   }, [userId]);
 
   if (!isLoaded) return null;
@@ -172,7 +184,7 @@ export default function BillingPage() {
             </div>
           </div>
 
-          {/* Invoice history — stub */}
+          {/* Invoice history */}
           <div
             className="rounded-2xl p-6"
             style={{
@@ -181,22 +193,28 @@ export default function BillingPage() {
             }}
           >
             <h3 className="text-sm font-semibold text-white/70 mb-4">Invoice History</h3>
-            {tier === "free" ? (
+            {loadingHistory ? (
+              <p className="text-sm text-white/30 animate-pulse">Loading history...</p>
+            ) : history.length === 0 ? (
               <p className="text-sm text-white/30">
                 No invoices yet — upgrade to a paid plan to start billing.
               </p>
             ) : (
               <div className="flex flex-col gap-3">
-                {[0].map((_, i) => (
-                  <div key={i} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
+                {history.map((inv) => (
+                  <div key={inv.id} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
                     <div>
-                      <p className="text-sm text-white/70">Prism {tierInfo.label} — Monthly</p>
-                      <p className="text-xs text-white/30">June 2026</p>
+                      <p className="text-sm text-white/70 capitalize">{inv.description}</p>
+                      <p className="text-xs text-white/30">
+                        {new Date(inv.createdAt).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" })}
+                      </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-medium text-white/80">{tierInfo.price.split(" / ")[0]}</p>
-                      <span className="text-[10px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">
-                        Paid
+                      <p className="text-sm font-medium text-white/80">
+                        {inv.currency === "INR" ? "₹" : ""}{inv.amount.toLocaleString("en-IN")}
+                      </p>
+                      <span className="text-[10px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full capitalize">
+                        {inv.status === "captured" ? "Paid" : inv.status}
                       </span>
                     </div>
                   </div>

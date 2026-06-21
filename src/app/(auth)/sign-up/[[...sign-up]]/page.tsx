@@ -8,43 +8,43 @@ const clerkAppearance = {
     showOptionalFields: false,
   },
   variables: {
-    colorPrimary: "#ffffff",
-    colorBackground: "#050505",
+    colorPrimary: "#10b981", // Emerald 500
+    colorBackground: "transparent",
     colorInputBackground: "#0f0f0f",
     colorInputText: "#ffffff",
     colorText: "#ffffff",
-    colorTextSecondary: "rgba(255,255,255,0.45)",
-    colorNeutral: "rgba(255,255,255,0.12)",
-    borderRadius: "10px",
+    colorTextSecondary: "#a1a1aa",
+    colorNeutral: "#3f3f46",
+    borderRadius: "12px",
     fontFamily: "var(--font-inter), system-ui, sans-serif",
     fontSize: "14px",
   },
   elements: {
     rootBox: "w-full",
-    card: "bg-transparent shadow-none border-none !p-0 w-full",
+    card: "!bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/[0.08] shadow-[0_0_80px_rgba(52,211,153,0.12),inset_0_1px_0_rgba(255,255,255,0.1)] rounded-[24px] p-8 w-full",
     headerTitle: "hidden",
     headerSubtitle: "hidden",
     header: "hidden",
     socialButtonsBlockButton:
-      "bg-[#0f0f0f] border border-white/[0.08] border-t-white/[0.13] text-white/80 hover:bg-white/[0.06] hover:text-white hover:border-white/[0.18] transition-all duration-200 rounded-[10px] h-11 text-sm font-medium",
-    socialButtonsBlockButtonText: "text-white/80 font-medium text-sm",
-    socialButtonsBlockButtonArrow: "text-white/30",
-    dividerLine: "bg-white/[0.07]",
-    dividerText: "text-white/25 text-xs tracking-widest uppercase",
-    formFieldLabel: "text-white/40 text-xs tracking-widest uppercase font-medium mb-1.5",
+      "!bg-white/[0.08] !border-white/[0.2] hover:!bg-white/[0.12] hover:!border-white/[0.3] transition-all duration-200 rounded-xl h-12 text-sm font-medium",
+    socialButtonsBlockButtonText: "!text-white/90 font-medium text-sm",
+    socialButtonsBlockButtonArrow: "!text-white/40",
+    dividerLine: "!bg-white/10",
+    dividerText: "!text-zinc-500 text-xs tracking-widest uppercase",
+    formFieldLabel: "!text-zinc-400 text-xs tracking-widest uppercase font-medium mb-1.5",
     formFieldInput:
-      "bg-[#0f0f0f] border border-white/[0.08] border-t-white/[0.04] text-white placeholder:text-white/20 rounded-[10px] h-11 px-4 text-sm focus:border-white/25 focus:ring-0 focus:outline-none transition-all duration-200",
+      "!bg-[#0f0f0f] !border-white/10 !text-white placeholder:!text-zinc-600 rounded-xl h-12 px-4 text-sm focus:!border-emerald-500/50 focus:!ring-1 focus:!ring-emerald-500/50 focus:outline-none transition-all duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]",
     formButtonPrimary:
-      "bg-white text-black font-semibold text-sm rounded-[10px] h-11 hover:bg-white/90 active:bg-white/80 transition-all duration-150 tracking-tight shadow-[0_0_0_1px_rgba(255,255,255,0.1)]",
-    footerActionText: "text-white/30 text-xs",
-    footerActionLink: "text-white/60 hover:text-white text-xs font-medium transition-colors",
-    identityPreviewText: "text-white/70",
-    identityPreviewEditButtonIcon: "text-white/40",
-    formFieldAction: "text-white/30 hover:text-white/70 text-xs transition-colors",
+      "!bg-emerald-500 !text-emerald-950 font-semibold text-sm rounded-xl h-12 hover:!bg-emerald-400 active:!bg-emerald-600 transition-all duration-150 tracking-tight shadow-[0_0_20px_rgba(52,211,153,0.3),inset_0_1px_0_rgba(255,255,255,0.4)] mt-2",
+    footerActionText: "!text-zinc-500 text-sm",
+    footerActionLink: "!text-emerald-400 hover:!text-emerald-300 text-sm font-medium transition-colors",
+    identityPreviewText: "!text-white/70",
+    identityPreviewEditButtonIcon: "!text-zinc-500",
+    formFieldAction: "!text-zinc-500 hover:!text-zinc-300 text-xs transition-colors",
     alternativeMethodsBlockButton:
-      "bg-[#0f0f0f] border border-white/[0.08] text-white/70 hover:bg-white/[0.06] rounded-[10px] text-sm transition-all",
+      "!bg-[#0f0f0f] !border-white/10 !text-white/70 hover:!bg-[#1a1a1a] rounded-[10px] text-sm transition-all",
     otpCodeFieldInput:
-      "bg-[#0f0f0f] border border-white/[0.08] text-white rounded-[10px] text-xl font-mono",
+      "!bg-[#0f0f0f] !border-emerald-500/30 !text-emerald-400 rounded-xl text-xl font-mono focus:!border-emerald-500 focus:!ring-1 focus:!ring-emerald-500",
     badge: "hidden",
     logoBox: "hidden",
     logoImage: "hidden",
@@ -53,13 +53,13 @@ const clerkAppearance = {
 
 export default function SignUpPage() {
   return (
-    <div className="min-h-screen bg-[#050505] flex items-center justify-center relative overflow-hidden">
-      {/* Ambient background */}
+    <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Ambient radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,255,255,0.025) 0%, transparent 100%)",
+            "radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.08) 0%, rgba(34, 211, 238, 0.03) 40%, transparent 80%)",
         }}
       />
       {/* Fine grid */}
@@ -85,27 +85,28 @@ export default function SignUpPage() {
       </motion.div>
 
       {/* Main container */}
-      <div className="relative z-10 w-full max-w-sm px-6">
+      <div className="relative z-10 w-full max-w-[420px] flex flex-col items-center px-4">
         {/* Headline block */}
         <motion.div
-          className="mb-10 text-center"
+          className="mb-8 flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-white/25 mb-5">
-            Intelligence Platform
+          <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-emerald-400/80 mb-4 text-center">
+            PRISM INTEL
           </p>
-          <h1 className="text-3xl font-semibold tracking-tight text-white leading-tight">
+          <h1 className="text-3xl font-semibold tracking-tight text-white leading-tight text-center">
             Claim your account.
           </h1>
-          <p className="text-sm text-white/35 mt-2.5 leading-relaxed">
+          <p className="text-sm text-white/35 mt-2.5 leading-relaxed text-center">
             Your 3 analyses are stored and waiting.
           </p>
         </motion.div>
 
         {/* Clerk form */}
         <motion.div
+          className="w-full flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
