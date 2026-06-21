@@ -116,13 +116,15 @@ export async function POST(request: Request) {
   const industryOverride = typeof body.industry === "string" ? body.industry : "auto";
   const workspaceId = typeof body.workspace_id === "string" ? body.workspace_id : null;
 
-  // Rate Limiting
+  // Rate Limiting & Tier Verification
   const { auth } = await import("@clerk/nextjs/server");
   const { userId } = await auth();
 
   const identifier = userId || request.headers.get("x-forwarded-for") || "anonymous_user";
   
-  const { checkRateLimit } = await import("../../../../lib/ratelimit");
+  const { checkRateLimit, checkFreeTierLimit } = await import("../../../../lib/ratelimit");
+  
+  // 1. Global Daily Rate Limit (Spam Protection)
   const rateLimitState = await checkRateLimit(identifier);
 
   if (!rateLimitState.success) {
@@ -137,6 +139,45 @@ export async function POST(request: Request) {
     const ph = getPostHogClient();
     ph.capture({ distinctId: identifier, event: "rate_limit_warning_hit", properties: { limit: rateLimitState.limit } });
     await ph.shutdown();
+  }
+
+  // 2. Tier Limit Verification
+  let requiresUpgrade = false;
+  let requiresSignup = false;
+
+  if (userId) {
+    // Authenticated user: check Supabase
+    const supabase = createSupabaseServer();
+    const { data: userProfile } = await supabase
+      .from('users')
+      .select('tier, analyses_count')
+      .eq('id', userId)
+      .single();
+    
+    // If they are on the free 'explorer' tier and hit 3 analyses, they must upgrade.
+    if (userProfile && userProfile.tier === 'explorer' && userProfile.analyses_count >= 3) {
+      requiresUpgrade = true;
+    }
+  } else {
+    // Unauthenticated user: check Redis fixed count
+    const freeTierState = await checkFreeTierLimit(identifier);
+    if (!freeTierState.success) {
+      requiresSignup = true;
+    }
+  }
+
+  if (requiresSignup) {
+    return NextResponse.json({ 
+      error: "You've reached your 3 free analyses. Please sign up for an account to continue.",
+      requiresSignup: true,
+    }, { status: 403 });
+  }
+
+  if (requiresUpgrade) {
+    return NextResponse.json({ 
+      error: "You've reached your free plan limits. Please upgrade to the Analyst tier to run more reports.",
+      requiresUpgrade: true,
+    }, { status: 403 });
   }
 
   const stream = new ReadableStream({
@@ -183,6 +224,18 @@ export async function POST(request: Request) {
             } else {
               finalResponseData.saved = true;
               finalResponseData.id = data?.id ?? null;
+
+              // Increment analyses_count if authenticated
+              if (userId) {
+                try {
+                  const { data: userDoc } = await supabase.from('users').select('analyses_count').eq('id', userId).single();
+                  if (userDoc) {
+                    await supabase.from('users').update({ analyses_count: (userDoc.analyses_count || 0) + 1 }).eq('id', userId);
+                  }
+                } catch (e) {
+                  console.error("Failed to increment user analyses count:", e);
+                }
+              }
 
               if (process.env.RESEND_API_KEY && userId) {
                 try {

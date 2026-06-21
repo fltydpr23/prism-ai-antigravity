@@ -91,3 +91,30 @@ export async function checkRateLimit(
     return { success: true, isWarning: false, limit: 10, remaining: 10 };
   }
 }
+
+/**
+ * Checks and increments the strictly enforced "3 free analyses" limit for unauthenticated users.
+ * Uses a permanent counter instead of a sliding window.
+ */
+export async function checkFreeTierLimit(identifier: string) {
+  if (url === "https://dummy.upstash.io") {
+    return { success: true, count: 0, isWarning: false };
+  }
+
+  try {
+    const key = `prism:free_analyses:${identifier}`;
+    // Increment the counter atomically
+    const count = await redis.incr(key);
+    
+    // If they were already at the limit, we'll return false
+    // Note: if count is 4, they just exceeded it. 
+    // We allow 1, 2, 3.
+    const success = count <= 3;
+    const isWarning = count === 2; // Warn on the 2nd one
+
+    return { success, count, isWarning };
+  } catch (error) {
+    console.error(`Free tier limit check failed. Bypassing limit for safety.`, error);
+    return { success: true, count: 0, isWarning: false };
+  }
+}
