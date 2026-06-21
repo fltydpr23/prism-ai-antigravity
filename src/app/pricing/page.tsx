@@ -106,7 +106,7 @@ export default function PricingPage() {
         body: JSON.stringify({ planId, isAnnual: billing === 'annual' })
       });
       const order = await res.json();
-      if (order.error) throw new Error(order.error);
+      if (order.error) throw new Error(order.details || order.error);
 
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_dummy", 
@@ -123,18 +123,28 @@ export default function PricingPage() {
         }
       };
       
+      // Load script dynamically if missing
+      // @ts-ignore
+      if (typeof window !== "undefined" && !window.Razorpay) {
+        await new Promise((resolve) => {
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.onload = resolve;
+          document.body.appendChild(script);
+        });
+      }
+
       // @ts-ignore
       const rzp = new window.Razorpay(options);
       rzp.open();
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("Failed to initiate checkout");
+      alert(`Failed to initiate checkout: ${err.message || String(err)}`);
     }
   };
 
   return (
     <div className="min-h-screen" style={{ background: "#09090C", color: "#fff" }}>
-      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
       <div className="aurora-bg" />
 
       {/* Nav */}
