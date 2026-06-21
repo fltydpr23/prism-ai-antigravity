@@ -37,6 +37,7 @@ type UsageData = {
   used: number;
   limit: number;
   tier: string;
+  credits?: number;
   resetsAt: string | null;
 };
 
@@ -472,6 +473,11 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between mb-2">
               <span className="text-[11px] text-white/35">
                 {usage.used} / {usage.limit} analyses
+                {usage.credits && usage.credits > 0 ? (
+                  <span className="ml-1 font-semibold text-emerald-400">
+                    (+{usage.credits} credits)
+                  </span>
+                ) : null}
               </span>
               {isFreeTier && (
                 <Link href="/pricing" className="text-[10px] font-semibold text-emerald-400/80 hover:text-emerald-400 transition-colors flex items-center gap-0.5">

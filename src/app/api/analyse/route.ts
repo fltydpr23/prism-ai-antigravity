@@ -152,13 +152,16 @@ export async function POST(request: Request) {
     const supabase = createSupabaseServer();
     const { data: userProfile } = await supabase
       .from('users')
-      .select('tier, analyses_count')
+      .select('tier, analyses_count, credits')
       .eq('id', userId)
       .single();
     
-    // If they are on the free 'explorer' tier and hit 3 analyses, they must upgrade.
+    // If they are on the free 'explorer' tier and hit 3 analyses, they must upgrade
+    // UNLESS they have purchased add-on credits.
     if (userProfile && userProfile.tier === 'explorer' && userProfile.analyses_count >= 3) {
-      requiresUpgrade = true;
+      if (!userProfile.credits || userProfile.credits <= 0) {
+        requiresUpgrade = true;
+      }
     }
   } else {
     // Unauthenticated user: check Redis fixed count
@@ -302,15 +305,22 @@ export async function POST(request: Request) {
               finalResponseData.saved = true;
               finalResponseData.id = data?.id ?? null;
 
-              // Increment analyses_count if authenticated
+              // Increment analyses_count and decrement credits if applicable
               if (userId) {
                 try {
-                  const { data: userDoc } = await supabase.from('users').select('analyses_count').eq('id', userId).single();
+                  const { data: userDoc } = await supabase.from('users').select('analyses_count, credits, tier').eq('id', userId).single();
                   if (userDoc) {
-                    await supabase.from('users').update({ analyses_count: (userDoc.analyses_count || 0) + 1 }).eq('id', userId);
+                    const isCreditRun = userDoc.tier === 'explorer' && userDoc.analyses_count >= 3 && (userDoc.credits || 0) > 0;
+                    
+                    const updateData: any = { analyses_count: (userDoc.analyses_count || 0) + 1 };
+                    if (isCreditRun) {
+                      updateData.credits = userDoc.credits - 1;
+                    }
+
+                    await supabase.from('users').update(updateData).eq('id', userId);
                   }
                 } catch (e) {
-                  console.error("Failed to increment user analyses count:", e);
+                  console.error("Failed to update user analyses count / credits:", e);
                 }
               }
 
