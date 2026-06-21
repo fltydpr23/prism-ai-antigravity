@@ -10,14 +10,16 @@ import Link from "next/link";
 import MagneticButton from "./MagneticButton";
 import PricingCard from "./PricingCard";
 import PricingToggle from "./PricingToggle";
-import PrismScoreBento from "./PrismScoreBento";
-import PrismLanguageMap from "./PrismLanguageMap";
-import PrismReportPreview from "./PrismReportPreview";
 import PrismHero from "./PrismHero";
 import PrismHeader from "./PrismHeader";
-import PrismAgencyAdvantage from "./PrismAgencyAdvantage";
 import PrismFooter from "./PrismFooter";
 import { SignInButton, useAuth } from "@clerk/nextjs";
+import dynamic from "next/dynamic";
+
+const PrismScoreBento = dynamic(() => import("./PrismScoreBento"));
+const PrismLanguageMap = dynamic(() => import("./PrismLanguageMap"));
+const PrismReportPreview = dynamic(() => import("./PrismReportPreview"));
+const PrismAgencyAdvantage = dynamic(() => import("./PrismAgencyAdvantage"));
 
 const SOURCES = [
   { icon: MessageSquare, label: "WhatsApp Chats" },
