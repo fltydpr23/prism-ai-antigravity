@@ -5,11 +5,11 @@
 - **Cost & Viability Analysis:** Confirmed that Llama 3.3 70B runs at approximately $0.88/1M tokens, making it highly cost-effective for Prism. We calculated that at an average of 4,000 tokens per analysis (in and out), generating 1,000 deep intelligence reports would only cost ~$3.50, ensuring massive profit margins for the platform.
 
 ## 2. Intelligence Engine Overhaul (The Journey from 15/100 to 88/100)
-Initially, uploading consumer datasets (like the `blinkit_playstore_reviews.csv` and delivery agent datasets) resulted in poor "Noise" scores (15/100). We successfully diagnosed and fixed this across multiple layers of the app:
+Initially, uploading consumer datasets (like the `swiftcart_playstore_reviews.csv` and delivery agent datasets) resulted in poor "Noise" scores (15/100). We successfully diagnosed and fixed this across multiple layers of the app:
 - **Scoring Algorithm Fix (`lib/prismScore.ts`):** The scoring system was originally hardcoded to look for AI workforce displacement metrics. We overhauled the `calculatePrismScore` function to dynamically evaluate the `consumer_feedback` object so consumer data accurately contributes to the score.
 - **JSON Schema Structuring (`lib/local-llm.js`):** Injected consumer-focused intelligence fields into the `SYSTEM_JSON_STRUCTURING` prompt, specifically capturing `emotions`, `psychographic_segments`, `churn_risk_analysis`, and `strategic_recommendations`.
 - **Pushing for Deep Intelligence (Minimum Depth Directives):** The model was originally bottlenecking insights by only returning 1-2 items per category. We removed the restrictive limits and replaced them with **Minimum Depth Requirements** (e.g., minimum 3 feature requests, 2 distinct emotions with specific triggers, distinct psychographic profiles). 
-- **Result:** These backend prompt engineering changes pushed the Blinkit analysis score from **15 (Noise)** -> **81 (Signal)** -> **74 (Gap)** -> **88 (PRISM CLARITY)**, producing consultant-grade insights (e.g., "The Frustrated Customer", specific churn signals, percentage-based strategic outcomes).
+- **Result:** These backend prompt engineering changes pushed the SwiftCart analysis score from **15 (Noise)** -> **81 (Signal)** -> **74 (Gap)** -> **88 (PRISM CLARITY)**, producing consultant-grade insights (e.g., "The Frustrated Customer", specific churn signals, percentage-based strategic outcomes).
 
 ## 3. UI Transformation: Phase 1 "War Room Dashboard"
 We completely stripped away the narrow, blog-style layout and rebuilt Prism to look like a high-end, mission-critical intelligence dashboard (think Palantir/Bloomberg).

@@ -82,7 +82,7 @@ This document serves as a comprehensive, detailed record of the architectural, d
 ## 9. Live CSV Ingestion & Pipeline Orchestration
 **The Challenge:** The Prism report generation simulation used static, hardcoded dummy data, and the pipeline list felt disconnected from the intelligence narrative. The copy was also too dense with ML/AI jargon.
 **The Solution:**
-*   **Dynamic Data Fetching:** Moved the `blinkit_playstore_reviews_new.csv` file (1,361 rows) to the Next.js `public/` directory and implemented client-side `fetch` logic to parse the raw dataset dynamically.
+*   **Dynamic Data Fetching:** Moved the `swiftcart_playstore_reviews_new.csv` file (1,361 rows) to the Next.js `public/` directory and implemented client-side `fetch` logic to parse the raw dataset dynamically.
 *   **Interactive Drag-and-Drop Pipeline:** 
     *   Removed the static blur overlays in favor of a beautiful, multi-stage state machine.
     *   Upon dropping the CSV file into the dropzone, a sequential pipeline animation triggers: "Chunking 1361 reviews" ➔ "Synthesising insights" ➔ "Report complete".

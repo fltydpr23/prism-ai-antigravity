@@ -62,7 +62,7 @@ export const INDUSTRIES: IndustryDef[] = [
       contradictions: "Contradiction Map",
     },
     keywords: [
-      ["zomato", 3], ["swiggy", 3], ["blinkit", 3], ["zepto", 3], ["dunzo", 3],
+      ["dinenow", 3], ["fooddash", 3], ["swiftcart", 3], ["quickdrop", 3], ["taskrun", 3],
       ["delivery", 2], ["food", 2], ["restaurant", 2], ["order", 1], ["hungry", 1],
       ["cod", 2], ["refund", 1], ["delivery boy", 2], ["delivery agent", 2],
       ["handling charges", 2], ["missing items", 2], ["cold food", 2], ["late delivery", 2],

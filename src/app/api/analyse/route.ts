@@ -200,7 +200,6 @@ export async function POST(request: Request) {
           .insert({
             result: { status: "processing", progress: "Started background job" },
             source: "api/analyse-background",
-            input: text,
             user_id: userId,
             workspace_id: workspaceId,
           })
@@ -291,7 +290,6 @@ export async function POST(request: Request) {
               .insert({
                 result,
                 source: "api/analyse",
-                input: text,
                 user_id: userId,
                 workspace_id: workspaceId,
               })

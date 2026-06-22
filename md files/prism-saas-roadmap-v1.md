@@ -125,7 +125,7 @@ This is a **massive gap** you can dominate if you move quickly.
 | Annual billing | 20% discount on Annual |
 | Data residency | India-hosted data (compliance-critical for banks/healthcare) |
 
-**Enterprise sales motion**: You won't sell this on a pricing page. You sell it over chai. Target CMOs and VP Analytics at Tier 1 D2C brands (Mamaearth, Lenskart, Boat), HealthTech (Practo, PharmEasy), and FinTech (CRED, Zepto).
+**Enterprise sales motion**: You won't sell this on a pricing page. You sell it over chai. Target CMOs and VP Analytics at Tier 1 D2C brands (Mamaearth, Lenskart, Boat), HealthTech (Practo, PharmEasy), and FinTech (PayElite, QuickDrop).
 
 ---
 
@@ -220,8 +220,8 @@ Replace the current linear report layout with a **modular card grid**:
 │  +12 vs last run              │                                   │
 ├───────────────────────────────┴──────────────────────────────────┤
 │  VELOCITY TRACKER         │  COMPETITOR MAP  │  TRUST EROSION    │
-│  -3.2 pts/week            │  Zepto: 47 ment. │  Score: 62/100    │
-│  Crisis: Last 14 days     │  Swiggy: 31 men. │  Risk: HIGH       │
+│  -3.2 pts/week            │  QuickDrop: 47 ment. │  Score: 62/100    │
+│  Crisis: Last 14 days     │  FoodDash: 31 men. │  Risk: HIGH       │
 ├───────────────────────────┴──────────────────┴───────────────────┤
 │  CONTRADICTION MAP (Expanded Card)                                │
 │  ┌─ Delivery Speed is praised AND criticised simultaneously ────┐ │
@@ -337,8 +337,8 @@ Here is the exact sequence to execute this roadmap, prioritised by business impa
 ## PART 4 — Go-To-Market Strategy for India
 
 ### Phase 1: Micro-Virality (Month 1)
-- Share 3–5 real Prism analyses of famous Indian brands (Blinkit, Zepto, Swiggy, Zomato, CRED) publicly on LinkedIn.
-- Frame as: *"I ran Prism over 5,000 Blinkit reviews. Here is what the data says."*
+- Share 3–5 real Prism analyses of famous Indian brands (SwiftCart, QuickDrop, FoodDash, DineNow, PayElite) publicly on LinkedIn.
+- Frame as: *"I ran Prism over 5,000 SwiftCart reviews. Here is what the data says."*
 - Every post ends with: *"Run your own analysis at [prism.ai] — free for the first 3 reports."*
 - This is the India SaaS community playbook. It works. Every time.
 

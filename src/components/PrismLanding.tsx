@@ -20,6 +20,7 @@ const PrismScoreBento = dynamic(() => import("./PrismScoreBento"));
 const PrismLanguageMap = dynamic(() => import("./PrismLanguageMap"));
 const PrismReportPreview = dynamic(() => import("./PrismReportPreview"));
 const PrismAgencyAdvantage = dynamic(() => import("./PrismAgencyAdvantage"));
+const PrismPrivacySection = dynamic(() => import("./PrismPrivacySection"));
 
 const SOURCES = [
   { icon: MessageSquare, label: "WhatsApp Chats" },
@@ -178,17 +179,20 @@ export default function PrismLanding({ onStart }: Props) {
         </div>
       </section>
 
-      {/* ── India Language Coverage Map ─────────────────────────────────── */}
-      <PrismLanguageMap />
+      {/* ── Feature: Intelligence Reports ────────────────────────────── */}
+      <PrismReportPreview />
 
       {/* ── Prism Score & Signals Bento ─────────────────────────────────── */}
       <PrismScoreBento />
 
-      {/* ── Feature: Intelligence Reports ────────────────────────────── */}
-      <PrismReportPreview />
+      {/* ── India Language Coverage Map ─────────────────────────────────── */}
+      <PrismLanguageMap />
 
       {/* ── Agency Advantage ────────────────────────────── */}
       <PrismAgencyAdvantage />
+
+      {/* ── Enterprise Privacy Section ────────────────────────────────────── */}
+      <PrismPrivacySection />
 
       {/* ── Pricing ─────────────────────────────────────────────── */}
       <section id="pricing" className="px-6 py-32 max-w-7xl mx-auto w-full">

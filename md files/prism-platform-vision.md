@@ -54,7 +54,7 @@ Instead of just "Negative / Declining", show **rate of change**. If 70% of the 1
 ### 2.2 🟡 Voice of the Loyal Customer (VOLC)
 > *"What's keeping your best customers from leaving?"*
 
-Separate 4 and 5 star reviewers from the angry ones. Analyse *specifically* what the happy customers say to find **defensible moats** — the things Blinkit is genuinely doing well that they should double down on, not abandon in a crisis response.
+Separate 4 and 5 star reviewers from the angry ones. Analyse *specifically* what the happy customers say to find **defensible moats** — the things SwiftCart is genuinely doing well that they should double down on, not abandon in a crisis response.
 
 **Output:**
 - `Loyalty Anchor: 24/7 availability consistently praised by power users`
@@ -65,11 +65,11 @@ Separate 4 and 5 star reviewers from the angry ones. Analyse *specifically* what
 ### 2.3 🟠 Competitor Intelligence Map
 > *"Where are users running to, and why?"*
 
-If users mention Zepto, Swiggy, Amazon, etc. in their reviews, Prism should automatically surface those mentions and extract the **specific reason** for the comparison.
+If users mention QuickDrop, FoodDash, Amazon, etc. in their reviews, Prism should automatically surface those mentions and extract the **specific reason** for the comparison.
 
 **Output:**
-- `Zepto: Mentioned 47 times | "Faster delivery" — structural speed gap`
-- `Swiggy: Mentioned 31 times | "Better cashback offers" — pricing strategy gap`
+- `QuickDrop: Mentioned 47 times | "Faster delivery" — structural speed gap`
+- `FoodDash: Mentioned 31 times | "Better cashback offers" — pricing strategy gap`
 
 ---
 
@@ -78,7 +78,7 @@ If users mention Zepto, Swiggy, Amazon, etc. in their reviews, Prism should auto
 
 This is beyond feature requests. This is identifying **latent demand** — things users are describing as workarounds, complaints, or wishes that could become entire new product lines.
 
-**Output (for Blinkit):**
+**Output (for SwiftCart):**
 - `"Medicine delivery" mentioned 94 times — users are improvising with a grocery app`
 - `"Cash on delivery for large orders" — unmet trust signal, not just a payment preference`
 
@@ -149,7 +149,7 @@ When a software company uploads user feedback or G2/Capterra reviews:
 ## Part 4: Platform-Level Features (What Makes it "Enterprise Ready")
 
 ### 4.1 Multi-Dataset Comparison Mode
-Upload two CSVs (e.g., "Blinkit Reviews Q1" and "Blinkit Reviews Q2") and Prism generates a **delta report** showing what improved, what got worse, and what new issues emerged.
+Upload two CSVs (e.g., "SwiftCart Reviews Q1" and "SwiftCart Reviews Q2") and Prism generates a **delta report** showing what improved, what got worse, and what new issues emerged.
 
 ### 4.2 Historical Intelligence Archive
 Every analysis auto-saves. Build a **history view** where clients can see how their score has trended over time — like a company health dashboard. This is the feature that makes them come back every month.

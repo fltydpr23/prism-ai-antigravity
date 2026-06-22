@@ -472,7 +472,7 @@ export default function PrismScoreBento() {
                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
                 >
                   <span className="text-white/30 mr-2">&gt;</span>
-                  Blinkit users love speed but are churning over slot availability — fix this before Q3.
+                  SwiftCart users love speed but are churning over slot availability — fix this before Q3.
                   <motion.span
                     className="w-1.5 h-3 bg-emerald-400/70 inline-block align-middle ml-1"
                     animate={{ opacity: [1, 0] }}
@@ -511,9 +511,9 @@ export default function PrismScoreBento() {
               
               <div className="mt-auto flex flex-col gap-2">
                 {[
-                  { name: "Blinkit", score: 88, color: "bg-emerald-400", bg: "bg-emerald-500/20" },
-                  { name: "Zepto", score: 84, color: "bg-amber-400", bg: "bg-amber-500/20" },
-                  { name: "Swiggy", score: 79, color: "bg-rose-400", bg: "bg-rose-500/20" },
+                  { name: "SwiftCart", score: 88, color: "bg-emerald-400", bg: "bg-emerald-500/20" },
+                  { name: "QuickDrop", score: 84, color: "bg-amber-400", bg: "bg-amber-500/20" },
+                  { name: "FoodDash", score: 79, color: "bg-rose-400", bg: "bg-rose-500/20" },
                 ].map((v, i) => (
                   <div key={v.name} className="flex items-center gap-3 bg-[#0A0A0A] border border-white/5 rounded-lg p-2.5">
                     <span className="text-xs font-semibold text-white/30 w-3">{i + 1}</span>

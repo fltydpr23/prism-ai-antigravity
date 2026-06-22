@@ -58,4 +58,15 @@ To review the final pre-launch checklist from the document:
 
 The boilerplate is officially enterprise-grade. You are completely covered across all 15 security layers. Are we ready to move on to the next major feature?
 
+Clouflare Domain Setup
 
+Option B: Migrate your DNS to Cloudflare (Most Professional 👔)
+If you eventually want the files to load from a clean URL like uploads.prismintel.co (which is better if you ever plan to share direct links to files):
+
+In the left sidebar of the Cloudflare Dashboard, click Websites > Add a Site.
+Type in your root domain (e.g., prismintel.co) and select the Free plan.
+Cloudflare will scan your current DNS records. Confirm they look correct.
+Cloudflare will give you two nameservers (e.g., amy.ns.cloudflare.com).
+Log into wherever you bought the domain (GoDaddy, Namecheap, etc.) and replace their default nameservers with the two Cloudflare gave you.
+Once the DNS propagates (usually takes 10-30 minutes), Cloudflare will officially manage your domain.
+You can then go back to your R2 Bucket Settings and click Connect Domain again, and it will work perfectly!

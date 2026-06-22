@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView, Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Zap, Building2 } from "lucide-react";
 import Link from "next/link";
 import localFont from "next/font/local";
 
@@ -268,77 +268,86 @@ export default function PrismFooter({ onStart }: Props) {
 
   return (
     <>
-      {/* ── Brutalist CTA ───────────────────────────────────────────────────── */}
-      <section ref={ctaRef} className="px-6 py-32 border-t border-white/10 bg-black relative">
-        <div className="max-w-7xl mx-auto flex flex-col items-start gap-12">
+      {/* ── Segmented CTA ───────────────────────────────────────────────────── */}
+      <section ref={ctaRef} className="px-6 py-32 border-t border-white/5 bg-[#05050A] relative overflow-hidden">
+        {/* Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-emerald-900/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-          <div className="flex flex-col gap-3 overflow-hidden">
-            {/* Label */}
-            <motion.span
-              variants={FADE_UP}
-              initial="hidden"
-              animate={ctaInView ? "visible" : "hidden"}
-              custom={0}
-              className="text-[10px] font-mono tracking-widest text-white/40 uppercase"
-            >
-              ■ 47,000+ SIGNALS PROCESSED
-            </motion.span>
-
-            {/* Line 1 */}
-            <div className="overflow-hidden">
-              <motion.h2
-                variants={FADE_UP}
-                initial="hidden"
-                animate={ctaInView ? "visible" : "hidden"}
-                custom={0.1}
-                className="text-5xl sm:text-7xl font-bold tracking-tighter text-white uppercase leading-[0.95]"
-              >
-                Consumer truth.
-              </motion.h2>
-            </div>
-
-            {/* Line 2 */}
-            <div className="overflow-hidden">
-              <motion.h2
-                variants={FADE_UP}
-                initial="hidden"
-                animate={ctaInView ? "visible" : "hidden"}
-                custom={0.22}
-                className="text-5xl sm:text-7xl font-bold tracking-tighter text-white uppercase leading-[0.95]"
-              >
-                Research-grade
-              </motion.h2>
-            </div>
-
-            {/* Line 3 — muted */}
-            <div className="overflow-hidden">
-              <motion.h2
-                variants={FADE_UP}
-                initial="hidden"
-                animate={ctaInView ? "visible" : "hidden"}
-                custom={0.34}
-                className="text-5xl sm:text-7xl font-bold tracking-tighter text-white/25 uppercase leading-[0.95]"
-              >
-                Precision.
-              </motion.h2>
-            </div>
-          </div>
-
-          {/* CTA Button */}
+        <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center">
+          
           <motion.div
             variants={FADE_UP}
             initial="hidden"
             animate={ctaInView ? "visible" : "hidden"}
-            custom={0.5}
+            custom={0}
+            className="text-center mb-16"
           >
-            <button
-              onClick={onStart}
-              className="group flex items-center gap-4 border border-white px-8 py-6 text-sm font-mono tracking-widest text-white uppercase hover:bg-white hover:text-black transition-colors duration-200"
-            >
-              [ RUN YOUR FIRST REPORT ]
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
-            </button>
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tighter text-white mb-4">
+              Intelligence at any scale.
+            </h2>
+            <p className="text-white/40 text-lg max-w-xl mx-auto">
+              Choose the path that fits your pipeline. From self-serve analysis to custom enterprise models.
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            {/* Card 1: Startups/Self-Serve */}
+            <motion.div
+              variants={FADE_UP}
+              initial="hidden"
+              animate={ctaInView ? "visible" : "hidden"}
+              custom={0.2}
+              className="group relative p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.03] hover:border-emerald-500/30 transition-all duration-500 flex flex-col overflow-hidden"
+            >
+              {/* Subtle hover gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-transparent to-emerald-500/0 group-hover:from-emerald-500/5 group-hover:to-transparent transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+              
+              <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-8 shrink-0 group-hover:scale-105 transition-transform duration-500">
+                <Zap className="w-7 h-7 text-emerald-400" />
+              </div>
+              
+              <h3 className="text-2xl font-semibold tracking-tight text-white mb-3">Self-Serve Engine</h3>
+              <p className="text-white/40 leading-relaxed mb-10 flex-1">
+                Perfect for product managers and analysts. Upload your CSVs, configure your extraction parameters, and instantly generate boardroom-ready strategic reports.
+              </p>
+              
+              <button
+                onClick={onStart}
+                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-white text-black font-semibold tracking-tight hover:bg-white/90 transition-colors flex items-center justify-center gap-2"
+              >
+                Start Free Analysis <ArrowRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+
+            {/* Card 2: Enterprise/Agencies */}
+            <motion.div
+              variants={FADE_UP}
+              initial="hidden"
+              animate={ctaInView ? "visible" : "hidden"}
+              custom={0.4}
+              className="group relative p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.03] hover:border-cyan-500/30 transition-all duration-500 flex flex-col overflow-hidden"
+            >
+              {/* Subtle hover gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-transparent to-cyan-500/0 group-hover:from-cyan-500/5 group-hover:to-transparent transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+              
+              <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-8 shrink-0 group-hover:scale-105 transition-transform duration-500">
+                <Building2 className="w-7 h-7 text-cyan-400" />
+              </div>
+              
+              <h3 className="text-2xl font-semibold tracking-tight text-white mb-3">Enterprise & Agencies</h3>
+              <p className="text-white/40 leading-relaxed mb-10 flex-1">
+                For massive data streams and high-ticket clients. Get dedicated SOC2-compliant infrastructure, custom ingestion pipelines, and white-labeled PDF generation.
+              </p>
+              
+              <a
+                href="mailto:hello@prismintel.co?subject=Enterprise%20Inquiry"
+                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/[0.05] border border-white/10 text-white font-semibold tracking-tight hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+              >
+                Contact Sales <ArrowRight className="w-4 h-4" />
+              </a>
+            </motion.div>
+          </div>
+
         </div>
       </section>
 
@@ -436,8 +445,8 @@ export default function PrismFooter({ onStart }: Props) {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[10px] font-mono text-white/30 uppercase tracking-widest">
               <span>© 2026 Prism Intelligence Inc.</span>
               <div className="flex gap-6">
-                <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-                <Link href="#" className="hover:text-white transition-colors">Terms</Link>
+                <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
                 <Link href="#" className="hover:text-white transition-colors">System Status</Link>
               </div>
             </div>

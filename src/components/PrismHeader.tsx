@@ -39,7 +39,7 @@ export default function PrismHeader({ onStart }: Props) {
       <div className="max-w-7xl mx-auto w-full px-6 py-4 flex items-center justify-between">
         
         {/* Left: Logo */}
-        <div className="flex items-center gap-3 w-48">
+        <div className="flex items-center gap-3 flex-1">
           <div className="w-8 h-8 rounded-full bg-emerald-400 flex items-center justify-center">
             <div className="w-3 h-3 bg-black rounded-full" />
           </div>

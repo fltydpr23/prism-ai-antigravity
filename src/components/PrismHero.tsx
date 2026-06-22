@@ -12,7 +12,7 @@ interface Props {
 // ─── Data Constellation Config ─────────────────────────────────────────────
 const DATA_SOURCES = [
   "WhatsApp Chat: Query Resolved",
-  "Swiggy Rating: 1★ (Cold food)",
+  "FoodDash Rating: 1★ (Cold food)",
   "Flipkart App: 5★ (Fast delivery)",
   "Razorpay Ticket: Payment issue",
   "X (Twitter) Trend: Brand Mention",
@@ -221,7 +221,10 @@ export default function PrismHero({ onStart }: Props) {
 
   // Generate constellation chips on mount
   useEffect(() => {
-    const newChips = Array.from({ length: 40 }).map((_, i) => ({
+    const isMobile = window.innerWidth < 768;
+    const numChips = isMobile ? 12 : 40;
+    
+    const newChips = Array.from({ length: numChips }).map((_, i) => ({
       id: i,
       text: DATA_SOURCES[Math.floor(Math.random() * DATA_SOURCES.length)],
       delay: Math.random() * 15,
