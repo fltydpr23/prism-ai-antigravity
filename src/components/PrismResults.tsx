@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import posthog from "posthog-js";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -10,7 +10,7 @@ import {
   BarChart3, Target, Heart,
   ShieldAlert, Globe, Eye, Check, ChevronDown,
   Crosshair, Layers, Flame, TriangleAlert, MessageSquare,
-  Share2, Printer, Link as LinkIcon, Loader2, Bot, Clock
+  Share2, Printer, Link as LinkIcon, Loader2, Bot, Clock, Search
 } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import { calculatePrismScore } from "../../lib/prismScore";
@@ -18,6 +18,7 @@ import { INDUSTRY_MAP } from "../../lib/industryConfig";
 
 
 import PrismPaywall from "./PrismPaywall";
+import QuantitativeVisuals from "./QuantitativeVisuals";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -300,6 +301,19 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
   const variants = baseLm?.variants as Record<string, LocalModel> | undefined;
   const variantKeys = variants ? Object.keys(variants) : [];
   const [selectedVariant, setSelectedVariant] = useState<string | null>(null);
+  const [isVariantDropdownOpen, setIsVariantDropdownOpen] = useState(false);
+  const [variantSearch, setVariantSearch] = useState("");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsVariantDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   
   const lm = (selectedVariant && variants ? variants[selectedVariant] : baseLm) as Record<string, any>;
 
@@ -441,6 +455,13 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
   const passionIndex = cf.passion_index || lm.passion_index;
   const realityChecks: any[] = cf.reality_checks || lm.reality_checks || [];
 
+  const totalRows = lm?.coverage?.totalRowsProcessed || baseLm?.coverage?.totalRowsProcessed || 0;
+  const formatPrevalence = (pct: any) => {
+    if (typeof pct !== "number" || totalRows === 0 || pct === 0) return null;
+    const exact = Math.round((pct / 100) * totalRows);
+    return `~${exact.toLocaleString()}/${totalRows.toLocaleString()} (${pct}%)`;
+  };
+
   // Quantitative fields
   const statSummary = qa.statistical_summary || "";
   const keyCorrelations = qa.key_correlations || [];
@@ -573,8 +594,8 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
         </div>
       )}
 
-      {/* ── Variant Tabs (if applicable) ───────────────────────────────── */}
-      {variantKeys.length > 0 && (
+      {/* ── Variant Selection ───────────────────────────────── */}
+      {variantKeys.length > 0 && variantKeys.length <= 5 && (
         <div className="flex flex-wrap items-center gap-2 px-1 mb-2">
           <button
             onClick={() => setSelectedVariant(null)}
@@ -600,6 +621,100 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
               {key.toUpperCase()}
             </button>
           ))}
+        </div>
+      )}
+
+      {variantKeys.length > 5 && (
+        <div className="relative px-1 mb-3 z-50 w-full max-w-sm" ref={dropdownRef}>
+          <div className="text-[10px] text-white/40 mb-1.5 uppercase tracking-widest font-semibold ml-1">
+            Isolate Analysis Segment
+          </div>
+          <button
+            onClick={() => setIsVariantDropdownOpen(!isVariantDropdownOpen)}
+            className="w-full flex items-center justify-between px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all shadow-lg backdrop-blur-md"
+          >
+            <div className="flex flex-col items-start">
+              <span className="text-[10px] text-emerald-400/70 font-mono tracking-wider">
+                CURRENT SEGMENT
+              </span>
+              <span className="text-sm font-semibold text-white tracking-wide">
+                {selectedVariant ? selectedVariant.toUpperCase() : "OVERALL MARKET"}
+              </span>
+            </div>
+            <ChevronDown className={`w-5 h-5 text-white/40 transition-transform duration-300 ${isVariantDropdownOpen ? "rotate-180" : ""}`} />
+          </button>
+
+          <AnimatePresence>
+            {isVariantDropdownOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full mt-2 w-full bg-[#0a0a0c]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden"
+              >
+                <div className="p-3 border-b border-white/5 relative">
+                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                  <input 
+                    type="text" 
+                    placeholder="Search variants..." 
+                    value={variantSearch}
+                    onChange={(e) => setVariantSearch(e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-9 pr-3 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                  />
+                </div>
+                
+                <div className="max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                  <div className="p-2 flex flex-col gap-1">
+                    {(!variantSearch || "overall market".includes(variantSearch.toLowerCase())) && (
+                      <button
+                        onClick={() => {
+                          setSelectedVariant(null);
+                          setIsVariantDropdownOpen(false);
+                          setVariantSearch("");
+                        }}
+                        className={`w-full text-left px-3 py-2.5 rounded-lg text-xs font-semibold tracking-wider transition-all flex items-center justify-between ${
+                          selectedVariant === null
+                            ? "bg-emerald-500/10 text-emerald-400"
+                            : "text-white/60 hover:bg-white/5 hover:text-white"
+                        }`}
+                      >
+                        OVERALL MARKET
+                        {selectedVariant === null && <Check className="w-4 h-4" />}
+                      </button>
+                    )}
+                    
+                    {variantKeys
+                      .filter(k => k.toLowerCase().includes(variantSearch.toLowerCase()))
+                      .map(key => (
+                        <button
+                          key={key}
+                          onClick={() => {
+                            setSelectedVariant(key);
+                            setIsVariantDropdownOpen(false);
+                            setVariantSearch("");
+                          }}
+                          className={`w-full text-left px-3 py-2.5 rounded-lg text-xs font-semibold tracking-wider transition-all flex items-center justify-between ${
+                            selectedVariant === key
+                              ? "bg-cyan-500/10 text-cyan-400"
+                              : "text-white/60 hover:bg-white/5 hover:text-white"
+                          }`}
+                        >
+                          {key.toUpperCase()}
+                          {selectedVariant === key && <Check className="w-4 h-4" />}
+                        </button>
+                      ))}
+                      
+                    {variantKeys.filter(k => k.toLowerCase().includes(variantSearch.toLowerCase())).length === 0 && variantSearch && (
+                      <div className="px-3 py-4 text-center text-xs text-white/30 italic">
+                        No variants found
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       )}
 
@@ -722,81 +837,8 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
 
       {isQuantitative ? (
         // ── Quantitative Dashboard ──────────────────────────────────────────
-        <div className="mt-4 flex flex-col gap-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Key Correlations */}
-            <div className="intel-panel panel-violet p-5">
-              <PanelLabel icon={Layers} label="Key Correlations" accent="text-violet-400/60" />
-              {keyCorrelations.length > 0 ? (
-                <div className="flex flex-col gap-2.5">
-                  {keyCorrelations.map((c: any, i: number) => (
-                    <div key={i} className="flex flex-col gap-1 py-2 border-b border-white/5 last:border-0">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-semibold text-white/80">{c.variables_involved?.join(" ↔ ") || "Correlation"}</span>
-                        <span className={`badge shrink-0 text-[9px] ${c.strength === "strong" ? "badge-emerald" : c.strength === "weak" ? "badge-crimson" : "badge-amber"}`}>
-                          {c.strength} correlation
-                        </span>
-                      </div>
-                      <p className="text-xs text-white/40 leading-relaxed">{c.insight}</p>
-                    </div>
-                  ))}
-                </div>
-              ) : <EmptySlot msg="No correlations detected." />}
-            </div>
-
-            {/* Cluster Profiles */}
-            <div className="intel-panel panel-emerald p-5">
-              <PanelLabel icon={Users} label="Cluster Profiles" accent="text-emerald-400/60" />
-              {clusters.length > 0 ? (
-                <div className="flex flex-col gap-3">
-                  {clusters.map((c: any, i: number) => (
-                    <div key={i} className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3.5">
-                      <p className="text-sm font-semibold text-white/85 mb-1">{c.cluster_name}</p>
-                      <p className="text-xs text-emerald-400/70 mb-2">{c.characteristics}</p>
-                      {c.business_implication && (
-                        <p className="text-[11px] text-white/40 leading-snug">→ {c.business_implication}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ) : <EmptySlot msg="No clusters detected." />}
-            </div>
-
-            {/* Outliers */}
-            <div className="intel-panel panel-crimson p-5">
-              <PanelLabel icon={AlertTriangle} label="Outliers & Anomalies" accent="text-rose-400/60" />
-              {outliers.length > 0 ? (
-                <div className="flex flex-col gap-3">
-                  {outliers.map((o: any, i: number) => (
-                    <div key={i} className="rounded-xl bg-rose-500/5 border border-rose-500/10 p-3.5">
-                      <p className="text-xs font-semibold text-white/80 mb-1">{o.description}</p>
-                      <p className="text-[11px] text-white/40 mb-1.5">{o.potential_cause}</p>
-                      <span className={`inline-block badge text-[9px] ${o.severity === "high" ? "badge-crimson" : "badge-amber"}`}>
-                        {o.severity} severity
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              ) : <EmptySlot msg="No outliers detected." />}
-            </div>
-          </div>
-
-          {/* Predictive Insights */}
-          {predictiveInsights.length > 0 && (
-            <ExpandableCard title="Predictive Insights" icon={Activity} badge={`${predictiveInsights.length} forecasts`} defaultOpen={true}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {predictiveInsights.map((pi: any, i: number) => (
-                  <div key={i} className="rounded-xl bg-cyan-500/5 border border-cyan-500/10 p-4 relative group hover:bg-cyan-500/10 transition-colors">
-                    <p className="text-sm font-medium text-white/80 mb-2">{pi.prediction}</p>
-                    <div className="text-[11px] text-cyan-400/60 flex items-center gap-1.5 font-semibold uppercase tracking-wider mb-2">
-                      <Check className="w-3 h-3" /> {pi.confidence_level} Confidence
-                    </div>
-                    <p className="text-xs text-white/40 leading-relaxed">{pi.recommended_action}</p>
-                  </div>
-                ))}
-              </div>
-            </ExpandableCard>
-          )}
+        <div className="mt-4">
+          <QuantitativeVisuals data={lm?.quantitative_analysis} />
         </div>
       ) : (
         // ── Qualitative Dashboard (Legacy) ──────────────────────────────────
@@ -848,14 +890,20 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
               <PanelLabel icon={Target} label={panelLabels.features} accent="text-cyan-400/60" />
               {features.length > 0 ? (
                 <div className="flex flex-col gap-2.5">
-                  {features.map((f: any, i: number) => (
-                    <div key={i} className="flex items-start justify-between gap-2 py-1.5 border-b border-white/5 last:border-0">
-                      <span className="text-sm text-white/75 leading-snug flex-1">{f.feature}</span>
-                      <span className={`badge shrink-0 text-[9px] ${f.build_priority === "critical" ? "badge-crimson" : f.build_priority === "high" ? "badge-amber" : "badge-cyan"}`}>
-                        {f.build_priority}
-                      </span>
-                    </div>
-                  ))}
+                  {features.map((f: any, i: number) => {
+                    const prev = formatPrevalence(f.estimated_prevalence_percentage);
+                    return (
+                      <div key={i} className="flex items-start justify-between gap-2 py-1.5 border-b border-white/5 last:border-0">
+                        <span className="text-sm text-white/75 leading-snug flex-1">
+                          {f.feature}
+                          {prev && <span className="ml-2 text-[10px] text-cyan-400/50 bg-cyan-500/10 px-1.5 py-0.5 rounded-full whitespace-nowrap">{prev}</span>}
+                        </span>
+                        <span className={`badge shrink-0 text-[9px] ${f.build_priority === "critical" ? "badge-crimson" : f.build_priority === "high" ? "badge-amber" : "badge-cyan"}`}>
+                          {f.build_priority}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               ) : <EmptySlot msg="No feature requests detected." />}
             </div>
@@ -865,17 +913,23 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
               <PanelLabel icon={Flame} label={panelLabels.emotions} accent="text-violet-400/60" />
               {emotions.length > 0 ? (
                 <div className="flex flex-col gap-3">
-                  {emotions.slice(0, 4).map((e: any, i: number) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className={`badge text-[9px] shrink-0 mt-0.5 ${e.intensity === "high" ? "badge-crimson" : e.intensity === "medium" ? "badge-amber" : "badge-cyan"}`}>
-                        {e.intensity}
-                      </span>
-                      <div>
-                        <p className="text-xs font-medium text-white/75 capitalize">{e.emotion}</p>
-                        {e.trigger && <p className="text-[11px] text-white/35 mt-0.5 leading-snug">{e.trigger}</p>}
+                  {emotions.slice(0, 4).map((e: any, i: number) => {
+                    const prev = formatPrevalence(e.estimated_prevalence_percentage);
+                    return (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className={`badge text-[9px] shrink-0 mt-0.5 ${e.intensity === "high" ? "badge-crimson" : e.intensity === "medium" ? "badge-amber" : "badge-cyan"}`}>
+                          {e.intensity}
+                        </span>
+                        <div>
+                          <p className="text-xs font-medium text-white/75 capitalize">
+                            {e.emotion}
+                            {prev && <span className="ml-2 inline-block text-[9px] text-violet-400/50 bg-violet-500/10 px-1.5 py-0.5 rounded-full">{prev}</span>}
+                          </p>
+                          {e.trigger && <p className="text-[11px] text-white/35 mt-0.5 leading-snug">{e.trigger}</p>}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               ) : <EmptySlot msg="No emotional signals detected." />}
             </div>
@@ -889,19 +943,25 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
                 <div className="intel-panel panel-emerald p-5">
                   <PanelLabel icon={Users} label={panelLabels.segments} accent="text-emerald-400/60" />
                   <div className="flex flex-col gap-3">
-                    {segments.map((s: any, i: number) => (
-                      <div key={i} className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3.5">
-                        <p className="text-sm font-semibold text-white/85 mb-1">{s.segment_name}</p>
-                        {s.how_to_win_them && (
-                          <p className="text-[11px] text-emerald-400/70 leading-snug">→ {s.how_to_win_them}</p>
-                        )}
-                        {s.retention_likelihood && (
-                          <span className={`mt-2 inline-block badge text-[9px] ${s.retention_likelihood === "high" ? "badge-emerald" : s.retention_likelihood === "medium" ? "badge-amber" : "badge-crimson"}`}>
-                            {s.retention_likelihood} retention
-                          </span>
-                        )}
-                      </div>
-                    ))}
+                    {segments.map((s: any, i: number) => {
+                      const prev = formatPrevalence(s.estimated_prevalence_percentage);
+                      return (
+                        <div key={i} className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3.5">
+                          <p className="text-sm font-semibold text-white/85 mb-1 flex justify-between items-center">
+                            {s.segment_name}
+                            {prev && <span className="text-[9px] text-emerald-400/60 bg-emerald-500/10 px-1.5 py-0.5 rounded-full font-mono">{prev}</span>}
+                          </p>
+                          {s.how_to_win_them && (
+                            <p className="text-[11px] text-emerald-400/70 leading-snug">→ {s.how_to_win_them}</p>
+                          )}
+                          {s.retention_likelihood && (
+                            <span className={`mt-2 inline-block badge text-[9px] ${s.retention_likelihood === "high" ? "badge-emerald" : s.retention_likelihood === "medium" ? "badge-amber" : "badge-crimson"}`}>
+                              {s.retention_likelihood} retention
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -911,14 +971,20 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
                 <div className="intel-panel panel-crimson p-5">
                   <PanelLabel icon={ShieldAlert} label={panelLabels.churn} accent="text-rose-400/60" />
                   <div className="flex flex-col gap-3">
-                    {churnSignals.map((s: any, i: number) => (
-                      <div key={i} className="rounded-xl bg-rose-500/5 border border-rose-500/10 p-3.5">
-                        <p className="text-xs font-medium text-white/80 mb-1.5">{s.signal}</p>
-                        {s.retention_action && (
-                          <p className="text-[11px] text-emerald-400/70 leading-snug">Fix: {s.retention_action}</p>
-                        )}
-                      </div>
-                    ))}
+                    {churnSignals.map((s: any, i: number) => {
+                      const prev = formatPrevalence(s.estimated_prevalence_percentage);
+                      return (
+                        <div key={i} className="rounded-xl bg-rose-500/5 border border-rose-500/10 p-3.5">
+                          <p className="text-xs font-medium text-white/80 mb-1.5 flex justify-between items-start gap-2">
+                            <span>{s.signal}</span>
+                            {prev && <span className="text-[9px] text-rose-400/60 bg-rose-500/10 px-1.5 py-0.5 rounded-full font-mono shrink-0">{prev}</span>}
+                          </p>
+                          {s.retention_action && (
+                            <p className="text-[11px] text-emerald-400/70 leading-snug">Fix: {s.retention_action}</p>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}

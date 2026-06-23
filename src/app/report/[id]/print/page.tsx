@@ -62,7 +62,7 @@ export default function PrintPage() {
 
   if (error) {
     return (
-      <div style={{ fontFamily: "sans-serif", background: "#080810", color: "#fff", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ fontFamily: "sans-serif", background: "#f8f9fa", color: "#111", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <p>Error: {error}</p>
       </div>
     );
@@ -70,8 +70,8 @@ export default function PrintPage() {
 
   if (!report) {
     return (
-      <div style={{ fontFamily: "sans-serif", background: "#080810", color: "rgba(255,255,255,0.4)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
-        <div style={{ width: 16, height: 16, border: "2px solid #34d399", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+      <div style={{ fontFamily: "sans-serif", background: "#f8f9fa", color: "#666", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
+        <div style={{ width: 16, height: 16, border: "2px solid #10b981", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
         <span>Preparing premium report...</span>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
@@ -133,6 +133,7 @@ export default function PrintPage() {
           brandColor: report.workspace.brand_color,
           companyName: report.workspace.name
         } : undefined}
+        totalRowsProcessed={analysis?.coverage?.totalRowsProcessed}
       />
     </>
   );

@@ -1,0 +1,273 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-23T09:15:31.372Z",
+    "moon": {
+      "phase01": 0.2750876400580583,
+      "label": "First quarter",
+      "illuminationPercent": 58
+    },
+    "metrics": {
+      "charCount": 481809,
+      "charCountNoWs": 370223,
+      "wordCount": 66017,
+      "sentenceCount": 3237,
+      "paragraphCount": 1,
+      "avgWordLength": 5.61,
+      "lexicalDensity": 0.84,
+      "numericTokenCount": 6711
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2563
+      },
+      {
+        "token": "google",
+        "count": 2561
+      },
+      {
+        "token": "blinkit",
+        "count": 1832
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1300
+      },
+      {
+        "token": "company",
+        "count": 1291
+      },
+      {
+        "token": "date",
+        "count": 1285
+      },
+      {
+        "token": "reply",
+        "count": 1281
+      },
+      {
+        "token": "play",
+        "count": 1280
+      },
+      {
+        "token": "score",
+        "count": 1280
+      },
+      {
+        "token": "likes",
+        "count": 1280
+      },
+      {
+        "token": "you",
+        "count": 1223
+      }
+    ],
+    "luneSignature": {
+      "hue": 61,
+      "drift": 0.41
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "Blinkit faces significant customer frustration due to late deliveries, poor support, hidden charges, and refund issues, necessitating immediate improvements in these areas to prevent churn.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Customers are increasingly frustrated with the service due to persistent issues."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "acha hai but support slow",
+              "what_they_do": "complain about slow support despite praising the service",
+              "severity": "medium"
+            },
+            {
+              "what_they_say": "Blinkit never disappoint us ... simply the best of the best",
+              "what_they_do": "leave negative reviews about late deliveries and poor support",
+              "severity": "high"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 70
+            },
+            {
+              "feature": "cash on delivery",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 0.3
+            },
+            {
+              "feature": "free delivery",
+              "frequency": "medium",
+              "build_priority": "medium",
+              "estimated_prevalence_percentage": 50
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "late deliveries and poor support",
+              "estimated_prevalence_percentage": 90
+            },
+            {
+              "emotion": "angry",
+              "intensity": "high",
+              "trigger": "hidden charges and refund issues",
+              "estimated_prevalence_percentage": 80
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "improve delivery times and support",
+              "estimated_prevalence_percentage": 80
+            },
+            {
+              "segment_name": "The Disappointed Customer",
+              "how_to_win_them": "address hidden charges and refund issues",
+              "estimated_prevalence_percentage": 60
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery",
+                "retention_action": "improve delivery logistics",
+                "estimated_prevalence_percentage": 2.1
+              },
+              {
+                "signal": "poor support",
+                "retention_action": "enhance customer support",
+                "estimated_prevalence_percentage": 3.8
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "improve delivery logistics",
+              "why": "to reduce late deliveries and improve customer satisfaction",
+              "expected_outcome": "increase customer retention by 15%",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "enhance customer support",
+              "why": "to address poor support complaints and improve customer experience",
+              "expected_outcome": "increase customer satisfaction by 20%",
+              "priority": "2",
+              "timeline": "later"
+            },
+            {
+              "action": "address hidden charges and refund issues",
+              "why": "to improve transparency and trust with customers",
+              "expected_outcome": "increase customer loyalty by 10%",
+              "priority": "3",
+              "timeline": "now"
+            }
+          ],
+          "passion_index": {
+            "score": 80,
+            "reasoning": "high intensity of emotions and frequent use of strong language"
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "customers are frustrated with late deliveries",
+              "raw_native_quote": "sabse ghatiya delivery hai tum log ki",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "customers are angry about hidden charges and refund issues",
+              "raw_native_quote": "fake hai ...mera order ka payment le liya or item bhi cancel kar diya refund bhi nhi aaya amount.....",
+              "severity": "high"
+            }
+          ]
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "coverage": {
+          "totalRowsAvailable": 1280,
+          "totalRowsProcessed": 1280,
+          "totalVariantsFound": 1,
+          "variantsAnalyzed": 1,
+          "mode": "background"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Blinkit faces significant customer frustration due to late deliveries, poor support, hidden charges, and refund issues, necessitating immediate improvements in these areas to prevent churn.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Customers are increasingly frustrated with the service due to persistent issues.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"acha hai but support slow\",\n        \"what_they_do\": \"complain about slow support despite praising the service\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"what_they_say\": \"Blinkit never disappoint us ... simply the best of the best\",\n        \"what_they_do\": \"leave negative reviews about late deliveries and poor support\",\n        \"severity\": \"high\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"cash on delivery\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 0.3\n      },\n      {\n        \"feature\": \"free delivery\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"medium\",\n        \"estimated_prevalence_percentage\": 50\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"late deliveries and poor support\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"hidden charges and refund issues\",\n        \"estimated_prevalence_percentage\": 80\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"improve delivery times and support\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"segment_name\": \"The Disappointed Customer\",\n        \"how_to_win_them\": \"address hidden charges and refund issues\",\n        \"estimated_prevalence_percentage\": 60\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"improve delivery logistics\",\n          \"estimated_prevalence_percentage\": 2.1\n        },\n        {\n          \"signal\": \"poor support\",\n          \"retention_action\": \"enhance customer support\",\n          \"estimated_prevalence_percentage\": 3.8\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"improve delivery logistics\",\n        \"why\": \"to reduce late deliveries and improve customer satisfaction\",\n        \"expected_outcome\": \"increase customer retention by 15%\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"enhance customer support\",\n        \"why\": \"to address poor support complaints and improve customer experience\",\n        \"expected_outcome\": \"increase customer satisfaction by 20%\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      },\n      {\n        \"action\": \"address hidden charges and refund issues\",\n        \"why\": \"to improve transparency and trust with customers\",\n        \"expected_outcome\": \"increase customer loyalty by 10%\",\n        \"priority\": \"3\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 80,\n      \"reasoning\": \"high intensity of emotions and frequent use of strong language\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"customers are frustrated with late deliveries\",\n        \"raw_native_quote\": \"sabse ghatiya delivery hai tum log ki\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"customers are angry about hidden charges and refund issues\",\n        \"raw_native_quote\": \"fake hai ...mera order ka payment le liya or item bhi cancel kar diya refund bhi nhi aaya amount.....\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "ec091ab9-0a5d-49e2-add5-22f7762edabc"
+}

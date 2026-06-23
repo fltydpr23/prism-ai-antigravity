@@ -46,3 +46,11 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Python environments
+.venv/
+.venv_lib/
+__pycache__/
+
+# Prism temp files
+.prism-tmp-dataset.csv

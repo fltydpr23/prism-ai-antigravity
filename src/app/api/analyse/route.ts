@@ -198,6 +198,7 @@ export async function POST(request: Request) {
         const { data, error } = await supabase
           .from("analyses")
           .insert({
+            input: text,
             result: { status: "processing", progress: "Started background job" },
             source: "api/analyse-background",
             user_id: userId,
@@ -288,6 +289,7 @@ export async function POST(request: Request) {
             const { data, error } = await supabase
               .from("analyses")
               .insert({
+                input: text,
                 result,
                 source: "api/analyse",
                 user_id: userId,

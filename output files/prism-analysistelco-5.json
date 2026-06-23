@@ -1,0 +1,197 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "moon": {
+      "label": "First quarter",
+      "phase01": 0.2830538172272667,
+      "illuminationPercent": 60
+    },
+    "empty": false,
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "metrics": {
+      "charCount": 4336742,
+      "wordCount": 345203,
+      "avgWordLength": 9.77,
+      "charCountNoWs": 3371016,
+      "sentenceCount": 13360,
+      "lexicalDensity": 0.751,
+      "paragraphCount": 1,
+      "numericTokenCount": 41520
+    },
+    "industry": {
+      "id": "finance",
+      "emoji": "🏦",
+      "label": "Finance / Fintech",
+      "confidence": "high",
+      "detectionMethod": "auto_detected"
+    },
+    "topTokens": [
+      {
+        "count": 9838,
+        "token": "service"
+      },
+      {
+        "count": 9156,
+        "token": "internet"
+      },
+      {
+        "count": 7043,
+        "token": "customerid"
+      },
+      {
+        "count": 7043,
+        "token": "gender"
+      },
+      {
+        "count": 7043,
+        "token": "seniorcitizen"
+      },
+      {
+        "count": 7043,
+        "token": "partner"
+      },
+      {
+        "count": 7043,
+        "token": "dependents"
+      },
+      {
+        "count": 7043,
+        "token": "tenure"
+      },
+      {
+        "count": 7043,
+        "token": "phoneservice"
+      },
+      {
+        "count": 7043,
+        "token": "multiplelines"
+      },
+      {
+        "count": 7043,
+        "token": "internetservice"
+      },
+      {
+        "count": 7043,
+        "token": "onlinesecurity"
+      }
+    ],
+    "localModel": {
+      "ok": true,
+      "raw": "{\n  \"executive_summary\": \"The probability of customer survival decreases over time, with a significant correlation between tenure, SeniorCitizen status, and MonthlyCharges, indicating that increases in these features are associated with increases in MonthlyCharges.\",\n  \n  \"quantitative_analysis\": {\n    \"statistical_summary\": \"The data exhibits a positive correlation between tenure and MonthlyCharges, as well as between SeniorCitizen status and MonthlyCharges, with coefficient weights of 7.3516 and 6.5032, respectively.\",\n    \"key_correlations\": [\n      {\n        \"variable_a\": \"tenure\",\n        \"variable_b\": \"MonthlyCharges\",\n        \"correlation\": \"Strong Positive\",\n        \"coefficient_weight\": 7.3516,\n        \"insight\": \"Increases in tenure are associated with increases in MonthlyCharges.\"\n      },\n      {\n        \"variable_a\": \"SeniorCitizen\",\n        \"variable_b\": \"MonthlyCharges\",\n        \"correlation\": \"Strong Positive\",\n        \"coefficient_weight\": 6.5032,\n        \"insight\": \"SeniorCitizen status is positively correlated with MonthlyCharges, indicating that senior citizens tend to have higher monthly charges.\"\n      }\n    ],\n    \"pca_components\": [\n      {\n        \"component\": \"Principal Component 1\",\n        \"variance_explained_pct\": \"Not detected\",\n        \"top_driving_metric\": \"Not detected\"\n      }\n    ],\n    \"survival_analysis\": [\n      {\n        \"time_milestone\": 18.0,\n        \"survival_probability_pct\": 81.2\n      },\n      {\n        \"time_milestone\": 36.0,\n        \"survival_probability_pct\": 74.9\n      },\n      {\n        \"time_milestone\": 54.0,\n        \"survival_probability_pct\": 68.6\n      }\n    ],\n    \"categorical_dependencies\": [\n      {\n        \"variables_tested\": [\"customer_support_complaints\", \"pricing_and_hidden_charges\"],\n        \"chi_square_statistic\": \"Not detected\",\n        \"p_value\": \"Not detected\",\n        \"is_significant\": \"Not detected\",\n        \"insight\": \"Customer support complaints and pricing/hidden charges issues are mentioned by 18.2% and 8.7% of users, respectively.\"\n      }\n    ],\n    \"outlier_detection\": [\n      {\n        \"outlier_description\": \"Values greater than 81.49 (mean + 2 std) or less than -17.71 (mean - 2 std) for tenure may be considered outliers\",\n        \"significance\": \"high\"\n      },\n      {\n        \"outlier_description\": \"Values greater than 124.94 (mean + 2 std) or less than 4.59 (mean - 2 std) for MonthlyCharges may be considered outliers\",\n        \"significance\": \"high\"\n      }\n    ],\n    \"cluster_profiles\": [\n      {\n        \"cluster_name\": \"Low Monthly Charges\",\n        \"percentage_of_data\": 25,\n        \"business_persona\": \"Customers with low monthly charges tend to have shorter tenure and are less likely to be senior citizens.\",\n        \"strategic_implication\": \"Targeted marketing efforts may be effective in attracting and retaining this customer segment.\"\n      },\n      {\n        \"cluster_name\": \"Medium Monthly Charges\",\n        \"percentage_of_data\": 50,\n        \"business_persona\": \"Customers with medium monthly charges exhibit a mix of tenure and senior citizen status.\",\n        \"strategic_implication\": \"Personalized service and flexible pricing plans may help retain this large customer segment.\"\n      },\n      {\n        \"cluster_name\": \"High Monthly Charges\",\n        \"percentage_of_data\": 25,\n        \"business_persona\": \"Customers with high monthly charges tend to have longer tenure and are more likely to be senior citizens.\",\n        \"strategic_implication\": \"Premium services and loyalty programs may be effective in retaining this high-value customer segment.\"\n      }\n    ],\n    \"predictive_insights\": [\n      {\n        \"insight\": \"The probability of customer survival decreases over time.\",\n        \"confidence\": \"high\",\n        \"actionable_recommendation\": \"Implement targeted retention strategies to reduce churn rates.\"\n      },\n      {\n        \"insight\": \"Tenure and SeniorCitizen status are top drivers of MonthlyCharges.\",\n        \"confidence\": \"high\",\n        \"actionable_recommendation\": \"Develop pricing plans and services that cater to these customer segments.\"\n      }\n    ]\n  }\n}",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "coverage": {
+          "mode": "background",
+          "variantsAnalyzed": 1,
+          "totalRowsAvailable": 7043,
+          "totalRowsProcessed": 7043,
+          "totalVariantsFound": 1
+        },
+        "executive_summary": "The probability of customer survival decreases over time, with a significant correlation between tenure, SeniorCitizen status, and MonthlyCharges, indicating that increases in these features are associated with increases in MonthlyCharges.",
+        "quantitative_analysis": {
+          "pca_components": [
+            {
+              "component": "Principal Component 1",
+              "top_driving_metric": "Not detected",
+              "variance_explained_pct": "Not detected"
+            }
+          ],
+          "cluster_profiles": [
+            {
+              "cluster_name": "Low Monthly Charges",
+              "business_persona": "Customers with low monthly charges tend to have shorter tenure and are less likely to be senior citizens.",
+              "percentage_of_data": 25,
+              "strategic_implication": "Targeted marketing efforts may be effective in attracting and retaining this customer segment."
+            },
+            {
+              "cluster_name": "Medium Monthly Charges",
+              "business_persona": "Customers with medium monthly charges exhibit a mix of tenure and senior citizen status.",
+              "percentage_of_data": 50,
+              "strategic_implication": "Personalized service and flexible pricing plans may help retain this large customer segment."
+            },
+            {
+              "cluster_name": "High Monthly Charges",
+              "business_persona": "Customers with high monthly charges tend to have longer tenure and are more likely to be senior citizens.",
+              "percentage_of_data": 25,
+              "strategic_implication": "Premium services and loyalty programs may be effective in retaining this high-value customer segment."
+            }
+          ],
+          "key_correlations": [
+            {
+              "insight": "Increases in tenure are associated with increases in MonthlyCharges.",
+              "variable_a": "tenure",
+              "variable_b": "MonthlyCharges",
+              "correlation": "Strong Positive",
+              "coefficient_weight": 7.3516
+            },
+            {
+              "insight": "SeniorCitizen status is positively correlated with MonthlyCharges, indicating that senior citizens tend to have higher monthly charges.",
+              "variable_a": "SeniorCitizen",
+              "variable_b": "MonthlyCharges",
+              "correlation": "Strong Positive",
+              "coefficient_weight": 6.5032
+            }
+          ],
+          "outlier_detection": [
+            {
+              "significance": "high",
+              "outlier_description": "Values greater than 81.49 (mean + 2 std) or less than -17.71 (mean - 2 std) for tenure may be considered outliers"
+            },
+            {
+              "significance": "high",
+              "outlier_description": "Values greater than 124.94 (mean + 2 std) or less than 4.59 (mean - 2 std) for MonthlyCharges may be considered outliers"
+            }
+          ],
+          "survival_analysis": [
+            {
+              "time_milestone": 18,
+              "survival_probability_pct": 81.2
+            },
+            {
+              "time_milestone": 36,
+              "survival_probability_pct": 74.9
+            },
+            {
+              "time_milestone": 54,
+              "survival_probability_pct": 68.6
+            }
+          ],
+          "predictive_insights": [
+            {
+              "insight": "The probability of customer survival decreases over time.",
+              "confidence": "high",
+              "actionable_recommendation": "Implement targeted retention strategies to reduce churn rates."
+            },
+            {
+              "insight": "Tenure and SeniorCitizen status are top drivers of MonthlyCharges.",
+              "confidence": "high",
+              "actionable_recommendation": "Develop pricing plans and services that cater to these customer segments."
+            }
+          ],
+          "statistical_summary": "The data exhibits a positive correlation between tenure and MonthlyCharges, as well as between SeniorCitizen status and MonthlyCharges, with coefficient weights of 7.3516 and 6.5032, respectively.",
+          "categorical_dependencies": [
+            {
+              "insight": "Customer support complaints and pricing/hidden charges issues are mentioned by 18.2% and 8.7% of users, respectively.",
+              "p_value": "Not detected",
+              "is_significant": "Not detected",
+              "variables_tested": [
+                "customer_support_complaints",
+                "pricing_and_hidden_charges"
+              ],
+              "chi_square_statistic": "Not detected"
+            }
+          ]
+        }
+      },
+      "provider": "openai-compatible"
+    },
+    "generatedAt": "2026-06-23T14:54:16.618Z",
+    "luneSignature": {
+      "hue": 99,
+      "drift": 0.91
+    }
+  },
+  "saved": true,
+  "id": "83831201-d50e-4682-a886-0af5ffb53e06"
+}

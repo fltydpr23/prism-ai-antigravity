@@ -1,0 +1,192 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "moon": {
+      "label": "First quarter",
+      "phase01": 0.2833926690226933,
+      "illuminationPercent": 60
+    },
+    "empty": false,
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "metrics": {
+      "charCount": 4336742,
+      "wordCount": 345203,
+      "avgWordLength": 9.77,
+      "charCountNoWs": 3371016,
+      "sentenceCount": 13360,
+      "lexicalDensity": 0.751,
+      "paragraphCount": 1,
+      "numericTokenCount": 41520
+    },
+    "industry": {
+      "id": "finance",
+      "emoji": "🏦",
+      "label": "Finance / Fintech",
+      "confidence": "high",
+      "detectionMethod": "auto_detected"
+    },
+    "topTokens": [
+      {
+        "count": 9838,
+        "token": "service"
+      },
+      {
+        "count": 9156,
+        "token": "internet"
+      },
+      {
+        "count": 7043,
+        "token": "customerid"
+      },
+      {
+        "count": 7043,
+        "token": "gender"
+      },
+      {
+        "count": 7043,
+        "token": "seniorcitizen"
+      },
+      {
+        "count": 7043,
+        "token": "partner"
+      },
+      {
+        "count": 7043,
+        "token": "dependents"
+      },
+      {
+        "count": 7043,
+        "token": "tenure"
+      },
+      {
+        "count": 7043,
+        "token": "phoneservice"
+      },
+      {
+        "count": 7043,
+        "token": "multiplelines"
+      },
+      {
+        "count": 7043,
+        "token": "internetservice"
+      },
+      {
+        "count": 7043,
+        "token": "onlinesecurity"
+      }
+    ],
+    "localModel": {
+      "ok": true,
+      "raw": "{\n  \"executive_summary\": \"Approximately 81.2% of customers are predicted to remain with the service after 18 months, with a statistically significant positive correlation between MonthlyCharges and tenure, as well as between MonthlyCharges and SeniorCitizen.\",\n  \n  \"quantitative_analysis\": {\n    \"statistical_summary\": \"The data shows a positive correlation between MonthlyCharges and tenure, and between MonthlyCharges and SeniorCitizen, with a significant proportion of senior citizens and a skewed distribution of SeniorCitizen.\",\n    \"key_correlations\": [\n      {\n        \"variable_a\": \"MonthlyCharges\",\n        \"variable_b\": \"tenure\",\n        \"correlation\": \"Positive\",\n        \"coefficient_weight\": 7.3516,\n        \"insight\": \"As tenure increases, MonthlyCharges tend to increase.\"\n      },\n      {\n        \"variable_a\": \"MonthlyCharges\",\n        \"variable_b\": \"SeniorCitizen\",\n        \"correlation\": \"Positive\",\n        \"coefficient_weight\": 6.5032,\n        \"insight\": \"Being a SeniorCitizen tends to increase MonthlyCharges.\"\n      }\n    ],\n    \"pca_components\": [\n      {\n        \"component\": \"Principal Component 1\",\n        \"variance_explained_pct\": 44.66,\n        \"top_driving_metric\": \"MonthlyCharges\"\n      },\n      {\n        \"component\": \"Principal Component 2\",\n        \"variance_explained_pct\": 32.78,\n        \"top_driving_metric\": \"SeniorCitizen\"\n      },\n      {\n        \"component\": \"Principal Component 3\",\n        \"variance_explained_pct\": 22.55,\n        \"top_driving_metric\": \"MonthlyCharges\"\n      }\n    ],\n    \"survival_analysis\": [\n      {\n        \"time_milestone\": 18.0,\n        \"survival_probability_pct\": 81.2\n      },\n      {\n        \"time_milestone\": 36.0,\n        \"survival_probability_pct\": 74.9\n      },\n      {\n        \"time_milestone\": 54.0,\n        \"survival_probability_pct\": 68.6\n      }\n    ],\n    \"categorical_dependencies\": [\n      {\n        \"variables_tested\": [\"SeniorCitizen\", \"MonthlyCharges\"],\n        \"chi_square_statistic\": 0.0,\n        \"p_value\": 0.0,\n        \"is_significant\": true,\n        \"insight\": \"There is a statistically significant relationship between SeniorCitizen and MonthlyCharges.\"\n      }\n    ],\n    \"outlier_detection\": [\n      {\n        \"outlier_description\": \"The distribution of SeniorCitizen is skewed, with most customers not being senior citizens.\",\n        \"significance\": \"low\"\n      }\n    ],\n    \"cluster_profiles\": [\n      {\n        \"cluster_name\": \"High MonthlyCharges\",\n        \"percentage_of_data\": 68.2,\n        \"business_persona\": \"Customers with high MonthlyCharges tend to have longer tenure and are more likely to be senior citizens.\",\n        \"strategic_implication\": \"Targeted marketing and retention strategies may be effective for this cluster.\"\n      },\n      {\n        \"cluster_name\": \"Senior Citizens\",\n        \"percentage_of_data\": 16.21,\n        \"business_persona\": \"Senior citizens tend to have higher MonthlyCharges and may require specialized support and services.\",\n        \"strategic_implication\": \"Tailored services and support for senior citizens may improve customer satisfaction and retention.\"\n      }\n    ],\n    \"predictive_insights\": [\n      {\n        \"insight\": \"Approximately 81.2% of customers will remain with the service after 18 months.\",\n        \"confidence\": \"high\",\n        \"actionable_recommendation\": \"Focus on retention strategies and customer support to maintain a high level of customer satisfaction.\"\n      }\n    ]\n  }\n}",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "coverage": {
+          "mode": "background",
+          "variantsAnalyzed": 1,
+          "totalRowsAvailable": 7043,
+          "totalRowsProcessed": 7043,
+          "totalVariantsFound": 1
+        },
+        "executive_summary": "Approximately 81.2% of customers are predicted to remain with the service after 18 months, with a statistically significant positive correlation between MonthlyCharges and tenure, as well as between MonthlyCharges and SeniorCitizen.",
+        "quantitative_analysis": {
+          "pca_components": [
+            {
+              "component": "Principal Component 1",
+              "top_driving_metric": "MonthlyCharges",
+              "variance_explained_pct": 44.66
+            },
+            {
+              "component": "Principal Component 2",
+              "top_driving_metric": "SeniorCitizen",
+              "variance_explained_pct": 32.78
+            },
+            {
+              "component": "Principal Component 3",
+              "top_driving_metric": "MonthlyCharges",
+              "variance_explained_pct": 22.55
+            }
+          ],
+          "cluster_profiles": [
+            {
+              "cluster_name": "High MonthlyCharges",
+              "business_persona": "Customers with high MonthlyCharges tend to have longer tenure and are more likely to be senior citizens.",
+              "percentage_of_data": 68.2,
+              "strategic_implication": "Targeted marketing and retention strategies may be effective for this cluster."
+            },
+            {
+              "cluster_name": "Senior Citizens",
+              "business_persona": "Senior citizens tend to have higher MonthlyCharges and may require specialized support and services.",
+              "percentage_of_data": 16.21,
+              "strategic_implication": "Tailored services and support for senior citizens may improve customer satisfaction and retention."
+            }
+          ],
+          "key_correlations": [
+            {
+              "insight": "As tenure increases, MonthlyCharges tend to increase.",
+              "variable_a": "MonthlyCharges",
+              "variable_b": "tenure",
+              "correlation": "Positive",
+              "coefficient_weight": 7.3516
+            },
+            {
+              "insight": "Being a SeniorCitizen tends to increase MonthlyCharges.",
+              "variable_a": "MonthlyCharges",
+              "variable_b": "SeniorCitizen",
+              "correlation": "Positive",
+              "coefficient_weight": 6.5032
+            }
+          ],
+          "outlier_detection": [
+            {
+              "significance": "low",
+              "outlier_description": "The distribution of SeniorCitizen is skewed, with most customers not being senior citizens."
+            }
+          ],
+          "survival_analysis": [
+            {
+              "time_milestone": 18,
+              "survival_probability_pct": 81.2
+            },
+            {
+              "time_milestone": 36,
+              "survival_probability_pct": 74.9
+            },
+            {
+              "time_milestone": 54,
+              "survival_probability_pct": 68.6
+            }
+          ],
+          "predictive_insights": [
+            {
+              "insight": "Approximately 81.2% of customers will remain with the service after 18 months.",
+              "confidence": "high",
+              "actionable_recommendation": "Focus on retention strategies and customer support to maintain a high level of customer satisfaction."
+            }
+          ],
+          "statistical_summary": "The data shows a positive correlation between MonthlyCharges and tenure, and between MonthlyCharges and SeniorCitizen, with a significant proportion of senior citizens and a skewed distribution of SeniorCitizen.",
+          "categorical_dependencies": [
+            {
+              "insight": "There is a statistically significant relationship between SeniorCitizen and MonthlyCharges.",
+              "p_value": 0,
+              "is_significant": true,
+              "variables_tested": [
+                "SeniorCitizen",
+                "MonthlyCharges"
+              ],
+              "chi_square_statistic": 0
+            }
+          ]
+        }
+      },
+      "provider": "openai-compatible"
+    },
+    "generatedAt": "2026-06-23T15:08:41.179Z",
+    "luneSignature": {
+      "hue": 99,
+      "drift": 0.91
+    }
+  },
+  "saved": true,
+  "id": "38f90e4e-0b7f-494f-bfc2-dea1df14e5be"
+}
