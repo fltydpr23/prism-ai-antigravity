@@ -1,0 +1,196 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "moon": {
+      "label": "Waxing gibbous",
+      "phase01": 0.3773184241727845,
+      "illuminationPercent": 86
+    },
+    "empty": false,
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "metrics": {
+      "charCount": 4336742,
+      "wordCount": 345203,
+      "avgWordLength": 9.77,
+      "charCountNoWs": 3371016,
+      "sentenceCount": 13360,
+      "lexicalDensity": 0.751,
+      "paragraphCount": 1,
+      "numericTokenCount": 41520
+    },
+    "industry": {
+      "id": "finance",
+      "emoji": "🏦",
+      "label": "Finance / Fintech",
+      "confidence": "high",
+      "detectionMethod": "auto_detected"
+    },
+    "topTokens": [
+      {
+        "count": 9838,
+        "token": "service"
+      },
+      {
+        "count": 9156,
+        "token": "internet"
+      },
+      {
+        "count": 7043,
+        "token": "customerid"
+      },
+      {
+        "count": 7043,
+        "token": "gender"
+      },
+      {
+        "count": 7043,
+        "token": "seniorcitizen"
+      },
+      {
+        "count": 7043,
+        "token": "partner"
+      },
+      {
+        "count": 7043,
+        "token": "dependents"
+      },
+      {
+        "count": 7043,
+        "token": "tenure"
+      },
+      {
+        "count": 7043,
+        "token": "phoneservice"
+      },
+      {
+        "count": 7043,
+        "token": "multiplelines"
+      },
+      {
+        "count": 7043,
+        "token": "internetservice"
+      },
+      {
+        "count": 7043,
+        "token": "onlinesecurity"
+      }
+    ],
+    "localModel": {
+      "ok": true,
+      "raw": "{\n  \"executive_summary\": \"54% of users mentioned pricing or hidden charges, indicating a significant concern that could impact customer trust and retention, while 46% discussed refund or money issues, highlighting the need for efficient customer support and dispute resolution.\",\n  \n  \"quantitative_analysis\": {\n    \"statistical_summary\": \"The data exhibits strong positive correlations between tenure and MonthlyCharges, as well as between SeniorCitizen status and MonthlyCharges, with coefficient weights of 7.3516 and 6.5032, respectively. Outlier analysis reveals data points exceeding 2 standard deviations from the mean in MonthlyCharges and tenure.\",\n    \"key_correlations\": [\n      {\n        \"variable_a\": \"tenure\",\n        \"variable_b\": \"MonthlyCharges\",\n        \"correlation\": \"Strong Positive\",\n        \"coefficient_weight\": 7.3516,\n        \"insight\": \"As customer tenure increases, MonthlyCharges tend to increase, suggesting a potential loyalty or retention-based pricing strategy.\"\n      },\n      {\n        \"variable_a\": \"SeniorCitizen\",\n        \"variable_b\": \"MonthlyCharges\",\n        \"correlation\": \"Strong Positive\",\n        \"coefficient_weight\": 6.5032,\n        \"insight\": \"Senior citizens tend to have higher MonthlyCharges, which may indicate a need for tailored pricing or support for this demographic.\"\n      }\n    ],\n    \"pca_components\": [],\n    \"survival_analysis\": [\n      {\n        \"time_milestone\": 18.0,\n        \"survival_probability_pct\": 81.2\n      },\n      {\n        \"time_milestone\": 36.0,\n        \"survival_probability_pct\": 74.9\n      },\n      {\n        \"time_milestone\": 54.0,\n        \"survival_probability_pct\": 68.6\n      }\n    ],\n    \"categorical_dependencies\": [\n      {\n        \"variables_tested\": [\"pricing or hidden charges\", \"refund or money issue\"],\n        \"chi_square_statistic\": 0.0,\n        \"p_value\": 0.0,\n        \"is_significant\": true,\n        \"insight\": \"There is a significant relationship between pricing or hidden charges and refund or money issues, with 54% of users mentioning the former and 46% mentioning the latter.\"\n      }\n    ],\n    \"outlier_detection\": [\n      {\n        \"outlier_description\": \"Data point exceeding 2 standard deviations from the mean in MonthlyCharges\",\n        \"significance\": \"high\"\n      },\n      {\n        \"outlier_description\": \"Data point exceeding 2 standard deviations from the mean in tenure\",\n        \"significance\": \"high\"\n      }\n    ],\n    \"cluster_profiles\": [\n      {\n        \"cluster_name\": \"Low Monthly Charges\",\n        \"percentage_of_data\": 25,\n        \"business_persona\": \"Customers with low monthly charges tend to be price-sensitive and may require targeted marketing and support.\",\n        \"strategic_implication\": \"Offer personalized pricing plans and promotions to retain this customer segment.\"\n      },\n      {\n        \"cluster_name\": \"Medium Monthly Charges\",\n        \"percentage_of_data\": 50,\n        \"business_persona\": \"Customers with medium monthly charges are likely to be moderately loyal and may respond to loyalty programs and retention strategies.\",\n        \"strategic_implication\": \"Implement loyalty programs and retention strategies to maintain customer satisfaction and reduce churn.\"\n      },\n      {\n        \"cluster_name\": \"High Monthly Charges\",\n        \"percentage_of_data\": 25,\n        \"business_persona\": \"Customers with high monthly charges tend to be loyal and may require premium support and services.\",\n        \"strategic_implication\": \"Offer premium support and services to retain this high-value customer segment.\"\n      }\n    ],\n    \"predictive_insights\": [\n      {\n        \"insight\": \"Customers are likely to remain loyal at 18 months, with an 81.2% survival probability\",\n        \"confidence\": \"high\",\n        \"actionable_recommendation\": \"Focus on retention strategies and loyalty programs to maintain customer satisfaction and reduce churn.\"\n      },\n      {\n        \"insight\": \"Customers are likely to remain loyal at 36 months, with a 74.9% survival probability\",\n        \"confidence\": \"medium\",\n        \"actionable_recommendation\": \"Continue to monitor customer satisfaction and adjust retention strategies accordingly.\"\n      },\n      {\n        \"insight\": \"Customers are likely to remain loyal at 54 months, with a 68.6% survival probability\",\n        \"confidence\": \"low\",\n        \"actionable_recommendation\": \"Develop targeted marketing campaigns to re-engaged customers and prevent churn.\"\n      }\n    ]\n  }\n}",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "coverage": {
+          "mode": "background",
+          "variantsAnalyzed": 1,
+          "totalRowsAvailable": 7043,
+          "totalRowsProcessed": 7043,
+          "totalVariantsFound": 1
+        },
+        "executive_summary": "54% of users mentioned pricing or hidden charges, indicating a significant concern that could impact customer trust and retention, while 46% discussed refund or money issues, highlighting the need for efficient customer support and dispute resolution.",
+        "quantitative_analysis": {
+          "pca_components": [],
+          "cluster_profiles": [
+            {
+              "cluster_name": "Low Monthly Charges",
+              "business_persona": "Customers with low monthly charges tend to be price-sensitive and may require targeted marketing and support.",
+              "percentage_of_data": 25,
+              "strategic_implication": "Offer personalized pricing plans and promotions to retain this customer segment."
+            },
+            {
+              "cluster_name": "Medium Monthly Charges",
+              "business_persona": "Customers with medium monthly charges are likely to be moderately loyal and may respond to loyalty programs and retention strategies.",
+              "percentage_of_data": 50,
+              "strategic_implication": "Implement loyalty programs and retention strategies to maintain customer satisfaction and reduce churn."
+            },
+            {
+              "cluster_name": "High Monthly Charges",
+              "business_persona": "Customers with high monthly charges tend to be loyal and may require premium support and services.",
+              "percentage_of_data": 25,
+              "strategic_implication": "Offer premium support and services to retain this high-value customer segment."
+            }
+          ],
+          "key_correlations": [
+            {
+              "insight": "As customer tenure increases, MonthlyCharges tend to increase, suggesting a potential loyalty or retention-based pricing strategy.",
+              "variable_a": "tenure",
+              "variable_b": "MonthlyCharges",
+              "correlation": "Strong Positive",
+              "coefficient_weight": 7.3516
+            },
+            {
+              "insight": "Senior citizens tend to have higher MonthlyCharges, which may indicate a need for tailored pricing or support for this demographic.",
+              "variable_a": "SeniorCitizen",
+              "variable_b": "MonthlyCharges",
+              "correlation": "Strong Positive",
+              "coefficient_weight": 6.5032
+            }
+          ],
+          "outlier_detection": [
+            {
+              "significance": "high",
+              "outlier_description": "Data point exceeding 2 standard deviations from the mean in MonthlyCharges"
+            },
+            {
+              "significance": "high",
+              "outlier_description": "Data point exceeding 2 standard deviations from the mean in tenure"
+            }
+          ],
+          "survival_analysis": [
+            {
+              "time_milestone": 18,
+              "survival_probability_pct": 81.2
+            },
+            {
+              "time_milestone": 36,
+              "survival_probability_pct": 74.9
+            },
+            {
+              "time_milestone": 54,
+              "survival_probability_pct": 68.6
+            }
+          ],
+          "predictive_insights": [
+            {
+              "insight": "Customers are likely to remain loyal at 18 months, with an 81.2% survival probability",
+              "confidence": "high",
+              "actionable_recommendation": "Focus on retention strategies and loyalty programs to maintain customer satisfaction and reduce churn."
+            },
+            {
+              "insight": "Customers are likely to remain loyal at 36 months, with a 74.9% survival probability",
+              "confidence": "medium",
+              "actionable_recommendation": "Continue to monitor customer satisfaction and adjust retention strategies accordingly."
+            },
+            {
+              "insight": "Customers are likely to remain loyal at 54 months, with a 68.6% survival probability",
+              "confidence": "low",
+              "actionable_recommendation": "Develop targeted marketing campaigns to re-engaged customers and prevent churn."
+            }
+          ],
+          "statistical_summary": "The data exhibits strong positive correlations between tenure and MonthlyCharges, as well as between SeniorCitizen status and MonthlyCharges, with coefficient weights of 7.3516 and 6.5032, respectively. Outlier analysis reveals data points exceeding 2 standard deviations from the mean in MonthlyCharges and tenure.",
+          "categorical_dependencies": [
+            {
+              "insight": "There is a significant relationship between pricing or hidden charges and refund or money issues, with 54% of users mentioning the former and 46% mentioning the latter.",
+              "p_value": 0,
+              "is_significant": true,
+              "variables_tested": [
+                "pricing or hidden charges",
+                "refund or money issue"
+              ],
+              "chi_square_statistic": 0
+            }
+          ]
+        }
+      },
+      "provider": "openai-compatible"
+    },
+    "generatedAt": "2026-06-26T09:42:47.378Z",
+    "luneSignature": {
+      "hue": 99,
+      "drift": 0.91
+    }
+  },
+  "saved": true,
+  "id": "81909ee7-e9fb-4240-a76c-28e95a0a689e"
+}

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useAnimation, useInView, useMotionValue, useSpring } from "framer-motion";
 import { Sparkles, ArrowRight, BarChart3, Users, Zap, Shield, ChevronRight } from "lucide-react";
 import MagneticButton from "./MagneticButton";
+import SampleReportOverlay from "./SampleReportOverlay";
 
 interface Props {
   onStart: () => void;
@@ -203,6 +204,7 @@ function SpotlightDashboard() {
 // ─── Main Hero Component ───────────────────────────────────────────────────
 export default function PrismHero({ onStart }: Props) {
   const [chips, setChips] = useState<any[]>([]);
+  const [isSampleOpen, setIsSampleOpen] = useState(false);
 
   // Mouse parallax for constellation
   const mouseX = useMotionValue(0);
@@ -236,7 +238,10 @@ export default function PrismHero({ onStart }: Props) {
   }, []);
 
   return (
-    <section 
+    <>
+    <motion.section 
+      animate={{ scale: isSampleOpen ? 0.95 : 1, opacity: isSampleOpen ? 0.4 : 1, filter: isSampleOpen ? 'blur(8px)' : 'blur(0px)' }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 overflow-hidden"
       style={{ perspective: 1000 }}
@@ -292,7 +297,7 @@ export default function PrismHero({ onStart }: Props) {
             >
               Start Free Analysis <ArrowRight className="w-4 h-4" />
             </MagneticButton>
-            <button className="text-white/60 hover:text-white transition-colors text-sm font-medium px-4 py-3 flex items-center gap-2 border border-white/5 hover:border-white/10 rounded-md bg-white/5 backdrop-blur-sm group">
+            <button onClick={() => setIsSampleOpen(true)} className="text-white/60 hover:text-white transition-colors text-sm font-medium px-4 py-3 flex items-center gap-2 border border-white/5 hover:border-white/10 rounded-md bg-white/5 backdrop-blur-sm group cursor-pointer z-50">
               View Sample Report <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -309,6 +314,8 @@ export default function PrismHero({ onStart }: Props) {
           <SpotlightDashboard />
         </motion.div>
       </div>
-    </section>
+    </motion.section>
+    <SampleReportOverlay isOpen={isSampleOpen} onClose={() => setIsSampleOpen(false)} />
+    </>
   );
 }

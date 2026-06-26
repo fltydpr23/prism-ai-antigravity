@@ -1,0 +1,268 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "moon": {
+      "label": "Waxing gibbous",
+      "phase01": 0.376985358123192,
+      "illuminationPercent": 86
+    },
+    "empty": false,
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "metrics": {
+      "charCount": 196278,
+      "wordCount": 27848,
+      "avgWordLength": 5.48,
+      "charCountNoWs": 152711,
+      "sentenceCount": 1761,
+      "lexicalDensity": 0.799,
+      "paragraphCount": 1,
+      "numericTokenCount": 2590
+    },
+    "industry": {
+      "id": "food",
+      "emoji": "🍕",
+      "label": "Food & Delivery",
+      "confidence": "high",
+      "detectionMethod": "auto_detected"
+    },
+    "topTokens": [
+      {
+        "count": 604,
+        "token": "we"
+      },
+      {
+        "count": 572,
+        "token": "you"
+      },
+      {
+        "count": 561,
+        "token": "review"
+      },
+      {
+        "count": 505,
+        "token": "reply"
+      },
+      {
+        "count": 504,
+        "token": "platform"
+      },
+      {
+        "count": 502,
+        "token": "user"
+      },
+      {
+        "count": 500,
+        "token": "google"
+      },
+      {
+        "count": 500,
+        "token": "play"
+      },
+      {
+        "count": 500,
+        "token": "score"
+      },
+      {
+        "count": 500,
+        "token": "likes"
+      },
+      {
+        "count": 500,
+        "token": "date"
+      },
+      {
+        "count": 472,
+        "token": "your"
+      }
+    ],
+    "localModel": {
+      "ok": true,
+      "raw": "{\n  \"executive_summary\": \"Customers are extremely frustrated with the service due to late delivery, poor support, and order cancellation issues, with a strong urgency to improve these aspects, specifically for companies like Swiggy to enhance customer experience.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Sentiment is declining due to persistent issues with late delivery, poor support, and order cancellation.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"worst experience, but improved delivery timing and better customer support could make it better\",\n        \"what_they_do\": \"continue to use the service despite frustrations\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"YOUR DELIVERY PARTNERS ARE FRAUD\",\n        \"what_they_do\": \"express extreme dissatisfaction but still engage with the platform\",\n        \"severity\": \"high\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"better customer support\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 85\n      },\n      {\n        \"feature\": \"improved delivery timing\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 80\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"late delivery and poor support\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"order cancellation issues and high packing charges\",\n        \"estimated_prevalence_percentage\": 80\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"improve delivery timing, enhance customer support, and streamline refund processes\",\n        \"estimated_prevalence_percentage\": 90\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"improve logistics and communication\",\n          \"estimated_prevalence_percentage\": 80\n        },\n        {\n          \"signal\": \"poor support\",\n          \"retention_action\": \"enhance customer support responsiveness and resolution rate\",\n          \"estimated_prevalence_percentage\": 85\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"improve delivery timing and logistics\",\n        \"why\": \"to reduce churn risk and enhance customer satisfaction\",\n        \"expected_outcome\": \"20% reduction in late deliveries\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"enhance customer support\",\n        \"why\": \"to address customer complaints and improve overall experience\",\n        \"expected_outcome\": \"30% increase in customer support satisfaction\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"streamline refund processes\",\n        \"why\": \"to reduce frustration and improve trust\",\n        \"expected_outcome\": \"25% reduction in refund-related complaints\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 80,\n      \"reasoning\": \"high intensity of emotions expressed, such as frustration and anger, indicates a high passion index\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"customers express frustration with delivery and support\",\n        \"raw_native_quote\": \"Pathetic experience\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"customers feel cheated by delivery partners\",\n        \"raw_native_quote\": \"YOUR DELIVERY PARTNERS ARE FRAUD\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "coverage": {
+          "mode": "background",
+          "variantsAnalyzed": 1,
+          "totalRowsAvailable": 500,
+          "totalRowsProcessed": 500,
+          "totalVariantsFound": 1
+        },
+        "sentiment_shift": {
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "consumer_feedback": {
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "trigger": "late delivery and poor support",
+              "intensity": "high",
+              "estimated_prevalence_percentage": 22.5
+            },
+            {
+              "emotion": "angry",
+              "trigger": "order cancellation issues and high packing charges",
+              "intensity": "high",
+              "estimated_prevalence_percentage": 20
+            }
+          ],
+          "passion_index": {
+            "score": 80,
+            "reasoning": "high intensity of emotions expressed, such as frustration and anger, indicates a high passion index"
+          },
+          "reality_checks": [
+            {
+              "severity": "high",
+              "raw_native_quote": "Pathetic experience",
+              "sanitized_english": "customers express frustration with delivery and support"
+            },
+            {
+              "severity": "high",
+              "raw_native_quote": "YOUR DELIVERY PARTNERS ARE FRAUD",
+              "sanitized_english": "customers feel cheated by delivery partners"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "feature": "better customer support",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 21.3
+            },
+            {
+              "feature": "improved delivery timing",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 20
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery",
+                "retention_action": "improve logistics and communication",
+                "estimated_prevalence_percentage": 20
+              },
+              {
+                "signal": "poor support",
+                "retention_action": "enhance customer support responsiveness and resolution rate",
+                "estimated_prevalence_percentage": 21.3
+              }
+            ]
+          },
+          "sentiment_trajectory": {
+            "insight": "Sentiment is declining due to persistent issues with late delivery, poor support, and order cancellation.",
+            "trajectory": "declining",
+            "overall_sentiment": "negative"
+          },
+          "contradiction_analysis": [
+            {
+              "severity": "high",
+              "what_they_do": "continue to use the service despite frustrations",
+              "what_they_say": "worst experience, but improved delivery timing and better customer support could make it better"
+            },
+            {
+              "severity": "high",
+              "what_they_do": "express extreme dissatisfaction but still engage with the platform",
+              "what_they_say": "YOUR DELIVERY PARTNERS ARE FRAUD"
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "improve delivery timing, enhance customer support, and streamline refund processes",
+              "estimated_prevalence_percentage": 22.5
+            }
+          ],
+          "strategic_recommendations": [
+            {
+              "why": "to reduce churn risk and enhance customer satisfaction",
+              "action": "improve delivery timing and logistics",
+              "priority": "1",
+              "timeline": "now",
+              "expected_outcome": "20% reduction in late deliveries"
+            },
+            {
+              "why": "to address customer complaints and improve overall experience",
+              "action": "enhance customer support",
+              "priority": "1",
+              "timeline": "now",
+              "expected_outcome": "30% increase in customer support satisfaction"
+            },
+            {
+              "why": "to reduce frustration and improve trust",
+              "action": "streamline refund processes",
+              "priority": "2",
+              "timeline": "later",
+              "expected_outcome": "25% reduction in refund-related complaints"
+            }
+          ]
+        },
+        "executive_summary": "Customers are extremely frustrated with the service due to late delivery, poor support, and order cancellation issues, with a strong urgency to improve these aspects, specifically for companies like Swiggy to enhance customer experience.",
+        "workforce_metrics": {
+          "net_new_roles": "Not detected",
+          "workers_at_risk": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "displacement_trend": {
+          "timeline": [],
+          "acceleration_rate": "Not detected",
+          "peak_displacement": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "peak_displacement_timeframe": "Not detected"
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "reskilling_readiness_gap": [],
+        "worker_risk_distribution": {
+          "low": "0%",
+          "high": "0%",
+          "medium": "0%",
+          "low_num": 0,
+          "high_num": 0,
+          "medium_num": 0,
+          "total_workers": "Not detected"
+        },
+        "automation_risk_by_sector": []
+      },
+      "provider": "openai-compatible"
+    },
+    "generatedAt": "2026-06-26T09:28:37.579Z",
+    "luneSignature": {
+      "hue": 10,
+      "drift": 0.58
+    }
+  },
+  "saved": true,
+  "id": "72b53217-1335-49fd-a5b9-2ae0a593810b"
+}
