@@ -128,6 +128,29 @@ function parseCSV(text: string): Record<string, string>[] {
   return records;
 }
 
+function detectSchemaType(rawText: string): "standard" | "survey" {
+  const lines = rawText.split(/\r?\n/).slice(0, 10);
+  if (lines.length < 5) return "standard";
+  
+  const combined = lines.slice(0, 5).join(" ").toUpperCase();
+  if (
+    combined.includes("VENDOR_CONSENT") || 
+    combined.includes("S1Z") || 
+    (combined.match(/S\d+Z/g) && combined.match(/S\d+Z/g)!.length > 5) ||
+    combined.includes("QUESTION ID")
+  ) {
+    return "survey";
+  }
+  
+  const firstRowCommas = (lines[0].match(/,/g) || []).length;
+  const firstRowChars = lines[0].replace(/,/g, '').trim().length;
+  if (firstRowCommas > 20 && firstRowChars < 50) {
+    return "survey";
+  }
+
+  return "standard";
+}
+
 function generateMockReport(file: File): AnalysisResponse {
   const isAudio = file.type.includes("audio") || file.name.endsWith(".mp3");
   const isImage = file.type.includes("image");
@@ -234,6 +257,8 @@ export default function AnalysePage() {
   const [industryOpen, setIndustryOpen] = useState(false);
   const [showLargeFilePrompt, setShowLargeFilePrompt] = useState(false);
   const [pendingExtractedText, setPendingExtractedText] = useState<string | null>(null);
+  const [detectedSchema, setDetectedSchema] = useState<"standard" | "survey">("standard");
+  const [schemaOpen, setSchemaOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   
@@ -293,24 +318,36 @@ export default function AnalysePage() {
   // ─── Handlers ────────────────────────────────────────────────────────────
   const handleDragOver = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(true); };
   const handleDragLeave = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(false); };
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = async (e: React.DragEvent) => {
     e.preventDefault(); setIsDragging(false);
     if (e.dataTransfer.files?.length) {
       const file = e.dataTransfer.files[0];
       setUploadedFile(file); setText("");
+      if (file.name.endsWith(".csv")) {
+        const snippet = await file.slice(0, 10000).text();
+        setDetectedSchema(detectSchemaType(snippet));
+      } else {
+        setDetectedSchema("standard");
+      }
       posthog.capture("file_uploaded", { file_type: file.type || file.name.split(".").pop(), file_size_kb: Math.round(file.size / 1024), method: "drop" });
     }
   };
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
       const file = e.target.files[0];
       setUploadedFile(file); setText("");
+      if (file.name.endsWith(".csv")) {
+        const snippet = await file.slice(0, 10000).text();
+        setDetectedSchema(detectSchemaType(snippet));
+      } else {
+        setDetectedSchema("standard");
+      }
       posthog.capture("file_uploaded", { file_type: file.type || file.name.split(".").pop(), file_size_kb: Math.round(file.size / 1024), method: "browse" });
     }
   };
-  const removeFile = () => { setUploadedFile(null); if (fileInputRef.current) fileInputRef.current.value = ""; };
+  const removeFile = () => { setUploadedFile(null); setDetectedSchema("standard"); if (fileInputRef.current) fileInputRef.current.value = ""; };
 
-  const reset = () => { setView("analysis"); setStage("idle"); setLiveStatus(null); setResponse(null); setText(""); setUploadedFile(null); setShowLargeFilePrompt(false); setPendingExtractedText(null); };
+  const reset = () => { setView("analysis"); setStage("idle"); setLiveStatus(null); setResponse(null); setText(""); setUploadedFile(null); setShowLargeFilePrompt(false); setPendingExtractedText(null); setDetectedSchema("standard"); };
 
   async function submit() {
     if (stage !== "idle" && stage !== "done") return;
@@ -356,16 +393,20 @@ export default function AnalysePage() {
         } catch { setResponse({ error: "Failed to extract text from PDF." }); setStage("done"); return; }
       } else if (uploadedFile.name.endsWith(".csv")) {
         const raw = await uploadedFile.text();
-        const parsedData = parseCSV(raw);
-        if (parsedData.length > 2000) {
-          setPendingExtractedText(JSON.stringify(parsedData, null, 2));
-          setShowLargeFilePrompt(true);
-          return; // Wait for user decision
-        }
-        if (parsedData.length > 0) {
-          extractedText = JSON.stringify(parsedData, null, 2);
-        } else {
+        if (detectedSchema === "survey") {
           extractedText = raw;
+        } else {
+          const parsedData = parseCSV(raw);
+          if (parsedData.length > 2000) {
+            setPendingExtractedText(JSON.stringify(parsedData, null, 2));
+            setShowLargeFilePrompt(true);
+            return; // Wait for user decision
+          }
+          if (parsedData.length > 0) {
+            extractedText = JSON.stringify(parsedData, null, 2);
+          } else {
+            extractedText = raw;
+          }
         }
       } else if (uploadedFile.name.endsWith(".txt")) {
         extractedText = await uploadedFile.text();
@@ -444,7 +485,8 @@ export default function AnalysePage() {
           localLlmModel: "openai/gpt-oss-120b:free", 
           industry: selectedIndustry, 
           workspace_id: activeWorkspace?.id,
-          mode: mode
+          mode: mode,
+          schema: detectedSchema
         }),
       });
 
@@ -644,19 +686,74 @@ export default function AnalysePage() {
 
                 <div className="relative min-h-[140px] flex flex-col">
                   {uploadedFile ? (
-                    <div className="flex items-center gap-4 p-8 flex-1">
-                      <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
-                        {uploadedFile.type.includes("audio") ? <FileAudio className="w-7 h-7 text-emerald-400" />
-                          : uploadedFile.type.includes("image") ? <ImageIcon className="w-7 h-7 text-emerald-400" />
-                          : <FileText className="w-7 h-7 text-emerald-400" />}
+                    <div className="flex flex-col flex-1">
+                      <div className="flex items-center gap-4 p-8">
+                        <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                          {uploadedFile.type.includes("audio") ? <FileAudio className="w-7 h-7 text-emerald-400" />
+                            : uploadedFile.type.includes("image") ? <ImageIcon className="w-7 h-7 text-emerald-400" />
+                            : <FileText className="w-7 h-7 text-emerald-400" />}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xl font-medium text-white truncate tracking-tight">{uploadedFile.name}</p>
+                          <p className="text-sm text-white/40 mt-1 font-mono">{(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                        </div>
+                        <button onClick={removeFile} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-white/40 hover:text-white transition-colors">
+                          <X className="w-5 h-5" />
+                        </button>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xl font-medium text-white truncate tracking-tight">{uploadedFile.name}</p>
-                        <p className="text-sm text-white/40 mt-1 font-mono">{(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
-                      </div>
-                      <button onClick={removeFile} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-white/40 hover:text-white transition-colors">
-                        <X className="w-5 h-5" />
-                      </button>
+
+                      {/* Schema Detected Badge */}
+                      {uploadedFile.name.endsWith(".csv") && (
+                        <div className="px-8 pb-6 -mt-2">
+                          <div className="relative inline-block">
+                            <button
+                              onClick={() => setSchemaOpen(o => !o)}
+                              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all shadow-sm ${
+                                detectedSchema === "survey" 
+                                  ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.15)]" 
+                                  : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
+                              }`}
+                            >
+                              <span>{detectedSchema === "survey" ? "✨ Detected: Enterprise Survey" : "📊 Detected: Standard Dataset"}</span>
+                              <ChevronDown className={`w-3 h-3 transition-transform ${schemaOpen ? "rotate-180" : ""}`} />
+                            </button>
+
+                            <AnimatePresence>
+                              {schemaOpen && (
+                                <motion.div
+                                  initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                                  exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                                  transition={{ duration: 0.15 }}
+                                  className="absolute top-full left-0 mt-2 z-50 w-56 rounded-xl border border-white/10 bg-[#111] backdrop-blur-xl shadow-2xl overflow-hidden py-1"
+                                >
+                                  <div className="px-3 py-2 border-b border-white/5">
+                                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-wider">Override Schema</p>
+                                  </div>
+                                  <button
+                                    onClick={() => { setDetectedSchema("standard"); setSchemaOpen(false); }}
+                                    className={`w-full flex items-center gap-3 px-3 py-2 text-left text-xs transition-colors ${
+                                      detectedSchema === "standard" ? "bg-white/10 text-white" : "text-white/50 hover:text-white hover:bg-white/5"
+                                    }`}
+                                  >
+                                    <span>📊 Standard Dataset</span>
+                                    {detectedSchema === "standard" && <Check className="ml-auto w-3 h-3 text-emerald-400" />}
+                                  </button>
+                                  <button
+                                    onClick={() => { setDetectedSchema("survey"); setSchemaOpen(false); }}
+                                    className={`w-full flex items-center gap-3 px-3 py-2 text-left text-xs transition-colors ${
+                                      detectedSchema === "survey" ? "bg-white/10 text-white" : "text-white/50 hover:text-white hover:bg-white/5"
+                                    }`}
+                                  >
+                                    <span>✨ Enterprise Survey</span>
+                                    {detectedSchema === "survey" && <Check className="ml-auto w-3 h-3 text-indigo-400" />}
+                                  </button>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <textarea

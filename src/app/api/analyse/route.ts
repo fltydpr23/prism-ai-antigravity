@@ -18,6 +18,7 @@ type Body = {
   localLlmModel?: unknown;
   industry?: unknown; // "auto" | IndustryId — passed from the frontend dropdown
   workspace_id?: unknown;
+  schema?: unknown; // "standard" | "survey"
 };
 
 function trimModel(v: unknown): string | undefined {
@@ -31,6 +32,7 @@ async function buildAnalysis(
   skipLocalModel: boolean,
   modelOverride?: string,
   industryOverride?: string,
+  schemaOverride?: string,
   onProgress: (stage: string) => void = () => {}
 ) {
   const base = analyse(text);
@@ -85,7 +87,8 @@ async function buildAnalysis(
         },
         cfg,
         industryLensText,
-        onProgress
+        onProgress,
+        schemaOverride
       )
     : await runSmallFileAnalysis(
         text,
@@ -97,7 +100,9 @@ async function buildAnalysis(
         },
         cfg,
         industryLensText,
-        onProgress
+        onProgress,
+        false, // skipVariantCheck
+        schemaOverride // pass schema to pipeline
       );
 
   return { ...base, localModel, industry: industryMeta };
@@ -117,6 +122,7 @@ export async function POST(request: Request) {
   const modelOverride = trimModel(body.localLlmModel);
   const industryOverride = typeof body.industry === "string" ? body.industry : "auto";
   const workspaceId = typeof body.workspace_id === "string" ? body.workspace_id : null;
+  const schemaOverride = typeof body.schema === "string" ? body.schema : "standard";
 
   // Rate Limiting & Tier Verification
   const { auth } = await import("@clerk/nextjs/server");
@@ -241,7 +247,8 @@ export async function POST(request: Request) {
             industry: industryOverride,
             workspace_id: workspaceId,
             userId,
-            persist
+            persist,
+            schema: schemaOverride
           })
         });
       } catch (e) {
@@ -252,7 +259,7 @@ export async function POST(request: Request) {
       // Fire and forget fallback for local dev
       import('./backgroundTask').then(({ runBackground }) => {
          runBackground({
-            jobId, text, skipLocalModel, modelOverride, industryOverride, workspaceId, userId, persist
+            jobId, text, skipLocalModel, modelOverride, industryOverride, workspaceId, userId, persist, schema: schemaOverride
          });
       }).catch(e => console.error(e));
     }
@@ -272,7 +279,7 @@ export async function POST(request: Request) {
           sendEvent({ type: "stage", stage });
         };
 
-        const result = await buildAnalysis(text, skipLocalModel, modelOverride, industryOverride, onProgress);
+        const result = await buildAnalysis(text, skipLocalModel, modelOverride, industryOverride, schemaOverride, onProgress);
 
         let finalResponseData: any = {
           ok: true,
