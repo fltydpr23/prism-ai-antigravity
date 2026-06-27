@@ -61,7 +61,7 @@ export default function PrismHeader({ onStart }: Props) {
                 <a href="#" className="hover:text-white transition-colors">Features</a>
                 <a href="#" className="hover:text-white transition-colors">How it works</a>
                 <Link href="/wash" className="hover:text-white transition-colors text-white/80">Wash Data</Link>
-                <a href="#" className="hover:text-white transition-colors">Pricing</a>
+                <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
               </motion.div>
             ) : (
               <motion.div

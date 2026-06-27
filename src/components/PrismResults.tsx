@@ -578,8 +578,28 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
             <span className="text-emerald-400 font-mono">{(baseLm.coverage.totalRowsProcessed || 0).toLocaleString()} <span className="text-white/20">/ {(baseLm.coverage.totalRowsAvailable || 0).toLocaleString()}</span></span>
           </div>
           {baseLm.coverage.mode === "parallel_sampled" && (
-            <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-full text-amber-400">
-               <Zap className="w-3 h-3" /> Accelerated Sample
+            <div className="relative group">
+              <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-full text-amber-400 cursor-pointer hover:bg-amber-500/15 transition-colors">
+                <Zap className="w-3 h-3" /> Accelerated Sample
+                <span className="ml-0.5 w-3.5 h-3.5 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-[8px] font-bold text-amber-300">?</span>
+              </div>
+              {/* Popover */}
+              <div className="absolute top-full left-0 mt-2 w-72 z-50 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                <div className="rounded-xl border border-amber-500/20 bg-[#0d0d14] shadow-2xl p-4" style={{ backdropFilter: "blur(24px)" }}>
+                  <p className="text-[11px] font-semibold text-amber-400 mb-1.5 flex items-center gap-1.5">
+                    <Zap className="w-3 h-3" /> Accelerated Sample (Free Plan)
+                  </p>
+                  <p className="text-[11px] text-white/55 leading-relaxed mb-3">
+                    This report sampled <span className="text-white/80 font-semibold">{(baseLm.coverage.totalRowsProcessed || 0).toLocaleString()} of {(baseLm.coverage.totalRowsAvailable || 0).toLocaleString()} rows</span>. The free plan analyzes up to 20 rows per segment for instant results.
+                  </p>
+                  <p className="text-[11px] text-white/40 mb-3">
+                    <span className="text-emerald-400 font-semibold">Analyst+</span> processes 100% of your dataset in the background and emails you when done.
+                  </p>
+                  <a href="/pricing" className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">
+                    Run Full Analysis with Analyst Plan <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             </div>
           )}
           {baseLm.coverage.mode === "background" && (
@@ -593,6 +613,52 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
           </div>
         </div>
       )}
+
+      {/* ── Prism Pro Upsell Card (shown only on free accelerated sample reports) ── */}
+      {baseLm?.coverage?.mode === "parallel_sampled" && !isReadOnly && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mb-4 px-1"
+        >
+          <div
+            className="rounded-2xl p-5 border overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, rgba(52,211,153,0.04) 0%, rgba(34,211,238,0.04) 100%)",
+              borderColor: "rgba(52,211,153,0.15)",
+            }}
+          >
+            {/* Background glow */}
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 50%, rgba(52,211,153,0.06) 0%, transparent 60%)" }} />
+            
+            <div className="relative flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 opacity-80 flex-shrink-0" />
+                  <span className="text-[10px] font-semibold tracking-widest uppercase text-emerald-400/80">Prism Analyst</span>
+                </div>
+                <p className="text-sm font-semibold text-white tracking-tight mb-1">
+                  The signal is real. The story is bigger.
+                </p>
+                <p className="text-[11px] text-white/45 leading-relaxed max-w-sm">
+                  This report processed <span className="text-white/70">{Math.round(((baseLm.coverage.totalRowsProcessed || 0) / Math.max(baseLm.coverage.totalRowsAvailable || 1, 1)) * 100)}% of your data</span>. Analyst plan processes every row in the background and emails a complete boardroom-ready report.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <a
+                  href="/pricing"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-black bg-gradient-to-r from-emerald-400 to-cyan-400 hover:from-emerald-300 hover:to-cyan-300 transition-all shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Run Full Analysis
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
 
       {/* ── Variant Selection ───────────────────────────────── */}
       {variantKeys.length > 0 && variantKeys.length <= 5 && (

@@ -193,9 +193,58 @@ export async function POST(request: Request) {
 
   const mode = typeof (body as any).mode === "string" ? (body as any).mode : "parallel_sampled";
 
+  // ── Background Mode Tier Gate ─────────────────────────────────────────────
+  // Comprehensive (background) analysis is a paid feature. Explorer (free) users
+  // must upgrade to Analyst or above to trigger it.
+  if (mode === "background") {
+    if (!userId) {
+      return NextResponse.json({
+        error: "Please sign in to run Comprehensive Analysis.",
+        requiresSignup: true,
+        upgradeFeature: "comprehensive_analysis",
+      }, { status: 403 });
+    }
+    // Re-fetch profile (may have been fetched above already, but we need tier)
+    const supabaseForTier = createSupabaseServer();
+    const { data: tierProfile } = await supabaseForTier
+      .from('users')
+      .select('tier, analyses_count')
+      .eq('id', userId)
+      .single();
+    
+    const allowedBackgroundTiers = ['analyst', 'agency', 'enterprise', 'admin'];
+    const userTier = tierProfile?.tier ?? 'explorer';
+    
+    if (!allowedBackgroundTiers.includes(userTier)) {
+      return NextResponse.json({
+        error: "Comprehensive Analysis requires the Analyst plan or above. Upgrade to process 100% of your dataset.",
+        requiresUpgrade: true,
+        upgradeFeature: "comprehensive_analysis",
+      }, { status: 403 });
+    }
+
+    // Per-tier monthly comprehensive analysis limits
+    const comprehensiveLimits: Record<string, number> = {
+      analyst: 10,
+      agency: Infinity,
+      enterprise: Infinity,
+      admin: Infinity,
+    };
+    const limit = comprehensiveLimits[userTier] ?? 0;
+    
+    if (limit !== Infinity && tierProfile && (tierProfile.analyses_count || 0) >= limit) {
+      return NextResponse.json({
+        error: `You have used all ${limit} Comprehensive Analyses for this month. Upgrade to Agency Partner for unlimited.`,
+        requiresUpgrade: true,
+        upgradeFeature: "comprehensive_analysis_limit",
+      }, { status: 403 });
+    }
+  }
+
   // Handle Background Processing Mode
   if (mode === "background") {
     let jobId: string | null = null;
+
     
     // Create initial pending record in Supabase
     if (persist) {

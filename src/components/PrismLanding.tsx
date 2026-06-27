@@ -107,14 +107,16 @@ const HOW_IT_WORKS = [
 // SOCIAL_PROOF removed as per feedback
 
 const PRICING_EXPLORER = [
-  { label: "3 full analyses / month", included: true },
+  { label: "3 analyses / month", included: true },
   { label: "All 6 industry modes", included: true },
   { label: "Standard PDF export", included: true },
   { label: "Prism watermark included", included: true },
   { label: "7-day report retention", included: true },
-  { label: "Unlimited ingestion", included: "locked" },
-  { label: "White-label reports", included: "locked" },
-  { label: "Team collaboration", included: "locked" },
+  { label: "Accelerated Sample analysis", included: "20 rows / segment" },
+  { label: "Comprehensive analysis", included: false },
+  { label: "Unlimited ingestion", included: false },
+  { label: "White-label reports", included: false },
+  { label: "Team collaboration", included: false },
 ];
 
 const PRICING_ANALYST = [
@@ -124,8 +126,10 @@ const PRICING_ANALYST = [
   { label: "Clean PDF export", included: true },
   { label: "90-day report archive", included: true },
   { label: "Shareable read-only links", included: true },
-  { label: "White-label reports", included: "locked" },
-  { label: "Team collaboration", included: "locked" },
+  { label: "Comprehensive background analysis", included: "10 / month" },
+  { label: "Email report delivery", included: true },
+  { label: "White-label reports", included: false },
+  { label: "Team collaboration", included: false },
 ];
 
 const PRICING_AGENCY = [
@@ -134,9 +138,11 @@ const PRICING_AGENCY = [
   { label: "White-Label generation", included: true },
   { label: "Up to 3 team seats included", included: true },
   { label: "Client portal sharing", included: true },
+  { label: "Comprehensive background analysis", included: "Unlimited" },
+  { label: "Email report delivery", included: true },
   { label: "1-year report archive", included: true },
-  { label: "API access", included: "locked" },
-  { label: "Custom LLM instructions", included: "locked" },
+  { label: "API access", included: false },
+  { label: "Custom LLM instructions", included: false },
 ];
 
 const PRICING_ENTERPRISE = [
@@ -145,6 +151,7 @@ const PRICING_ENTERPRISE = [
   { label: "Custom LLM instructions", included: true },
   { label: "Proprietary frameworks", included: true },
   { label: "Unlimited archive", included: true },
+  { label: "Comprehensive background analysis", included: "Unlimited" },
   { label: "Dedicated account manager", included: true },
   { label: "Priority support + SLA", included: true },
 ];
@@ -194,86 +201,7 @@ export default function PrismLanding({ onStart }: Props) {
       {/* ── Enterprise Privacy Section ────────────────────────────────────── */}
       <PrismPrivacySection />
 
-      {/* ── Pricing ─────────────────────────────────────────────── */}
-      <section id="pricing" className="px-6 py-32 max-w-7xl mx-auto w-full">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] text-[11px] font-semibold tracking-widest uppercase text-white/50 mb-6">
-            Pricing
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-white pb-1 mb-6">
-            Start free. Upgrade when you<br />
-            <span className="text-white/35">need the intelligence.</span>
-          </h2>
-          <p className="text-base text-white/45 max-w-lg mx-auto mb-10 leading-relaxed">
-            Every tier is a complete product. Unlock deeper intelligence, longer memory, and team collaboration as you scale.
-          </p>
-          <div className="flex justify-center">
-            <PricingToggle value={billing} onChange={setBilling} />
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 items-start">
-          <PricingCard
-            tier="Explorer" tagline="3 full analyses to experience the platform."
-            monthlyPrice={null} annualPrice={null} billingPeriod={billing}
-            ctaLabel="Start Free" ctaHref="/sign-up" ctaVariant="ghost"
-            features={PRICING_EXPLORER} accentColor="162,85%,48%" index={0}
-          />
-          <PricingCard
-            tier="Analyst" tagline="For solo analysts needing unlimited insights."
-            monthlyPrice={999} annualPrice={799} billingPeriod={billing}
-            ctaLabel="Start 7-Day Trial" ctaHref="/sign-up" ctaVariant="ghost"
-            features={PRICING_ANALYST} accentColor="195,90%,58%" index={1}
-          />
-          <PricingCard
-            tier="Agency Partner" tagline="For agencies delivering client strategies."
-            monthlyPrice={4999} annualPrice={3999} billingPeriod={billing}
-            isPopular ctaLabel="Start 14-Day Free Trial" ctaHref="/sign-up?plan=agency" ctaVariant="primary"
-            features={PRICING_AGENCY} accentColor="162,85%,48%" index={2}
-          />
-          <PricingCard
-            tier="Enterprise" tagline="For large consultancies (e.g. ZoomRx scale)."
-            monthlyPrice={0} annualPrice={0} billingPeriod={billing}
-            ctaLabel="Get in Touch" ctaHref="mailto:hello@prismintel.co?subject=Enterprise Plan" ctaVariant="ghost"
-            features={PRICING_ENTERPRISE} accentColor="265,80%,65%" index={3}
-          />
-        </div>
-
-        {/* PAYG Add-on Banner */}
-        <div className="max-w-2xl mx-auto mb-10 p-5 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.03] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
-              <Zap className="w-5 h-5 text-emerald-400" />
-            </div>
-            <div className="text-left">
-              <h4 className="text-sm font-semibold text-white/90">Need just one more analysis?</h4>
-              <p className="text-xs text-white/50">Explorer users can run a one-off analysis instantly for ₹249. No subscription required.</p>
-            </div>
-          </div>
-          <MagneticButton
-            intensity={0.1}
-            onClick={() => {}}
-            className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-white hover:bg-white/10 shrink-0 transition-colors"
-          >
-            Buy 1 Credit
-          </MagneticButton>
-        </div>
-
-        {/* Bottom trust strip */}
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-6 border-t border-white/5">
-          {[
-            "No credit card for Free tier",
-            "Cancel anytime",
-            "Annual plans save up to 20%",
-            "Upgrade or downgrade instantly",
-          ].map((item, i) => (
-            <span key={i} className="flex items-center gap-2 text-xs text-white/30">
-              <Check className="w-3 h-3 text-emerald-500/70" />
-              {item}
-            </span>
-          ))}
-        </div>
-      </section>
 
       {/* ── Footer (CTA + Editorial) ─────────────────────────────────── */}
       <PrismFooter onStart={onStart} />

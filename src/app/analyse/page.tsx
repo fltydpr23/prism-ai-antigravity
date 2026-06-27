@@ -259,8 +259,12 @@ export default function AnalysePage() {
   const [pendingExtractedText, setPendingExtractedText] = useState<string | null>(null);
   const [detectedSchema, setDetectedSchema] = useState<"standard" | "survey">("standard");
   const [schemaOpen, setSchemaOpen] = useState(false);
+  const [isCommandFocused, setIsCommandFocused] = useState(false);
+  const [focusedIndustryIndex, setFocusedIndustryIndex] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const commandBoxRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
   const { activeWorkspace } = useWorkspace();
 
@@ -274,18 +278,60 @@ export default function AnalysePage() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (view !== "analysis") return;
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        textareaRef.current?.focus();
-      }
       if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
         e.preventDefault();
         if (text || uploadedFile) submit();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
   }, [view, text, uploadedFile]);
+
+  // Dropdown Click Outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIndustryOpen(false);
+      }
+    };
+    if (industryOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [industryOpen]);
+
+  // Dropdown Keyboard Navigation
+  useEffect(() => {
+    if (!industryOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setFocusedIndustryIndex(prev => (prev + 1) % INDUSTRIES.length);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setFocusedIndustryIndex(prev => (prev - 1 + INDUSTRIES.length) % INDUSTRIES.length);
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        const industry = INDUSTRIES[focusedIndustryIndex];
+        if (industry) {
+          setSelectedIndustry(industry.id);
+          setIndustryOpen(false);
+          posthog?.capture?.("industry_selected", { industry: industry.id, label: industry.label });
+        }
+      } else if (e.key === "Escape") {
+        setIndustryOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [industryOpen, focusedIndustryIndex]);
+
+  // Reset focus index when opening dropdown
+  useEffect(() => {
+    if (industryOpen) {
+      const idx = INDUSTRIES.findIndex(i => i.id === selectedIndustry);
+      setFocusedIndustryIndex(idx >= 0 ? idx : 0);
+    }
+  }, [industryOpen, selectedIndustry]);
   
   // ── Sync local storage analyses to Supabase when user signs in ──
   useEffect(() => {
@@ -316,6 +362,15 @@ export default function AnalysePage() {
   }, [userId]);
 
   // ─── Handlers ────────────────────────────────────────────────────────────
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!commandBoxRef.current) return;
+    const rect = commandBoxRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    commandBoxRef.current.style.setProperty('--mouse-x', `${x}px`);
+    commandBoxRef.current.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   const handleDragOver = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(true); };
   const handleDragLeave = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(false); };
   const handleDrop = async (e: React.DragEvent) => {
@@ -329,7 +384,7 @@ export default function AnalysePage() {
       } else {
         setDetectedSchema("standard");
       }
-      posthog.capture("file_uploaded", { file_type: file.type || file.name.split(".").pop(), file_size_kb: Math.round(file.size / 1024), method: "drop" });
+      posthog?.capture?.("file_uploaded", { file_type: file.type || file.name.split(".").pop(), file_size_kb: Math.round(file.size / 1024), method: "drop" });
     }
   };
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -342,7 +397,7 @@ export default function AnalysePage() {
       } else {
         setDetectedSchema("standard");
       }
-      posthog.capture("file_uploaded", { file_type: file.type || file.name.split(".").pop(), file_size_kb: Math.round(file.size / 1024), method: "browse" });
+      posthog?.capture?.("file_uploaded", { file_type: file.type || file.name.split(".").pop(), file_size_kb: Math.round(file.size / 1024), method: "browse" });
     }
   };
   const removeFile = () => { setUploadedFile(null); setDetectedSchema("standard"); if (fileInputRef.current) fileInputRef.current.value = ""; };
@@ -362,7 +417,7 @@ export default function AnalysePage() {
         });
         setStage("done");
         setView("results");
-        posthog.capture("anon_limit_reached", { used });
+        posthog?.capture?.("anon_limit_reached", { used });
         return;
       }
       localStorage.setItem(ANON_KEY, String(used + 1));
@@ -371,7 +426,7 @@ export default function AnalysePage() {
     setLiveStatus(null);
     setResponse(null);
     setView("results");
-    posthog.capture("analysis_started", {
+    posthog?.capture?.("analysis_started", {
       input_type: uploadedFile ? "file" : "text",
       file_type: uploadedFile ? (uploadedFile.type || uploadedFile.name.split(".").pop()) : null,
       model: "openai/gpt-oss-120b:free",
@@ -475,7 +530,7 @@ export default function AnalysePage() {
     setResponse(null);
     setView("results");
     
-    posthog.capture("analysis_started", {
+    posthog?.capture?.("analysis_started", {
       input_type: uploadedFile ? "file" : "text",
       file_type: uploadedFile ? (uploadedFile.type || uploadedFile.name.split(".").pop()) : null,
       model: "openai/gpt-oss-120b:free",
@@ -555,9 +610,9 @@ export default function AnalysePage() {
                   setResponse(resultData);
                   setStage("done");
                   if (data.data.error) {
-                    posthog.capture("analysis_failed", { error: data.data.error, model: "openai/gpt-oss-120b:free", industry: selectedIndustry });
+                    posthog?.capture?.("analysis_failed", { error: data.data.error, model: "openai/gpt-oss-120b:free", industry: selectedIndustry });
                   } else {
-                    posthog.capture("analysis_completed", {
+                    posthog?.capture?.("analysis_completed", {
                       model: "openai/gpt-oss-120b:free",
                       industry: data.data.analysis?.industry?.id ?? selectedIndustry,
                       industry_detection_method: (data.data.analysis?.industry as { detectionMethod?: string } | undefined)?.detectionMethod,
@@ -578,7 +633,7 @@ export default function AnalysePage() {
     } catch {
       setResponse({ error: "Request failed." });
       setStage("done");
-      posthog.capture("analysis_failed", { error: "request_failed", model: "openai/gpt-oss-120b:free", industry: selectedIndustry });
+      posthog?.capture?.("analysis_failed", { error: "request_failed", model: "openai/gpt-oss-120b:free", industry: selectedIndustry });
     }
   }
 
@@ -630,16 +685,39 @@ export default function AnalysePage() {
                   <span className="text-sm text-white/50 mt-2">Analyzes a random sample of the top segments in parallel. Results in ~30 seconds.</span>
                 </button>
 
-                <button 
-                  onClick={() => executeSubmit(pendingExtractedText, "background")}
-                  className="flex flex-col text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-emerald-500/30 transition-all group"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-white group-hover:text-emerald-400 transition-colors">Comprehensive Analysis</span>
-                    <Clock className="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors" />
-                  </div>
-                  <span className="text-sm text-white/50 mt-2">Analyzes the entire dataset in the background. We'll email you when it's ready.</span>
-                </button>
+
+                {userId ? (
+                  <button 
+                    onClick={() => executeSubmit(pendingExtractedText, "background")}
+                    className="flex flex-col text-left p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all group"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-white group-hover:text-emerald-400 transition-colors">Comprehensive Analysis</span>
+                      <Clock className="w-4 h-4 text-emerald-500/50 group-hover:text-emerald-400 transition-colors" />
+                    </div>
+                    <span className="text-sm text-white/50 mt-2">Analyzes the entire dataset in the background. We'll email you when it's ready.</span>
+                    <div className="mt-3 flex items-center gap-1.5 text-[10px] font-semibold tracking-widest uppercase text-emerald-400/70">
+                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Analyst Plan Feature
+                    </div>
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => router.push("/pricing")}
+                    className="flex flex-col text-left p-4 rounded-xl border border-white/5 bg-white/3 opacity-60 hover:opacity-80 transition-all group cursor-pointer"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-white/60">Comprehensive Analysis</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-semibold text-amber-400/80 tracking-wider">ANALYST+</span>
+                        <svg className="w-3.5 h-3.5 text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                      </div>
+                    </div>
+                    <span className="text-sm text-white/30 mt-2">Processes 100% of your dataset. Sign up for Analyst to unlock.</span>
+                    <span className="mt-3 text-[10px] text-amber-400/70 font-semibold">→ View Analyst Plan</span>
+                  </button>
+                )}
+
+
               </div>
             </motion.div>
           </motion.div>
@@ -688,179 +766,234 @@ export default function AnalysePage() {
               
               {/* Command Center Input Panel */}
               <div
-                className={`w-full bg-[#0a0a0a] backdrop-blur-3xl border transition-all duration-300 rounded-2xl overflow-visible flex flex-col shadow-2xl relative
-                  ${isDragging ? "border-emerald-500/50 shadow-[0_0_40px_rgba(52,211,153,0.15)] ring-1 ring-emerald-500/20 scale-[1.02]" : "border-white/10 hover:border-white/20"}
+                ref={commandBoxRef}
+                onMouseMove={handleMouseMove}
+                className={`w-full bg-[#0a0a0a]/90 backdrop-blur-3xl border transition-all duration-500 rounded-2xl overflow-visible flex flex-col shadow-2xl relative group
+                  ${isDragging ? "border-emerald-500/50 shadow-[0_0_80px_rgba(52,211,153,0.2)] ring-2 ring-emerald-500/30 scale-[1.02]" : isCommandFocused ? "border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)] scale-[1.01]" : "border-white/10 hover:border-white/20"}
                 `}
               >
+                {/* 3D Flashlight Hover Effect */}
+                <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100 mix-blend-screen"
+                     style={{
+                       background: `radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.08), transparent 40%)`
+                     }}
+                />
+
                 <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden"
                   accept=".txt,.csv,.pdf,.zip,image/*,audio/*" />
 
-                <div className="relative min-h-[140px] flex flex-col">
+                <div className="relative min-h-[160px] flex flex-col z-10">
                   {uploadedFile ? (
-                    <div className="flex flex-col flex-1">
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+                      className="flex flex-col flex-1"
+                    >
                       <div className="flex items-center gap-4 p-8">
-                        <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                        <motion.div 
+                          initial={{ scale: 0.5, rotate: -10 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ type: "spring", bounce: 0.6, duration: 0.6, delay: 0.1 }}
+                          className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 shadow-inner"
+                        >
                           {uploadedFile.type.includes("audio") ? <FileAudio className="w-7 h-7 text-emerald-400" />
                             : uploadedFile.type.includes("image") ? <ImageIcon className="w-7 h-7 text-emerald-400" />
                             : <FileText className="w-7 h-7 text-emerald-400" />}
-                        </div>
+                        </motion.div>
                         <div className="flex-1 min-w-0">
                           <p className="text-xl font-medium text-white truncate tracking-tight">{uploadedFile.name}</p>
-                          <p className="text-sm text-white/40 mt-1 font-mono">{(uploadedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                          <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                            className="text-sm text-white/40 mt-1 font-mono"
+                          >
+                            {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB
+                          </motion.p>
                         </div>
                         <button onClick={removeFile} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-white/40 hover:text-white transition-colors">
                           <X className="w-5 h-5" />
                         </button>
                       </div>
 
-                      {/* Schema Detected Badge */}
-                      {uploadedFile.name.endsWith(".csv") && (
-                        <div className="px-8 pb-6 -mt-2">
-                          <div className="relative inline-block">
-                            <button
-                              onClick={() => setSchemaOpen(o => !o)}
-                              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all shadow-sm ${
-                                detectedSchema === "survey" 
-                                  ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.15)]" 
-                                  : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
-                              }`}
-                            >
-                              <span>{detectedSchema === "survey" ? "✨ Detected: Enterprise Survey" : "📊 Detected: Standard Dataset"}</span>
-                              <ChevronDown className={`w-3 h-3 transition-transform ${schemaOpen ? "rotate-180" : ""}`} />
-                            </button>
+                      {/* Schema Segmented Control */}
+                      <div className="px-8 pb-8 pt-2">
+                        <p className="text-[10px] font-mono text-white/30 uppercase tracking-widest mb-3">Analysis Schema</p>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <button
+                            onClick={() => setDetectedSchema("standard")}
+                            className={`flex-1 flex flex-col items-start p-3 rounded-xl border text-left transition-all ${
+                              detectedSchema === "standard"
+                                ? "bg-white/10 border-white/20 shadow-sm"
+                                : "bg-white/5 border-transparent text-white/40 hover:bg-white/[0.07] hover:text-white/80"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <span>📊</span>
+                              <span className={`text-sm font-medium ${detectedSchema === "standard" ? "text-white" : ""}`}>Standard Dataset</span>
+                            </div>
+                            <span className="text-[11px] leading-relaxed opacity-60">For general text, reviews, feedback, and generic CSVs.</span>
+                          </button>
 
-                            <AnimatePresence>
-                              {schemaOpen && (
-                                <motion.div
-                                  initial={{ opacity: 0, y: 5, scale: 0.95 }}
-                                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                                  exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                                  transition={{ duration: 0.15 }}
-                                  className="absolute top-full left-0 mt-2 z-50 w-56 rounded-xl border border-white/10 bg-[#111] backdrop-blur-xl shadow-2xl overflow-hidden py-1"
-                                >
-                                  <div className="px-3 py-2 border-b border-white/5">
-                                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-wider">Override Schema</p>
-                                  </div>
-                                  <button
-                                    onClick={() => { setDetectedSchema("standard"); setSchemaOpen(false); }}
-                                    className={`w-full flex items-center gap-3 px-3 py-2 text-left text-xs transition-colors ${
-                                      detectedSchema === "standard" ? "bg-white/10 text-white" : "text-white/50 hover:text-white hover:bg-white/5"
-                                    }`}
-                                  >
-                                    <span>📊 Standard Dataset</span>
-                                    {detectedSchema === "standard" && <Check className="ml-auto w-3 h-3 text-emerald-400" />}
-                                  </button>
-                                  <button
-                                    onClick={() => { setDetectedSchema("survey"); setSchemaOpen(false); }}
-                                    className={`w-full flex items-center gap-3 px-3 py-2 text-left text-xs transition-colors ${
-                                      detectedSchema === "survey" ? "bg-white/10 text-white" : "text-white/50 hover:text-white hover:bg-white/5"
-                                    }`}
-                                  >
-                                    <span>✨ Enterprise Survey</span>
-                                    {detectedSchema === "survey" && <Check className="ml-auto w-3 h-3 text-indigo-400" />}
-                                  </button>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
+                          <button
+                            onClick={() => setDetectedSchema("survey")}
+                            className={`flex-1 flex flex-col items-start p-3 rounded-xl border text-left transition-all ${
+                              detectedSchema === "survey"
+                                ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-100 shadow-[0_0_20px_rgba(99,102,241,0.15)]"
+                                : "bg-white/5 border-transparent text-white/40 hover:bg-white/[0.07] hover:text-white/80"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <span>✨</span>
+                              <span className={`text-sm font-medium ${detectedSchema === "survey" ? "text-indigo-200" : ""}`}>Enterprise Survey</span>
+                            </div>
+                            <span className="text-[11px] leading-relaxed opacity-60">Pro-grade survey parsing. Instantly aligns messy variables, nested headers, and vendor metadata.</span>
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <div className="relative flex-1 flex flex-col">
+                      <textarea
+                        ref={textareaRef}
+                        value={text} onChange={e => setText(e.target.value)}
+                        onFocus={() => setIsCommandFocused(true)}
+                        onBlur={() => setIsCommandFocused(false)}
+                        placeholder=""
+                        rows={text.split('\n').length > 3 ? Math.min(10, text.split('\n').length) : 3}
+                        className="w-full flex-1 bg-transparent border-none px-8 py-8 text-2xl tracking-tight font-light text-white focus:ring-0 resize-none outline-none leading-relaxed relative z-20"
+                      />
+                      
+                      {/* Interactive Keycaps Placeholder */}
+                      {!text && (
+                        <div className="absolute inset-0 px-8 py-8 pointer-events-none flex items-start gap-2">
+                          <span className="text-2xl tracking-tight font-light text-white/20">Describe what you want to extract or paste data...</span>
                         </div>
                       )}
                     </div>
-                  ) : (
-                    <textarea
-                      ref={textareaRef}
-                      value={text} onChange={e => setText(e.target.value)}
-                      placeholder="Press ⌘K or paste data to begin..."
-                      rows={text.split('\n').length > 3 ? Math.min(10, text.split('\n').length) : 3}
-                      className="w-full flex-1 bg-transparent border-none px-8 py-8 text-2xl tracking-tight font-light text-white placeholder:text-white/20 focus:ring-0 resize-none outline-none leading-relaxed"
-                    />
                   )}
 
-                  {isDragging && (
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl">
-                      <div className="flex flex-col items-center gap-3">
-                        <UploadCloud className="w-12 h-12 text-emerald-400 animate-bounce" />
-                        <span className="text-xl font-medium tracking-tight text-white">Drop to analyze</span>
-                      </div>
-                    </div>
-                  )}
+                  {/* Kinetic Drag-and-Drop Portal */}
+                  <AnimatePresence>
+                    {isDragging && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ type: "spring", bounce: 0.4, duration: 0.5 }}
+                        className="absolute inset-0 z-50 flex items-center justify-center bg-[#0a0a0a]/95 backdrop-blur-xl rounded-2xl overflow-hidden"
+                      >
+                        {/* Marching ants border */}
+                        <div className="absolute inset-2 border-2 border-dashed border-emerald-500/40 rounded-xl" style={{ backgroundImage: "linear-gradient(to right, rgba(52, 211, 153, 0.5) 50%, transparent 50%)", backgroundSize: "20px 2px", backgroundPosition: "bottom", backgroundRepeat: "repeat-x", animation: "marching-ants 1s linear infinite" }} />
+                        
+                        {/* Expanding rings portal */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: [1, 2, 2.5], opacity: [0.5, 0.2, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="w-32 h-32 rounded-full border border-emerald-500/50 absolute" />
+                          <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: [1, 1.5, 2], opacity: [0.8, 0.4, 0] }} transition={{ duration: 2, delay: 0.6, repeat: Infinity, ease: "linear" }} className="w-32 h-32 rounded-full border border-emerald-500/40 absolute" />
+                        </div>
+
+                        <div className="flex flex-col items-center gap-4 relative z-10">
+                          <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+                            <div className="w-20 h-20 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-center shadow-[0_0_50px_rgba(52,211,153,0.3)]">
+                              <UploadCloud className="w-10 h-10 text-emerald-400" />
+                            </div>
+                          </motion.div>
+                          <span className="text-2xl font-medium tracking-tight text-white drop-shadow-md">Drop to analyze</span>
+                          <span className="text-sm font-mono text-emerald-400/80 uppercase tracking-widest">Supports CSV, PDF, Audio, Images</span>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                {/* Command Bar Footer */}
-                <div className="bg-white/[0.02] border-t border-white/5 px-4 py-3 flex items-center justify-between rounded-b-2xl">
+                {/* Command Bar Footer (Linear Style) */}
+                <div className="bg-black/20 border-t border-white/5 px-4 py-3 flex items-center justify-between rounded-b-2xl">
                   
-                  {/* Left: Tools & Industry */}
-                  <div className="flex items-center gap-2">
+                  {/* Left: Upload Icon Button */}
+                  <div className="flex items-center">
                      {!uploadedFile && (
                         <button onClick={() => fileInputRef.current?.click()}
-                          className="text-xs text-white/40 hover:text-white flex items-center gap-1.5 transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5">
-                          <UploadCloud className="w-4 h-4" /> File
+                          className="w-8 h-8 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors"
+                          title="Upload File"
+                        >
+                          <UploadCloud className="w-4 h-4" />
                         </button>
                      )}
-                     
-                     <div className="h-4 w-px bg-white/10 mx-1" />
-
-                     {/* Industry Selector */}
-                     <div className="relative">
-                        <button
-                          onClick={() => setIndustryOpen(o => !o)}
-                          className="flex items-center gap-2 text-xs text-white/40 hover:text-white transition-colors py-1.5 px-3 rounded-lg hover:bg-white/5"
-                        >
-                          <span className="text-[14px]">
-                            {INDUSTRIES.find(i => i.id === selectedIndustry)?.emoji ?? "🔍"}
-                          </span>
-                          <span>{INDUSTRIES.find(i => i.id === selectedIndustry)?.label ?? "Auto-Detect"}</span>
-                          <ChevronDown className={`w-3 h-3 transition-transform ${industryOpen ? "rotate-180" : ""}`} />
-                        </button>
-
-                        {industryOpen && (
-                          <motion.div
-                            initial={{ opacity: 0, y: -6, scale: 0.97 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -4 }}
-                            transition={{ duration: 0.15 }}
-                            className="absolute bottom-full mb-2 left-0 z-50 min-w-[200px] rounded-xl border border-white/10 bg-[#111] backdrop-blur-xl shadow-2xl overflow-hidden py-1"
-                          >
-                            {INDUSTRIES.map(industry => (
-                              <button
-                                key={industry.id}
-                                onClick={() => { setSelectedIndustry(industry.id); setIndustryOpen(false); posthog.capture("industry_selected", { industry: industry.id, label: industry.label }); }}
-                                className={`w-full flex items-center gap-3 px-4 py-2.5 text-left text-xs transition-colors ${
-                                  selectedIndustry === industry.id
-                                    ? "bg-white/10 text-white"
-                                    : "text-white/50 hover:text-white hover:bg-white/5"
-                                }`}
-                              >
-                                <span className="text-[14px]">{industry.emoji}</span>
-                                <span>{industry.label}</span>
-                                {selectedIndustry === industry.id && <Check className="ml-auto w-3 h-3 text-emerald-400" />}
-                              </button>
-                            ))}
-                          </motion.div>
-                        )}
-                     </div>
-
-                     <div className="h-4 w-px bg-white/10 mx-1" />
-
-                     {/* Save Toggle */}
-                     <label className="flex items-center gap-2 cursor-pointer px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">
-                        <input type="checkbox" className="hidden" checked={saveToSupabase} onChange={e => setSaveToSupabase(e.target.checked)} />
-                        <div className={`w-6 h-3.5 rounded-full relative transition-colors ${saveToSupabase ? "bg-emerald-500/80" : "bg-white/10"}`}>
-                          <div className={`absolute top-[2px] left-[2px] w-2.5 h-2.5 rounded-full bg-white transition-transform ${saveToSupabase ? "translate-x-2.5" : ""}`} />
-                        </div>
-                        <span className="text-xs text-white/40">Archive</span>
-                      </label>
                   </div>
 
-                  {/* Right: Submit */}
-                  <MagneticButton onClick={submit} disabled={!text && !uploadedFile} intensity={0.15}
-                    className="flex items-center gap-3 px-5 py-2 text-sm font-medium tracking-tight text-white bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all rounded-xl border border-white/10">
-                    Analyze
-                    <div className="flex items-center gap-1 opacity-50">
-                      <Command className="w-3 h-3" />
-                      <span className="text-[10px] font-mono tracking-widest mt-[1px]">ENTER</span>
-                    </div>
-                  </MagneticButton>
+                  {/* Center: Dynamic Status / Industry Selector */}
+                  <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
+                     <div className="relative" ref={dropdownRef}>
+                        <button
+                          onClick={() => setIndustryOpen(o => !o)}
+                          className="flex items-center gap-2 text-[13px] font-medium text-white/50 hover:text-white transition-colors py-1.5 px-3 rounded-lg hover:bg-white/5 cursor-pointer"
+                        >
+                          <span>
+                            {INDUSTRIES.find(i => i.id === selectedIndustry)?.emoji ?? "🔍"}
+                          </span>
+                          <span>
+                            {INDUSTRIES.find(i => i.id === selectedIndustry)?.label ?? "Industry: Auto-Detect"}
+                          </span>
+                        </button>
+
+                        <AnimatePresence>
+                          {industryOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10, scale: 0.97 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: 5 }}
+                              transition={{ duration: 0.15 }}
+                              className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 z-50 w-[240px] rounded-xl border border-white/10 bg-[#18181b] shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden py-1"
+                            >
+                              <div className="px-4 py-3 border-b border-white/5 bg-white/[0.02]">
+                                <p className="text-[10px] font-mono text-emerald-400/80 uppercase tracking-widest">Industry Context</p>
+                                <p className="text-xs text-white/50 mt-1">Prism will use this to refine metrics and churn analysis.</p>
+                              </div>
+                              <div className="max-h-[300px] overflow-y-auto">
+                                {INDUSTRIES.map((industry, index) => (
+                                  <button
+                                    key={industry.id}
+                                    onMouseEnter={() => setFocusedIndustryIndex(index)}
+                                    onClick={() => { setSelectedIndustry(industry.id); setIndustryOpen(false); posthog?.capture?.("industry_selected", { industry: industry.id, label: industry.label }); }}
+                                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-left text-xs transition-colors cursor-pointer ${
+                                      focusedIndustryIndex === index
+                                        ? "bg-white/10 text-white"
+                                        : "text-white/50 hover:text-white hover:bg-white/5"
+                                    }`}
+                                  >
+                                    <span className="text-[14px]">{industry.emoji}</span>
+                                    <span>{industry.label}</span>
+                                    {selectedIndustry === industry.id && <Check className="ml-auto w-3 h-3 text-emerald-400" />}
+                                  </button>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                     </div>
+                  </div>
+
+                  {/* Right: Actions */}
+                  <div className="flex items-center gap-4">
+                     {/* Save Toggle */}
+                     <label className="flex items-center gap-2 cursor-pointer group" title="Archive report to history">
+                        <span className="text-[11px] font-medium text-white/30 group-hover:text-white/60 transition-colors uppercase tracking-wider">Archive</span>
+                        <input type="checkbox" className="hidden" checked={saveToSupabase} onChange={e => setSaveToSupabase(e.target.checked)} />
+                        <div className={`w-7 h-4 rounded-full relative transition-colors ${saveToSupabase ? "bg-emerald-500/80" : "bg-white/10"}`}>
+                          <div className={`absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm transition-transform ${saveToSupabase ? "translate-x-3" : ""}`} />
+                        </div>
+                      </label>
+
+                     <MagneticButton onClick={submit} disabled={!text && !uploadedFile} intensity={0.15}
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-sm font-medium tracking-tight text-[#0a0a0a] bg-white hover:bg-gray-100 disabled:opacity-20 disabled:cursor-not-allowed transition-all rounded-lg">
+                      Analyze
+                      <div className="flex items-center gap-0.5 opacity-60">
+                        <Command className="w-3 h-3" />
+                        <span className="text-[10px] font-mono tracking-widest mt-[1px]">ENTER</span>
+                      </div>
+                    </MagneticButton>
+                  </div>
 
                 </div>
               </div>
@@ -869,7 +1002,7 @@ export default function AnalysePage() {
               {!text && !uploadedFile && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
                   {INDUSTRY_CHIPS.slice(0, 4).map(c => (
-                    <button key={c.id} onClick={() => { setText(c.text); posthog.capture("example_used", { industry_chip: c.id, label: c.label }); }}
+                    <button key={c.id} onClick={() => { setText(c.text); posthog?.capture?.("example_used", { industry_chip: c.id, label: c.label }); }}
                       className="px-3 py-1.5 text-[11px] text-white/30 hover:text-white/80 bg-white/5 hover:bg-white/10 border border-white/5 rounded-full cursor-pointer transition-all">
                       Try "{c.label}" example
                     </button>

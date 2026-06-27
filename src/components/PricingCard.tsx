@@ -52,8 +52,8 @@ export default function PricingCard({
   const isCustom = displayPrice === 0;
   const isFree = monthlyPrice === null;
 
-  const includedFeatures = features.filter(f => f.included === true || typeof f.included === "string");
-  const lockedFeatures = features.filter(f => f.included === "locked");
+  const includedFeatures = features.filter(f => f.included === true || typeof f.included === "string" && f.included !== "locked");
+  const lockedFeatures = features.filter(f => f.included === "locked" || f.included === false);
 
   return (
     <motion.div

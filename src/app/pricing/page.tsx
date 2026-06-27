@@ -13,58 +13,64 @@ import Script from "next/script";
 
 
 const FREE_FEATURES: PricingFeature[] = [
-  { label: "Analyses per month", included: "3" },
-  { label: "File size limit", included: "2MB" },
+  { label: "3 analyses / month", included: true },
   { label: "All 6 industry modes", included: true },
-  { label: "Watermarked PDF export", included: true },
-  { label: "7-day history archive", included: true },
-  { label: "Core intelligence suite", included: true },
-  { label: "Clean PDF export", included: false },
-  { label: "Multi-dataset comparison", included: false },
-  { label: "Team seats", included: false },
-  { label: "API access", included: false },
+  { label: "Standard PDF export", included: true },
+  { label: "Prism watermark included", included: true },
+  { label: "7-day report retention", included: true },
+  { label: "Accelerated Sample analysis", included: "20 rows / segment" },
+  { label: "Comprehensive analysis", included: false },
+  { label: "Unlimited ingestion", included: false },
+  { label: "White-label reports", included: false },
+  { label: "Team collaboration", included: false },
 ];
 
 const STARTER_FEATURES: PricingFeature[] = [
-  { label: "Analyses per month", included: "15" },
-  { label: "File size limit", included: "10MB" },
-  { label: "All 6 industry modes", included: true },
-  { label: "Clean PDF export (no watermark)", included: true },
-  { label: "90-day history archive", included: true },
-  { label: "Full core intelligence suite", included: true },
-  { label: "Email support (48hr)", included: true },
-  { label: "Multi-dataset comparison", included: false },
-  { label: "Team seats", included: false },
-  { label: "API access", included: false },
+  { label: "Unlimited analyses", included: true },
+  { label: "5,000 row cap / analysis", included: true },
+  { label: "No Prism watermark", included: true },
+  { label: "Clean PDF export", included: true },
+  { label: "90-day report archive", included: true },
+  { label: "Shareable read-only links", included: true },
+  { label: "Comprehensive background analysis", included: "10 / month" },
+  { label: "Email report delivery", included: true },
+  { label: "White-label reports", included: false },
+  { label: "Team collaboration", included: false },
 ];
 
 const PRO_FEATURES: PricingFeature[] = [
-  { label: "Analyses per month", included: "60" },
-  { label: "File size limit", included: "50MB" },
-  { label: "Team seats", included: "3 users" },
-  { label: "White-label PDF export", included: true },
-  { label: "Competitive Blind Spots", included: true },
-  { label: "Emerging Customer Issues", included: true },
-  { label: "Why Customers Stay", included: true },
-  { label: "Shareable read-only report links", included: true },
-  { label: "12-month history archive", included: true },
-  { label: "Email support (24hr SLA) + Onboarding call", included: true },
+  { label: "Unlimited analyses", included: true },
+  { label: "Unlimited ingestion", included: true },
+  { label: "White-Label generation", included: true },
+  { label: "Up to 3 team seats included", included: true },
+  { label: "Client portal sharing", included: true },
+  { label: "Comprehensive background analysis", included: "Unlimited" },
+  { label: "Email report delivery", included: true },
+  { label: "1-year report archive", included: true },
+  { label: "API access", included: false },
+  { label: "Custom LLM instructions", included: false },
 ];
 
 const AGENCY_FEATURES: PricingFeature[] = [
-  { label: "Analyses per month", included: "200" },
-  { label: "File size limit", included: "200MB" },
-  { label: "Team seats", included: "10 users" },
-  { label: "API access", included: "1,000 calls/mo" },
-  { label: "Everything in Pro", included: true },
-  { label: "Churn Risk Detection", included: true },
-  { label: "Unmet Customer Demand", included: true },
-  { label: "Custom industry modes per client", included: true },
-  { label: "Client workspace isolation", included: true },
-  { label: "Priority Slack channel + 4hr SLA", included: true },
+  { label: "Unlimited team seats", included: true },
+  { label: "API access (custom volume)", included: true },
+  { label: "Custom LLM instructions", included: true },
+  { label: "Proprietary frameworks", included: true },
+  { label: "Unlimited archive", included: true },
+  { label: "Comprehensive background analysis", included: "Unlimited" },
+  { label: "Dedicated account manager", included: true },
+  { label: "Priority support + SLA", included: true },
 ];
 
 const FAQ = [
+  {
+    q: "What is 'Accelerated Sample' analysis?",
+    a: "For speed, the free Explorer plan randomly samples up to 20 rows per data segment and analyzes that subset. This surfaces macro-level trends in seconds. Analyst and above gets Comprehensive Analysis — processing your entire dataset in the background and emailing you a complete boardroom-ready report.",
+  },
+  {
+    q: "What is Comprehensive Analysis?",
+    a: "Comprehensive Analysis processes 100% of your dataset with no row limits, running in the background so you can close the tab and get on with your day. Once complete, Prism emails you a full intelligence report with a direct link. This is available on the Analyst plan (₹999/mo) and above.",
+  },
   {
     q: "Can I switch tiers anytime?",
     a: "Yes — upgrade or downgrade at any time. Changes take effect at the next billing cycle. Upgrades are prorated immediately.",
@@ -83,7 +89,7 @@ const FAQ = [
   },
   {
     q: "Can I export reports for my clients?",
-    a: "On Pro+, you get white-label PDF exports with your own logo and brand colors — ready to send to clients as a professional deliverable.",
+    a: "On Agency Partner+, you get white-label PDF exports with your own logo and brand colors — ready to send to clients as a professional deliverable.",
   },
 ];
 
@@ -191,11 +197,10 @@ export default function PricingPage() {
             <Sparkles className="w-3 h-3" /> Simple, transparent pricing
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter text-gradient pb-2 mb-4">
-            Built for India.<br />Priced for India.
+            Infinite ROI.<br />Zero compromises.
           </h1>
           <p className="text-base text-white/50 max-w-xl mx-auto leading-relaxed">
-            An agency paying ₹3,499/month and billing ₹30,000 per Prism report
-            has an infinite ROI. Start free, scale when you need to.
+            Uncover every nuance in your market data. Prism Pro delivers the power of comprehensive background analysis, designed specifically to scale with your most demanding client strategies.
           </p>
           <div className="flex justify-center mt-8">
             <PricingToggle value={billing} onChange={setBilling} />
@@ -205,8 +210,8 @@ export default function PricingPage() {
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
           <PricingCard
-            tier="Free"
-            tagline="Get started, no card needed"
+            tier="Explorer"
+            tagline="3 full analyses to experience the platform."
             monthlyPrice={null}
             annualPrice={null}
             billingPeriod={billing}
@@ -218,14 +223,14 @@ export default function PricingPage() {
             index={0}
           />
           <PricingCard
-            tier="Starter"
-            tagline="Solo analysts and founders"
+            tier="Analyst"
+            tagline="For solo analysts needing unlimited insights."
             monthlyPrice={999}
             annualPrice={799}
             billingPeriod={billing}
             ctaLabel="Start 7-Day Trial"
             ctaHref="#"
-            ctaOnClick={() => handleCheckout("starter")}
+            ctaOnClick={() => handleCheckout("analyst")}
             ctaVariant="ghost"
             features={STARTER_FEATURES}
             accentColor="195,90%,58%"
@@ -337,25 +342,26 @@ export default function PricingPage() {
               <thead>
                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
                   <th className="text-left py-4 px-5 text-white/40 font-medium text-xs tracking-wider uppercase w-1/3">Feature</th>
-                  {["Free", "Starter", "Pro", "Agency"].map(t => (
+                  {["Explorer", "Analyst", "Agency", "Enterprise"].map(t => (
                     <th key={t} className="py-4 px-4 text-center text-white/70 font-semibold text-xs tracking-wider uppercase">{t}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Analyses / month", "3", "15", "60", "200"],
+                  ["Analyses / month", "3", "Unlimited", "Unlimited", "Custom"],
+                  ["Comprehensive Analysis", "—", "10 / mo", "Unlimited", "Unlimited"],
                   ["File size limit", "2MB", "10MB", "50MB", "200MB"],
                   ["Industry modes", "All 6", "All 6", "All 6", "Custom"],
                   ["PDF export", "Watermarked", "Clean", "White-label", "White-label"],
                   ["History archive", "7 days", "90 days", "12 months", "Unlimited"],
-                  ["Team seats", "—", "1", "3", "10"],
+                  ["Team seats", "—", "1", "3", "Unlimited"],
                   ["Competitive Blind Spots", "—", "—", "✓", "✓"],
                   ["Emerging Customer Issues", "—", "—", "✓", "✓"],
                   ["Churn Risk Detection", "—", "—", "—", "✓"],
                   ["Unmet Customer Demand", "—", "—", "—", "✓"],
-                  ["Shareable report links", "—", "—", "✓", "✓"],
-                  ["API access", "—", "—", "—", "1,000 calls/mo"],
+                  ["Shareable report links", "—", "✓", "✓", "✓"],
+                  ["API access", "—", "—", "—", "Custom volume"],
                   ["Support", "Community", "Email 48hr", "Email 24hr + Call", "Slack + 4hr SLA"],
                 ].map(([feature, ...values], i) => (
                   <tr

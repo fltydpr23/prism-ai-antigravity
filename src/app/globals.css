@@ -50,6 +50,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ─── Marching Ants ──────────────────────────────────── */
+@keyframes marching-ants {
+  0% { background-position: 0 100%; }
+  100% { background-position: 20px 100%; }
+}
+
 /* ─── Aurora Background ──────────────────────────────────── */
 .aurora-bg {
   position: fixed;
