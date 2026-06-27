@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { ClerkProvider } from "@clerk/nextjs";
 import { CSPostHogProvider } from "../providers/PostHogProvider";
 import { WorkspaceProvider } from "../providers/WorkspaceProvider";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,7 +41,19 @@ export default function RootLayout({
       <html lang="en" className={`${inter.variable} ${vt323.variable} ${basementGrotesque.variable} font-sans h-full antialiased`}>
         <CSPostHogProvider>
           <WorkspaceProvider>
-            <body className="min-h-full flex flex-col">{children}</body>
+            <body className="min-h-full flex flex-col">
+              {children}
+              <Toaster
+                position="bottom-right"
+                toastOptions={{
+                  style: {
+                    background: '#18181b',
+                    color: '#fff',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                  },
+                }}
+              />
+            </body>
           </WorkspaceProvider>
         </CSPostHogProvider>
       </html>

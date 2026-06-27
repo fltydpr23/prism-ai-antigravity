@@ -2,62 +2,59 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, HelpCircle } from "lucide-react";
+import { ArrowRight, Sparkles, HelpCircle, Database } from "lucide-react";
 import Link from "next/link";
 import PricingCard, { type PricingFeature } from "@/components/PricingCard";
 import PricingToggle from "@/components/PricingToggle";
 import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import Script from "next/script";
+import toast from "react-hot-toast";
 
 
 
 const FREE_FEATURES: PricingFeature[] = [
   { label: "3 analyses / month", included: true },
-  { label: "All 6 industry modes", included: true },
-  { label: "Standard PDF export", included: true },
-  { label: "Prism watermark included", included: true },
+  { label: "Accelerated Sample Analysis", included: "20 rows/segment" },
+  { label: "Comprehensive Background Analysis", included: "locked" },
+  { label: "Standard insights & PDF export", included: true },
   { label: "7-day report retention", included: true },
-  { label: "Accelerated Sample analysis", included: "20 rows / segment" },
-  { label: "Comprehensive analysis", included: false },
-  { label: "Unlimited ingestion", included: false },
-  { label: "White-label reports", included: false },
-  { label: "Team collaboration", included: false },
+  { label: "Emerging Customer Issues", included: true },
+  { label: "Why Customers Stay", included: true },
+  { label: "Competitive Blind Spots", included: "locked" },
+  { label: "Churn Risk Detection", included: "locked" },
+  { label: "Unmet Customer Demand", included: "locked" },
 ];
 
 const STARTER_FEATURES: PricingFeature[] = [
-  { label: "Unlimited analyses", included: true },
-  { label: "5,000 row cap / analysis", included: true },
-  { label: "No Prism watermark", included: true },
-  { label: "Clean PDF export", included: true },
-  { label: "90-day report archive", included: true },
+  { label: "Unlimited analyses", included: "5,000 rows/ea" },
+  { label: "Comprehensive Background Analysis", included: "10 / month" },
+  { label: "Clean, watermark-free PDFs", included: true },
   { label: "Shareable read-only links", included: true },
-  { label: "Comprehensive background analysis", included: "10 / month" },
-  { label: "Email report delivery", included: true },
-  { label: "White-label reports", included: false },
-  { label: "Team collaboration", included: false },
+  { label: "90-day report archive", included: true },
+  { label: "Competitive Blind Spots", included: true },
+  { label: "Churn Risk Detection", included: true },
+  { label: "White-label client reporting", included: "locked" },
+  { label: "Market Opportunity Detection", included: "locked" },
 ];
 
 const PRO_FEATURES: PricingFeature[] = [
-  { label: "Unlimited analyses", included: true },
-  { label: "Unlimited ingestion", included: true },
-  { label: "White-Label generation", included: true },
-  { label: "Up to 3 team seats included", included: true },
+  { label: "Unlimited data ingestion", included: true },
+  { label: "Comprehensive Background Analysis", included: "Unlimited" },
+  { label: "3 Team Seats included", included: true },
+  { label: "White-label generation", included: true },
   { label: "Client portal sharing", included: true },
-  { label: "Comprehensive background analysis", included: "Unlimited" },
-  { label: "Email report delivery", included: true },
   { label: "1-year report archive", included: true },
-  { label: "API access", included: false },
-  { label: "Custom LLM instructions", included: false },
+  { label: "Market Opportunity Detection", included: true },
+  { label: "Unmet Customer Demand", included: true },
 ];
 
 const AGENCY_FEATURES: PricingFeature[] = [
   { label: "Unlimited team seats", included: true },
-  { label: "API access (custom volume)", included: true },
+  { label: "API access", included: true },
   { label: "Custom LLM instructions", included: true },
   { label: "Proprietary frameworks", included: true },
   { label: "Unlimited archive", included: true },
-  { label: "Comprehensive background analysis", included: "Unlimited" },
   { label: "Dedicated account manager", included: true },
   { label: "Priority support + SLA", included: true },
 ];
@@ -136,11 +133,11 @@ export default function PricingPage() {
             });
             const data = await res.json();
             if (data.error) throw new Error(data.error);
-            alert("Payment successful! Your account is now updated.");
+            toast.success("Payment successful! Your account is now updated.");
             router.push("/dashboard");
           } catch (err: any) {
             console.error(err);
-            alert(`Payment verification failed: ${err.message}`);
+            toast.error(`Payment verification failed: ${err.message}`);
           }
         },
         theme: {
@@ -164,7 +161,7 @@ export default function PricingPage() {
       rzp.open();
     } catch (err: any) {
       console.error(err);
-      alert(`Failed to initiate checkout: ${err.message || String(err)}`);
+      toast.error(`Failed to initiate checkout: ${err.message || String(err)}`);
     }
   };
 
@@ -197,63 +194,44 @@ export default function PricingPage() {
             <Sparkles className="w-3 h-3" /> Simple, transparent pricing
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter text-gradient pb-2 mb-4">
-            Infinite ROI.<br />Zero compromises.
+            Clarity at any scale.
           </h1>
           <p className="text-base text-white/50 max-w-xl mx-auto leading-relaxed">
-            Uncover every nuance in your market data. Prism Pro delivers the power of comprehensive background analysis, designed specifically to scale with your most demanding client strategies.
+            Understand every nuance in your data instantly. Designed to bring human-like intuition to the world's most complex datasets.
           </p>
           <div className="flex justify-center mt-8">
             <PricingToggle value={billing} onChange={setBilling} />
           </div>
         </motion.div>
 
+        {/* Social Proof Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-wrap items-center justify-center gap-6 md:gap-16 mb-16"
+        >
+          <div className="flex flex-col items-center">
+            <div className="text-3xl font-bold tracking-tighter text-white/90">47,000+</div>
+            <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-semibold">Signals Processed</div>
+          </div>
+          <div className="w-px h-8 bg-white/10 hidden md:block" />
+          <div className="flex flex-col items-center">
+            <div className="text-3xl font-bold tracking-tighter text-white/90">12+</div>
+            <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-semibold">Sectors Analyzed</div>
+          </div>
+          <div className="w-px h-8 bg-white/10 hidden md:block" />
+          <div className="flex flex-col items-center max-w-[280px] text-center">
+            <div className="text-sm font-medium italic text-white/80">"Surfaces insights that take 2 days to compile manually."</div>
+            <div className="text-[10px] tracking-widest mt-1.5 uppercase text-white/40 font-semibold">— Strategy Lead, ZoomRx</div>
+          </div>
+        </motion.div>
+
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
           <PricingCard
-            tier="Explorer"
-            tagline="3 full analyses to experience the platform."
-            monthlyPrice={null}
-            annualPrice={null}
-            billingPeriod={billing}
-            ctaLabel="Start Free"
-            ctaHref="/"
-            ctaVariant="ghost"
-            features={FREE_FEATURES}
-            accentColor="162,85%,48%"
-            index={0}
-          />
-          <PricingCard
-            tier="Analyst"
-            tagline="For solo analysts needing unlimited insights."
-            monthlyPrice={999}
-            annualPrice={799}
-            billingPeriod={billing}
-            ctaLabel="Start 7-Day Trial"
-            ctaHref="#"
-            ctaOnClick={() => handleCheckout("analyst")}
-            ctaVariant="ghost"
-            features={STARTER_FEATURES}
-            accentColor="195,90%,58%"
-            index={1}
-          />
-          <PricingCard
-            tier="Agency Partner"
-            tagline="For agencies delivering client strategies."
-            monthlyPrice={4999}
-            annualPrice={3999}
-            billingPeriod={billing}
-            isPopular
-            ctaLabel="Start 14-Day Free Trial"
-            ctaHref="#"
-            ctaOnClick={() => handleCheckout("agency")}
-            ctaVariant="primary"
-            features={PRO_FEATURES}
-            accentColor="162,85%,48%"
-            index={2}
-          />
-          <PricingCard
             tier="Enterprise"
-            tagline="For large consultancies (e.g. ZoomRx scale)."
+            tagline="Uncompromising scale and precision for global organizations."
             monthlyPrice={0}
             annualPrice={0}
             billingPeriod={billing}
@@ -262,6 +240,48 @@ export default function PricingPage() {
             ctaVariant="ghost"
             features={AGENCY_FEATURES}
             accentColor="265,80%,65%"
+            index={0}
+          />
+          <PricingCard
+            tier="Agency Partner"
+            tagline="For strategy consultancies. (3 seats inc. — ₹1,667/analyst/mo)"
+            monthlyPrice={4999}
+            annualPrice={3999}
+            billingPeriod={billing}
+            ctaLabel="Start 14-Day Free Trial"
+            ctaHref="#"
+            ctaOnClick={() => handleCheckout("agency")}
+            ctaVariant="ghost"
+            features={PRO_FEATURES}
+            accentColor="162,85%,48%"
+            index={1}
+          />
+          <PricingCard
+            tier="Analyst"
+            tagline="For CX leads and solo researchers running weekly reports."
+            monthlyPrice={999}
+            annualPrice={799}
+            billingPeriod={billing}
+            isPopular
+            ctaLabel="Start 7-Day Trial"
+            ctaHref="#"
+            ctaOnClick={() => handleCheckout("analyst")}
+            ctaVariant="primary"
+            features={STARTER_FEATURES}
+            accentColor="195,90%,58%"
+            index={2}
+          />
+          <PricingCard
+            tier="Explorer"
+            tagline="For PMs and founders validating an idea or dataset."
+            monthlyPrice={null}
+            annualPrice={null}
+            billingPeriod={billing}
+            ctaLabel="Start Free"
+            ctaHref="/"
+            ctaVariant="ghost"
+            features={FREE_FEATURES}
+            accentColor="162,85%,48%"
             index={3}
           />
         </div>
@@ -285,7 +305,7 @@ export default function PricingPage() {
             </h3>
             <p className="text-sm text-white/45 max-w-lg">
               Unlimited reports, SSO, custom LLM fine-tuning, India data residency,
-              99.9% SLA, and a dedicated Customer Success manager. Starts at ₹30,000/mo.
+              99.9% SLA, and a dedicated Customer Success manager.
             </p>
           </div>
           <a
@@ -296,41 +316,81 @@ export default function PricingPage() {
           </a>
         </motion.div>
 
-        {/* 1 Credit Add-on Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="rounded-2xl p-6 mb-20 flex flex-col sm:flex-row items-center justify-between gap-6"
-          style={{
-            background: "#0A0A0A",
-            border: "1px solid rgba(16, 185, 129, 0.2)",
-          }}
-        >
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-500/10 shrink-0">
-              <Sparkles className="w-5 h-5 text-emerald-400" />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold tracking-tight text-white mb-1">
-                Need just one more analysis?
-              </h3>
-              <p className="text-sm text-white/50">
-                Explorer users can run a one-off analysis instantly for ₹249. No subscription required.
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={() => handleCheckout("credit")}
-            className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white whitespace-nowrap transition-all"
+        {/* Add-ons Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-20">
+          {/* 1 Credit Add-on Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl p-6 flex flex-col justify-between gap-6"
             style={{
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "#0A0A0A",
+              border: "1px solid rgba(16, 185, 129, 0.2)",
             }}
           >
-            Buy 1 Credit
-          </button>
-        </motion.div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-emerald-500/10 shrink-0">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold tracking-tight text-white mb-1">
+                  One-off Analysis Credit
+                </h3>
+                <p className="text-sm text-white/50">
+                  Explorer users can run a one-off analysis instantly for ₹249. No subscription required.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => handleCheckout("credit")}
+              className="self-start flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white whitespace-nowrap transition-all"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              Buy 1 Credit
+            </button>
+          </motion.div>
+
+          {/* Row Overage Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="rounded-2xl p-6 flex flex-col justify-between gap-6"
+            style={{
+              background: "#0A0A0A",
+              border: "1px solid rgba(195, 144, 88, 0.2)",
+            }}
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-amber-500/10 shrink-0">
+                <Database className="w-4 h-4 text-amber-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold tracking-tight text-white mb-1">
+                  Data Row Top-up
+                </h3>
+                <p className="text-sm text-white/50">
+                  Analyzing a massive dataset that exceeds your 5,000-row cap? Top up for ₹99 per 5,000 extra rows.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => handleCheckout("rows")}
+              className="self-start flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white whitespace-nowrap transition-all"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              Add 5,000 Rows
+            </button>
+          </motion.div>
+        </div>
 
         {/* Feature comparison table */}
         <div className="mb-20">

@@ -50,7 +50,7 @@ export default function PricingToggle({ value, onChange }: PricingToggleProps) {
             border: "1px solid hsla(162,85%,48%,0.25)",
           }}
         >
-          Save 20%
+          Save up to ₹12,000/yr
         </span>
       </button>
     </div>
