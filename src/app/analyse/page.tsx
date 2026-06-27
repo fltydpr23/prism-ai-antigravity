@@ -423,11 +423,22 @@ export default function AnalysePage() {
           }
           extractedText = combined;
         } catch { setResponse({ error: "Failed to extract ZIP." }); setStage("done"); return; }
+      } else if (uploadedFile.name.endsWith(".xlsx") || uploadedFile.name.endsWith(".xls") || uploadedFile.name.endsWith(".tsv") || uploadedFile.name.endsWith(".json")) {
+        try {
+          const fd = new FormData(); 
+          fd.append("file", uploadedFile);
+          const r = await fetch("/api/wash", { method: "POST", body: fd });
+          const d = await r.json();
+          if (d.error) throw new Error(d.error);
+          extractedText = d.cleanedCsv;
+        } catch { 
+          setResponse({ error: "Failed to parse file using wash engine." }); 
+          setStage("done"); 
+          return; 
+        }
       } else {
-        // Mock for images/audio
         const stages: ProcessingStage[] = ["transitions", "interactions", "realtime", "design"];
         let delay = 0;
-        // Hold for 12 seconds total for the mock
         for (const s of stages) { delay += 3000; setTimeout(() => setStage(s), delay); }
         setTimeout(() => { 
           const mockReport = generateMockReport(uploadedFile);

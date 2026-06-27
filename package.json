@@ -18,6 +18,7 @@
     "@upstash/qstash": "^2.11.1",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.38.0",
+    "exceljs": "^4.4.0",
     "framer-motion": "^12.38.0",
     "jszip": "^3.10.1",
     "lucide-react": "^1.14.0",
@@ -46,6 +47,7 @@
   },
   "overrides": {
     "dompurify": "^3.4.11",
-    "postcss": "^8.5.10"
+    "postcss": "^8.5.10",
+    "uuid": "^11.1.1"
   }
 }

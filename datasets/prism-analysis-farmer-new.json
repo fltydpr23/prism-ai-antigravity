@@ -1,0 +1,627 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-27T06:55:38.730Z",
+    "moon": {
+      "phase01": 0.4072510370761647,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 92
+    },
+    "metrics": {
+      "charCount": 48618,
+      "charCountNoWs": 45695,
+      "wordCount": 6798,
+      "sentenceCount": 21,
+      "paragraphCount": 1,
+      "avgWordLength": 6.72,
+      "lexicalDensity": 0.643,
+      "numericTokenCount": 402
+    },
+    "topTokens": [
+      {
+        "token": "cost",
+        "count": 233
+      },
+      {
+        "token": "increased",
+        "count": 141
+      },
+      {
+        "token": "satisfied",
+        "count": 100
+      },
+      {
+        "token": "fertilizer",
+        "count": 100
+      },
+      {
+        "token": "wheat",
+        "count": 99
+      },
+      {
+        "token": "borewell",
+        "count": 99
+      },
+      {
+        "token": "rainfed",
+        "count": 99
+      },
+      {
+        "token": "10000",
+        "count": 99
+      },
+      {
+        "token": "15000",
+        "count": 99
+      },
+      {
+        "token": "never",
+        "count": 99
+      },
+      {
+        "token": "inputs",
+        "count": 99
+      },
+      {
+        "token": "unfair",
+        "count": 99
+      }
+    ],
+    "luneSignature": {
+      "hue": 334,
+      "drift": 0.44
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "Farmers are satisfied with crop yields but face significant challenges with high input costs and unfair selling prices, necessitating government support and fair market practices to prevent dissatisfaction and churn.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "mixed",
+            "trajectory": "stable",
+            "insight": "Farmers are satisfied with crop yields but face challenges with high input costs and unfair selling prices."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "satisfied with crop yields",
+              "what_they_do": "face challenges with high input costs",
+              "severity": "medium"
+            },
+            {
+              "what_they_say": "satisfied with crop yields",
+              "what_they_do": "face challenges with unfair selling prices",
+              "severity": "medium"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "government support and subsidies",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "feature": "access to quality seeds and fertilizers",
+              "frequency": "high",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "feature": "fair selling prices",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 22.5
+            },
+            {
+              "feature": "Using more Fertilizer and Pesticides",
+              "frequency": "high",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 24.8
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "medium",
+              "trigger": "high input costs and unfair selling prices",
+              "estimated_prevalence_percentage": 15
+            },
+            {
+              "emotion": "satisfied",
+              "intensity": "medium",
+              "trigger": "crop yields",
+              "estimated_prevalence_percentage": 10
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Struggling Farmer",
+              "how_to_win_them": "address high input costs and unfair selling prices",
+              "estimated_prevalence_percentage": 17.5
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "dissatisfaction with farming income",
+                "retention_action": "government support and fair market practices",
+                "estimated_prevalence_percentage": 12.5
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "provide government support and subsidies",
+              "why": "to address high input costs and unfair selling prices",
+              "expected_outcome": "reduced churn risk",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "ensure access to quality seeds and fertilizers",
+              "why": "to improve crop yields and farming income",
+              "expected_outcome": "increased satisfaction",
+              "priority": "2",
+              "timeline": "later"
+            },
+            {
+              "action": "implement fair selling prices",
+              "why": "to address unfair selling prices",
+              "expected_outcome": "reduced churn risk",
+              "priority": "1",
+              "timeline": "now"
+            }
+          ],
+          "passion_index": {
+            "score": 70,
+            "reasoning": "farmers are passionate about their work but frustrated with the challenges they face"
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "farmers face challenges with high input costs and unfair selling prices",
+              "raw_native_quote": "we are satisfied with crop yields but face challenges with high input costs and unfair selling prices",
+              "severity": "medium"
+            }
+          ]
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "variants": {
+          "Dhanaura": {
+            "executive_summary": "Farmers in Dhanaura are satisfied with crop yields but face challenges with high input costs, unfair selling prices, and limited access to quality seeds and fertilizers, necessitating government support and subsidies.",
+            "consumer_feedback": {
+              "sentiment_trajectory": {
+                "overall_sentiment": "mixed",
+                "trajectory": "stable",
+                "insight": "Farmers are satisfied with crop yields but dissatisfied with input costs and government support."
+              },
+              "contradiction_analysis": [
+                {
+                  "what_they_say": "I am satisfied with my crop yield",
+                  "what_they_do": "but my farming income is not enough to sustain my household",
+                  "severity": "high"
+                },
+                {
+                  "what_they_say": "I have access to government subsidies",
+                  "what_they_do": "but I am not satisfied with the support I receive",
+                  "severity": "medium"
+                }
+              ],
+              "feature_requests": [
+                {
+                  "feature": "subsidies for input costs",
+                  "frequency": "high",
+                  "build_priority": "critical",
+                  "estimated_prevalence_percentage": 22.5
+                },
+                {
+                  "feature": "better access to quality seeds and fertilizers",
+                  "frequency": "high",
+                  "build_priority": "high",
+                  "estimated_prevalence_percentage": 21.3
+                },
+                {
+                  "feature": "Using more Fertilizer and Pesticides",
+                  "frequency": "high",
+                  "build_priority": "critical",
+                  "estimated_prevalence_percentage": 25
+                }
+              ],
+              "emotions": [
+                {
+                  "emotion": "frustration",
+                  "intensity": "high",
+                  "trigger": "high input costs",
+                  "estimated_prevalence_percentage": 20
+                },
+                {
+                  "emotion": "dissatisfaction",
+                  "intensity": "high",
+                  "trigger": "unfair selling prices and limited access to quality seeds and fertilizers",
+                  "estimated_prevalence_percentage": 17.5
+                }
+              ],
+              "psychographic_segments": [
+                {
+                  "segment_name": "The Struggling Farmer",
+                  "how_to_win_them": "provide subsidies for input costs and better access to quality seeds and fertilizers",
+                  "estimated_prevalence_percentage": 15
+                },
+                {
+                  "segment_name": "The Dissatisfied Farmer",
+                  "how_to_win_them": "improve government support and provide fair selling prices",
+                  "estimated_prevalence_percentage": 12.5
+                }
+              ],
+              "churn_risk_analysis": {
+                "high_risk_signals": [
+                  {
+                    "signal": "high input costs",
+                    "retention_action": "provide subsidies for input costs",
+                    "estimated_prevalence_percentage": 20
+                  },
+                  {
+                    "signal": "unfair selling prices",
+                    "retention_action": "provide fair selling prices",
+                    "estimated_prevalence_percentage": 18.8
+                  }
+                ]
+              },
+              "strategic_recommendations": [
+                {
+                  "action": "provide subsidies for input costs",
+                  "why": "to reduce financial burden on farmers",
+                  "expected_outcome": "increase farmer satisfaction and retention",
+                  "priority": "1",
+                  "timeline": "now"
+                },
+                {
+                  "action": "improve access to quality seeds and fertilizers",
+                  "why": "to increase crop yields and farmer income",
+                  "expected_outcome": "increase farmer satisfaction and retention",
+                  "priority": "2",
+                  "timeline": "later"
+                },
+                {
+                  "action": "provide fair selling prices",
+                  "why": "to increase farmer income and satisfaction",
+                  "expected_outcome": "increase farmer satisfaction and retention",
+                  "priority": "3",
+                  "timeline": "now"
+                }
+              ],
+              "passion_index": {
+                "score": 80,
+                "reasoning": "farmers are highly invested in their work and are passionate about finding solutions to their challenges"
+              },
+              "reality_checks": [
+                {
+                  "sanitized_english": "farmers face challenges with high input costs and unfair selling prices",
+                  "raw_native_quote": "High labour cost and Input Cost",
+                  "severity": "high"
+                },
+                {
+                  "sanitized_english": "farmers are dissatisfied with government support",
+                  "raw_native_quote": "Input cost increased",
+                  "severity": "medium"
+                }
+              ]
+            },
+            "workforce_metrics": {
+              "workers_at_risk": "Not detected",
+              "workers_at_risk_trend": "Not detected",
+              "avg_automation_risk": "Not detected",
+              "avg_automation_risk_trend": "Not detected",
+              "net_new_roles": "Not detected",
+              "net_new_roles_trend": "Not detected",
+              "reskilling_readiness": "Not detected",
+              "reskilling_readiness_trend": "Not detected"
+            },
+            "automation_risk_by_sector": [],
+            "displacement_trend": {
+              "peak_displacement": "Not detected",
+              "peak_displacement_timeframe": "Not detected",
+              "acceleration_rate": "Not detected",
+              "acceleration_rate_timeframe": "Not detected",
+              "timeline": []
+            },
+            "worker_risk_distribution": {
+              "total_workers": "Not detected",
+              "high": "0%",
+              "medium": "0%",
+              "low": "0%",
+              "high_num": 0,
+              "medium_num": 0,
+              "low_num": 0
+            },
+            "geographic_hotspots": [],
+            "opportunity_sectors": [],
+            "sentiment_shift": {
+              "historical": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "current": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "historical_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              },
+              "current_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              }
+            },
+            "reskilling_readiness_gap": [],
+            "coverage": {
+              "totalRowsAvailable": 21,
+              "totalRowsProcessed": 21,
+              "totalVariantsFound": 1,
+              "variantsAnalyzed": 1,
+              "mode": "background"
+            }
+          },
+          "Hasanpur": {
+            "executive_summary": "Farmers are satisfied with crop yields but face challenges with high input costs, unfair selling prices, and labor scarcity, leading to dissatisfaction with farming income and government support.",
+            "consumer_feedback": {
+              "sentiment_trajectory": {
+                "overall_sentiment": "mixed",
+                "trajectory": "declining",
+                "insight": "Farmers' dissatisfaction with farming income and government support is driving the negative sentiment."
+              },
+              "contradiction_analysis": [
+                {
+                  "what_they_say": "Yes, I am satisfied with my crop yield",
+                  "what_they_do": "but No, my farming income is not enough to sustain my household",
+                  "severity": "high"
+                },
+                {
+                  "what_they_say": "I have access to government subsidies",
+                  "what_they_do": "but I am not satisfied with the government support",
+                  "severity": "medium"
+                }
+              ],
+              "feature_requests": [
+                {
+                  "feature": "subsidies for input costs",
+                  "frequency": "high",
+                  "build_priority": "critical",
+                  "estimated_prevalence_percentage": 15
+                },
+                {
+                  "feature": "fair selling prices",
+                  "frequency": "high",
+                  "build_priority": "high",
+                  "estimated_prevalence_percentage": 13.8
+                },
+                {
+                  "feature": "Using more Fertilizer and Pesticides",
+                  "frequency": "high",
+                  "build_priority": "critical",
+                  "estimated_prevalence_percentage": 25
+                }
+              ],
+              "emotions": [
+                {
+                  "emotion": "frustration",
+                  "intensity": "high",
+                  "trigger": "high input costs and unfair selling prices",
+                  "estimated_prevalence_percentage": 20
+                },
+                {
+                  "emotion": "dissatisfaction",
+                  "intensity": "high",
+                  "trigger": "farming income and government support",
+                  "estimated_prevalence_percentage": 17.5
+                }
+              ],
+              "psychographic_segments": [
+                {
+                  "segment_name": "The Frustrated Farmer",
+                  "how_to_win_them": "address high input costs and unfair selling prices",
+                  "estimated_prevalence_percentage": 12.5
+                },
+                {
+                  "segment_name": "The Dissatisfied Farmer",
+                  "how_to_win_them": "improve farming income and government support",
+                  "estimated_prevalence_percentage": 11.3
+                }
+              ],
+              "churn_risk_analysis": {
+                "high_risk_signals": [
+                  {
+                    "signal": "high input costs",
+                    "retention_action": "subsidies for input costs",
+                    "estimated_prevalence_percentage": 10
+                  },
+                  {
+                    "signal": "unfair selling prices",
+                    "retention_action": "fair selling prices",
+                    "estimated_prevalence_percentage": 35
+                  }
+                ]
+              },
+              "strategic_recommendations": [
+                {
+                  "action": "provide subsidies for input costs",
+                  "why": "to reduce financial burden on farmers",
+                  "expected_outcome": "increase farming income",
+                  "priority": "1",
+                  "timeline": "now"
+                },
+                {
+                  "action": "implement fair selling prices",
+                  "why": "to increase farmers' revenue",
+                  "expected_outcome": "improve farming income",
+                  "priority": "2",
+                  "timeline": "later"
+                },
+                {
+                  "action": "address labor scarcity",
+                  "why": "to reduce farming costs",
+                  "expected_outcome": "increase farming efficiency",
+                  "priority": "3",
+                  "timeline": "later"
+                }
+              ],
+              "passion_index": {
+                "score": 80,
+                "reasoning": "high intensity of emotions and frequent mentions of challenges"
+              },
+              "reality_checks": [
+                {
+                  "sanitized_english": "farmers face challenges with high input costs",
+                  "raw_native_quote": "Increased Cost of Inputs",
+                  "severity": "high"
+                },
+                {
+                  "sanitized_english": "farmers are dissatisfied with unfair selling prices",
+                  "raw_native_quote": "Unfair",
+                  "severity": "medium"
+                }
+              ]
+            },
+            "workforce_metrics": {
+              "workers_at_risk": "Not detected",
+              "workers_at_risk_trend": "Not detected",
+              "avg_automation_risk": "Not detected",
+              "avg_automation_risk_trend": "Not detected",
+              "net_new_roles": "Not detected",
+              "net_new_roles_trend": "Not detected",
+              "reskilling_readiness": "Not detected",
+              "reskilling_readiness_trend": "Not detected"
+            },
+            "automation_risk_by_sector": [],
+            "displacement_trend": {
+              "peak_displacement": "Not detected",
+              "peak_displacement_timeframe": "Not detected",
+              "acceleration_rate": "Not detected",
+              "acceleration_rate_timeframe": "Not detected",
+              "timeline": []
+            },
+            "worker_risk_distribution": {
+              "total_workers": "Not detected",
+              "high": "0%",
+              "medium": "0%",
+              "low": "0%",
+              "high_num": 0,
+              "medium_num": 0,
+              "low_num": 0
+            },
+            "geographic_hotspots": [],
+            "opportunity_sectors": [],
+            "sentiment_shift": {
+              "historical": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "current": {
+                "concerned": "0%",
+                "uncertain": "0%",
+                "optimistic": "0%"
+              },
+              "historical_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              },
+              "current_num": {
+                "concerned": 0,
+                "uncertain": 0,
+                "optimistic": 0
+              }
+            },
+            "reskilling_readiness_gap": [],
+            "coverage": {
+              "totalRowsAvailable": 21,
+              "totalRowsProcessed": 21,
+              "totalVariantsFound": 1,
+              "variantsAnalyzed": 1,
+              "mode": "background"
+            }
+          }
+        },
+        "coverage": {
+          "totalVariantsFound": 2,
+          "variantsAnalyzed": 2,
+          "totalRowsAvailable": 101,
+          "totalRowsProcessed": 40,
+          "is_sampled": true,
+          "mode": "parallel_sampled"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Farmers are satisfied with crop yields but face significant challenges with high input costs and unfair selling prices, necessitating government support and fair market practices to prevent dissatisfaction and churn.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"mixed\",\n      \"trajectory\": \"stable\",\n      \"insight\": \"Farmers are satisfied with crop yields but face challenges with high input costs and unfair selling prices.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"satisfied with crop yields\",\n        \"what_they_do\": \"face challenges with high input costs\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"what_they_say\": \"satisfied with crop yields\",\n        \"what_they_do\": \"face challenges with unfair selling prices\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"government support and subsidies\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"feature\": \"access to quality seeds and fertilizers\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"fair selling prices\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"feature\": \"Using more Fertilizer and Pesticides\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 99\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"high input costs and unfair selling prices\",\n        \"estimated_prevalence_percentage\": 60\n      },\n      {\n        \"emotion\": \"satisfied\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"crop yields\",\n        \"estimated_prevalence_percentage\": 40\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Struggling Farmer\",\n        \"how_to_win_them\": \"address high input costs and unfair selling prices\",\n        \"estimated_prevalence_percentage\": 70\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"dissatisfaction with farming income\",\n          \"retention_action\": \"government support and fair market practices\",\n          \"estimated_prevalence_percentage\": 50\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"provide government support and subsidies\",\n        \"why\": \"to address high input costs and unfair selling prices\",\n        \"expected_outcome\": \"reduced churn risk\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"ensure access to quality seeds and fertilizers\",\n        \"why\": \"to improve crop yields and farming income\",\n        \"expected_outcome\": \"increased satisfaction\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      },\n      {\n        \"action\": \"implement fair selling prices\",\n        \"why\": \"to address unfair selling prices\",\n        \"expected_outcome\": \"reduced churn risk\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 70,\n      \"reasoning\": \"farmers are passionate about their work but frustrated with the challenges they face\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"farmers face challenges with high input costs and unfair selling prices\",\n        \"raw_native_quote\": \"we are satisfied with crop yields but face challenges with high input costs and unfair selling prices\",\n        \"severity\": \"medium\"\n      }\n    ]\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "finance",
+      "label": "Finance / Fintech",
+      "emoji": "🏦",
+      "detectionMethod": "auto_detected",
+      "confidence": "medium"
+    }
+  },
+  "saved": true,
+  "id": "05f55050-7b3d-40ec-8608-f64b0d1c8ebb"
+}
