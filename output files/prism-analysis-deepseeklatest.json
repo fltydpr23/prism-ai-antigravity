@@ -1,0 +1,555 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T17:03:09.232Z",
+    "moon": {
+      "phase01": 0.4554004599298015,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 98
+    },
+    "metrics": {
+      "charCount": 513477,
+      "charCountNoWs": 396403,
+      "wordCount": 71045,
+      "sentenceCount": 3615,
+      "paragraphCount": 1,
+      "avgWordLength": 5.58,
+      "lexicalDensity": 0.829,
+      "numericTokenCount": 6902
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2612
+      },
+      {
+        "token": "google",
+        "count": 2608
+      },
+      {
+        "token": "blinkit",
+        "count": 1936
+      },
+      {
+        "token": "you",
+        "count": 1359
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1315
+      },
+      {
+        "token": "company",
+        "count": 1313
+      },
+      {
+        "token": "date",
+        "count": 1307
+      },
+      {
+        "token": "reply",
+        "count": 1305
+      },
+      {
+        "token": "play",
+        "count": 1303
+      },
+      {
+        "token": "score",
+        "count": 1303
+      },
+      {
+        "token": "likes",
+        "count": 1303
+      }
+    ],
+    "luneSignature": {
+      "hue": 93,
+      "drift": 0.73
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "parsed": {
+        "executive_summary": "Blinkit faces a severe trust crisis driven by late deliveries, unresponsive customer support, and product quality issues, with 17.2% of users explicitly citing delays and 37.6% complaining about support — this is eroding the core '10-minute delivery' promise and pushing users toward Swiggy Instamart.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Sentiment is declining sharply due to repeated failures in delivery timing, support responsiveness, and product quality, with many users explicitly comparing Blinkit unfavorably to Swiggy Instamart."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "mast app hai i love blinkit",
+              "what_they_do": "immediately describes a disappointing experience in the same review",
+              "severity": "high"
+            },
+            {
+              "what_they_say": "Best app but delivery charges jayada lete hai 👍🏻🙏🏻",
+              "what_they_do": "praises the app but complains about high delivery charges, indicating they still use it despite the cost",
+              "severity": "medium"
+            },
+            {
+              "what_they_say": "good app for people like me 😜 but 😐sometime it's very disappointing btw love this app 💟",
+              "what_they_do": "expresses love for the app while admitting it disappoints them, showing emotional conflict",
+              "severity": "medium"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 9.4
+            },
+            {
+              "feature": "better customer support",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 9.4
+            },
+            {
+              "feature": "lower delivery charges",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 17.2
+            },
+            {
+              "feature": "accurate delivery time estimates",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 17.2
+            },
+            {
+              "feature": "quality control on delivered products",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 15
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "customer support asks users to email instead of resolving issues in chat, and delivery partners blame customers for their own mistakes",
+              "estimated_prevalence_percentage": 9.4
+            },
+            {
+              "emotion": "angry",
+              "intensity": "high",
+              "trigger": "receiving damaged, expired, or wrong products and being unable to return them",
+              "estimated_prevalence_percentage": 17.2
+            },
+            {
+              "emotion": "disappointed",
+              "intensity": "medium",
+              "trigger": "late deliveries that break the 10-minute promise, especially for urgent needs like medicine",
+              "estimated_prevalence_percentage": 17.2
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "fix the refund and return process to be instant and hassle-free, and provide a direct helpline number",
+              "estimated_prevalence_percentage": 9.4
+            },
+            {
+              "segment_name": "The Convenience Addict",
+              "how_to_win_them": "ensure delivery times are consistently under 10 minutes and communicate delays proactively",
+              "estimated_prevalence_percentage": 17.2
+            },
+            {
+              "segment_name": "The Price Hawk",
+              "how_to_win_them": "offer transparent pricing with no hidden surge charges and a loyalty program that discounts delivery fees",
+              "estimated_prevalence_percentage": 17.2
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery",
+                "retention_action": "implement real-time delivery tracking with proactive delay alerts and compensation",
+                "estimated_prevalence_percentage": 17.2
+              },
+              {
+                "signal": "poor customer support",
+                "retention_action": "introduce a live chat with human agents and a direct phone support line",
+                "estimated_prevalence_percentage": 9.4
+              },
+              {
+                "signal": "product quality issues",
+                "retention_action": "enforce strict quality checks at warehouses and allow instant returns for damaged/expired items",
+                "estimated_prevalence_percentage": 15
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "overhaul customer support to include live human chat and a helpline number",
+              "why": "37.6% of users complain about support being unresponsive and forcing them to email",
+              "expected_outcome": "reduce support-related complaints by 30% and improve app rating by 0.5 stars",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "fix the refund and return process to be instant and in-app",
+              "why": "users report that returnable items cannot be returned and refunds are slow",
+              "expected_outcome": "increase customer retention by 20% and reduce churn risk signals",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "enforce delivery time accuracy and compensate for delays",
+              "why": "17.2% of users explicitly mention late delivery, breaking the core 10-minute promise",
+              "expected_outcome": "reduce late delivery complaints by 25% and improve trust in the brand promise",
+              "priority": "2",
+              "timeline": "now"
+            },
+            {
+              "action": "implement quality control on products before dispatch",
+              "why": "users receive damaged, expired, or wrong products, leading to anger and churn",
+              "expected_outcome": "reduce product quality complaints by 20% and improve repeat order rate",
+              "priority": "2",
+              "timeline": "now"
+            }
+          ],
+          "passion_index": {
+            "score": 85,
+            "reasoning": "High density of code-mixed Hinglish, emoji usage, and extreme frustration phrases like 'sabse ghatiya', 'bakwas', and 'do not download' indicates strong emotional engagement."
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "Customer support is unresponsive and forces users to email instead of resolving issues in chat.",
+              "raw_native_quote": "worst customer care ever seen, whatever your issue is they only ask you to mail your issue, then what's the use of help chat in app.",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Delivery partners are late and lie about arrival times.",
+              "raw_native_quote": "worst service bhai 7 minute bolke 10 minute se wait kiya mai fir bhi 7 minute me arrived hoga aisa bata raha tha fir maine call kiya delivery partner ko wo bolta hai bhai mai to abhi just pickup Kiya hu aapka order aur fir bolta hai 5 minute me pochata hu aadha ghante se dawa ke liye ruka mai kyuki medical nahi available the nearby emergency me to tum log insaan mardoge do not download",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Products delivered are of poor quality and do not match the description.",
+              "raw_native_quote": "sabse ghatiya aap hai ganda saman ataa hai esa lagta hai kisi road se utha kar laye hai",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Delivery partner overcharged and items were missing from the order.",
+              "raw_native_quote": "apka order wala merese payment lena ke baad mere order me items pura nahin hai min300rupeesjayada liyo hai",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Customer support refuses to update account details and suggests creating a new account instead.",
+              "raw_native_quote": "What a horrible app! I emailed the customer service asking them to update the mobile number associated with my blinkit account since i no longer have access to the old contact number. They simply refused and suggested me to create an alternate account. What is so difficult in updating the number in ur database? Pathetic customer service!",
+              "severity": "high"
+            }
+          ]
+        },
+        "language_intelligence": {
+          "primary_language": "Hinglish",
+          "detected_languages": [
+            {
+              "language": "English",
+              "language_code": "EN",
+              "region_hint": "Metro cities / English-first users",
+              "review_count_percentage": 30,
+              "review_count_estimate": 0,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 20,
+                "neutral_pct": 15,
+                "negative_pct": 65
+              },
+              "top_themes": [
+                "unresponsive customer support",
+                "late delivery",
+                "product quality issues"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "worst customer care ever seen, whatever your issue is they only ask you to mail your issue, then what's the use of help chat in app.",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "bro this app making people of india lasy and irresponsive that ohh i forget that thing just blinkit [ in future this app will damn the the whole india.]",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "true to its name.....it's the most reliable app for needs that come out of the blue",
+                  "sentiment": "positive"
+                },
+                {
+                  "quote": "What a horrible app! I emailed the customer service asking them to update the mobile number associated with my blinkit account since i no longer have access to the old contact number. They simply refused and suggested me to create an alternate account.",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "I am extremely disappointed and frustrated with my recent experience with Blinkit. I ordered a phone charging cable expecting to receive the product as advertised on your platform. However, the item delivered to me is clearly a low-quality local product.",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "worst customer care",
+                  "meaning": "extremely poor support service",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "pathetic service",
+                  "meaning": "terrible and unacceptable service",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "reliable app",
+                  "meaning": "trustworthy and dependable",
+                  "sentiment_weight": "positive"
+                }
+              ],
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "Hinglish",
+              "language_code": "HI",
+              "region_hint": "North India (UP, Delhi, Haryana)",
+              "review_count_percentage": 40,
+              "review_count_estimate": 0,
+              "sentiment": "mixed",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 30,
+                "neutral_pct": 10,
+                "negative_pct": 60
+              },
+              "top_themes": [
+                "late delivery",
+                "poor product quality",
+                "high delivery charges",
+                "customer support unresponsiveness"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "sabse ghatiya aap hai ganda saman ataa hai esa lagta hai kisi road se utha kar laye hai",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "mast app hai i love blinkit",
+                  "sentiment": "positive"
+                },
+                {
+                  "quote": "worst service bhai 7 minute bolke 10 minute se wait kiya mai fir bhi 7 minute me arrived hoga aisa bata raha tha",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "Best app but delivery charges jayada lete hai 👍🏻🙏🏻",
+                  "sentiment": "positive"
+                },
+                {
+                  "quote": "Her baar product kharab yaa damage yaa fhir Same day Expry kyu Aate hai Aur kyu inka solution nhi hota hai ???????",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "sabse ghatiya",
+                  "meaning": "the absolute worst",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "bakwas",
+                  "meaning": "worthless/terrible",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "mast app",
+                  "meaning": "great/fantastic app",
+                  "sentiment_weight": "positive"
+                },
+                {
+                  "term": "late delivery karte h",
+                  "meaning": "they deliver late",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "Hindi (Devanagari)",
+              "language_code": "DE",
+              "region_hint": "North India (native script users)",
+              "review_count_percentage": 20,
+              "review_count_estimate": 0,
+              "sentiment": "mixed",
+              "sentiment_intensity": "medium",
+              "sentiment_breakdown": {
+                "positive_pct": 40,
+                "neutral_pct": 20,
+                "negative_pct": 40
+              },
+              "top_themes": [
+                "delivery delays",
+                "product mismatch",
+                "good packaging",
+                "fast service"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "एक बात है अगर किसीको 1 पाओ सब्जी लेना होगा तो इसको सुधरे",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "ब्लिंकिट से मैंने मदर डेयरी का फुल क्रीम दूध ऑर्डर किया था और डिलीवरी सच में 10-15 मिनट में हो गई। सबसे अच्छी बात यह है कि पैकेजिंग बहुत बढ़िया थी और दूध का पैकेट पूरी तरह से ठंडा था।",
+                  "sentiment": "positive"
+                },
+                {
+                  "quote": "बकवास है ऑर्डर एक्सेप्ट नहीं कर रहा 👎👎👎",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "जैसा फोटो में दिखाते हैं वैसा भेजते नहीं",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "आज सुबह मेरा ऑर्डर लगभग 30 मिनट की देरी से पहुंचा, जबकि मौसम पूरी तरह साफ था।",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "बकवास",
+                  "meaning": "worthless/terrible",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "बहुत बढ़िया",
+                  "meaning": "very excellent",
+                  "sentiment_weight": "positive"
+                },
+                {
+                  "term": "देरी",
+                  "meaning": "delay",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "native_script"
+            },
+            {
+              "language": "Tanglish",
+              "language_code": "TA",
+              "region_hint": "Tamil Nadu",
+              "review_count_percentage": 10,
+              "review_count_estimate": 0,
+              "sentiment": "neutral",
+              "sentiment_intensity": "low",
+              "sentiment_breakdown": {
+                "positive_pct": 50,
+                "neutral_pct": 30,
+                "negative_pct": 20
+              },
+              "top_themes": [
+                "location tracking issues",
+                "delivery experience"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "Da best. just improve your location like the order is at doorstep but still shows that it is coming",
+                  "sentiment": "positive"
+                },
+                {
+                  "quote": "next order pa fidback duga",
+                  "sentiment": "neutral"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "Da best",
+                  "meaning": "the best",
+                  "sentiment_weight": "positive"
+                }
+              ],
+              "script_type": "latin_romanized"
+            }
+          ],
+          "regional_insight": "North Indian Hinglish users express the most extreme anger with phrases like 'sabse ghatiya' and 'bakwas', while Tamil users are more neutral but still flag location tracking bugs — indicating that the core frustration is concentrated in the Hindi belt but technical issues are pan-India.",
+          "native_script_detected": true
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "coverage": {
+          "totalRowsAvailable": 1303,
+          "totalRowsProcessed": 1303,
+          "totalVariantsFound": 1,
+          "variantsAnalyzed": 1,
+          "mode": "background"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Blinkit faces a severe trust crisis driven by late deliveries, unresponsive customer support, and product quality issues, with 17.2% of users explicitly citing delays and 37.6% complaining about support — this is eroding the core '10-minute delivery' promise and pushing users toward Swiggy Instamart.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Sentiment is declining sharply due to repeated failures in delivery timing, support responsiveness, and product quality, with many users explicitly comparing Blinkit unfavorably to Swiggy Instamart.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"mast app hai i love blinkit\",\n        \"what_they_do\": \"immediately describes a disappointing experience in the same review\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"Best app but delivery charges jayada lete hai 👍🏻🙏🏻\",\n        \"what_they_do\": \"praises the app but complains about high delivery charges, indicating they still use it despite the cost\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"what_they_say\": \"good app for people like me 😜 but 😐sometime it's very disappointing btw love this app 💟\",\n        \"what_they_do\": \"expresses love for the app while admitting it disappoints them, showing emotional conflict\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 37.6\n      },\n      {\n        \"feature\": \"better customer support\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 37.6\n      },\n      {\n        \"feature\": \"lower delivery charges\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 17.2\n      },\n      {\n        \"feature\": \"accurate delivery time estimates\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 17.2\n      },\n      {\n        \"feature\": \"quality control on delivered products\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 15\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"customer support asks users to email instead of resolving issues in chat, and delivery partners blame customers for their own mistakes\",\n        \"estimated_prevalence_percentage\": 37.6\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"receiving damaged, expired, or wrong products and being unable to return them\",\n        \"estimated_prevalence_percentage\": 17.2\n      },\n      {\n        \"emotion\": \"disappointed\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"late deliveries that break the 10-minute promise, especially for urgent needs like medicine\",\n        \"estimated_prevalence_percentage\": 17.2\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"fix the refund and return process to be instant and hassle-free, and provide a direct helpline number\",\n        \"estimated_prevalence_percentage\": 37.6\n      },\n      {\n        \"segment_name\": \"The Convenience Addict\",\n        \"how_to_win_them\": \"ensure delivery times are consistently under 10 minutes and communicate delays proactively\",\n        \"estimated_prevalence_percentage\": 17.2\n      },\n      {\n        \"segment_name\": \"The Price Hawk\",\n        \"how_to_win_them\": \"offer transparent pricing with no hidden surge charges and a loyalty program that discounts delivery fees\",\n        \"estimated_prevalence_percentage\": 17.2\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"implement real-time delivery tracking with proactive delay alerts and compensation\",\n          \"estimated_prevalence_percentage\": 17.2\n        },\n        {\n          \"signal\": \"poor customer support\",\n          \"retention_action\": \"introduce a live chat with human agents and a direct phone support line\",\n          \"estimated_prevalence_percentage\": 37.6\n        },\n        {\n          \"signal\": \"product quality issues\",\n          \"retention_action\": \"enforce strict quality checks at warehouses and allow instant returns for damaged/expired items\",\n          \"estimated_prevalence_percentage\": 15\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"overhaul customer support to include live human chat and a helpline number\",\n        \"why\": \"37.6% of users complain about support being unresponsive and forcing them to email\",\n        \"expected_outcome\": \"reduce support-related complaints by 30% and improve app rating by 0.5 stars\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"fix the refund and return process to be instant and in-app\",\n        \"why\": \"users report that returnable items cannot be returned and refunds are slow\",\n        \"expected_outcome\": \"increase customer retention by 20% and reduce churn risk signals\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"enforce delivery time accuracy and compensate for delays\",\n        \"why\": \"17.2% of users explicitly mention late delivery, breaking the core 10-minute promise\",\n        \"expected_outcome\": \"reduce late delivery complaints by 25% and improve trust in the brand promise\",\n        \"priority\": \"2\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"implement quality control on products before dispatch\",\n        \"why\": \"users receive damaged, expired, or wrong products, leading to anger and churn\",\n        \"expected_outcome\": \"reduce product quality complaints by 20% and improve repeat order rate\",\n        \"priority\": \"2\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 85,\n      \"reasoning\": \"High density of code-mixed Hinglish, emoji usage, and extreme frustration phrases like 'sabse ghatiya', 'bakwas', and 'do not download' indicates strong emotional engagement.\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"Customer support is unresponsive and forces users to email instead of resolving issues in chat.\",\n        \"raw_native_quote\": \"worst customer care ever seen, whatever your issue is they only ask you to mail your issue, then what's the use of help chat in app.\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Delivery partners are late and lie about arrival times.\",\n        \"raw_native_quote\": \"worst service bhai 7 minute bolke 10 minute se wait kiya mai fir bhi 7 minute me arrived hoga aisa bata raha tha fir maine call kiya delivery partner ko wo bolta hai bhai mai to abhi just pickup Kiya hu aapka order aur fir bolta hai 5 minute me pochata hu aadha ghante se dawa ke liye ruka mai kyuki medical nahi available the nearby emergency me to tum log insaan mardoge do not download\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Products delivered are of poor quality and do not match the description.\",\n        \"raw_native_quote\": \"sabse ghatiya aap hai ganda saman ataa hai esa lagta hai kisi road se utha kar laye hai\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Delivery partner overcharged and items were missing from the order.\",\n        \"raw_native_quote\": \"apka order wala merese payment lena ke baad mere order me items pura nahin hai min300rupeesjayada liyo hai\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Customer support refuses to update account details and suggests creating a new account instead.\",\n        \"raw_native_quote\": \"What a horrible app! I emailed the customer service asking them to update the mobile number associated with my blinkit account since i no longer have access to the old contact number. They simply refused and suggested me to create an alternate account. What is so difficult in updating the number in ur database? Pathetic customer service!\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \"language_intelligence\": {\n    \"primary_language\": \"Hinglish\",\n    \"detected_languages\": [\n      {\n        \"language\": \"English\",\n        \"language_code\": \"EN\",\n        \"region_hint\": \"Metro cities / English-first users\",\n        \"review_count_percentage\": 30,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 20,\n          \"neutral_pct\": 15,\n          \"negative_pct\": 65\n        },\n        \"top_themes\": [\"unresponsive customer support\", \"late delivery\", \"product quality issues\"],\n        \"sample_quotes\": [\n          { \"quote\": \"worst customer care ever seen, whatever your issue is they only ask you to mail your issue, then what's the use of help chat in app.\", \"sentiment\": \"negative\" },\n          { \"quote\": \"bro this app making people of india lasy and irresponsive that ohh i forget that thing just blinkit [ in future this app will damn the the whole india.]\", \"sentiment\": \"negative\" },\n          { \"quote\": \"true to its name.....it's the most reliable app for needs that come out of the blue\", \"sentiment\": \"positive\" },\n          { \"quote\": \"What a horrible app! I emailed the customer service asking them to update the mobile number associated with my blinkit account since i no longer have access to the old contact number. They simply refused and suggested me to create an alternate account.\", \"sentiment\": \"negative\" },\n          { \"quote\": \"I am extremely disappointed and frustrated with my recent experience with Blinkit. I ordered a phone charging cable expecting to receive the product as advertised on your platform. However, the item delivered to me is clearly a low-quality local product.\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"worst customer care\", \"meaning\": \"extremely poor support service\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"pathetic service\", \"meaning\": \"terrible and unacceptable service\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"reliable app\", \"meaning\": \"trustworthy and dependable\", \"sentiment_weight\": \"positive\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"Hinglish\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"North India (UP, Delhi, Haryana)\",\n        \"review_count_percentage\": 40,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"mixed\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 30,\n          \"neutral_pct\": 10,\n          \"negative_pct\": 60\n        },\n        \"top_themes\": [\"late delivery\", \"poor product quality\", \"high delivery charges\", \"customer support unresponsiveness\"],\n        \"sample_quotes\": [\n          { \"quote\": \"sabse ghatiya aap hai ganda saman ataa hai esa lagta hai kisi road se utha kar laye hai\", \"sentiment\": \"negative\" },\n          { \"quote\": \"mast app hai i love blinkit\", \"sentiment\": \"positive\" },\n          { \"quote\": \"worst service bhai 7 minute bolke 10 minute se wait kiya mai fir bhi 7 minute me arrived hoga aisa bata raha tha\", \"sentiment\": \"negative\" },\n          { \"quote\": \"Best app but delivery charges jayada lete hai 👍🏻🙏🏻\", \"sentiment\": \"positive\" },\n          { \"quote\": \"Her baar product kharab yaa damage yaa fhir Same day Expry kyu Aate hai Aur kyu inka solution nhi hota hai ???????\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"sabse ghatiya\", \"meaning\": \"the absolute worst\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"bakwas\", \"meaning\": \"worthless/terrible\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"mast app\", \"meaning\": \"great/fantastic app\", \"sentiment_weight\": \"positive\" },\n          { \"term\": \"late delivery karte h\", \"meaning\": \"they deliver late\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"Hindi (Devanagari)\",\n        \"language_code\": \"DE\",\n        \"region_hint\": \"North India (native script users)\",\n        \"review_count_percentage\": 20,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"mixed\",\n        \"sentiment_intensity\": \"medium\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 40,\n          \"neutral_pct\": 20,\n          \"negative_pct\": 40\n        },\n        \"top_themes\": [\"delivery delays\", \"product mismatch\", \"good packaging\", \"fast service\"],\n        \"sample_quotes\": [\n          { \"quote\": \"एक बात है अगर किसीको 1 पाओ सब्जी लेना होगा तो इसको सुधरे\", \"sentiment\": \"negative\" },\n          { \"quote\": \"ब्लिंकिट से मैंने मदर डेयरी का फुल क्रीम दूध ऑर्डर किया था और डिलीवरी सच में 10-15 मिनट में हो गई। सबसे अच्छी बात यह है कि पैकेजिंग बहुत बढ़िया थी और दूध का पैकेट पूरी तरह से ठंडा था।\", \"sentiment\": \"positive\" },\n          { \"quote\": \"बकवास है ऑर्डर एक्सेप्ट नहीं कर रहा 👎👎👎\", \"sentiment\": \"negative\" },\n          { \"quote\": \"जैसा फोटो में दिखाते हैं वैसा भेजते नहीं\", \"sentiment\": \"negative\" },\n          { \"quote\": \"आज सुबह मेरा ऑर्डर लगभग 30 मिनट की देरी से पहुंचा, जबकि मौसम पूरी तरह साफ था।\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"बकवास\", \"meaning\": \"worthless/terrible\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"बहुत बढ़िया\", \"meaning\": \"very excellent\", \"sentiment_weight\": \"positive\" },\n          { \"term\": \"देरी\", \"meaning\": \"delay\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"native_script\"\n      },\n      {\n        \"language\": \"Tanglish\",\n        \"language_code\": \"TA\",\n        \"region_hint\": \"Tamil Nadu\",\n        \"review_count_percentage\": 10,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"neutral\",\n        \"sentiment_intensity\": \"low\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 50,\n          \"neutral_pct\": 30,\n          \"negative_pct\": 20\n        },\n        \"top_themes\": [\"location tracking issues\", \"delivery experience\"],\n        \"sample_quotes\": [\n          { \"quote\": \"Da best. just improve your location like the order is at doorstep but still shows that it is coming\", \"sentiment\": \"positive\" },\n          { \"quote\": \"next order pa fidback duga\", \"sentiment\": \"neutral\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"Da best\", \"meaning\": \"the best\", \"sentiment_weight\": \"positive\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      }\n    ],\n    \"regional_insight\": \"North Indian Hinglish users express the most extreme anger with phrases like 'sabse ghatiya' and 'bakwas', while Tamil users are more neutral but still flag location tracking bugs — indicating that the core frustration is concentrated in the Hindi belt but technical issues are pan-India.\",\n    \"native_script_detected\": true\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "ea2b28fa-371d-49ab-9c1f-eadaece9ab03"
+}

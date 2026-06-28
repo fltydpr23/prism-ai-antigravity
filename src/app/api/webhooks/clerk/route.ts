@@ -54,10 +54,15 @@ export async function POST(req: Request) {
     const { id, email_addresses } = evt.data;
     const primaryEmail = email_addresses?.[0]?.email_address || '';
     
+    const trialEndsAt = new Date();
+    trialEndsAt.setDate(trialEndsAt.getDate() + 14);
+    
     const { error } = await supabase.from('users').insert({
       id: id,
       email: primaryEmail,
-      tier: 'explorer',
+      tier: 'pro',
+      subscription_status: 'trialing',
+      trial_ends_at: trialEndsAt.toISOString(),
       analyses_count: 0
     });
     

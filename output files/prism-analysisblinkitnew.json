@@ -1,0 +1,95 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T11:40:49.840Z",
+    "moon": {
+      "phase01": 0.4478206735391831,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 97
+    },
+    "metrics": {
+      "charCount": 513477,
+      "charCountNoWs": 396403,
+      "wordCount": 71045,
+      "sentenceCount": 3615,
+      "paragraphCount": 1,
+      "avgWordLength": 5.58,
+      "lexicalDensity": 0.829,
+      "numericTokenCount": 6902
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2612
+      },
+      {
+        "token": "google",
+        "count": 2608
+      },
+      {
+        "token": "blinkit",
+        "count": 1936
+      },
+      {
+        "token": "you",
+        "count": 1359
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1315
+      },
+      {
+        "token": "company",
+        "count": 1313
+      },
+      {
+        "token": "date",
+        "count": 1307
+      },
+      {
+        "token": "reply",
+        "count": 1305
+      },
+      {
+        "token": "play",
+        "count": 1303
+      },
+      {
+        "token": "score",
+        "count": 1303
+      },
+      {
+        "token": "likes",
+        "count": 1303
+      }
+    ],
+    "luneSignature": {
+      "hue": 93,
+      "drift": 0.73
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": null,
+      "raw": "{\n  \"executive_summary\": \"Blinkit faces severe customer dissatisfaction due to late deliveries, poor support, defective products, and refund issues, necessitating immediate improvements in customer support, product quality, and refund processes.\",\n  \n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Customers are increasingly frustrated with Blinkit's services, citing multiple issues.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"You take more money no discounts but still delay orders.\",\n        \"what_they_do\": \"Continue to use the service despite dissatisfaction\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"worst App. I ordered one product & blinkit delivered a different product...\",\n        \"what_they_do\": \"Expect better product quality control\",\n        \"severity\": \"high\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"feature\": \"better customer support\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 85\n      },\n      {\n        \"feature\": \"lower delivery charges\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 60\n      },\n      {\n        \"feature\": \"improved product quality control\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"on-time deliveries\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 70\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"late delivery, poor customer support, defective products\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"refund issues, high delivery charges\",\n        \"estimated_prevalence_percentage\": 70\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"improve customer support and product quality\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"segment_name\": \"The Angry Customer\",\n        \"how_to_win_them\": \"address refund issues and lower delivery charges\",\n        \"estimated_prevalence_percentage\": 50\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"improve logistics and delivery timelines\",\n          \"estimated_prevalence_percentage\": 17.2\n        },\n        {\n          \"signal\": \"poor customer support\",\n          \"retention_action\": \"enhance customer support responsiveness and resolution\",\n          \"estimated_prevalence_percentage\": 37.6\n        },\n        {\n          \"signal\": \"defective products\",\n          \"retention_action\": \"improve product quality control\",\n          \"estimated_prevalence_percentage\": 60\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"improve customer support\",\n        \"why\": \"to reduce churn risk and increase customer satisfaction\",\n        \"expected_outcome\": \"25% reduction in customer complaints\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"enhance product quality control\",\n        \"why\": \"to reduce defective products and improve customer trust\",\n        \"expected_outcome\": \"30% reduction in defective products\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      },\n      {\n        \"action\": \"optimize logistics for on-time deliveries\",\n        \"why\": \"to improve customer satisfaction and reduce churn risk\",\n        \"expected_outcome\": \"20% reduction in late deliveries\",\n        \"priority\": \"3\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 80,\n      \"reasoning\": \"high intensity of emotions expressed by customers\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"Customer received an empty box of earbuds and was denied a refund.\",\n        \"raw_native_quote\": \"fraud.... worst service.... received empty box of earbud and even deny of giving refund also not co operative......big scam...fraud\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Customer complains about late delivery despite paying for faster shipping.\",\n        \"raw_native_quote\": \"inhone khaha hai ke 10 orders free but 1 order bhi free nahi hai\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"sanitized_english\": \"Customer expresses frustration with defective products and poor customer support.\",\n        \"raw_native_quote\": \"worst App. I ordered one product & blinkit delivered a different product...\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Customer demands better product quality control and faster refunds.\",\n        \"raw_native_quote\": \"You take more money no discounts but still delay orders.\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Customer complains about high delivery charges and refund issues.\",\n        \"raw_native_quote\": \"fraud.... worst service.... received empty box of earbud and even deny of giving refund also not co operative......big scam...fraud\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \n  \"language_intelligence\": {\n    \"primary_language\": \"Hinglish\",\n    \"detected_languages\": [\n      {\n        \"language\": \"Hinglish\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"North India\",\n        \"review_count_percentage\": 80,\n        \"review_count_estimate\": 56836,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 10,\n          \"neutral_pct\": 15,\n          \"negative_pct\": 75\n        },\n        \"top_themes\": [\"late delivery\", \"poor customer support\"],\n        \"sample_quotes\": [\n          { \"quote\": \"inhone khaha hai ke 10 orders free but 1 order bhi free nahi hai\", \"sentiment\": \"negative\" },\n          { \"quote\": \"fraud.... worst service.... received empty box of earbud and even deny of giving refund also not co operative......big scam...fraud\", \"sentiment\": \"negative\" },\n          { \"quote\": \"worst App. I ordered one product & blinkit delivered a different product...\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"fraud\", \"meaning\": \"scam\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"worst\", \"meaning\": \"very bad\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"English\",\n        \"language_code\": \"EN\",\n        \"region_hint\": \"Metro cities\",\n        \"review_count_percentage\": 20,\n        \"review_count_estimate\": 14209,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 5,\n          \"neutral_pct\": 10,\n          \"negative_pct\": 85\n        },\n        \"top_themes\": [\"refund issues\", \"high delivery charges\"],\n        \"sample_quotes\": [\n          { \"quote\": \"You take more money no discounts but still delay orders.\", \"sentiment\": \"negative\" },\n          { \"quote\": \"fraud.... worst service.... received empty box of earbud and even deny of giving refund also not co operative......big scam...fraud\", \"sentiment\": \"negative\" },\n          { \"quote\": \"worst App. I ordered one product & blinkit delivered a different product...\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"scam\", \"meaning\": \"fraud\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"bad\", \"meaning\": \"of poor quality\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      }\n    ],\n    \"regional_insight\": \"Customers from North India are more likely to express frustration with late deliveries and poor customer support, while customers from metro cities are more concerned with refund issues and high delivery charges.\",\n    \"native_script_detected\": false\n  },\n  \n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_t",
+      "parseError": "Expected ',' or '}' after property value in JSON at position 8754 (line 222 column 4)"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "5214f05d-b04c-4f04-b318-0367302aa4e8"
+}

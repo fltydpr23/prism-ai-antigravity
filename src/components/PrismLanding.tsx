@@ -171,29 +171,14 @@ export default function PrismLanding({ onStart }: Props) {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <PrismHero onStart={onStart} />
 
-      {/* ── Trust Section ─────────────────────────────────────── */}
-      <section className="py-16 border-y border-white/5 px-6 bg-[#0A0A0A]/50">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-8">
-          <p className="text-sm md:text-base font-medium text-white/50">
-            Built for modern brands, agencies and research teams.
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale">
-            <span className="text-lg md:text-xl font-bold tracking-tight">Consumer Intelligence</span>
-            <span className="text-lg md:text-xl font-bold tracking-tight">Voice of Customer</span>
-            <span className="text-lg md:text-xl font-bold tracking-tight">Community Intelligence</span>
-            <span className="text-lg md:text-xl font-bold tracking-tight">Competitive Analysis</span>
-          </div>
-        </div>
-      </section>
+      {/* ── India Language Coverage Map ─────────────────────────────────── */}
+      <PrismLanguageMap />
 
       {/* ── Feature: Intelligence Reports ────────────────────────────── */}
       <PrismReportPreview />
 
       {/* ── Prism Score & Signals Bento ─────────────────────────────────── */}
       <PrismScoreBento />
-
-      {/* ── India Language Coverage Map ─────────────────────────────────── */}
-      <PrismLanguageMap />
 
       {/* ── Agency Advantage ────────────────────────────── */}
       <PrismAgencyAdvantage />

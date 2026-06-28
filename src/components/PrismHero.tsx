@@ -56,29 +56,12 @@ function SpotlightDashboard() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   // Loading animation state
-  const [score, setScore] = useState(0);
-  const [sources, setSources] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [score, setScore] = useState(73);
+  const [sources, setSources] = useState(847);
+  const [isLoaded, setIsLoaded] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-      let s = 0;
-      let src = 0;
-      const int = setInterval(() => {
-        s += Math.floor(Math.random() * 5) + 1;
-        src += Math.floor(Math.random() * 1200) + 100;
-        if (s >= 87) s = 87;
-        if (src >= 14291) src = 14291;
-        
-        setScore(s);
-        setSources(src);
-        
-        if (s === 87 && src === 14291) clearInterval(int);
-      }, 40);
-      return () => clearInterval(int);
-    }, 600);
-    return () => clearTimeout(timer);
+    // Hardcoded static values as per GTM strategy to build immediate trust
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -164,7 +147,7 @@ function SpotlightDashboard() {
           {[
             { label: "Prism Score", val: score, icon: Sparkles, color: "text-emerald-400" },
             { label: "Analyzed Sources", val: sources.toLocaleString(), icon: Users, color: "text-cyan-400" },
-            { label: "Friction Points", val: isLoaded ? "3" : "0", icon: Zap, color: "text-amber-400" }
+            { label: "Friction Points", val: isLoaded ? "12" : "0", icon: Zap, color: "text-amber-400" }
           ].map((stat, i) => (
             <div key={i} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] flex flex-col gap-2">
               <div className="flex justify-between items-start">
@@ -282,7 +265,7 @@ export default function PrismHero({ onStart }: Props) {
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[1.05] text-white mix-blend-plus-lighter">
-            Turn Customer Feedback Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">Strategic Intelligence.</span>
+            Your competitors are guessing. Prism reads <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">10,000 reviews in 4 minutes.</span>
           </h1>
 
           <p className="text-lg sm:text-xl font-normal text-white/50 max-w-lg leading-relaxed">

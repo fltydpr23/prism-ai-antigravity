@@ -293,7 +293,7 @@ function XRayRevealCard({ mouseX, mouseY }: { mouseX: any, mouseY: any }) {
         </div>
       </div>
       <p className="text-xs text-white/40 leading-relaxed mb-1">
-        The most dangerous users are the happy ones who silently leave. Prism cross-references what they say with what they actually do.
+        The most dangerous users are the happy ones who silently leave. Connect your analytics, and Prism reveals the gap between what they say and what they do.
       </p>
 
       <div 

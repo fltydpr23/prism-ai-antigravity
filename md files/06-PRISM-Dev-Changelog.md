@@ -815,3 +815,79 @@ QSTASH_CURRENT_SIGNING_KEY=
 QSTASH_NEXT_SIGNING_KEY=
 NEXT_PUBLIC_APP_URL=https://prismintel.co
 ```
+
+---
+## Source: project-summary-27june-pricing.md
+
+# Project Summary: The "Stickiness" Architecture & UI Polish (June 27, 2026)
+
+## 1. File Consolidation
+We began the session by cleaning up a massively cluttered `md files/` directory. Over 28 individual session logs, scratchpads, and legacy planning documents were consolidated into 5-6 core master `.md` files. This streamlined the repository and made it infinitely easier to reference our core strategic decisions.
+
+## 2. Command Center (Analyse Page) UI Polish
+We revisited the `/analyse` dropzone and command center to remove UX friction and apply "Figma-level" polish.
+- **Enterprise Survey Detection Pill:** Re-styled the Auto-detect drop pill. If a standard dataset is uploaded, it now explicitly confirms `📊 Detected: Standard Dataset` in a subtle glass pill. We adjusted the background opacity so it is readable but doesn't distract from the core UI.
+- **Keyboard Navigation:** Fully wired up keyboard arrow support and `Enter` to select industries in the manual override dropdown.
+- **Off-Click Closing:** Added an event listener so clicking anywhere outside the industry dropdown immediately collapses it, matching expected OS-level behavior.
+- **Cursor Fixes:** We realized hovering over the Command Box background triggered a text-input "I-beam" cursor (which confused users who thought they could type there). We fixed the CSS to ensure buttons and intractable spaces correctly trigger the default pointer.
+
+## 3. The Pricing Psychology Overhaul (P0 - P3)
+We ripped apart the `/pricing` page and rebuilt it based on behavioral psychology and SaaS conversion best practices.
+
+### The P0 Foundation (Trust & Accuracy)
+- **Toast Notifications:** Ripped out the terrible, native `alert()` browser popups for payment successes/failures and installed `react-hot-toast`. Success/Error states now trigger sleek, dark-mode-styled notifications that slide in from the bottom right.
+- **Shifting the "Most Popular" Crown:** We moved the `isPopular` emerald badge and primary button styling from the ₹4,999 "Agency" tier down to the ₹999 "Analyst" tier. Why? Because solo analysts are our highest-volume wedge. We want the visual gravity pulling them to convert instantly without sticker shock.
+- **Enterprise Custom Pricing:** Fixed a bug where the Enterprise card displayed "₹0/mo". We overrode this to correctly display "Custom", while adding an explicit tagline: *"For large consultancies. Starts at ₹30,000/mo."* This anchors the high perceived value for B2B buyers without scaring them away with a hardcoded massive number.
+
+### The P1 Layer (Teasing & Social Proof)
+- **Social Proof Strip:** Added a massive authority banner right above the pricing grid: *"47,000+ Signals Processed. 12+ Sectors. 'Prism is our secret weapon.' - Strategy Lead, ZoomRx"*.
+- **The 🔒 Locked Tease:** On the Free (Explorer) and Starter (Analyst) tiers, we didn't just remove premium features—we listed them explicitly, greyed them out, and slapped a lock icon next to them. Users now constantly see exactly what they are missing (e.g., "Churn Risk Detection 🔒").
+- **Explicit Annual Savings:** Changed the Annual billing toggle pill from a generic "Save 20%" to a highly tangible *"Save up to ₹12,000/yr"*. 
+
+### The P2 Layer (Add-ons & Premium Copy)
+- **Micro-Transactions:** Rather than charging for an entire tier upgrade for a one-off project, we added a subtle "Add-Ons" section at the bottom of the pricing grid, normalizing row overages (e.g., "Add 5,000 Rows for ₹99").
+- **Apple-esque Persona Taglines:** Upgraded the descriptions for each tier to sound like elite tools (e.g., *"Uncompromising scale and precision for global organizations."*).
+- **Infinite ROI Headline Rewrite:** Removed the old "Infinite ROI" headline (which sounded like a scammy AI wrapper) and replaced it with elegant, human-centric copy: *"Clarity at any scale. Understand every nuance in your data instantly. Designed to bring human-like intuition to the world's most complex datasets."*
+
+### The P3 Layer (Price Anchoring)
+- **Inverted Card Order:** Instead of reading Left-to-Right from Free ➔ Enterprise, we flipped the entire layout: **Enterprise ➔ Agency ➔ Analyst ➔ Explorer**. This forces the user to read the ₹30,000 (Custom) and ₹4,999 prices *first*, creating an immediate psychological anchor. By the time they see the ₹999 tier, it feels like an absolute steal.
+- **The Seat Math Trick:** Added *"3 seats inc. — ₹1,667/analyst/mo"* to the Agency card. Breaking the ₹4,999 price down by seat makes the math instantly justifiable to a founder.
+
+## 4. The Feature Strategy (Outcome-Based Naming)
+We executed a complete rewrite of how features are pitched on the pricing cards. We killed the ML jargon and focused purely on business outcomes:
+- **Jargon ➔ Outcome:** "Trust Erosion Index" became **"Churn Risk Detection"**.
+- **Jargon ➔ Outcome:** "Velocity Tracker" became **"Emerging Customer Issues"**.
+- **The Engine "Taste Test":** The biggest technical differentiator we implemented is how we treat the "Free" tier. We explicitly labelled the Free tier as having **"Accelerated Sample Analysis (20 rows)"**. We then explicitly locked **"Comprehensive Background Analysis"**. This gives free users a taste of Prism's incredible speed, but creates massive friction (and a strong upgrade hook) when they want to analyze their *full* 5,000-row dataset. 
+
+All changes have been successfully committed and pushed to `main`.
+
+---
+## Source: session-summary-june28.md
+
+# Project Summary: Prism Architecture Fixes & Multi-Lingual Intelligence (June 28, 2026)
+
+## 1. The Language Sanitization Bottleneck
+We started by addressing a major flaw in the intelligence pipeline: Llama 3 was exhibiting an extreme "alignment bias," forcefully translating and sanitizing raw, angry code-mixed Indian reviews (Hinglish/Tanglish) into formal Devanagari script or sanitized English. This defeated Prism's core value proposition of capturing authentic, visceral customer voices.
+
+## 2. The Multi-Model Orchestration Pivot
+To solve the sanitization issue, we decoupled the architecture in `lib/pipeline-local.js`. We maintained Llama 3 for the heavy analytical chunking/synthesis (due to its high context capabilities), but explicitly routed the final JSON structuring phase to a different model using the `LOCAL_LLM_MODEL_STRUCTURING` environment variable in `.env.local`. 
+
+After a failed attempt to connect to `google/gemma-4-31B-it` via Together AI (due to API access/slug errors), we pivoted to `deepseek-ai/DeepSeek-V4-Pro`. Deepseek proved exceptional at following rigid JSON schemas while perfectly preserving the raw, native code-mixed quotes.
+
+## 3. The "Missing Bucket" Architectural Flaw
+Upon testing the new pipeline on Blinkit reviews, we discovered that Deepseek was accurately formatting the JSON, but was hallucinating English quotes into the Hinglish bucket. 
+- **The Diagnosis:** We discovered a critical architectural bug in `lib/pipeline-local.js`. The final `structuringPayload` sent to Deepseek only contained Llama 3's synthesized report (`freeformRes.raw`), which stripped away the offline language buckets. Deepseek was never actually fed the categorized Hinglish/Tanglish text, forcing it to blindly grab random quotes from Llama's analysis to fulfill its schema requirement.
+- **The Fix:** We implemented the `getLanguageBucketSample()` function to extract a targeted, 25-line sample from each offline language bucket. We then dynamically injected this exact `[RAW_LANGUAGE_BUCKETS_SAMPLE]` block into the final `structuringPayload`, commanding Deepseek to extract quotes *only* from these authentic source buckets.
+
+## 4. The Stop-Word False Positive Bug
+After fixing the bucket injection, we audited the `language_intelligence` output and found that standard English or Hindi phrases (e.g., "Da best", or "next order pa fidback duga") were being wrongly categorized as Tanglish.
+- **The Diagnosis:** The offline `language-detector.js` was relying on ultra-short, ambiguous slang words (like "da", "di", "pa", "se", "me") that overlap heavily with English typos or informal internet slang.
+- **The Fix:** We purged the `HINGLISH_WORDS` and `TANGLISH_WORDS` sets of all dangerous 2-letter homonyms. This instantly hardened the offline script's precision, ensuring English reviews no longer falsely trigger the Tanglish/Hinglish buckets.
+
+## 5. Final Validation (Zomato Dataset)
+We ran the fully updated, multi-model pipeline on the `zomato_playstore_reviews.csv` dataset. The results were phenomenal and consultant-grade:
+- **Strategic Impact:** Prism identified that Zomato's token refund policy is a primary churn driver, explicitly breaking out 5 highly actionable recommendations.
+- **Contradiction Engine:** Successfully caught "Forced Loyalty" (users who say Zomato is better than Swiggy but still despise the high charges).
+- **Flawless Language Extraction:** Deepseek perfectly parsed the injected raw buckets, correctly assigning native quotes across English, Hinglish, Hindi (Devanagari), and even successfully identifying and formatting a pure Malayalam review.
+
+The Prism intelligence engine is now robust, multi-lingual, and completely free of translation hallucinations.

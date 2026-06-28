@@ -1,0 +1,319 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T11:10:51.849Z",
+    "moon": {
+      "phase01": 0.44711597777045087,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 97
+    },
+    "metrics": {
+      "charCount": 481809,
+      "charCountNoWs": 370223,
+      "wordCount": 66017,
+      "sentenceCount": 3237,
+      "paragraphCount": 1,
+      "avgWordLength": 5.61,
+      "lexicalDensity": 0.84,
+      "numericTokenCount": 6711
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2563
+      },
+      {
+        "token": "google",
+        "count": 2561
+      },
+      {
+        "token": "blinkit",
+        "count": 1832
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1300
+      },
+      {
+        "token": "company",
+        "count": 1291
+      },
+      {
+        "token": "date",
+        "count": 1285
+      },
+      {
+        "token": "reply",
+        "count": 1281
+      },
+      {
+        "token": "play",
+        "count": 1280
+      },
+      {
+        "token": "score",
+        "count": 1280
+      },
+      {
+        "token": "likes",
+        "count": 1280
+      },
+      {
+        "token": "you",
+        "count": 1223
+      }
+    ],
+    "luneSignature": {
+      "hue": 61,
+      "drift": 0.41
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "Blinkit faces urgent issues with late delivery, poor support, hidden charges, and missing items, necessitating immediate fixes to prevent churn and improve customer satisfaction.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Customers are increasingly frustrated with their experiences, driven by issues like late delivery and poor support."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "acha hai but support slow",
+              "what_they_do": "complain about support despite praising the service",
+              "severity": "high"
+            },
+            {
+              "what_they_say": "Blinkit never disappoint us ... simply the best of the best, but I am unhappy with the various extra service charges",
+              "what_they_do": "express dissatisfaction with charges despite overall positive sentiment",
+              "severity": "medium"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "feature": "cash on delivery option",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 15
+            },
+            {
+              "feature": "lower delivery charges",
+              "frequency": "medium",
+              "build_priority": "medium",
+              "estimated_prevalence_percentage": 12.5
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "late delivery and poor support",
+              "estimated_prevalence_percentage": 21.3
+            },
+            {
+              "emotion": "angry",
+              "intensity": "high",
+              "trigger": "hidden charges and missing items",
+              "estimated_prevalence_percentage": 10
+            },
+            {
+              "emotion": "disappointed",
+              "intensity": "medium",
+              "trigger": "delayed refunds",
+              "estimated_prevalence_percentage": 5
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "improve delivery times and support",
+              "estimated_prevalence_percentage": 15
+            },
+            {
+              "segment_name": "The Disappointed Customer",
+              "how_to_win_them": "enhance refund process and communication",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "segment_name": "The Angry User",
+              "how_to_win_them": "address hidden charges and missing items",
+              "estimated_prevalence_percentage": 20
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery",
+                "retention_action": "improve logistics and communication",
+                "estimated_prevalence_percentage": 21.8
+              },
+              {
+                "signal": "poor support",
+                "retention_action": "enhance support team and response times",
+                "estimated_prevalence_percentage": 28.4
+              },
+              {
+                "signal": "hidden charges",
+                "retention_action": "increase transparency in pricing",
+                "estimated_prevalence_percentage": 2.4
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "improve delivery logistics",
+              "why": "to reduce late deliveries and improve customer satisfaction",
+              "expected_outcome": "20% reduction in late deliveries",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "enhance customer support",
+              "why": "to address customer complaints and improve retention",
+              "expected_outcome": "30% improvement in support satisfaction",
+              "priority": "2",
+              "timeline": "later"
+            },
+            {
+              "action": "increase pricing transparency",
+              "why": "to reduce complaints about hidden charges",
+              "expected_outcome": "15% reduction in complaints about pricing",
+              "priority": "3",
+              "timeline": "now"
+            }
+          ],
+          "passion_index": {
+            "score": 80,
+            "reasoning": "high frequency of emotional language and urgent tone in customer feedback"
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "customers are frustrated with late delivery and poor support",
+              "raw_native_quote": "acha hai but support slow",
+              "severity": "high"
+            }
+          ]
+        },
+        "language_intelligence": {
+          "primary_language": "Hinglish",
+          "detected_languages": [
+            {
+              "language": "Hinglish",
+              "language_code": "HI",
+              "region_hint": "India",
+              "review_count_percentage": 80,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "top_themes": [
+                "late delivery",
+                "poor support"
+              ],
+              "sample_quote": "acha hai but support slow",
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "English",
+              "language_code": "EN",
+              "region_hint": "Global",
+              "review_count_percentage": 20,
+              "sentiment": "mixed",
+              "sentiment_intensity": "medium",
+              "top_themes": [
+                "hidden charges",
+                "missing items"
+              ],
+              "sample_quote": "Blinkit never disappoint us ... simply the best of the best, but I am unhappy with the various extra service charges",
+              "script_type": "latin_romanized"
+            }
+          ],
+          "regional_insight": "Indian customers are disproportionately negative about delivery timelines and support quality compared to global customers.",
+          "native_script_detected": false
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "coverage": {
+          "totalRowsAvailable": 1280,
+          "totalRowsProcessed": 1280,
+          "totalVariantsFound": 1,
+          "variantsAnalyzed": 1,
+          "mode": "background"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Blinkit faces urgent issues with late delivery, poor support, hidden charges, and missing items, necessitating immediate fixes to prevent churn and improve customer satisfaction.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Customers are increasingly frustrated with their experiences, driven by issues like late delivery and poor support.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"acha hai but support slow\",\n        \"what_they_do\": \"complain about support despite praising the service\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"Blinkit never disappoint us ... simply the best of the best, but I am unhappy with the various extra service charges\",\n        \"what_they_do\": \"express dissatisfaction with charges despite overall positive sentiment\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"cash on delivery option\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 60\n      },\n      {\n        \"feature\": \"lower delivery charges\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"medium\",\n        \"estimated_prevalence_percentage\": 50\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"late delivery and poor support\",\n        \"estimated_prevalence_percentage\": 85\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"hidden charges and missing items\",\n        \"estimated_prevalence_percentage\": 10\n      },\n      {\n        \"emotion\": \"disappointed\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"delayed refunds\",\n        \"estimated_prevalence_percentage\": 5\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"improve delivery times and support\",\n        \"estimated_prevalence_percentage\": 60\n      },\n      {\n        \"segment_name\": \"The Disappointed Customer\",\n        \"how_to_win_them\": \"enhance refund process and communication\",\n        \"estimated_prevalence_percentage\": 20\n      },\n      {\n        \"segment_name\": \"The Angry User\",\n        \"how_to_win_them\": \"address hidden charges and missing items\",\n        \"estimated_prevalence_percentage\": 20\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"improve logistics and communication\",\n          \"estimated_prevalence_percentage\": 21.8\n        },\n        {\n          \"signal\": \"poor support\",\n          \"retention_action\": \"enhance support team and response times\",\n          \"estimated_prevalence_percentage\": 28.4\n        },\n        {\n          \"signal\": \"hidden charges\",\n          \"retention_action\": \"increase transparency in pricing\",\n          \"estimated_prevalence_percentage\": 2.4\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"improve delivery logistics\",\n        \"why\": \"to reduce late deliveries and improve customer satisfaction\",\n        \"expected_outcome\": \"20% reduction in late deliveries\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"enhance customer support\",\n        \"why\": \"to address customer complaints and improve retention\",\n        \"expected_outcome\": \"30% improvement in support satisfaction\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      },\n      {\n        \"action\": \"increase pricing transparency\",\n        \"why\": \"to reduce complaints about hidden charges\",\n        \"expected_outcome\": \"15% reduction in complaints about pricing\",\n        \"priority\": \"3\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 80,\n      \"reasoning\": \"high frequency of emotional language and urgent tone in customer feedback\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"customers are frustrated with late delivery and poor support\",\n        \"raw_native_quote\": \"acha hai but support slow\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \"language_intelligence\": {\n    \"primary_language\": \"Hinglish\",\n    \"detected_languages\": [\n      {\n        \"language\": \"Hinglish\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"India\",\n        \"review_count_percentage\": 80,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"top_themes\": [\"late delivery\", \"poor support\"],\n        \"sample_quote\": \"acha hai but support slow\",\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"English\",\n        \"language_code\": \"EN\",\n        \"region_hint\": \"Global\",\n        \"review_count_percentage\": 20,\n        \"sentiment\": \"mixed\",\n        \"sentiment_intensity\": \"medium\",\n        \"top_themes\": [\"hidden charges\", \"missing items\"],\n        \"sample_quote\": \"Blinkit never disappoint us ... simply the best of the best, but I am unhappy with the various extra service charges\",\n        \"script_type\": \"latin_romanized\"\n      }\n    ],\n    \"regional_insight\": \"Indian customers are disproportionately negative about delivery timelines and support quality compared to global customers.\",\n    \"native_script_detected\": false\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": {\n      \"concerned\": \"0%\",\n      \"uncertain\": \"0%\",\n      \"optimistic\": \"0%\"\n    },\n    \"current\": {\n      \"concerned\": \"0%\",\n      \"uncertain\": \"0%\",\n      \"optimistic\": \"0%\"\n    },\n    \"historical_num\": {\n      \"concerned\": 0,\n      \"uncertain\": 0,\n      \"optimistic\": 0\n    },\n    \"current_num\": {\n      \"concerned\": 0,\n      \"uncertain\": 0,\n      \"optimistic\": 0\n    }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "03368f1b-070c-4c26-bfb7-44beac92c8ef"
+}

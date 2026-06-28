@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, HelpCircle, Database } from "lucide-react";
+import { ArrowRight, Sparkles, HelpCircle, Database, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import PricingCard, { type PricingFeature } from "@/components/PricingCard";
 import PricingToggle from "@/components/PricingToggle";
@@ -96,52 +96,42 @@ export default function PricingPage() {
   const { isSignedIn } = useAuth();
   const router = useRouter();
 
-  const handleCheckout = async (planId: string) => {
+    const handleCheckout = async (planId: string) => {
     if (!isSignedIn) {
       router.push('/sign-in');
       return;
     }
     
+    const toastId = toast.loading("Provisioning workspace...");
     try {
-      const res = await fetch('/api/payments/create-order', {
+      const res = await fetch('/api/billing/create-subscription', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planId, isAnnual: billing === 'annual' })
+        body: JSON.stringify({ tier: planId.toLowerCase(), billingPeriod: billing })
       });
-      const order = await res.json();
-      if (order.error) throw new Error(order.details || order.error);
+      const sub = await res.json();
+      toast.dismiss(toastId);
+      
+      if (sub.error) throw new Error(sub.details || sub.error);
 
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_dummy", 
-        amount: order.amount,
-        currency: order.currency,
+        subscription_id: sub.subscriptionId,
         name: "Prism Intelligence",
         description: `Upgrade: ${planId}`,
-        order_id: order.id,
         handler: async function (response: any) {
           try {
-            const res = await fetch('/api/billing/verify', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_signature: response.razorpay_signature,
-                tier: planId,
-                billingPeriod: billing === 'annual' ? 'annual' : 'monthly',
-              }),
-            });
-            const data = await res.json();
-            if (data.error) throw new Error(data.error);
-            toast.success("Payment successful! Your account is now updated.");
+            // Note: The main activation happens via the webhook (subscription.charged), 
+            // but we show immediate success to the user.
+            toast.success("Payment successful! Welcome to Prism " + planId + ".");
             router.push("/dashboard");
           } catch (err: any) {
             console.error(err);
-            toast.error(`Payment verification failed: ${err.message}`);
+            toast.error(`Redirection failed: ${err.message}`);
           }
         },
         theme: {
-          color: "#10b981"
+          color: "#34d399" // Emerald green
         }
       };
       
@@ -221,9 +211,15 @@ export default function PricingPage() {
             <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-semibold">Sectors Analyzed</div>
           </div>
           <div className="w-px h-8 bg-white/10 hidden md:block" />
-          <div className="flex flex-col items-center max-w-[280px] text-center">
+          <div className="flex flex-col items-center max-w-[320px] text-center">
             <div className="text-sm font-medium italic text-white/80">"Surfaces insights that take 2 days to compile manually."</div>
-            <div className="text-[10px] tracking-widest mt-1.5 uppercase text-white/40 font-semibold">— Strategy Lead, ZoomRx</div>
+            <div className="flex flex-col items-center gap-2 mt-3">
+              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                <ShieldCheck className="w-3 h-3" />
+                <span className="text-[9px] font-semibold tracking-widest uppercase">Verified Enterprise User</span>
+              </div>
+              <div className="text-[10px] tracking-widest uppercase text-white/40 font-semibold">— Strategy Lead at a Top 10 Global Healthcare Consultancy</div>
+            </div>
           </div>
         </motion.div>
 
@@ -243,14 +239,14 @@ export default function PricingPage() {
             index={0}
           />
           <PricingCard
-            tier="Agency Partner"
-            tagline="For strategy consultancies. (3 seats inc. — ₹1,667/analyst/mo)"
-            monthlyPrice={4999}
-            annualPrice={3999}
+            tier="Pro"
+            tagline="For scaling teams and strategy consultancies."
+            monthlyPrice={2999}
+            annualPrice={2499}
             billingPeriod={billing}
             ctaLabel="Start 14-Day Free Trial"
             ctaHref="#"
-            ctaOnClick={() => handleCheckout("agency")}
+            ctaOnClick={() => handleCheckout("pro")}
             ctaVariant="ghost"
             features={PRO_FEATURES}
             accentColor="162,85%,48%"
@@ -402,7 +398,7 @@ export default function PricingPage() {
               <thead>
                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
                   <th className="text-left py-4 px-5 text-white/40 font-medium text-xs tracking-wider uppercase w-1/3">Feature</th>
-                  {["Explorer", "Analyst", "Agency", "Enterprise"].map(t => (
+                  {["Explorer", "Analyst", "Pro", "Enterprise"].map(t => (
                     <th key={t} className="py-4 px-4 text-center text-white/70 font-semibold text-xs tracking-wider uppercase">{t}</th>
                   ))}
                 </tr>

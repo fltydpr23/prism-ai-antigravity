@@ -1,0 +1,358 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T11:46:25.868Z",
+    "moon": {
+      "phase01": 0.4479523747044145,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 97
+    },
+    "metrics": {
+      "charCount": 513477,
+      "charCountNoWs": 396403,
+      "wordCount": 71045,
+      "sentenceCount": 3615,
+      "paragraphCount": 1,
+      "avgWordLength": 5.58,
+      "lexicalDensity": 0.829,
+      "numericTokenCount": 6902
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2612
+      },
+      {
+        "token": "google",
+        "count": 2608
+      },
+      {
+        "token": "blinkit",
+        "count": 1936
+      },
+      {
+        "token": "you",
+        "count": 1359
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1315
+      },
+      {
+        "token": "company",
+        "count": 1313
+      },
+      {
+        "token": "date",
+        "count": 1307
+      },
+      {
+        "token": "reply",
+        "count": 1305
+      },
+      {
+        "token": "play",
+        "count": 1303
+      },
+      {
+        "token": "score",
+        "count": 1303
+      },
+      {
+        "token": "likes",
+        "count": 1303
+      }
+    ],
+    "luneSignature": {
+      "hue": 93,
+      "drift": 0.73
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "Blinkit faces severe customer dissatisfaction due to late deliveries, poor support, and issues with products and returns, necessitating immediate improvements in customer support and refund processes.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Customers are increasingly frustrated with Blinkit's services, citing multiple issues."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "You take more money no discounts but still delay orders.",
+              "what_they_do": "Continue to use the service despite dissatisfaction",
+              "severity": "high"
+            },
+            {
+              "what_they_say": "kafi late delivery karte h",
+              "what_they_do": "Expect timely deliveries",
+              "severity": "medium"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 21.3
+            },
+            {
+              "feature": "better customer support",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 22.5
+            },
+            {
+              "feature": "lower delivery charges",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 17.5
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "late delivery and poor customer support",
+              "estimated_prevalence_percentage": 22.5
+            },
+            {
+              "emotion": "angry",
+              "intensity": "high",
+              "trigger": "defective products and return policy issues",
+              "estimated_prevalence_percentage": 20
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "improve delivery times and customer support",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "segment_name": "The Angry Customer",
+              "how_to_win_them": "address product quality and return policy concerns",
+              "estimated_prevalence_percentage": 15
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery",
+                "retention_action": "improve logistics and communication",
+                "estimated_prevalence_percentage": 17.2
+              },
+              {
+                "signal": "poor customer support",
+                "retention_action": "enhance support team and processes",
+                "estimated_prevalence_percentage": 9.4
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "improve customer support",
+              "why": "to address high churn risk and dissatisfaction",
+              "expected_outcome": "20% reduction in churn rate",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "enhance logistics for timely deliveries",
+              "why": "to meet customer expectations and reduce frustration",
+              "expected_outcome": "15% increase in customer satisfaction",
+              "priority": "2",
+              "timeline": "later"
+            },
+            {
+              "action": "review and improve return policies",
+              "why": "to build trust and reduce churn",
+              "expected_outcome": "10% reduction in returns",
+              "priority": "3",
+              "timeline": "later"
+            }
+          ],
+          "passion_index": {
+            "score": 80,
+            "reasoning": "high intensity of emotions expressed, frequent use of strong language"
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "Customers express extreme dissatisfaction with Blinkit's services.",
+              "raw_native_quote": "worst customer care ever seen",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Late deliveries are a significant issue.",
+              "raw_native_quote": "kafi late delivery karte h",
+              "severity": "medium"
+            },
+            {
+              "sanitized_english": "Customers have had very bad experiences.",
+              "raw_native_quote": "बहुत खराब अनुभव",
+              "severity": "high"
+            }
+          ]
+        },
+        "language_intelligence": {
+          "primary_language": "Hinglish",
+          "detected_languages": [
+            {
+              "language": "Hinglish",
+              "language_code": "HI",
+              "region_hint": "North India",
+              "review_count_percentage": 60,
+              "review_count_estimate": 42627,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 10,
+                "neutral_pct": 15,
+                "negative_pct": 75
+              },
+              "top_themes": [
+                "late delivery",
+                "poor customer support"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "kafi late delivery karte h",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "worst customer care ever seen",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "kafi late",
+                  "meaning": "very late",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "worst",
+                  "meaning": "extremely bad",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "Hindi",
+              "language_code": "HI",
+              "region_hint": "North India (native script users)",
+              "review_count_percentage": 20,
+              "review_count_estimate": 14213,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 5,
+                "neutral_pct": 10,
+                "negative_pct": 85
+              },
+              "top_themes": [
+                "खराब अनुभव",
+                "देरी से डिलीवरी"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "बहुत खराब अनुभव",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "बहुत खराब",
+                  "meaning": "very bad",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "native_script"
+            }
+          ],
+          "regional_insight": "North Indian customers, particularly those using Hinglish, express higher dissatisfaction with Blinkit's services.",
+          "native_script_detected": true
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "coverage": {
+          "totalRowsAvailable": 1303,
+          "totalRowsProcessed": 1303,
+          "totalVariantsFound": 1,
+          "variantsAnalyzed": 1,
+          "mode": "background"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Blinkit faces severe customer dissatisfaction due to late deliveries, poor support, and issues with products and returns, necessitating immediate improvements in customer support and refund processes.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Customers are increasingly frustrated with Blinkit's services, citing multiple issues.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"You take more money no discounts but still delay orders.\",\n        \"what_they_do\": \"Continue to use the service despite dissatisfaction\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"kafi late delivery karte h\",\n        \"what_they_do\": \"Expect timely deliveries\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 85\n      },\n      {\n        \"feature\": \"better customer support\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"feature\": \"lower delivery charges\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 70\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"late delivery and poor customer support\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"defective products and return policy issues\",\n        \"estimated_prevalence_percentage\": 80\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"improve delivery times and customer support\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"segment_name\": \"The Angry Customer\",\n        \"how_to_win_them\": \"address product quality and return policy concerns\",\n        \"estimated_prevalence_percentage\": 60\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"improve logistics and communication\",\n          \"estimated_prevalence_percentage\": 17.2\n        },\n        {\n          \"signal\": \"poor customer support\",\n          \"retention_action\": \"enhance support team and processes\",\n          \"estimated_prevalence_percentage\": 37.6\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"improve customer support\",\n        \"why\": \"to address high churn risk and dissatisfaction\",\n        \"expected_outcome\": \"20% reduction in churn rate\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"enhance logistics for timely deliveries\",\n        \"why\": \"to meet customer expectations and reduce frustration\",\n        \"expected_outcome\": \"15% increase in customer satisfaction\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      },\n      {\n        \"action\": \"review and improve return policies\",\n        \"why\": \"to build trust and reduce churn\",\n        \"expected_outcome\": \"10% reduction in returns\",\n        \"priority\": \"3\",\n        \"timeline\": \"later\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 80,\n      \"reasoning\": \"high intensity of emotions expressed, frequent use of strong language\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"Customers express extreme dissatisfaction with Blinkit's services.\",\n        \"raw_native_quote\": \"worst customer care ever seen\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Late deliveries are a significant issue.\",\n        \"raw_native_quote\": \"kafi late delivery karte h\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"sanitized_english\": \"Customers have had very bad experiences.\",\n        \"raw_native_quote\": \"बहुत खराब अनुभव\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \"language_intelligence\": {\n    \"primary_language\": \"Hinglish\",\n    \"detected_languages\": [\n      {\n        \"language\": \"Hinglish\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"North India\",\n        \"review_count_percentage\": 60,\n        \"review_count_estimate\": 42627,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 10,\n          \"neutral_pct\": 15,\n          \"negative_pct\": 75\n        },\n        \"top_themes\": [\"late delivery\", \"poor customer support\"],\n        \"sample_quotes\": [\n          { \"quote\": \"kafi late delivery karte h\", \"sentiment\": \"negative\" },\n          { \"quote\": \"worst customer care ever seen\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"kafi late\", \"meaning\": \"very late\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"worst\", \"meaning\": \"extremely bad\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"Hindi\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"North India (native script users)\",\n        \"review_count_percentage\": 20,\n        \"review_count_estimate\": 14213,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 5,\n          \"neutral_pct\": 10,\n          \"negative_pct\": 85\n        },\n        \"top_themes\": [\"खराब अनुभव\", \"देरी से डिलीवरी\"],\n        \"sample_quotes\": [\n          { \"quote\": \"बहुत खराब अनुभव\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"बहुत खराब\", \"meaning\": \"very bad\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"native_script\"\n      }\n    ],\n    \"regional_insight\": \"North Indian customers, particularly those using Hinglish, express higher dissatisfaction with Blinkit's services.\",\n    \"native_script_detected\": true\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "85ecd142-6b12-42e8-97e3-93f2ba98fe62"
+}

@@ -459,3 +459,23 @@ Every field must have a value. No empty arrays. No nulls.
 If you can't extract something, say "Not mentioned in feedback"
 ```
 
+
+---
+## Source: multi-model-architecture-update.md
+
+# Architecture Update: Multi-Model Orchestration (June 28, 2026)
+
+## The Sanitization Problem
+While `Meta-Llama-3.3-70B-Instruct-Turbo` is excellent for deep strategic reasoning, we discovered it possesses a strong "alignment bias." When exposed to raw, angry, code-mixed Indian reviews (Hinglish/Tanglish), it forcibly sanitized and translated the quotes into formal English or Devanagari script, stripping away the visceral emotion that Prism aims to capture.
+
+## The Solution: Pipeline Decoupling
+To preserve native sentiment, we decoupled the AI pipeline into a multi-model orchestration sequence using environment variables in `.env.local`:
+1. **Chunking & Freeform Synthesis:** Handled by Llama 3 (`LOCAL_LLM_MODEL_SYNTHESIS`) for its massive context window and ability to find strategic business contradictions.
+2. **JSON Structuring & Language Extraction:** Handled by `deepseek-ai/DeepSeek-V4-Pro` (`LOCAL_LLM_MODEL_STRUCTURING`). Deepseek proved exceptional at adhering strictly to complex JSON schemas without attempting to translate or "fix" the raw native text passed to it.
+
+## The Raw Bucket Injection Fix
+We found that Deepseek cannot accurately populate the `language_intelligence` arrays if it only receives Llama 3's synthesized output (which has already lost the native buckets).
+To solve this, we implemented `getLanguageBucketSample()` in `lib/pipeline-local.js`. This function injects a 25-line sample of the raw, unadulterated text directly from the offline language detector (e.g., `[RAW_LANGUAGE_BUCKETS_SAMPLE]`) into the final Structuring Prompt. This provides Deepseek with authentic source material to extract quotes for English, Hinglish, Tamil/Tanglish, etc.
+
+## Offline Detector Hardening
+We removed ultra-short, ambiguous homonyms (like "da", "pa", "se", "me") from `lib/language-detector.js` to prevent English and Hindi reviews from falsely triggering the Tanglish or Hinglish buckets. The detector now exclusively relies on highly specific regional markers.

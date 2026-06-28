@@ -3,10 +3,15 @@ import { auth } from "@clerk/nextjs/server";
 
 export const runtime = "nodejs";
 
-const TIER_PRICES: Record<string, Record<string, number>> = {
-  starter: { monthly: 99900, annual: 79900 },   // paise (₹999, ₹799)
-  pro:     { monthly: 349900, annual: 279900 }, // paise (₹3,499, ₹2,799)
-  agency:  { monthly: 999900, annual: 799900 }, // paise (₹9,999, ₹7,999)
+const PLAN_IDS: Record<string, Record<string, string>> = {
+  pro: { 
+    monthly: process.env.RAZORPAY_PLAN_PRO_MONTHLY || "plan_dummy_pro_monthly", 
+    annual: process.env.RAZORPAY_PLAN_PRO_ANNUAL || "plan_dummy_pro_annual" 
+  },
+  agency: { 
+    monthly: process.env.RAZORPAY_PLAN_AGENCY_MONTHLY || "plan_dummy_agency_monthly", 
+    annual: process.env.RAZORPAY_PLAN_AGENCY_ANNUAL || "plan_dummy_agency_annual" 
+  },
 };
 
 export async function POST(request: NextRequest) {
@@ -19,61 +24,59 @@ export async function POST(request: NextRequest) {
     const body = await request.json() as { tier?: string; billingPeriod?: string };
     const { tier, billingPeriod = "monthly" } = body;
 
-    if (!tier || !TIER_PRICES[tier]) {
-      return NextResponse.json({ error: "Invalid tier" }, { status: 400 });
+    if (!tier || !PLAN_IDS[tier] || !PLAN_IDS[tier][billingPeriod]) {
+      return NextResponse.json({ error: "Invalid tier or billing period" }, { status: 400 });
     }
 
-    const amount = TIER_PRICES[tier][billingPeriod] ?? TIER_PRICES[tier].monthly;
-
-    // ── If Razorpay keys are missing, return a mock order for dev ──
+    const plan_id = PLAN_IDS[tier][billingPeriod];
+    
     const razorpayKeyId = process.env.RAZORPAY_KEY_ID;
     const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;
 
     if (!razorpayKeyId || !razorpayKeySecret) {
-      console.warn("[billing] Razorpay keys not set — returning mock order for dev");
+      console.warn("[billing] Razorpay keys not set — returning mock subscription");
       return NextResponse.json({
-        orderId: `mock_order_${Date.now()}`,
-        amount,
-        currency: "INR",
+        subscriptionId: `sub_mock_${Date.now()}`,
+        plan_id,
         tier,
         billingPeriod,
         isMock: true,
       });
     }
 
-    // ── Real Razorpay order creation ──
+    // ── Real Razorpay subscription creation ──
     const authHeader = Buffer.from(`${razorpayKeyId}:${razorpayKeySecret}`).toString("base64");
-    const rzResponse = await fetch("https://api.razorpay.com/v1/orders", {
+    
+    const rzResponse = await fetch("https://api.razorpay.com/v1/subscriptions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Basic ${authHeader}`,
       },
       body: JSON.stringify({
-        amount,
-        currency: "INR",
-        receipt: `prism_${userId}_${Date.now()}`,
+        plan_id,
+        total_count: billingPeriod === 'annual' ? 10 : 120, // max billing cycles
+        customer_notify: 1,
         notes: { tier, billingPeriod, userId },
       }),
     });
 
     if (!rzResponse.ok) {
       const error = await rzResponse.text();
-      console.error("[billing] Razorpay order creation failed:", error);
+      console.error("[billing] Razorpay subscription creation failed:", error);
       return NextResponse.json({ error: "Payment gateway error" }, { status: 502 });
     }
 
-    const order = await rzResponse.json() as { id: string };
+    const subscription = await rzResponse.json() as { id: string };
     return NextResponse.json({
-      orderId: order.id,
-      amount,
-      currency: "INR",
+      subscriptionId: subscription.id,
+      plan_id,
       tier,
       billingPeriod,
       isMock: false,
     });
   } catch (error) {
-    console.error("[billing] create-order error:", error);
+    console.error("[billing] create-subscription error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

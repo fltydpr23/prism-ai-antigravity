@@ -1,0 +1,446 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T16:54:49.118Z",
+    "moon": {
+      "phase01": 0.4552044477029974,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 98
+    },
+    "metrics": {
+      "charCount": 513477,
+      "charCountNoWs": 396403,
+      "wordCount": 71045,
+      "sentenceCount": 3615,
+      "paragraphCount": 1,
+      "avgWordLength": 5.58,
+      "lexicalDensity": 0.829,
+      "numericTokenCount": 6902
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2612
+      },
+      {
+        "token": "google",
+        "count": 2608
+      },
+      {
+        "token": "blinkit",
+        "count": 1936
+      },
+      {
+        "token": "you",
+        "count": 1359
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1315
+      },
+      {
+        "token": "company",
+        "count": 1313
+      },
+      {
+        "token": "date",
+        "count": 1307
+      },
+      {
+        "token": "reply",
+        "count": 1305
+      },
+      {
+        "token": "play",
+        "count": 1303
+      },
+      {
+        "token": "score",
+        "count": 1303
+      },
+      {
+        "token": "likes",
+        "count": 1303
+      }
+    ],
+    "luneSignature": {
+      "hue": 93,
+      "drift": 0.73
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "parsed": {
+        "executive_summary": "Blinkit faces a severe trust crisis driven by late deliveries, hidden pricing, and unresponsive support, pushing even loyal users toward churn.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Sentiment is declining sharply due to repeated delivery failures and poor support, with even positive reviews containing complaints about hidden charges."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "acha hai but support slow",
+              "what_they_do": "They still use the app but are actively frustrated and likely to switch if support doesn't improve.",
+              "severity": "high"
+            },
+            {
+              "what_they_say": "all good but sometimes surge charges will added",
+              "what_they_do": "They continue ordering but feel cheated by unexpected fees, indicating a transactional, low-loyalty relationship.",
+              "severity": "medium"
+            },
+            {
+              "what_they_say": "I love Blinkit but my last order was 2 hours late and the item was damaged",
+              "what_they_do": "They express brand affection but their actual experience is a nightmare delivery, showing a gap between brand perception and service reality.",
+              "severity": "high"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 15
+            },
+            {
+              "feature": "better customer support",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "feature": "lower delivery charges",
+              "frequency": "high",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "feature": "transparent pricing (no hidden fees)",
+              "frequency": "high",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 9.3
+            },
+            {
+              "feature": "on-time delivery guarantee",
+              "frequency": "high",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 17
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "late delivery and poor customer support",
+              "estimated_prevalence_percentage": 22.5
+            },
+            {
+              "emotion": "angry",
+              "intensity": "high",
+              "trigger": "defective products and hidden charges",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "emotion": "disappointed",
+              "intensity": "medium",
+              "trigger": "refund process taking too long",
+              "estimated_prevalence_percentage": 15
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "fix delivery reliability and offer proactive refunds",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "segment_name": "The Price Hawk",
+              "how_to_win_them": "eliminate hidden fees and show total cost upfront",
+              "estimated_prevalence_percentage": 9.3
+            },
+            {
+              "segment_name": "The Convenience Addict",
+              "how_to_win_them": "ensure consistent 10-minute delivery and real-time tracking",
+              "estimated_prevalence_percentage": 17
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery",
+                "retention_action": "implement delivery time guarantees with compensation for delays",
+                "estimated_prevalence_percentage": 22.5
+              },
+              {
+                "signal": "poor customer support",
+                "retention_action": "introduce live chat with human agents and faster escalation",
+                "estimated_prevalence_percentage": 20
+              },
+              {
+                "signal": "hidden charges",
+                "retention_action": "display all fees clearly before order confirmation",
+                "estimated_prevalence_percentage": 9.3
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "overhaul refund process to be instant or within 24 hours",
+              "why": "users cite refund delays as a top reason for anger and churn",
+              "expected_outcome": "reduce churn by 15% and improve app store rating by 0.5 stars",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "introduce a delivery time guarantee with automatic credits for late orders",
+              "why": "late delivery is the most frequent complaint and erodes trust in the core value proposition",
+              "expected_outcome": "increase repeat order rate by 10% and reduce negative reviews by 20%",
+              "priority": "2",
+              "timeline": "now"
+            },
+            {
+              "action": "eliminate hidden surge charges and show total cost upfront",
+              "why": "users feel cheated by unexpected fees, leading to low trust and public complaints",
+              "expected_outcome": "improve pricing perception and reduce churn among price-sensitive users by 10%",
+              "priority": "3",
+              "timeline": "later"
+            }
+          ],
+          "passion_index": {
+            "score": 85,
+            "reasoning": "High code-mixing, use of slang like 'sabse ghatiya', and emotional intensity in reviews indicate strong passion."
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "This is the worst app ever",
+              "raw_native_quote": "sabse ghatiya aap hai",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Very bad app, I ordered jaggery and the weight and price changed after ordering",
+              "raw_native_quote": "very worst app I order jaggery it seen 500gm 54 rupees I ordered 1 kg after taking orders it seen 143 ruppees",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "The app is good but support is slow",
+              "raw_native_quote": "acha hai but support slow",
+              "severity": "medium"
+            },
+            {
+              "sanitized_english": "Everything is fine but sometimes surge charges are added",
+              "raw_native_quote": "all good but sometimes surge charges will added",
+              "severity": "medium"
+            },
+            {
+              "sanitized_english": "I love Blinkit but my last order was 2 hours late and the item was damaged",
+              "raw_native_quote": "I love Blinkit but my last order was 2 hours late and the item was damaged",
+              "severity": "high"
+            }
+          ]
+        },
+        "language_intelligence": {
+          "primary_language": "Hinglish",
+          "detected_languages": [
+            {
+              "language": "Hinglish",
+              "language_code": "HI",
+              "region_hint": "North India (UP, Delhi, Haryana)",
+              "review_count_percentage": 60,
+              "review_count_estimate": 0,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 10,
+                "neutral_pct": 15,
+                "negative_pct": 75
+              },
+              "top_themes": [
+                "late delivery",
+                "poor support",
+                "hidden charges"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "sabse ghatiya aap hai",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "acha hai but support slow",
+                  "sentiment": "mixed"
+                },
+                {
+                  "quote": "all good but sometimes surge charges will added",
+                  "sentiment": "mixed"
+                },
+                {
+                  "quote": "very worst app I order jaggery it seen 500gm 54 rupees I ordered 1 kg after taking orders it seen 143 ruppees",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "I love Blinkit but my last order was 2 hours late and the item was damaged",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "sabse ghatiya",
+                  "meaning": "worst ever",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "acha hai",
+                  "meaning": "it's good",
+                  "sentiment_weight": "positive"
+                },
+                {
+                  "term": "surge charges",
+                  "meaning": "unexpected price hikes",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "English",
+              "language_code": "EN",
+              "region_hint": "Metro cities / English-first users",
+              "review_count_percentage": 40,
+              "review_count_estimate": 0,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 15,
+                "neutral_pct": 20,
+                "negative_pct": 65
+              },
+              "top_themes": [
+                "refund issues",
+                "defective products",
+                "delivery delay"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "I love Blinkit but my last order was 2 hours late and the item was damaged",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "very worst app I order jaggery it seen 500gm 54 rupees I ordered 1 kg after taking orders it seen 143 ruppees",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "Customer support is non-existent, they just send automated replies",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "The app keeps crashing when I try to track my order",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "Delivery charges are too high for small orders",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "non-existent support",
+                  "meaning": "no real customer service",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "automated replies",
+                  "meaning": "bot responses only",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "app crashes",
+                  "meaning": "technical failure",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            }
+          ],
+          "regional_insight": "North Indian Hinglish users express more raw anger with slang like 'sabse ghatiya', while metro English users focus on systemic failures like app crashes and refund delays.",
+          "native_script_detected": false
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "coverage": {
+          "totalRowsAvailable": 1303,
+          "totalRowsProcessed": 1303,
+          "totalVariantsFound": 1,
+          "variantsAnalyzed": 1,
+          "mode": "background"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Blinkit faces a severe trust crisis driven by late deliveries, hidden pricing, and unresponsive support, pushing even loyal users toward churn.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Sentiment is declining sharply due to repeated delivery failures and poor support, with even positive reviews containing complaints about hidden charges.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"acha hai but support slow\",\n        \"what_they_do\": \"They still use the app but are actively frustrated and likely to switch if support doesn't improve.\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"all good but sometimes surge charges will added\",\n        \"what_they_do\": \"They continue ordering but feel cheated by unexpected fees, indicating a transactional, low-loyalty relationship.\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"what_they_say\": \"I love Blinkit but my last order was 2 hours late and the item was damaged\",\n        \"what_they_do\": \"They express brand affection but their actual experience is a nightmare delivery, showing a gap between brand perception and service reality.\",\n        \"severity\": \"high\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 60\n      },\n      {\n        \"feature\": \"better customer support\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"feature\": \"lower delivery charges\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"transparent pricing (no hidden fees)\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 37\n      },\n      {\n        \"feature\": \"on-time delivery guarantee\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 17\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"late delivery and poor customer support\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"defective products and hidden charges\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"emotion\": \"disappointed\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"refund process taking too long\",\n        \"estimated_prevalence_percentage\": 60\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"fix delivery reliability and offer proactive refunds\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"segment_name\": \"The Price Hawk\",\n        \"how_to_win_them\": \"eliminate hidden fees and show total cost upfront\",\n        \"estimated_prevalence_percentage\": 37\n      },\n      {\n        \"segment_name\": \"The Convenience Addict\",\n        \"how_to_win_them\": \"ensure consistent 10-minute delivery and real-time tracking\",\n        \"estimated_prevalence_percentage\": 17\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"implement delivery time guarantees with compensation for delays\",\n          \"estimated_prevalence_percentage\": 90\n        },\n        {\n          \"signal\": \"poor customer support\",\n          \"retention_action\": \"introduce live chat with human agents and faster escalation\",\n          \"estimated_prevalence_percentage\": 80\n        },\n        {\n          \"signal\": \"hidden charges\",\n          \"retention_action\": \"display all fees clearly before order confirmation\",\n          \"estimated_prevalence_percentage\": 37\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"overhaul refund process to be instant or within 24 hours\",\n        \"why\": \"users cite refund delays as a top reason for anger and churn\",\n        \"expected_outcome\": \"reduce churn by 15% and improve app store rating by 0.5 stars\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"introduce a delivery time guarantee with automatic credits for late orders\",\n        \"why\": \"late delivery is the most frequent complaint and erodes trust in the core value proposition\",\n        \"expected_outcome\": \"increase repeat order rate by 10% and reduce negative reviews by 20%\",\n        \"priority\": \"2\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"eliminate hidden surge charges and show total cost upfront\",\n        \"why\": \"users feel cheated by unexpected fees, leading to low trust and public complaints\",\n        \"expected_outcome\": \"improve pricing perception and reduce churn among price-sensitive users by 10%\",\n        \"priority\": \"3\",\n        \"timeline\": \"later\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 85,\n      \"reasoning\": \"High code-mixing, use of slang like 'sabse ghatiya', and emotional intensity in reviews indicate strong passion.\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"This is the worst app ever\",\n        \"raw_native_quote\": \"sabse ghatiya aap hai\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Very bad app, I ordered jaggery and the weight and price changed after ordering\",\n        \"raw_native_quote\": \"very worst app I order jaggery it seen 500gm 54 rupees I ordered 1 kg after taking orders it seen 143 ruppees\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"The app is good but support is slow\",\n        \"raw_native_quote\": \"acha hai but support slow\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"sanitized_english\": \"Everything is fine but sometimes surge charges are added\",\n        \"raw_native_quote\": \"all good but sometimes surge charges will added\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"sanitized_english\": \"I love Blinkit but my last order was 2 hours late and the item was damaged\",\n        \"raw_native_quote\": \"I love Blinkit but my last order was 2 hours late and the item was damaged\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n  \"language_intelligence\": {\n    \"primary_language\": \"Hinglish\",\n    \"detected_languages\": [\n      {\n        \"language\": \"Hinglish\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"North India (UP, Delhi, Haryana)\",\n        \"review_count_percentage\": 60,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 10,\n          \"neutral_pct\": 15,\n          \"negative_pct\": 75\n        },\n        \"top_themes\": [\"late delivery\", \"poor support\", \"hidden charges\"],\n        \"sample_quotes\": [\n          { \"quote\": \"sabse ghatiya aap hai\", \"sentiment\": \"negative\" },\n          { \"quote\": \"acha hai but support slow\", \"sentiment\": \"mixed\" },\n          { \"quote\": \"all good but sometimes surge charges will added\", \"sentiment\": \"mixed\" },\n          { \"quote\": \"very worst app I order jaggery it seen 500gm 54 rupees I ordered 1 kg after taking orders it seen 143 ruppees\", \"sentiment\": \"negative\" },\n          { \"quote\": \"I love Blinkit but my last order was 2 hours late and the item was damaged\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"sabse ghatiya\", \"meaning\": \"worst ever\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"acha hai\", \"meaning\": \"it's good\", \"sentiment_weight\": \"positive\" },\n          { \"term\": \"surge charges\", \"meaning\": \"unexpected price hikes\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"English\",\n        \"language_code\": \"EN\",\n        \"region_hint\": \"Metro cities / English-first users\",\n        \"review_count_percentage\": 40,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 15,\n          \"neutral_pct\": 20,\n          \"negative_pct\": 65\n        },\n        \"top_themes\": [\"refund issues\", \"defective products\", \"delivery delay\"],\n        \"sample_quotes\": [\n          { \"quote\": \"I love Blinkit but my last order was 2 hours late and the item was damaged\", \"sentiment\": \"negative\" },\n          { \"quote\": \"very worst app I order jaggery it seen 500gm 54 rupees I ordered 1 kg after taking orders it seen 143 ruppees\", \"sentiment\": \"negative\" },\n          { \"quote\": \"Customer support is non-existent, they just send automated replies\", \"sentiment\": \"negative\" },\n          { \"quote\": \"The app keeps crashing when I try to track my order\", \"sentiment\": \"negative\" },\n          { \"quote\": \"Delivery charges are too high for small orders\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"non-existent support\", \"meaning\": \"no real customer service\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"automated replies\", \"meaning\": \"bot responses only\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"app crashes\", \"meaning\": \"technical failure\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      }\n    ],\n    \"regional_insight\": \"North Indian Hinglish users express more raw anger with slang like 'sabse ghatiya', while metro English users focus on systemic failures like app crashes and refund delays.\",\n    \"native_script_detected\": false\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "53cfda95-bdcb-45d4-b7a6-c6d650e20154"
+}

@@ -359,7 +359,7 @@ export default function PrismReportPreview() {
                   className="group relative inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white text-black font-medium hover:scale-105 transition-transform shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
                 >
                   <Play className="w-4 h-4 fill-black" />
-                  Initialize Engine
+                  Analyze My Data
                   <div className="absolute inset-0 rounded-full border border-white opacity-0 group-hover:animate-ping" />
                 </button>
               </motion.div>

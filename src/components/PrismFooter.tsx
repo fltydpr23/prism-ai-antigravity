@@ -336,7 +336,7 @@ export default function PrismFooter({ onStart }: Props) {
               
               <h3 className="text-2xl font-semibold tracking-tight text-white mb-3">Enterprise & Agencies</h3>
               <p className="text-white/40 leading-relaxed mb-10 flex-1">
-                For massive data streams and high-ticket clients. Get dedicated SOC2-compliant infrastructure, custom ingestion pipelines, and white-labeled PDF generation.
+                For massive data streams and high-ticket clients. Get dedicated infrastructure, custom ingestion pipelines, and white-labeled PDF generation.
               </p>
               
               <a
@@ -401,8 +401,8 @@ export default function PrismFooter({ onStart }: Props) {
                 {
                   section: "SYSTEM",
                   items: [
-                    { label: "[ ] VIEW_PRICING", href: "#pricing", email: false },
-                    { label: "[ ] REPORT_ARCHIVE", href: "/history", email: false },
+                    { label: "[ ] VIEW_PRICING", href: "/pricing", email: false },
+                    { label: "[ ] REPORT_ARCHIVE", href: "/dashboard", email: false },
                   ],
                 },
               ].map((col, ci) => (

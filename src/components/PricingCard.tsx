@@ -147,7 +147,7 @@ export default function PricingCard({
         {ctaOnClick ? (
           <button
             onClick={ctaOnClick}
-            className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full text-sm font-semibold mb-7 transition-all duration-200"
+            className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full text-sm font-semibold mb-7 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] hover:shadow-lg"
             style={
               ctaVariant === "primary"
                 ? {
@@ -167,7 +167,7 @@ export default function PricingCard({
         ) : (
           <Link
             href={ctaHref}
-            className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full text-sm font-semibold mb-7 transition-all duration-200"
+            className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-full text-sm font-semibold mb-7 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] hover:shadow-lg"
             style={
               ctaVariant === "primary"
                 ? {

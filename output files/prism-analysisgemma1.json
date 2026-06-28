@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T16:44:53.407Z",
+    "moon": {
+      "phase01": 0.45497096765716444,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 98
+    },
+    "metrics": {
+      "charCount": 513477,
+      "charCountNoWs": 396403,
+      "wordCount": 71045,
+      "sentenceCount": 3615,
+      "paragraphCount": 1,
+      "avgWordLength": 5.58,
+      "lexicalDensity": 0.829,
+      "numericTokenCount": 6902
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2612
+      },
+      {
+        "token": "google",
+        "count": 2608
+      },
+      {
+        "token": "blinkit",
+        "count": 1936
+      },
+      {
+        "token": "you",
+        "count": 1359
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1315
+      },
+      {
+        "token": "company",
+        "count": 1313
+      },
+      {
+        "token": "date",
+        "count": 1307
+      },
+      {
+        "token": "reply",
+        "count": 1305
+      },
+      {
+        "token": "play",
+        "count": 1303
+      },
+      {
+        "token": "score",
+        "count": 1303
+      },
+      {
+        "token": "likes",
+        "count": 1303
+      }
+    ],
+    "luneSignature": {
+      "hue": 93,
+      "drift": 0.73
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": false,
+      "error": "OpenAI-compatible HTTP 404: {\n  \"id\": \"oq126w9-2kFHot-a12e2b26de5e95be\",\n  \"error\": {\n    \"message\": \"Unable to access model \\\"google/gemma-4-31B-it\\\". Please visit https://api.together.ai/models to view the list of supported models.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"model_not_available\"\n  }\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "a032558f-6126-4752-82dd-6302497106c6"
+}

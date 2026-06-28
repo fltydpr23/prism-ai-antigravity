@@ -25,45 +25,45 @@ export async function POST(req: Request) {
     const payload = JSON.parse(rawBody);
     const event = payload.event;
 
-    // Handle payment.captured event
-    if (event === 'payment.captured' || event === 'order.paid') {
-      const paymentEntity = payload.payload.payment.entity;
-      const orderNotes = paymentEntity.notes;
+    // Handle subscription events
+    if (event === 'subscription.charged') {
+      const subscription = payload.payload.subscription.entity;
+      const payment = payload.payload.payment.entity;
+      const orderNotes = payment.notes || subscription.notes;
 
       if (!orderNotes || !orderNotes.userId) {
         return NextResponse.json({ error: 'Missing userId in notes' }, { status: 400 });
       }
 
-      const { userId, tierName, isCredit, isAnnual } = orderNotes;
+      const { userId, tier, billingPeriod } = orderNotes;
       const supabase = createSupabaseServer();
+      
+      const currentEnd = subscription.current_end ? new Date(subscription.current_end * 1000) : new Date();
 
-      if (isCredit === 'true') {
-        // Fetch current user
-        const { data: userDoc, error: fetchError } = await supabase
-          .from('users')
-          .select('credits')
-          .eq('id', userId)
-          .single();
-
-        if (!fetchError) {
-          const currentCredits = userDoc?.credits || 0;
-          await supabase
-            .from('users')
-            .update({ credits: currentCredits + 1 })
-            .eq('id', userId);
-        }
-      } else {
-        // Subscription payment
-        const daysToAdd = isAnnual === 'true' ? 365 : 30;
-        const endDate = new Date();
-        endDate.setDate(endDate.getDate() + daysToAdd);
-
+      await supabase
+        .from('users')
+        .update({
+          tier: tier || 'pro',
+          subscription_status: 'active',
+          subscription_end_date: currentEnd.toISOString(),
+          subscription_id: subscription.id,
+          billing_cycle: billingPeriod || 'monthly',
+        })
+        .eq('id', userId);
+    }
+    
+    if (event === 'subscription.halted' || event === 'subscription.cancelled') {
+      const subscription = payload.payload.subscription.entity;
+      const orderNotes = subscription.notes;
+      const userId = orderNotes?.userId;
+      
+      if (userId) {
+        const supabase = createSupabaseServer();
         await supabase
           .from('users')
           .update({
-            tier: tierName,
-            subscription_status: 'active',
-            subscription_end_date: endDate.toISOString(),
+            subscription_status: 'canceled',
+            tier: 'explorer' // Gracefully downgrade
           })
           .eq('id', userId);
       }

@@ -19,6 +19,8 @@ import { INDUSTRY_MAP } from "../../lib/industryConfig";
 
 import PrismPaywall from "./PrismPaywall";
 import QuantitativeVisuals from "./QuantitativeVisuals";
+import LanguageIntelligencePanel from "./LanguageIntelligencePanel";
+import GatedFeature from "./GatedFeature";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -454,6 +456,7 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
   const reskilling: any[] = lm.reskilling_readiness_gap || [];
   const passionIndex = cf.passion_index || lm.passion_index;
   const realityChecks: any[] = cf.reality_checks || lm.reality_checks || [];
+  const languageIntelligence = lm?.language_intelligence ?? null;
 
   const totalRows = lm?.coverage?.totalRowsProcessed || baseLm?.coverage?.totalRowsProcessed || 0;
   const formatPrevalence = (pct: any) => {
@@ -900,6 +903,20 @@ export default function PrismResults({ response, onReset, isReadOnly = false }: 
           </div>
         )}
       </div>
+
+      {/* ── Language Intelligence ──────────────────────────────────────────── */}
+      {!isQuantitative && languageIntelligence && (
+        <GatedFeature
+          requiredTier="free" // TODO: revert to "pro" after testing
+          label="Language Intelligence"
+        >
+          <LanguageIntelligencePanel
+            data={languageIntelligence}
+            totalReviews={totalRows > 0 ? totalRows : undefined}
+          />
+        </GatedFeature>
+      )}
+
 
       {isQuantitative ? (
         // ── Quantitative Dashboard ──────────────────────────────────────────

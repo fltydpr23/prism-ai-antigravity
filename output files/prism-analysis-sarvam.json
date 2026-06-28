@@ -1,0 +1,349 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T12:21:06.483Z",
+    "moon": {
+      "phase01": 0.4487678407367032,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 97
+    },
+    "metrics": {
+      "charCount": 513477,
+      "charCountNoWs": 396403,
+      "wordCount": 71045,
+      "sentenceCount": 3615,
+      "paragraphCount": 1,
+      "avgWordLength": 5.58,
+      "lexicalDensity": 0.829,
+      "numericTokenCount": 6902
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2612
+      },
+      {
+        "token": "google",
+        "count": 2608
+      },
+      {
+        "token": "blinkit",
+        "count": 1936
+      },
+      {
+        "token": "you",
+        "count": 1359
+      },
+      {
+        "token": "review",
+        "count": 1335
+      },
+      {
+        "token": "platform",
+        "count": 1315
+      },
+      {
+        "token": "company",
+        "count": 1313
+      },
+      {
+        "token": "date",
+        "count": 1307
+      },
+      {
+        "token": "reply",
+        "count": 1305
+      },
+      {
+        "token": "play",
+        "count": 1303
+      },
+      {
+        "token": "score",
+        "count": 1303
+      },
+      {
+        "token": "likes",
+        "count": 1303
+      }
+    ],
+    "luneSignature": {
+      "hue": 93,
+      "drift": 0.73
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "parsed": {
+        "executive_summary": "Blinkit faces significant customer frustration due to late deliveries, poor support, defective products, and high delivery charges, necessitating improvements in refunds, support, and product availability.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Customers are increasingly frustrated with their experiences, driven by issues like late delivery and poor customer support."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "pickup toh jaldi hota h",
+              "what_they_do": "but return process bahot bekar h",
+              "severity": "high"
+            },
+            {
+              "what_they_say": "worst customer care ever seen",
+              "what_they_do": "continue to use the service despite complaints",
+              "severity": "medium"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster refunds",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "feature": "better customer support",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 21.3
+            },
+            {
+              "feature": "more product availability",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 15
+            },
+            {
+              "feature": "lower delivery charges",
+              "frequency": "high",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 18.8
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "late delivery and poor customer support",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "emotion": "angry",
+              "intensity": "high",
+              "trigger": "defective products and high delivery charges",
+              "estimated_prevalence_percentage": 15
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "improve delivery times and customer support",
+              "estimated_prevalence_percentage": 20
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery",
+                "retention_action": "improve logistics and communication",
+                "estimated_prevalence_percentage": 17.2
+              },
+              {
+                "signal": "poor customer support",
+                "retention_action": "enhance support training and responsiveness",
+                "estimated_prevalence_percentage": 9.4
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "improve delivery logistics",
+              "why": "to reduce late deliveries and increase customer satisfaction",
+              "expected_outcome": "20% reduction in late deliveries",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "enhance customer support",
+              "why": "to address customer complaints and improve retention",
+              "expected_outcome": "30% improvement in customer support ratings",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "increase product availability",
+              "why": "to meet customer demand and reduce frustration",
+              "expected_outcome": "25% increase in product availability",
+              "priority": "2",
+              "timeline": "later"
+            }
+          ],
+          "passion_index": {
+            "score": 80,
+            "reasoning": "high intensity of emotions expressed by customers"
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "customers are frustrated with late deliveries",
+              "raw_native_quote": "pickup toh jaldi hota h but return process bahot bekar h",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "customers complain about poor customer support",
+              "raw_native_quote": "worst customer care ever seen",
+              "severity": "medium"
+            }
+          ]
+        },
+        "language_intelligence": {
+          "primary_language": "Hinglish",
+          "detected_languages": [
+            {
+              "language": "Hinglish",
+              "language_code": "HI",
+              "region_hint": "North India (UP, Delhi, Haryana)",
+              "review_count_percentage": 80,
+              "review_count_estimate": 56836,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 10,
+                "neutral_pct": 15,
+                "negative_pct": 75
+              },
+              "top_themes": [
+                "late delivery",
+                "poor customer support"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "pickup toh jaldi hota h but return process bahot bekar h",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "delivery charge to high",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "bekar",
+                  "meaning": "bad or poor",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "English",
+              "language_code": "EN",
+              "region_hint": "Metro cities / English-first users",
+              "review_count_percentage": 20,
+              "review_count_estimate": 14209,
+              "sentiment": "negative",
+              "sentiment_intensity": "medium",
+              "sentiment_breakdown": {
+                "positive_pct": 20,
+                "neutral_pct": 30,
+                "negative_pct": 50
+              },
+              "top_themes": [
+                "defective products",
+                "high delivery charges"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "worst customer care ever seen",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "worst",
+                  "meaning": "of very poor quality",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            }
+          ],
+          "regional_insight": "North Indian customers are more frustrated with late deliveries and poor customer support, while metro city customers are more concerned about defective products and high delivery charges.",
+          "native_script_detected": false
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "coverage": {
+          "totalRowsAvailable": 1303,
+          "totalRowsProcessed": 1303,
+          "totalVariantsFound": 1,
+          "variantsAnalyzed": 1,
+          "mode": "background"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Blinkit faces significant customer frustration due to late deliveries, poor support, defective products, and high delivery charges, necessitating improvements in refunds, support, and product availability.\",\n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Customers are increasingly frustrated with their experiences, driven by issues like late delivery and poor customer support.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"pickup toh jaldi hota h\",\n        \"what_they_do\": \"but return process bahot bekar h\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"worst customer care ever seen\",\n        \"what_they_do\": \"continue to use the service despite complaints\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster refunds\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"better customer support\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 85\n      },\n      {\n        \"feature\": \"more product availability\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 60\n      },\n      {\n        \"feature\": \"lower delivery charges\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 75\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"late delivery and poor customer support\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"defective products and high delivery charges\",\n        \"estimated_prevalence_percentage\": 60\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"improve delivery times and customer support\",\n        \"estimated_prevalence_percentage\": 80\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery\",\n          \"retention_action\": \"improve logistics and communication\",\n          \"estimated_prevalence_percentage\": 17.2\n        },\n        {\n          \"signal\": \"poor customer support\",\n          \"retention_action\": \"enhance support training and responsiveness\",\n          \"estimated_prevalence_percentage\": 37.6\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"improve delivery logistics\",\n        \"why\": \"to reduce late deliveries and increase customer satisfaction\",\n        \"expected_outcome\": \"20% reduction in late deliveries\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"enhance customer support\",\n        \"why\": \"to address customer complaints and improve retention\",\n        \"expected_outcome\": \"30% improvement in customer support ratings\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"increase product availability\",\n        \"why\": \"to meet customer demand and reduce frustration\",\n        \"expected_outcome\": \"25% increase in product availability\",\n        \"priority\": \"2\",\n        \"timeline\": \"later\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 80,\n      \"reasoning\": \"high intensity of emotions expressed by customers\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"customers are frustrated with late deliveries\",\n        \"raw_native_quote\": \"pickup toh jaldi hota h but return process bahot bekar h\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"customers complain about poor customer support\",\n        \"raw_native_quote\": \"worst customer care ever seen\",\n        \"severity\": \"medium\"\n      }\n    ]\n  },\n  \"language_intelligence\": {\n    \"primary_language\": \"Hinglish\",\n    \"detected_languages\": [\n      {\n        \"language\": \"Hinglish\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"North India (UP, Delhi, Haryana)\",\n        \"review_count_percentage\": 80,\n        \"review_count_estimate\": 56836,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 10,\n          \"neutral_pct\": 15,\n          \"negative_pct\": 75\n        },\n        \"top_themes\": [\"late delivery\", \"poor customer support\"],\n        \"sample_quotes\": [\n          {\n            \"quote\": \"pickup toh jaldi hota h but return process bahot bekar h\",\n            \"sentiment\": \"negative\"\n          },\n          {\n            \"quote\": \"delivery charge to high\",\n            \"sentiment\": \"negative\"\n          }\n        ],\n        \"key_signals\": [\n          {\n            \"term\": \"bekar\",\n            \"meaning\": \"bad or poor\",\n            \"sentiment_weight\": \"negative\"\n          }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"English\",\n        \"language_code\": \"EN\",\n        \"region_hint\": \"Metro cities / English-first users\",\n        \"review_count_percentage\": 20,\n        \"review_count_estimate\": 14209,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"medium\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 20,\n          \"neutral_pct\": 30,\n          \"negative_pct\": 50\n        },\n        \"top_themes\": [\"defective products\", \"high delivery charges\"],\n        \"sample_quotes\": [\n          {\n            \"quote\": \"worst customer care ever seen\",\n            \"sentiment\": \"negative\"\n          }\n        ],\n        \"key_signals\": [\n          {\n            \"term\": \"worst\",\n            \"meaning\": \"of very poor quality\",\n            \"sentiment_weight\": \"negative\"\n          }\n        ],\n        \"script_type\": \"latin_romanized\"\n      }\n    ],\n    \"regional_insight\": \"North Indian customers are more frustrated with late deliveries and poor customer support, while metro city customers are more concerned about defective products and high delivery charges.\",\n    \"native_script_detected\": false\n  },\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": {\n      \"concerned\": \"0%\",\n      \"uncertain\": \"0%\",\n      \"optimistic\": \"0%\"\n    },\n    \"current\": {\n      \"concerned\": \"0%\",\n      \"uncertain\": \"0%\",\n      \"optimistic\": \"0%\"\n    },\n    \"historical_num\": {\n      \"concerned\": 0,\n      \"uncertain\": 0,\n      \"optimistic\": 0\n    },\n    \"current_num\": {\n      \"concerned\": 0,\n      \"uncertain\": 0,\n      \"optimistic\": 0\n    }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "5c34eb7f-0376-4e97-9c33-207125538ca5"
+}

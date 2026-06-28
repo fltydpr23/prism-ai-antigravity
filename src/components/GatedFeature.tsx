@@ -3,40 +3,62 @@
 import { Lock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-export type PrismTier = "free" | "starter" | "pro" | "agency" | "enterprise";
+export type PrismTier = "free" | "explorer" | "starter" | "analyst" | "pro" | "agency" | "enterprise" | "admin";
 
 const TIER_RANK: Record<PrismTier, number> = {
   free: 0,
+  explorer: 0,
   starter: 1,
+  analyst: 2,
   pro: 2,
   agency: 3,
   enterprise: 4,
+  admin: 5,
 };
 
 const TIER_LABELS: Record<PrismTier, string> = {
   free: "Free",
+  explorer: "Free",
   starter: "Starter",
+  analyst: "Analyst",
   pro: "Pro",
   agency: "Agency",
   enterprise: "Enterprise",
+  admin: "Admin",
 };
 
 interface GatedFeatureProps {
   requiredTier: PrismTier;
-  userTier: PrismTier;
+  userTier?: PrismTier; // optional override — if not provided, fetched from /api/usage
   children: React.ReactNode;
-  label?: string; // optional custom label like "Competitor Intelligence"
+  label?: string;
 }
 
 export default function GatedFeature({
   requiredTier,
-  userTier,
+  userTier: userTierProp,
   children,
   label,
 }: GatedFeatureProps) {
-  const hasAccess = TIER_RANK[userTier] >= TIER_RANK[requiredTier];
+  const [fetchedTier, setFetchedTier] = useState<PrismTier | null>(null);
 
+  useEffect(() => {
+    if (userTierProp) return;
+    fetch("/api/usage")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.tier) setFetchedTier(d.tier as PrismTier);
+      })
+      .catch(() => setFetchedTier("free"));
+  }, [userTierProp]);
+
+  // While fetching, render children (optimistic — avoids flash of paywall)
+  const resolvedTier = userTierProp ?? fetchedTier;
+  if (resolvedTier === null) return <>{children}</>;
+
+  const hasAccess = TIER_RANK[resolvedTier] >= TIER_RANK[requiredTier];
   if (hasAccess) return <>{children}</>;
 
   return (
@@ -80,7 +102,7 @@ export default function GatedFeature({
 
         <Link
           href="/pricing"
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-all hover:scale-105"
           style={{
             background: "linear-gradient(135deg, hsl(162,85%,48%) 0%, hsl(195,90%,58%) 100%)",
             boxShadow: "0 0 20px hsla(162,85%,48%,0.3)",

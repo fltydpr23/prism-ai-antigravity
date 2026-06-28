@@ -1,0 +1,562 @@
+{
+  "ok": true,
+  "analysis": {
+    "ok": true,
+    "empty": false,
+    "generatedAt": "2026-06-28T17:15:32.128Z",
+    "moon": {
+      "phase01": 0.45569162694221044,
+      "label": "Waxing gibbous",
+      "illuminationPercent": 98
+    },
+    "metrics": {
+      "charCount": 307053,
+      "charCountNoWs": 229700,
+      "wordCount": 38353,
+      "sentenceCount": 953,
+      "paragraphCount": 1,
+      "avgWordLength": 5.99,
+      "lexicalDensity": 0.845,
+      "numericTokenCount": 5467
+    },
+    "topTokens": [
+      {
+        "token": "user",
+        "count": 2115
+      },
+      {
+        "token": "google",
+        "count": 2108
+      },
+      {
+        "token": "zomato",
+        "count": 1289
+      },
+      {
+        "token": "platform",
+        "count": 1082
+      },
+      {
+        "token": "company",
+        "count": 1064
+      },
+      {
+        "token": "review",
+        "count": 1063
+      },
+      {
+        "token": "reply",
+        "count": 1062
+      },
+      {
+        "token": "play",
+        "count": 1054
+      },
+      {
+        "token": "score",
+        "count": 1054
+      },
+      {
+        "token": "likes",
+        "count": 1054
+      },
+      {
+        "token": "date",
+        "count": 1054
+      },
+      {
+        "token": "2026-05-11",
+        "count": 466
+      }
+    ],
+    "luneSignature": {
+      "hue": 30,
+      "drift": 0.84
+    },
+    "caption": "Extended text — structure and repetition patterns matter.",
+    "localModel": {
+      "ok": true,
+      "provider": "openai-compatible",
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "parsed": {
+        "executive_summary": "Zomato faces a critical trust crisis driven by late deliveries, cold food, and a customer support system that offers token refunds instead of resolutions, pushing even loyal users toward alternatives.",
+        "consumer_feedback": {
+          "sentiment_trajectory": {
+            "overall_sentiment": "negative",
+            "trajectory": "declining",
+            "insight": "Sentiment is declining sharply due to repeated delivery failures and a support system that deflects rather than resolves, eroding trust even among previously satisfied users."
+          },
+          "contradiction_analysis": [
+            {
+              "what_they_say": "I am happy with Zomato orderings",
+              "what_they_do": "User gives a 5-star rating but in other reviews describes late delivery and cold food, indicating they tolerate poor service out of habit.",
+              "severity": "medium"
+            },
+            {
+              "what_they_say": "nice cash on delivery available",
+              "what_they_do": "User praises a feature that is being removed or restricted, as other reviews complain 'cash on delivery karvate hi nahin Hai', showing the feature is not consistently available.",
+              "severity": "high"
+            },
+            {
+              "what_they_say": "Swiggy se ach app hai zomato",
+              "what_they_do": "User claims Zomato is better than Swiggy but in the same breath complains about high charges and late delivery, revealing a forced loyalty with no real alternative.",
+              "severity": "medium"
+            }
+          ],
+          "feature_requests": [
+            {
+              "feature": "faster and full refunds for wrong/missing items",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "feature": "reliable and responsive customer support with human agents",
+              "frequency": "high",
+              "build_priority": "critical",
+              "estimated_prevalence_percentage": 21.3
+            },
+            {
+              "feature": "restore and guarantee cash on delivery option",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 15
+            },
+            {
+              "feature": "accurate delivery time estimates and live tracking",
+              "frequency": "high",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "feature": "transparent pricing with no hidden charges",
+              "frequency": "medium",
+              "build_priority": "high",
+              "estimated_prevalence_percentage": 13.8
+            }
+          ],
+          "emotions": [
+            {
+              "emotion": "frustrated",
+              "intensity": "high",
+              "trigger": "delivery marked as delivered but order not received, and support offers only a fraction of the refund",
+              "estimated_prevalence_percentage": 22.5
+            },
+            {
+              "emotion": "angry",
+              "intensity": "high",
+              "trigger": "missing items in order and support gives only two options: accept a tiny refund or just share feedback",
+              "estimated_prevalence_percentage": 17.5
+            },
+            {
+              "emotion": "disappointed",
+              "intensity": "medium",
+              "trigger": "cold food and poor quality despite paying full amount, with no resolution from support",
+              "estimated_prevalence_percentage": 16.3
+            }
+          ],
+          "psychographic_segments": [
+            {
+              "segment_name": "The Frustrated Buyer",
+              "how_to_win_them": "offer instant, full refunds and a direct line to a human support agent who can resolve issues in one call",
+              "estimated_prevalence_percentage": 20
+            },
+            {
+              "segment_name": "The Convenience Addict",
+              "how_to_win_them": "ensure delivery times are accurate and food arrives hot; provide a loyalty discount for frequent orders to offset high charges",
+              "estimated_prevalence_percentage": 12.5
+            },
+            {
+              "segment_name": "The Price Hawk",
+              "how_to_win_them": "eliminate hidden packing and handling fees; show a clear, upfront total price before checkout",
+              "estimated_prevalence_percentage": 10
+            }
+          ],
+          "churn_risk_analysis": {
+            "high_risk_signals": [
+              {
+                "signal": "late delivery and cold food on arrival",
+                "retention_action": "implement a 'hot food guarantee' with automatic refund or credit if food arrives cold or late",
+                "estimated_prevalence_percentage": 17.5
+              },
+              {
+                "signal": "customer support offers token refunds instead of full resolution",
+                "retention_action": "overhaul support policy to provide full refunds for missing/wrong items and empower agents to resolve complaints immediately",
+                "estimated_prevalence_percentage": 18.8
+              },
+              {
+                "signal": "high and hidden delivery charges making orders unaffordable",
+                "retention_action": "introduce a transparent pricing model and a subscription pass for free delivery to lock in price-sensitive users",
+                "estimated_prevalence_percentage": 15
+              }
+            ]
+          },
+          "strategic_recommendations": [
+            {
+              "action": "Overhaul customer support to offer full refunds and live agent chat within the app",
+              "why": "The current support system is the #1 driver of churn, with users reporting that they get only a fraction of the refund or just a feedback form",
+              "expected_outcome": "Reduce complaint-related churn by 40% and improve app store rating by 0.5 stars within 3 months",
+              "priority": "1",
+              "timeline": "now"
+            },
+            {
+              "action": "Implement a 'Delivery Time Guarantee' with automatic compensation for late orders",
+              "why": "Users are planning meals based on Zomato's delivery times and getting burned, which destroys trust in the platform",
+              "expected_outcome": "Increase repeat order rate by 25% among users who previously complained about late delivery",
+              "priority": "2",
+              "timeline": "now"
+            },
+            {
+              "action": "Restore and prominently feature cash on delivery as a payment option",
+              "why": "Multiple users are furious that COD has been removed, and this is a dealbreaker for a significant segment of the user base",
+              "expected_outcome": "Recover 15% of users who have switched to competitors due to lack of COD, within 2 months",
+              "priority": "3",
+              "timeline": "now"
+            }
+          ],
+          "passion_index": {
+            "score": 85,
+            "reasoning": "High density of code-mixed Hinglish, emoji usage, and extreme frustration signals in the raw quotes, indicating strong emotional engagement and informal, high-passion communication."
+          },
+          "reality_checks": [
+            {
+              "sanitized_english": "Users report that orders are marked as delivered but they are still waiting for the order or a refund after 48 hours.",
+              "raw_native_quote": "order showing delivered but actually waiting for order / refund from last 48 hrs",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Customer support offers only a fraction of the missing item's value as refund, or just a feedback form, instead of a full resolution.",
+              "raw_native_quote": "their support is one of the wrost. there were items missing from my order and when I contacted support they gave me 2 option either I accept refund of 1/4 of the missing item worth or I can share the feedback only.",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Users complain about excessive and hidden charges that inflate the final price significantly.",
+              "raw_native_quote": "faltu charge bahut jyada hai",
+              "severity": "high"
+            },
+            {
+              "sanitized_english": "Food quality is compromised with excessive oil and color, making it unhealthy.",
+              "raw_native_quote": "khana acha to aata hai bt usme Oil or colour kuch jada use hota hai",
+              "severity": "medium"
+            },
+            {
+              "sanitized_english": "Users are angry that cash on delivery has been removed, calling it a terrible decision.",
+              "raw_native_quote": "salo ne cash 💵 on delivery hta di hai 👎👎",
+              "severity": "high"
+            }
+          ]
+        },
+        "language_intelligence": {
+          "primary_language": "Hinglish",
+          "detected_languages": [
+            {
+              "language": "English",
+              "language_code": "EN",
+              "region_hint": "Metro cities / English-first users",
+              "review_count_percentage": 40,
+              "review_count_estimate": 0,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 15,
+                "neutral_pct": 10,
+                "negative_pct": 75
+              },
+              "top_themes": [
+                "late delivery",
+                "poor food quality",
+                "customer support failure",
+                "refund denial"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "The pizza base was not prepared properly, and there was too much flour on it. Is this the kind of food you serve just because you are in a hurry?",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "There are many fraudster restaurants on the platform which give wrong uncooked food. No refunds are given after complaints.",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "Pathetic delivery service nowadays. don't ever plan based on their false delivery time.",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "served cold food and the customer care didn't help me at all.",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "I am happy with Zomato orderings",
+                  "sentiment": "positive"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "fraudster",
+                  "meaning": "fraudulent restaurants",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "pathetic",
+                  "meaning": "extremely bad",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "cold food",
+                  "meaning": "food delivered not hot",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "Hinglish",
+              "language_code": "HI",
+              "region_hint": "North India (UP, Delhi, Haryana)",
+              "review_count_percentage": 35,
+              "review_count_estimate": 0,
+              "sentiment": "negative",
+              "sentiment_intensity": "high",
+              "sentiment_breakdown": {
+                "positive_pct": 10,
+                "neutral_pct": 15,
+                "negative_pct": 75
+              },
+              "top_themes": [
+                "high delivery charges",
+                "cash on delivery removal",
+                "poor support",
+                "late delivery"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "bakwas hai cancellation ke naam per pura paise cut kar lete hai",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "rate jayada hai bahut",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "thik thak hai likin ghar jesa pet nai bharta hai aur agr bharna bhi hai pet to bahut costly hojata hai middle class ke liye",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "i will give 0 if provide.. packing charges,other charges jode jod ke 100 rs ka product 150 me milta hr",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "salo ne cash 💵 on delivery hta di hai 👎👎",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "bakwas",
+                  "meaning": "worthless/terrible",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "faltu charge",
+                  "meaning": "useless charges",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "salo ne",
+                  "meaning": "derogatory 'these guys'",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "latin_romanized"
+            },
+            {
+              "language": "Hindi (Devanagari)",
+              "language_code": "DE",
+              "region_hint": "North India (native script users)",
+              "review_count_percentage": 10,
+              "review_count_estimate": 0,
+              "sentiment": "negative",
+              "sentiment_intensity": "medium",
+              "sentiment_breakdown": {
+                "positive_pct": 20,
+                "neutral_pct": 30,
+                "negative_pct": 50
+              },
+              "top_themes": [
+                "high delivery charges",
+                "beef in vegetarian bag",
+                "order confirmation"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "#Zomato वाले जिस बैग में शाकाहारी खाना लाते हैं..उसी में वो #बीफ भी डिलिवरी करते हैं",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "खाने के बाद ही बता सकता हूँ कैसा है । अभी तो ऑडर ही हुआ है",
+                  "sentiment": "neutral"
+                },
+                {
+                  "quote": "डिलीवरी चार्ज बहुत अधिक है",
+                  "sentiment": "negative"
+                },
+                {
+                  "quote": "डिलीवरी और पैकिंग चार्ज देखकर पेट भर जाता है।",
+                  "sentiment": "negative"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "बीफ",
+                  "meaning": "beef (controversial for vegetarian users)",
+                  "sentiment_weight": "negative"
+                },
+                {
+                  "term": "डिलीवरी चार्ज",
+                  "meaning": "delivery charges",
+                  "sentiment_weight": "negative"
+                }
+              ],
+              "script_type": "native_script"
+            },
+            {
+              "language": "Malayalam",
+              "language_code": "ML",
+              "region_hint": "Kerala",
+              "review_count_percentage": 5,
+              "review_count_estimate": 0,
+              "sentiment": "neutral",
+              "sentiment_intensity": "low",
+              "sentiment_breakdown": {
+                "positive_pct": 30,
+                "neutral_pct": 50,
+                "negative_pct": 20
+              },
+              "top_themes": [
+                "food preparation",
+                "trust in Joseph"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "ഭക്ഷണം പാകം ചെയ്യേണ്ട വിധം എല്ലാ കാര്യങ്ങളും ജോസഫിനെ ഏല്പിച്ചു",
+                  "sentiment": "neutral"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "ജോസഫിനെ",
+                  "meaning": "Joseph (person entrusted)",
+                  "sentiment_weight": "neutral"
+                }
+              ],
+              "script_type": "native_script"
+            },
+            {
+              "language": "Kannada",
+              "language_code": "KN",
+              "region_hint": "Karnataka",
+              "review_count_percentage": 5,
+              "review_count_estimate": 0,
+              "sentiment": "positive",
+              "sentiment_intensity": "low",
+              "sentiment_breakdown": {
+                "positive_pct": 60,
+                "neutral_pct": 30,
+                "negative_pct": 10
+              },
+              "top_themes": [
+                "good service",
+                "blessings"
+              ],
+              "sample_quotes": [
+                {
+                  "quote": "good service ಅನ್ನ ಧಾತೋ ಸುಖಿ ಭವ",
+                  "sentiment": "positive"
+                }
+              ],
+              "key_signals": [
+                {
+                  "term": "ಸುಖಿ ಭವ",
+                  "meaning": "be happy/blessed",
+                  "sentiment_weight": "positive"
+                }
+              ],
+              "script_type": "mixed"
+            }
+          ],
+          "regional_insight": "North Indian Hinglish users are the most vocal and angry, with high-severity complaints about hidden charges and COD removal, while South Indian language users show more neutral or positive sentiment, indicating a regional trust gap.",
+          "native_script_detected": true
+        },
+        "workforce_metrics": {
+          "workers_at_risk": "Not detected",
+          "workers_at_risk_trend": "Not detected",
+          "avg_automation_risk": "Not detected",
+          "avg_automation_risk_trend": "Not detected",
+          "net_new_roles": "Not detected",
+          "net_new_roles_trend": "Not detected",
+          "reskilling_readiness": "Not detected",
+          "reskilling_readiness_trend": "Not detected"
+        },
+        "automation_risk_by_sector": [],
+        "displacement_trend": {
+          "peak_displacement": "Not detected",
+          "peak_displacement_timeframe": "Not detected",
+          "acceleration_rate": "Not detected",
+          "acceleration_rate_timeframe": "Not detected",
+          "timeline": []
+        },
+        "worker_risk_distribution": {
+          "total_workers": "Not detected",
+          "high": "0%",
+          "medium": "0%",
+          "low": "0%",
+          "high_num": 0,
+          "medium_num": 0,
+          "low_num": 0
+        },
+        "geographic_hotspots": [],
+        "opportunity_sectors": [],
+        "sentiment_shift": {
+          "historical": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "current": {
+            "concerned": "0%",
+            "uncertain": "0%",
+            "optimistic": "0%"
+          },
+          "historical_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          },
+          "current_num": {
+            "concerned": 0,
+            "uncertain": 0,
+            "optimistic": 0
+          }
+        },
+        "reskilling_readiness_gap": [],
+        "coverage": {
+          "totalRowsAvailable": 1054,
+          "totalRowsProcessed": 1054,
+          "totalVariantsFound": 1,
+          "variantsAnalyzed": 1,
+          "mode": "background"
+        }
+      },
+      "raw": "{\n  \"executive_summary\": \"Zomato faces a critical trust crisis driven by late deliveries, cold food, and a customer support system that offers token refunds instead of resolutions, pushing even loyal users toward alternatives.\",\n  \n  \"consumer_feedback\": {\n    \"sentiment_trajectory\": {\n      \"overall_sentiment\": \"negative\",\n      \"trajectory\": \"declining\",\n      \"insight\": \"Sentiment is declining sharply due to repeated delivery failures and a support system that deflects rather than resolves, eroding trust even among previously satisfied users.\"\n    },\n    \"contradiction_analysis\": [\n      {\n        \"what_they_say\": \"I am happy with Zomato orderings\",\n        \"what_they_do\": \"User gives a 5-star rating but in other reviews describes late delivery and cold food, indicating they tolerate poor service out of habit.\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"what_they_say\": \"nice cash on delivery available\",\n        \"what_they_do\": \"User praises a feature that is being removed or restricted, as other reviews complain 'cash on delivery karvate hi nahin Hai', showing the feature is not consistently available.\",\n        \"severity\": \"high\"\n      },\n      {\n        \"what_they_say\": \"Swiggy se ach app hai zomato\",\n        \"what_they_do\": \"User claims Zomato is better than Swiggy but in the same breath complains about high charges and late delivery, revealing a forced loyalty with no real alternative.\",\n        \"severity\": \"medium\"\n      }\n    ],\n    \"feature_requests\": [\n      {\n        \"feature\": \"faster and full refunds for wrong/missing items\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"feature\": \"reliable and responsive customer support with human agents\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"critical\",\n        \"estimated_prevalence_percentage\": 85\n      },\n      {\n        \"feature\": \"restore and guarantee cash on delivery option\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 60\n      },\n      {\n        \"feature\": \"accurate delivery time estimates and live tracking\",\n        \"frequency\": \"high\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"feature\": \"transparent pricing with no hidden charges\",\n        \"frequency\": \"medium\",\n        \"build_priority\": \"high\",\n        \"estimated_prevalence_percentage\": 55\n      }\n    ],\n    \"emotions\": [\n      {\n        \"emotion\": \"frustrated\",\n        \"intensity\": \"high\",\n        \"trigger\": \"delivery marked as delivered but order not received, and support offers only a fraction of the refund\",\n        \"estimated_prevalence_percentage\": 90\n      },\n      {\n        \"emotion\": \"angry\",\n        \"intensity\": \"high\",\n        \"trigger\": \"missing items in order and support gives only two options: accept a tiny refund or just share feedback\",\n        \"estimated_prevalence_percentage\": 70\n      },\n      {\n        \"emotion\": \"disappointed\",\n        \"intensity\": \"medium\",\n        \"trigger\": \"cold food and poor quality despite paying full amount, with no resolution from support\",\n        \"estimated_prevalence_percentage\": 65\n      }\n    ],\n    \"psychographic_segments\": [\n      {\n        \"segment_name\": \"The Frustrated Buyer\",\n        \"how_to_win_them\": \"offer instant, full refunds and a direct line to a human support agent who can resolve issues in one call\",\n        \"estimated_prevalence_percentage\": 80\n      },\n      {\n        \"segment_name\": \"The Convenience Addict\",\n        \"how_to_win_them\": \"ensure delivery times are accurate and food arrives hot; provide a loyalty discount for frequent orders to offset high charges\",\n        \"estimated_prevalence_percentage\": 50\n      },\n      {\n        \"segment_name\": \"The Price Hawk\",\n        \"how_to_win_them\": \"eliminate hidden packing and handling fees; show a clear, upfront total price before checkout\",\n        \"estimated_prevalence_percentage\": 40\n      }\n    ],\n    \"churn_risk_analysis\": {\n      \"high_risk_signals\": [\n        {\n          \"signal\": \"late delivery and cold food on arrival\",\n          \"retention_action\": \"implement a 'hot food guarantee' with automatic refund or credit if food arrives cold or late\",\n          \"estimated_prevalence_percentage\": 70\n        },\n        {\n          \"signal\": \"customer support offers token refunds instead of full resolution\",\n          \"retention_action\": \"overhaul support policy to provide full refunds for missing/wrong items and empower agents to resolve complaints immediately\",\n          \"estimated_prevalence_percentage\": 75\n        },\n        {\n          \"signal\": \"high and hidden delivery charges making orders unaffordable\",\n          \"retention_action\": \"introduce a transparent pricing model and a subscription pass for free delivery to lock in price-sensitive users\",\n          \"estimated_prevalence_percentage\": 60\n        }\n      ]\n    },\n    \"strategic_recommendations\": [\n      {\n        \"action\": \"Overhaul customer support to offer full refunds and live agent chat within the app\",\n        \"why\": \"The current support system is the #1 driver of churn, with users reporting that they get only a fraction of the refund or just a feedback form\",\n        \"expected_outcome\": \"Reduce complaint-related churn by 40% and improve app store rating by 0.5 stars within 3 months\",\n        \"priority\": \"1\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"Implement a 'Delivery Time Guarantee' with automatic compensation for late orders\",\n        \"why\": \"Users are planning meals based on Zomato's delivery times and getting burned, which destroys trust in the platform\",\n        \"expected_outcome\": \"Increase repeat order rate by 25% among users who previously complained about late delivery\",\n        \"priority\": \"2\",\n        \"timeline\": \"now\"\n      },\n      {\n        \"action\": \"Restore and prominently feature cash on delivery as a payment option\",\n        \"why\": \"Multiple users are furious that COD has been removed, and this is a dealbreaker for a significant segment of the user base\",\n        \"expected_outcome\": \"Recover 15% of users who have switched to competitors due to lack of COD, within 2 months\",\n        \"priority\": \"3\",\n        \"timeline\": \"now\"\n      }\n    ],\n    \"passion_index\": {\n      \"score\": 85,\n      \"reasoning\": \"High density of code-mixed Hinglish, emoji usage, and extreme frustration signals in the raw quotes, indicating strong emotional engagement and informal, high-passion communication.\"\n    },\n    \"reality_checks\": [\n      {\n        \"sanitized_english\": \"Users report that orders are marked as delivered but they are still waiting for the order or a refund after 48 hours.\",\n        \"raw_native_quote\": \"order showing delivered but actually waiting for order / refund from last 48 hrs\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Customer support offers only a fraction of the missing item's value as refund, or just a feedback form, instead of a full resolution.\",\n        \"raw_native_quote\": \"their support is one of the wrost. there were items missing from my order and when I contacted support they gave me 2 option either I accept refund of 1/4 of the missing item worth or I can share the feedback only.\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Users complain about excessive and hidden charges that inflate the final price significantly.\",\n        \"raw_native_quote\": \"faltu charge bahut jyada hai\",\n        \"severity\": \"high\"\n      },\n      {\n        \"sanitized_english\": \"Food quality is compromised with excessive oil and color, making it unhealthy.\",\n        \"raw_native_quote\": \"khana acha to aata hai bt usme Oil or colour kuch jada use hota hai\",\n        \"severity\": \"medium\"\n      },\n      {\n        \"sanitized_english\": \"Users are angry that cash on delivery has been removed, calling it a terrible decision.\",\n        \"raw_native_quote\": \"salo ne cash 💵 on delivery hta di hai 👎👎\",\n        \"severity\": \"high\"\n      }\n    ]\n  },\n\n  \"language_intelligence\": {\n    \"primary_language\": \"Hinglish\",\n    \"detected_languages\": [\n      {\n        \"language\": \"English\",\n        \"language_code\": \"EN\",\n        \"region_hint\": \"Metro cities / English-first users\",\n        \"review_count_percentage\": 40,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 15,\n          \"neutral_pct\": 10,\n          \"negative_pct\": 75\n        },\n        \"top_themes\": [\"late delivery\", \"poor food quality\", \"customer support failure\", \"refund denial\"],\n        \"sample_quotes\": [\n          { \"quote\": \"The pizza base was not prepared properly, and there was too much flour on it. Is this the kind of food you serve just because you are in a hurry?\", \"sentiment\": \"negative\" },\n          { \"quote\": \"There are many fraudster restaurants on the platform which give wrong uncooked food. No refunds are given after complaints.\", \"sentiment\": \"negative\" },\n          { \"quote\": \"Pathetic delivery service nowadays. don't ever plan based on their false delivery time.\", \"sentiment\": \"negative\" },\n          { \"quote\": \"served cold food and the customer care didn't help me at all.\", \"sentiment\": \"negative\" },\n          { \"quote\": \"I am happy with Zomato orderings\", \"sentiment\": \"positive\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"fraudster\", \"meaning\": \"fraudulent restaurants\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"pathetic\", \"meaning\": \"extremely bad\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"cold food\", \"meaning\": \"food delivered not hot\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"Hinglish\",\n        \"language_code\": \"HI\",\n        \"region_hint\": \"North India (UP, Delhi, Haryana)\",\n        \"review_count_percentage\": 35,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"high\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 10,\n          \"neutral_pct\": 15,\n          \"negative_pct\": 75\n        },\n        \"top_themes\": [\"high delivery charges\", \"cash on delivery removal\", \"poor support\", \"late delivery\"],\n        \"sample_quotes\": [\n          { \"quote\": \"bakwas hai cancellation ke naam per pura paise cut kar lete hai\", \"sentiment\": \"negative\" },\n          { \"quote\": \"rate jayada hai bahut\", \"sentiment\": \"negative\" },\n          { \"quote\": \"thik thak hai likin ghar jesa pet nai bharta hai aur agr bharna bhi hai pet to bahut costly hojata hai middle class ke liye\", \"sentiment\": \"negative\" },\n          { \"quote\": \"i will give 0 if provide.. packing charges,other charges jode jod ke 100 rs ka product 150 me milta hr\", \"sentiment\": \"negative\" },\n          { \"quote\": \"salo ne cash 💵 on delivery hta di hai 👎👎\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"bakwas\", \"meaning\": \"worthless/terrible\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"faltu charge\", \"meaning\": \"useless charges\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"salo ne\", \"meaning\": \"derogatory 'these guys'\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"latin_romanized\"\n      },\n      {\n        \"language\": \"Hindi (Devanagari)\",\n        \"language_code\": \"DE\",\n        \"region_hint\": \"North India (native script users)\",\n        \"review_count_percentage\": 10,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"negative\",\n        \"sentiment_intensity\": \"medium\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 20,\n          \"neutral_pct\": 30,\n          \"negative_pct\": 50\n        },\n        \"top_themes\": [\"high delivery charges\", \"beef in vegetarian bag\", \"order confirmation\"],\n        \"sample_quotes\": [\n          { \"quote\": \"#Zomato वाले जिस बैग में शाकाहारी खाना लाते हैं..उसी में वो #बीफ भी डिलिवरी करते हैं\", \"sentiment\": \"negative\" },\n          { \"quote\": \"खाने के बाद ही बता सकता हूँ कैसा है । अभी तो ऑडर ही हुआ है\", \"sentiment\": \"neutral\" },\n          { \"quote\": \"डिलीवरी चार्ज बहुत अधिक है\", \"sentiment\": \"negative\" },\n          { \"quote\": \"डिलीवरी और पैकिंग चार्ज देखकर पेट भर जाता है।\", \"sentiment\": \"negative\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"बीफ\", \"meaning\": \"beef (controversial for vegetarian users)\", \"sentiment_weight\": \"negative\" },\n          { \"term\": \"डिलीवरी चार्ज\", \"meaning\": \"delivery charges\", \"sentiment_weight\": \"negative\" }\n        ],\n        \"script_type\": \"native_script\"\n      },\n      {\n        \"language\": \"Malayalam\",\n        \"language_code\": \"ML\",\n        \"region_hint\": \"Kerala\",\n        \"review_count_percentage\": 5,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"neutral\",\n        \"sentiment_intensity\": \"low\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 30,\n          \"neutral_pct\": 50,\n          \"negative_pct\": 20\n        },\n        \"top_themes\": [\"food preparation\", \"trust in Joseph\"],\n        \"sample_quotes\": [\n          { \"quote\": \"ഭക്ഷണം പാകം ചെയ്യേണ്ട വിധം എല്ലാ കാര്യങ്ങളും ജോസഫിനെ ഏല്പിച്ചു\", \"sentiment\": \"neutral\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"ജോസഫിനെ\", \"meaning\": \"Joseph (person entrusted)\", \"sentiment_weight\": \"neutral\" }\n        ],\n        \"script_type\": \"native_script\"\n      },\n      {\n        \"language\": \"Kannada\",\n        \"language_code\": \"KN\",\n        \"region_hint\": \"Karnataka\",\n        \"review_count_percentage\": 5,\n        \"review_count_estimate\": 0,\n        \"sentiment\": \"positive\",\n        \"sentiment_intensity\": \"low\",\n        \"sentiment_breakdown\": {\n          \"positive_pct\": 60,\n          \"neutral_pct\": 30,\n          \"negative_pct\": 10\n        },\n        \"top_themes\": [\"good service\", \"blessings\"],\n        \"sample_quotes\": [\n          { \"quote\": \"good service ಅನ್ನ ಧಾತೋ ಸುಖಿ ಭವ\", \"sentiment\": \"positive\" }\n        ],\n        \"key_signals\": [\n          { \"term\": \"ಸುಖಿ ಭವ\", \"meaning\": \"be happy/blessed\", \"sentiment_weight\": \"positive\" }\n        ],\n        \"script_type\": \"mixed\"\n      }\n    ],\n    \"regional_insight\": \"North Indian Hinglish users are the most vocal and angry, with high-severity complaints about hidden charges and COD removal, while South Indian language users show more neutral or positive sentiment, indicating a regional trust gap.\",\n    \"native_script_detected\": true\n  },\n\n  \"workforce_metrics\": {\n    \"workers_at_risk\": \"Not detected\",\n    \"workers_at_risk_trend\": \"Not detected\",\n    \"avg_automation_risk\": \"Not detected\",\n    \"avg_automation_risk_trend\": \"Not detected\",\n    \"net_new_roles\": \"Not detected\",\n    \"net_new_roles_trend\": \"Not detected\",\n    \"reskilling_readiness\": \"Not detected\",\n    \"reskilling_readiness_trend\": \"Not detected\"\n  },\n  \"automation_risk_by_sector\": [],\n  \"displacement_trend\": {\n    \"peak_displacement\": \"Not detected\",\n    \"peak_displacement_timeframe\": \"Not detected\",\n    \"acceleration_rate\": \"Not detected\",\n    \"acceleration_rate_timeframe\": \"Not detected\",\n    \"timeline\": []\n  },\n  \"worker_risk_distribution\": {\n    \"total_workers\": \"Not detected\",\n    \"high\": \"0%\",\n    \"medium\": \"0%\",\n    \"low\": \"0%\",\n    \"high_num\": 0,\n    \"medium_num\": 0,\n    \"low_num\": 0\n  },\n  \"geographic_hotspots\": [],\n  \"opportunity_sectors\": [],\n  \"sentiment_shift\": {\n    \"historical\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"current\": { \"concerned\": \"0%\", \"uncertain\": \"0%\", \"optimistic\": \"0%\" },\n    \"historical_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 },\n    \"current_num\": { \"concerned\": 0, \"uncertain\": 0, \"optimistic\": 0 }\n  },\n  \"reskilling_readiness_gap\": []\n}"
+    },
+    "industry": {
+      "id": "food",
+      "label": "Food & Delivery",
+      "emoji": "🍕",
+      "detectionMethod": "auto_detected",
+      "confidence": "high"
+    }
+  },
+  "saved": true,
+  "id": "1aaafa11-3f77-4526-9988-0dab78708229"
+}

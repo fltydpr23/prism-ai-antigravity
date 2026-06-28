@@ -46,37 +46,12 @@ export default function PrismHeader({ onStart }: Props) {
           <span className="text-white font-semibold text-lg tracking-tight" style={{ fontFamily: "var(--font-basement)" }}>Prism</span>
         </div>
 
-        {/* Center: Dynamic Context */}
+        {/* Center: Links */}
         <div className="hidden md:flex items-center justify-center relative flex-1">
-          <AnimatePresence mode="wait">
-            {!scrolled ? (
-              <motion.div
-                key="nav-links"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="flex items-center gap-8 text-sm font-medium text-white/50"
-              >
-                <a href="#" className="hover:text-white transition-colors">Features</a>
-                <a href="#" className="hover:text-white transition-colors">How it works</a>
-                <Link href="/wash" className="hover:text-white transition-colors text-white/80">Wash Data</Link>
-                <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="context-title"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="text-sm font-semibold tracking-widest uppercase text-white/90"
-                style={{ fontFamily: "var(--font-basement)", letterSpacing: "0.2em" }}
-              >
-                Prism Intel
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <div className="flex items-center gap-8 text-sm font-medium text-white/70">
+            <Link href="/wash" className="hover:text-white transition-colors">Clean Data</Link>
+            <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
+          </div>
         </div>
 
         {/* Right: Actions */}

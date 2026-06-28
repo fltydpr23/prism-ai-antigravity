@@ -9,6 +9,8 @@ interface UsageData {
   limit: number;
   tier: string;
   resetsAt: string | null;
+  subscription_status: string;
+  trial_ends_at: string | null;
 }
 
 function getDaysUntilReset(resetsAt: string | null): number {
@@ -42,6 +44,10 @@ export default function UsageMeter() {
   const isNearLimit = pct >= 0.7;
   const isAtLimit = usage.used >= usage.limit;
 
+  const isTrialing = usage.subscription_status === 'trialing';
+  const trialDaysLeft = getDaysUntilReset(usage.trial_ends_at);
+  const trialExpired = isTrialing && trialDaysLeft <= 0;
+
   return (
     <div className="flex items-center gap-3">
       {/* Bar + count */}
@@ -71,21 +77,21 @@ export default function UsageMeter() {
         </div>
       </div>
 
-      {/* Upgrade CTA — shown at 70%+ */}
-      {isNearLimit && (
+      {/* Upgrade CTA — shown at 70%+ or if Trialing */}
+      {(isNearLimit || isTrialing) && (
         <Link
           href="/pricing"
           className="flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full transition-all whitespace-nowrap"
           style={{
-            background: isAtLimit
+            background: (isAtLimit || trialExpired)
               ? `hsla(0,82%,58%,0.15)`
               : `hsla(162,85%,48%,0.12)`,
-            color: isAtLimit ? "hsl(0,82%,58%)" : "hsl(162,85%,48%)",
-            border: `1px solid ${isAtLimit ? "hsla(0,82%,58%,0.25)" : "hsla(162,85%,48%,0.25)"}`,
+            color: (isAtLimit || trialExpired) ? "hsl(0,82%,58%)" : "hsl(162,85%,48%)",
+            border: `1px solid ${(isAtLimit || trialExpired) ? "hsla(0,82%,58%,0.25)" : "hsla(162,85%,48%,0.25)"}`,
           }}
         >
           <Zap className="w-2.5 h-2.5" />
-          {isAtLimit ? "Limit reached" : "Upgrade"}
+          {trialExpired ? "Trial Expired" : isAtLimit ? "Limit reached" : isTrialing ? `Trial: ${trialDaysLeft}d left` : "Upgrade"}
           <ArrowRight className="w-2.5 h-2.5" />
         </Link>
       )}

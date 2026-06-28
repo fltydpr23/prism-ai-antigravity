@@ -9,6 +9,7 @@ import { UserButton } from "@clerk/nextjs";
 
 export default function WashPage() {
   const [file, setFile] = useState<File | null>(null);
+  const [email, setEmail] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [isWashing, setIsWashing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -300,7 +301,7 @@ export default function WashPage() {
                 {/* Transformations & Schema */}
                 <div className="col-span-1 p-5 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-center relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 blur-[40px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-700" />
-                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Redactions</p>
+                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Details Kept Private</p>
                   <p className="text-3xl font-medium text-white mb-1">{results.stats.transformationsApplied || 0}</p>
                   <p className="text-xs text-blue-400 flex items-center gap-1">
                     <ShieldCheck className="w-3 h-3" /> PII Scrubbed
@@ -308,10 +309,10 @@ export default function WashPage() {
                 </div>
 
                 <div className="col-span-1 p-5 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
-                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Schema</p>
+                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Structure</p>
                   {results.stats.schemaFlattened ? (
                     <div>
-                      <p className="text-xl font-medium text-white mb-1">Flattened</p>
+                      <p className="text-xl font-medium text-white mb-1">Simplified</p>
                       <p className="text-xs text-emerald-400">Headers Collapsed</p>
                     </div>
                   ) : (
@@ -324,58 +325,68 @@ export default function WashPage() {
 
                 {/* New Features Row */}
                 <div className="col-span-1 p-4 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
-                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Dates Fixed</p>
+                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Dates Aligned</p>
                   <p className="text-2xl font-medium text-white">{results.stats.datesNormalized}</p>
                 </div>
                 
                 <div className="col-span-1 p-4 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
-                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Typos Merged</p>
+                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Spelling Matched</p>
                   <p className="text-2xl font-medium text-white">{results.stats.fuzzyMerges}</p>
                 </div>
 
                 {/* New Features Row 2 */}
                 <div className="col-span-1 p-4 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
-                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Gaps Filled</p>
+                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Missing Bits Filled</p>
                   <p className="text-2xl font-medium text-white">{results.stats.imputations}</p>
                 </div>
                 
                 <div className="col-span-1 p-4 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-center">
-                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Geo Mapped</p>
+                  <p className="text-xs text-white/40 mb-1 font-medium tracking-wide uppercase">Locations Matched</p>
                   <p className="text-2xl font-medium text-white">{results.stats.geosMapped}</p>
                 </div>
 
                 <div className="col-span-2 p-4 rounded-3xl bg-red-500/5 border border-red-500/10 flex flex-col justify-center">
-                  <p className="text-xs text-red-400/60 mb-1 font-medium tracking-wide uppercase">Outliers Quarantined</p>
+                  <p className="text-xs text-red-400/60 mb-1 font-medium tracking-wide uppercase">Glitches Removed</p>
                   <p className="text-2xl font-medium text-red-400">{results.stats.outliersQuarantined}</p>
                 </div>
 
                 {/* Dropped Rows Widget */}
                 <div className="col-span-4 grid grid-cols-2 gap-4 mt-2">
                   <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                    <p className="text-sm text-white/50">Empty Rows Dropped</p>
+                    <p className="text-sm text-white/50">Blank Lines Dropped</p>
                     <p className="text-xl font-medium text-white">{results.stats.emptyRowsDropped}</p>
                   </div>
                   <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                    <p className="text-sm text-white/50">Duplicates Removed</p>
+                    <p className="text-sm text-white/50">Repeats Deleted</p>
                     <p className="text-xl font-medium text-white">{results.stats.duplicatesDropped}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={downloadCleanedFile}
-                  className="flex-1 py-4 rounded-2xl bg-white text-black font-medium hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-                >
-                  <Download className="w-5 h-5" />
-                  Download Cleaned CSV
-                </button>
-                <button
-                  onClick={() => { setFile(null); setResults(null); }}
-                  className="px-6 py-4 rounded-2xl bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-colors"
-                >
-                  Wash Another
-                </button>
+              <div className="flex flex-col gap-4">
+                <div className="relative">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter work email to save report..."
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-1 focus:ring-emerald-500/50"
+                  />
+                </div>
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <Link
+                    href="/analyse"
+                    className="w-full sm:flex-1 py-4 rounded-2xl bg-white text-black font-medium hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                  >
+                    Your data is clean. Now run Prism on it <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  <button
+                    onClick={downloadCleanedFile}
+                    className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-colors flex items-center justify-center gap-2"
+                  >
+                    <Download className="w-4 h-4" /> CSV
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}
