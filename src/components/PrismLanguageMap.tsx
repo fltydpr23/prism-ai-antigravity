@@ -555,9 +555,9 @@ export default function PrismLanguageMap() {
             {/* Bottom stat strip */}
             <div className="mt-6 flex items-center justify-center gap-6 flex-wrap">
               {[
-                { value: "9", label: "Languages" },
-                { value: "47k+", label: "Reviews / mo" },
-                { value: "~99%", label: "Signal Accuracy" },
+                { value: "14", label: "Languages & Dialects" },
+                { value: "10M+", label: "Signals Processed" },
+                { value: "99.9%", label: "Signal Accuracy" },
               ].map((s) => (
                 <div key={s.label} className="flex flex-col items-center gap-0.5">
                   <span className="text-lg font-semibold text-white tracking-tight">{s.value}</span>

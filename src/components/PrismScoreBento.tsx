@@ -26,7 +26,7 @@ function AnimatedScore({ target }: { target: number }) {
     return () => clearTimeout(timeout);
   }, [inView, target]);
 
-  return <span ref={ref}>0</span>;
+  return <span ref={ref}>{target}</span>;
 }
 
 // ─── Radial Score Ring ─────────────────────────────────────────────────────
@@ -293,7 +293,7 @@ function XRayRevealCard({ mouseX, mouseY }: { mouseX: any, mouseY: any }) {
         </div>
       </div>
       <p className="text-xs text-white/40 leading-relaxed mb-1">
-        The most dangerous users are the happy ones who silently leave. Connect your analytics, and Prism reveals the gap between what they say and what they do.
+        Prism automatically correlates your uploaded feedback with behavioral telemetry ingested via our Segment, Mixpanel, or custom APIs to reveal the gap between what users say and what they actually do.
       </p>
 
       <div 

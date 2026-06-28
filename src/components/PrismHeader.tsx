@@ -49,8 +49,11 @@ export default function PrismHeader({ onStart }: Props) {
         {/* Center: Links */}
         <div className="hidden md:flex items-center justify-center relative flex-1">
           <div className="flex items-center gap-8 text-sm font-medium text-white/70">
-            <Link href="/wash" className="hover:text-white transition-colors">Clean Data</Link>
+            <Link href="/use-cases" className="hover:text-white transition-colors">Use Cases</Link>
+            <Link href="/case-studies" className="hover:text-white transition-colors">Case Studies</Link>
             <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+            <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
           </div>
         </div>
 

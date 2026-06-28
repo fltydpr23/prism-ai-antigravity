@@ -21,6 +21,7 @@ const PrismLanguageMap = dynamic(() => import("./PrismLanguageMap"));
 const PrismReportPreview = dynamic(() => import("./PrismReportPreview"));
 const PrismAgencyAdvantage = dynamic(() => import("./PrismAgencyAdvantage"));
 const PrismPrivacySection = dynamic(() => import("./PrismPrivacySection"));
+const PrismVsGenericAI = dynamic(() => import("./PrismVsGenericAI"));
 
 const SOURCES = [
   { icon: MessageSquare, label: "WhatsApp Chats" },
@@ -171,6 +172,23 @@ export default function PrismLanding({ onStart }: Props) {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <PrismHero onStart={onStart} />
 
+      {/* ── Integrations Banner ────────────────────────────────────────── */}
+      <section className="border-b border-white/5 bg-[#05050A] py-8">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-[10px] font-semibold text-white/30 uppercase tracking-widest mb-6">
+            Ingest raw feedback seamlessly from your stack
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 text-sm font-semibold tracking-tight">
+            <span className="flex items-center gap-2"><Globe className="w-4 h-4" /> Google Reviews</span>
+            <span className="flex items-center gap-2"><FileText className="w-4 h-4" /> Typeform</span>
+            <span className="flex items-center gap-2"><MessageSquare className="w-4 h-4" /> Intercom</span>
+            <span className="flex items-center gap-2"><Target className="w-4 h-4" /> App Store</span>
+            <span className="flex items-center gap-2"><Layers className="w-4 h-4" /> Play Store</span>
+            <span className="flex items-center gap-2"><Shield className="w-4 h-4" /> Zendesk</span>
+          </div>
+        </div>
+      </section>
+
       {/* ── India Language Coverage Map ─────────────────────────────────── */}
       <PrismLanguageMap />
 
@@ -179,6 +197,9 @@ export default function PrismLanding({ onStart }: Props) {
 
       {/* ── Prism Score & Signals Bento ─────────────────────────────────── */}
       <PrismScoreBento />
+
+      {/* ── Why Not Just Use ChatGPT? ────────────────────────────────── */}
+      <PrismVsGenericAI />
 
       {/* ── Agency Advantage ────────────────────────────── */}
       <PrismAgencyAdvantage />

@@ -35,7 +35,7 @@ const STARTER_FEATURES: PricingFeature[] = [
   { label: "Competitive Blind Spots", included: true },
   { label: "Churn Risk Detection", included: true },
   { label: "White-label client reporting", included: "locked" },
-  { label: "Market Opportunity Detection", included: "locked" },
+  { label: "Market Opportunity Detection", included: true },
 ];
 
 const PRO_FEATURES: PricingFeature[] = [
@@ -184,7 +184,7 @@ export default function PricingPage() {
             <Sparkles className="w-3 h-3" /> Simple, transparent pricing
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter text-gradient pb-2 mb-4">
-            Clarity at any scale.
+            Simple, predictable pricing.
           </h1>
           <p className="text-base text-white/50 max-w-xl mx-auto leading-relaxed">
             Understand every nuance in your data instantly. Designed to bring human-like intuition to the world's most complex datasets.
@@ -202,23 +202,23 @@ export default function PricingPage() {
           className="flex flex-wrap items-center justify-center gap-6 md:gap-16 mb-16"
         >
           <div className="flex flex-col items-center">
-            <div className="text-3xl font-bold tracking-tighter text-white/90">47,000+</div>
-            <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-semibold">Signals Processed</div>
+            <div className="text-3xl font-bold tracking-tighter text-white/90">10M+</div>
+            <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-semibold">Data Points Processed</div>
           </div>
           <div className="w-px h-8 bg-white/10 hidden md:block" />
           <div className="flex flex-col items-center">
-            <div className="text-3xl font-bold tracking-tighter text-white/90">12+</div>
-            <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-semibold">Sectors Analyzed</div>
+            <div className="text-3xl font-bold tracking-tighter text-white/90">14</div>
+            <div className="text-[10px] uppercase tracking-widest text-white/40 mt-1 font-semibold">Languages Supported</div>
           </div>
           <div className="w-px h-8 bg-white/10 hidden md:block" />
-          <div className="flex flex-col items-center max-w-[320px] text-center">
-            <div className="text-sm font-medium italic text-white/80">"Surfaces insights that take 2 days to compile manually."</div>
+          <div className="flex flex-col items-center max-w-[340px] text-center">
+            <div className="text-sm font-medium italic text-white/80">"Prism processed 3 weeks of manual review tagging in 4 minutes, catching issues we completely missed."</div>
             <div className="flex flex-col items-center gap-2 mt-3">
               <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
                 <ShieldCheck className="w-3 h-3" />
                 <span className="text-[9px] font-semibold tracking-widest uppercase">Verified Enterprise User</span>
               </div>
-              <div className="text-[10px] tracking-widest uppercase text-white/40 font-semibold">— Strategy Lead at a Top 10 Global Healthcare Consultancy</div>
+              <div className="text-[10px] tracking-widest uppercase text-white/40 font-semibold">— Head of Product Strategy, Global Healthcare Analytics Firm</div>
             </div>
           </div>
         </motion.div>
@@ -412,11 +412,12 @@ export default function PricingPage() {
                   ["PDF export", "Watermarked", "Clean", "White-label", "White-label"],
                   ["History archive", "7 days", "90 days", "12 months", "Unlimited"],
                   ["Team seats", "—", "1", "3", "Unlimited"],
-                  ["Competitive Blind Spots", "—", "—", "✓", "✓"],
+                  ["Competitive Blind Spots", "—", "✓", "✓", "✓"],
                   ["Emerging Customer Issues", "—", "—", "✓", "✓"],
-                  ["Churn Risk Detection", "—", "—", "—", "✓"],
-                  ["Unmet Customer Demand", "—", "—", "—", "✓"],
+                  ["Churn Risk Detection", "—", "✓", "✓", "✓"],
+                  ["Market Opportunity Detection", "—", "✓", "✓", "✓"],
                   ["Shareable report links", "—", "✓", "✓", "✓"],
+                  ["Scheduled automated analysis", "—", "—", "✓", "✓"],
                   ["API access", "—", "—", "—", "Custom volume"],
                   ["Support", "Community", "Email 48hr", "Email 24hr + Call", "Slack + 4hr SLA"],
                 ].map(([feature, ...values], i) => (
@@ -427,7 +428,15 @@ export default function PricingPage() {
                       background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)",
                     }}
                   >
-                    <td className="py-3.5 px-5 text-white/60">{feature}</td>
+                    <td className="py-3.5 px-5 text-white/60">
+                      {feature === "API access" ? (
+                        <div className="flex items-center gap-2">
+                          API access <Link href="/docs/api" className="text-emerald-400 hover:underline text-xs">(View Docs)</Link>
+                        </div>
+                      ) : (
+                        feature
+                      )}
+                    </td>
                     {values.map((v, j) => (
                       <td key={j} className="py-3.5 px-4 text-center text-white/80 font-medium">
                         {v === "✓" ? (

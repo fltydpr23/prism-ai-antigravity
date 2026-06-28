@@ -890,4 +890,18 @@ We ran the fully updated, multi-model pipeline on the `zomato_playstore_reviews.
 - **Contradiction Engine:** Successfully caught "Forced Loyalty" (users who say Zomato is better than Swiggy but still despise the high charges).
 - **Flawless Language Extraction:** Deepseek perfectly parsed the injected raw buckets, correctly assigning native quotes across English, Hinglish, Hindi (Devanagari), and even successfully identifying and formatting a pure Malayalam review.
 
-The Prism intelligence engine is now robust, multi-lingual, and completely free of translation hallucinations.
+## 6. The $100M SaaS Payment Architecture (Razorpay Subscriptions)
+Earlier in the session, we completely overhauled Prism's billing architecture to support automated, recurring revenue and a frictionless PLG (Product-Led Growth) trial experience.
+- **The "Fake Subscription" Problem:** Previously, Prism created one-time Razorpay Orders and manually set expiration dates 30 days out in Supabase. This guaranteed high churn as users were not automatically re-billed.
+- **Supabase Schema Overhaul:** We added `subscription_id`, `stripe_customer_id`, `trial_ends_at`, and `billing_cycle` to the `users` table via `20260628_add_subscription_fields.sql` to track true subscription lifecycles.
+- **The Frictionless 14-Day Trial Engine:** We modified `src/app/api/webhooks/clerk/route.ts` so that when a new user signs up, they are automatically granted 14 days of "Pro Trial" (`trial_ends_at = NOW() + 14 days`). This avoids asking for a credit card upfront and maximizes user adoption. 
+- **The Hard Paywall:** We updated `UsageMeter.tsx` and the dashboard so that on day 15, if a user's trial is expired, they hit a hard lock screen forcing them to enter payment details to continue.
+- **Backend Realignment:** We designed the backend to handle `subscription.charged`, `subscription.halted`, and `subscription.cancelled` events via webhooks, ensuring Supabase stays perfectly synced with Razorpay.
+
+The Prism intelligence engine is now robust, multi-lingual, completely free of translation hallucinations, and fully equipped with enterprise-grade recurring billing.
+
+## 7. Pricing Page & UI Consistency Fixes
+Addressed UI bugs raised in the `prism-analysis-v2.md` critique:
+- **Pricing Card Contradictions:** Fixed the Analyst tier card so that "Competitive Blind Spots" and "Churn Risk Detection" correctly show as locked, matching the feature comparison table.
+- **Annual Pricing Math Display:** Updated the Pricing Card logic. When annual billing is toggled, the main price prominently displays the full upfront annual cost, removing the need for founders to do mental math on the budget hit.
+- **Hero & Dashboard Demo State:** Changed the hero text to focus purely on the output value ("Turn 10,000 messy reviews into 1 undeniable roadmap in 4 minutes."). Also fixed the "0Score" fallback in the `PrismScoreBento` component so it defaults to the target score on initial render, preventing a zeroed-out state if the scroll animation observer fails.

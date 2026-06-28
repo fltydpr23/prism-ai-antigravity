@@ -265,11 +265,11 @@ export default function PrismHero({ onStart }: Props) {
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[1.05] text-white mix-blend-plus-lighter">
-            Your competitors are guessing. Prism reads <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">10,000 reviews in 4 minutes.</span>
+            Turn 10,000 messy reviews into 1 undeniable roadmap in <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">4 minutes.</span>
           </h1>
 
           <p className="text-lg sm:text-xl font-normal text-white/50 max-w-lg leading-relaxed">
-            Upload reviews, surveys, support conversations and customer research. Prism transforms thousands of voices into executive-ready intelligence.
+            Drop in any CSV, review export, or survey. Walk out in 4 minutes with a churn signal report, a competitor teardown, and a boardroom directive — in your customer's actual language.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">

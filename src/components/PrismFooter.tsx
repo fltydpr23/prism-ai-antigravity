@@ -41,66 +41,7 @@ const FADE_RIGHT: Variants = {
   }),
 };
 
-// ─── Text Scramble Hook ───────────────────────────────────────────────────────
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.";
 
-function useScramble(target: string, active: boolean) {
-  const [display, setDisplay] = useState(target);
-  const frame = useRef(0);
-  const raf = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (!active) { setDisplay(target); return; }
-    frame.current = 0;
-    const iterations = target.length * 2;
-
-    const animate = () => {
-      setDisplay(
-        target.split("").map((char, i) => {
-          if (char === " ") return " ";
-          if (i < frame.current / 2) return target[i];
-          return CHARS[Math.floor(Math.random() * CHARS.length)];
-        }).join("")
-      );
-      frame.current += 0.5;
-      if (frame.current < iterations) {
-        raf.current = requestAnimationFrame(animate);
-      } else {
-        setDisplay(target);
-      }
-    };
-    raf.current = requestAnimationFrame(animate);
-    return () => { if (raf.current) cancelAnimationFrame(raf.current); };
-  }, [active, target]);
-
-  return display;
-}
-
-// ─── Scramble Link ────────────────────────────────────────────────────────────
-function ScrambleLink({ label, href, isEmail = false }: { label: string; href: string; isEmail?: boolean }) {
-  const [hovered, setHovered] = useState(false);
-  const display = useScramble(label, hovered);
-
-  return isEmail ? (
-    <a
-      href={href}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="text-white hover:text-emerald-400 transition-colors font-mono tracking-wide"
-    >
-      {display}
-    </a>
-  ) : (
-    <Link
-      href={href}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="text-white hover:text-emerald-400 transition-colors font-mono tracking-wide"
-    >
-      {display}
-    </Link>
-  );
-}
 
 // ─── Light show effects per-letter ────────────────────────────────────────────
 const LIGHT_SHOW_PALETTES = [
@@ -283,7 +224,7 @@ export default function PrismFooter({ onStart }: Props) {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tighter text-white mb-4">
-              Intelligence at any scale.
+              Stop reading reviews. Start making decisions.
             </h2>
             <p className="text-white/40 text-lg max-w-xl mx-auto">
               Choose the path that fits your pipeline. From self-serve analysis to custom enterprise models.
@@ -355,54 +296,50 @@ export default function PrismFooter({ onStart }: Props) {
       <footer ref={footerRef} className="bg-black pt-32 pb-8 px-6 md:px-12 border-t border-white/10 overflow-hidden w-full">
         <div className="w-full flex flex-col gap-32">
 
-          {/* Top: Brutalist Email Grid (Pushed to the Right) */}
+          {/* Top: Enterprise Footer Links */}
           <div className="w-full flex justify-end">
             <motion.div
               variants={FADE_RIGHT}
               initial="hidden"
               animate={footerInView ? "visible" : "hidden"}
               custom={0}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-16 w-full lg:w-[80%]"
+              className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-16 w-full lg:w-[80%]"
             >
               {[
                 {
-                  section: "INQUIRIES",
+                  section: "Product",
                   items: [
-                    {
-                      label: "[ ] HELLO@PRISMINTEL.CO",
-                      href: "mailto:hello@prismintel.co?subject=Partnership%20%2F%20Enterprise%20Inquiry&body=Hi%20Prism%20team%2C%0A%0AI%27d%20like%20to%20explore%20how%20Prism%20can%20work%20for%20our%20organisation.%20Could%20we%20set%20up%20a%20quick%20call%3F%0A%0A%5BYour%20name%20%26%20company%5D",
-                      email: true,
-                    },
-                    { label: "Enterprise & Partnerships", href: "#", email: false, muted: true },
+                    { label: "Platform Overview", href: "#" },
+                    { label: "Use Cases", href: "/use-cases" },
+                    { label: "Pricing", href: "/pricing" },
+                    { label: "API Documentation", href: "#" },
+                    { label: "Security & Trust", href: "#" },
                   ],
                 },
                 {
-                  section: "RESEARCH",
+                  section: "Resources",
                   items: [
-                    {
-                      label: "[ ] RESEARCH@PRISMINTEL.CO",
-                      href: "mailto:research@prismintel.co?subject=Custom%20Research%20Project%20Brief&body=Hi%20Prism%20Research%2C%0A%0AWe%27re%20looking%20for%20a%20custom%20consumer%20intelligence%20model%20for%20a%20specific%20brief.%20Happy%20to%20share%20more%20details%20on%20a%20call.%0A%0A%5BYour%20name%2C%20agency%20%26%20project%20overview%5D",
-                      email: true,
-                    },
-                    { label: "Custom Models & Agency Projects", href: "#", email: false, muted: true },
+                    { label: "Case Studies", href: "/case-studies" },
+                    { label: "Blog", href: "/blog" },
+                    { label: "Intelligence Guide", href: "#" },
+                    { label: "Help Center", href: "#" },
                   ],
                 },
                 {
-                  section: "CLIENT SERVICES",
+                  section: "Company",
                   items: [
-                    {
-                      label: "[ ] SUPPORT@PRISMINTEL.CO",
-                      href: "mailto:support@prismintel.co?subject=Support%20Request&body=Hi%20Prism%20Support%2C%0A%0AI%20need%20help%20with%20the%20following%3A%0A%0A%5BDescribe%20your%20issue%20or%20question%5D",
-                      email: true,
-                    },
-                    { label: "Technical Help & Billing", href: "#", email: false, muted: true },
+                    { label: "About Prism", href: "/about" },
+                    { label: "Careers", href: "#" },
+                    { label: "Partners", href: "#" },
+                    { label: "Contact Us", href: "#" },
                   ],
                 },
                 {
-                  section: "SYSTEM",
+                  section: "Contact",
                   items: [
-                    { label: "[ ] VIEW_PRICING", href: "/pricing", email: false },
-                    { label: "[ ] REPORT_ARCHIVE", href: "/dashboard", email: false },
+                    { label: "Sales Inquiry", href: "mailto:sales@prismintel.co" },
+                    { label: "Customer Support", href: "mailto:support@prismintel.co" },
+                    { label: "Press & Media", href: "mailto:press@prismintel.co" },
                   ],
                 },
               ].map((col, ci) => (
@@ -412,16 +349,14 @@ export default function PrismFooter({ onStart }: Props) {
                   initial="hidden"
                   animate={footerInView ? "visible" : "hidden"}
                   custom={0.1 + ci * 0.1}
-                  className="flex flex-col gap-3 text-xs whitespace-nowrap"
+                  className="flex flex-col gap-4 text-sm"
                 >
-                  <span className="text-white/25 font-mono tracking-widest mb-2">■ {col.section}</span>
-                  {col.items.map((item) =>
-                    item.muted ? (
-                      <span key={item.label} className="text-white/35 font-mono">{item.label}</span>
-                    ) : (
-                      <ScrambleLink key={item.label} label={item.label} href={item.href} isEmail={item.email} />
-                    )
-                  )}
+                  <span className="text-white font-semibold mb-2">{col.section}</span>
+                  {col.items.map((item) => (
+                    <Link key={item.label} href={item.href} className="text-white/50 hover:text-white transition-colors">
+                      {item.label}
+                    </Link>
+                  ))}
                 </motion.div>
               ))}
             </motion.div>

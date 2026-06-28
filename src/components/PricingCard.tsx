@@ -121,19 +121,22 @@ export default function PricingCard({
             <div className="flex flex-col gap-1">
               <div className="flex items-end gap-1.5">
                 <span className="text-4xl font-semibold tracking-tighter text-white">
-                  {formatPrice(displayPrice, currency)}
+                  {billingPeriod === "annual" && annualPrice 
+                    ? formatPrice(annualPrice * 12, currency)
+                    : formatPrice(displayPrice, currency)}
                 </span>
                 {!isFree && !isCustom && (
-                  <span className="text-sm text-white/30 mb-1.5 font-normal">/ mo</span>
+                  <span className="text-sm text-white/30 mb-1.5 font-normal">
+                    {billingPeriod === "annual" ? "/ yr" : "/ mo"}
+                  </span>
                 )}
               </div>
               {billingPeriod === "annual" && !isFree && !isCustom && annualPrice && monthlyPrice && (
                 <p className="text-xs text-white/30">
-                  Billed annually ·{" "}
+                  That's {formatPrice(annualPrice, currency)}/mo ·{" "}
                   <span style={{ color: `hsl(${accentColor})` }} className="font-medium">
                     Save ₹{((monthlyPrice - annualPrice) * 12).toLocaleString("en-IN")}
-                  </span>{" "}
-                  / yr
+                  </span>
                 </p>
               )}
               {isFree && (
